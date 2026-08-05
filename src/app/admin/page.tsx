@@ -1134,7 +1134,7 @@ function AdminContent() {
             </div>
           </aside>
 
-          <main className="lg:col-span-9">
+          <main className="lg:col-span-9 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto pr-2 scrollbar-none">
           {activeTab === "dashboard" && (
             <div className="space-y-8">
               

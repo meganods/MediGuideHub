@@ -302,7 +302,7 @@ export const getContactMessages = async (): Promise<ContactMessage[]> => {
       const snapshot = await getDocs(query(collection(firestore, "contactMessages"), orderBy("createdAt", "desc")));
       return snapshot.docs.map((doc) => ({ id: doc.id, read: doc.data().read ?? false, ...doc.data() } as ContactMessage));
     } catch (e) {
-      console.error("Firebase error getting contact messages:", e);
+      console.warn("Firebase error getting contact messages (Permission check failed or missing):", (e as any).message || e);
     }
   }
   return getLocal<ContactMessage>(KEYS.CONTACTS);
@@ -390,7 +390,7 @@ export const getSubscribers = async (): Promise<NewsletterSubscriber[]> => {
       const snapshot = await getDocs(collection(firestore, "newsletterSubscribers"));
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as NewsletterSubscriber));
     } catch (e) {
-      console.error("Firebase error getting subscribers:", e);
+      console.warn("Firebase error getting subscribers (Permission check failed or missing):", (e as any).message || e);
     }
   }
   return getLocal<NewsletterSubscriber>(KEYS.SUBSCRIBERS);
@@ -435,7 +435,7 @@ export const getUsers = async (): Promise<UserProfile[]> => {
       const snapshot = await getDocs(collection(firestore, "users"));
       return snapshot.docs.map((doc) => ({ uid: doc.id, ...doc.data() } as UserProfile));
     } catch (e) {
-      console.error("Firebase error getting users:", e);
+      console.warn("Firebase error getting users (Permission check failed or missing):", (e as any).message || e);
     }
   }
   return getLocal<UserProfile>(KEYS.USERS);
@@ -698,7 +698,7 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
       const snapshot = await getDocs(query(collection(firestore, "categories"), orderBy("displayOrder", "asc")));
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
     } catch (e) {
-      console.error("Firebase error getting categories:", e);
+      console.warn("Firebase error getting categories (Permission check failed or missing):", (e as any).message || e);
     }
   }
   return getLocal<BlogCategory>("mediguide_categories");
@@ -711,7 +711,7 @@ export const saveCategory = async (cat: BlogCategory): Promise<void> => {
       await setDoc(doc(firestore, "categories", id), { ...cat, id }, { merge: true });
       return;
     } catch (e) {
-      console.error("Firebase error saving category:", e);
+      console.warn("Firebase error saving category (Permission check failed or missing):", (e as any).message || e);
     }
   }
   const cats = getLocal<BlogCategory>("mediguide_categories");

@@ -398,6 +398,8 @@ function AdminContent() {
         const msgs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as ContactMessage));
         setMessages(msgs);
         setStats((prev) => ({ ...prev, messages: msgs.filter((msg) => !msg.replied).length }));
+      }, (error) => {
+        console.warn("Contact messages listener status:", error.message);
       });
       return () => unsubscribe();
     } else {

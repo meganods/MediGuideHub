@@ -64,6 +64,7 @@ import {
   Settings,
   Menu,
   X,
+  ChevronDown,
   Bell,
   Globe,
   HelpCircle,
@@ -201,6 +202,9 @@ function AdminContent() {
   const [articleFilterStatus, setArticleFilterStatus] = useState("all");
   const [articleFilterAuthor, setArticleFilterAuthor] = useState("all");
   const [articleSortBy, setArticleSortBy] = useState("date");
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   // Category Management states
   const [categoriesList, setCategoriesList] = useState<BlogCategory[]>([]);
@@ -1915,47 +1919,140 @@ function AdminContent() {
                         className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                       />
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Category</label>
-                      <select
-                        value={articleFilterCategory}
-                        onChange={(e) => setArticleFilterCategory(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
+                          setIsStatusDropdownOpen(false);
+                          setIsSortDropdownOpen(false);
+                        }}
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-[#113F48] text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#C9A15A]"
                       >
-                        <option value="all">All Categories</option>
-                        <option value="Overview">Overview</option>
-                        <option value="Part A">Part A</option>
-                        <option value="Part B">Part B</option>
-                        <option value="Part C">Part C</option>
-                        <option value="Part D">Part D</option>
-                        <option value="Comparison">Comparison</option>
-                        <option value="Enrollment">Enrollment</option>
-                      </select>
+                        <span>{
+                          articleFilterCategory === "all" ? "All Categories" : articleFilterCategory
+                        }</span>
+                        <ChevronDown className="h-4 w-4 text-stone-400" />
+                      </button>
+                      {isCategoryDropdownOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setIsCategoryDropdownOpen(false)} />
+                          <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1 max-h-60 overflow-y-auto">
+                            {[
+                              { label: "All Categories", value: "all" },
+                              { label: "Overview", value: "Overview" },
+                              { label: "Part A", value: "Part A" },
+                              { label: "Part B", value: "Part B" },
+                              { label: "Part C", value: "Part C" },
+                              { label: "Part D", value: "Part D" },
+                              { label: "Comparison", value: "Comparison" },
+                              { label: "Enrollment", value: "Enrollment" }
+                            ].map((opt) => (
+                              <button
+                                key={opt.value}
+                                type="button"
+                                onClick={() => {
+                                  setArticleFilterCategory(opt.value);
+                                  setIsCategoryDropdownOpen(false);
+                                }}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-stone-50 transition-all ${
+                                  articleFilterCategory === opt.value ? "text-[#C9A15A] font-bold" : "text-stone-700"
+                                }`}
+                              >
+                                {opt.label}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Status</label>
-                      <select
-                        value={articleFilterStatus}
-                        onChange={(e) => setArticleFilterStatus(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsStatusDropdownOpen(!isStatusDropdownOpen);
+                          setIsCategoryDropdownOpen(false);
+                          setIsSortDropdownOpen(false);
+                        }}
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-[#113F48] text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#C9A15A]"
                       >
-                        <option value="all">All Statuses</option>
-                        <option value="Published">Published</option>
-                        <option value="Draft">Draft</option>
-                        <option value="Scheduled">Scheduled</option>
-                      </select>
+                        <span>{
+                          articleFilterStatus === "all" ? "All Statuses" : articleFilterStatus
+                        }</span>
+                        <ChevronDown className="h-4 w-4 text-stone-400" />
+                      </button>
+                      {isStatusDropdownOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setIsStatusDropdownOpen(false)} />
+                          <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1">
+                            {[
+                              { label: "All Statuses", value: "all" },
+                              { label: "Published", value: "Published" },
+                              { label: "Draft", value: "Draft" },
+                              { label: "Scheduled", value: "Scheduled" }
+                            ].map((opt) => (
+                              <button
+                                key={opt.value}
+                                type="button"
+                                onClick={() => {
+                                  setArticleFilterStatus(opt.value);
+                                  setIsStatusDropdownOpen(false);
+                                }}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-stone-50 transition-all ${
+                                  articleFilterStatus === opt.value ? "text-[#C9A15A] font-bold" : "text-stone-700"
+                                }`}
+                              >
+                                {opt.label}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-1 relative">
                       <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Sort By</label>
-                      <select
-                        value={articleSortBy}
-                        onChange={(e) => setArticleSortBy(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsSortDropdownOpen(!isSortDropdownOpen);
+                          setIsCategoryDropdownOpen(false);
+                          setIsStatusDropdownOpen(false);
+                        }}
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-[#113F48] text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#C9A15A]"
                       >
-                        <option value="date">Publish Date</option>
-                        <option value="views">Views</option>
-                        <option value="title">Title</option>
-                      </select>
+                        <span>{
+                          articleSortBy === "date" ? "Publish Date" : articleSortBy === "views" ? "Views" : "Title"
+                        }</span>
+                        <ChevronDown className="h-4 w-4 text-stone-400" />
+                      </button>
+                      {isSortDropdownOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setIsSortDropdownOpen(false)} />
+                          <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1">
+                            {[
+                              { label: "Publish Date", value: "date" },
+                              { label: "Views", value: "views" },
+                              { label: "Title", value: "title" }
+                            ].map((opt) => (
+                              <button
+                                key={opt.value}
+                                type="button"
+                                onClick={() => {
+                                  setArticleSortBy(opt.value);
+                                  setIsSortDropdownOpen(false);
+                                }}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-stone-50 transition-all ${
+                                  articleSortBy === opt.value ? "text-[#C9A15A] font-bold" : "text-stone-700"
+                                }`}
+                              >
+                                {opt.label}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
 

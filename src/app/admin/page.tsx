@@ -960,7 +960,7 @@ function AdminContent() {
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className={`fixed inset-0 z-40 bg-black/30 lg:hidden ${isSidebarOpen ? "block" : "hidden"}`} onClick={() => setIsSidebarOpen(false)} />
-          <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#113F48] p-4 shadow-2xl transform transition-transform duration-300 ease-out lg:static lg:translate-x-0 lg:w-auto lg:col-span-3 lg:bg-transparent lg:p-0 lg:shadow-none ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
+          <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#113F48] p-4 shadow-2xl transform transition-transform duration-300 ease-out lg:sticky lg:top-24 lg:translate-x-0 lg:w-auto lg:col-span-3 lg:bg-transparent lg:p-0 lg:shadow-none lg:h-[calc(100vh-8rem)] lg:overflow-y-auto scrollbar-none ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
             <div className="flex items-center justify-between lg:hidden mb-6">
               <div className="flex items-center gap-2">
                 <div className="bg-[#C9A15A] p-2 rounded-xl">

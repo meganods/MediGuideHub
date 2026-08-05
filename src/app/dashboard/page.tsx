@@ -242,33 +242,131 @@ function DashboardContent() {
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
 
   const handleDownloadData = () => {
-    const payload = {
-      displayName,
-      email,
-      bio,
-      country,
-      language,
-      timezone,
-      healthInterests,
-      newsletterSubscribed,
-      newsletterFrequency,
-      selectedNewsletterCats,
-      streak,
-      lastActive,
-      bookmarksCount: bookmarks.length,
-      savedPostsCount: savedPosts.length,
-      bookmarks,
-      savedPosts: savedPosts.map(p => ({ title: p.title, category: p.category, slug: p.slug })),
-      readingHistory: readingHistory.map(h => ({ slug: h.slug, date: h.date, progress: h.progress }))
-    };
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      alert("Please allow popups to download your PDF profile data.");
+      return;
+    }
 
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `mediguide_user_${displayName.replace(/\s+/g, '_') || "profile"}_data.json`);
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
+    const savedPostsHtml = savedPosts.length > 0 
+      ? savedPosts.map(p => `<li><strong>${p.title}</strong> (${p.category})</li>`).join("")
+      : "<li>No saved articles.</li>";
+
+    const readingHistoryHtml = readingHistory.length > 0 
+      ? readingHistory.map(h => `<li><strong>${h.slug}</strong> - ${h.progress}% completed (Last Read: ${h.date})</li>`).join("")
+      : "<li>No reading history logged.</li>";
+
+    const bookmarksHtml = bookmarks.length > 0 
+      ? bookmarks.map(b => `<li>Bookmark ID: ${b}</li>`).join("")
+      : "<li>No bookmarks.</li>";
+
+    const htmlContent = `
+      <html>
+        <head>
+          <title>MediGuide Hub - User Profile Data Document</title>
+          <style>
+            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #113f48; padding: 40px; line-height: 1.6; }
+            h1 { color: #113f48; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 30px; font-size: 28px; }
+            h2 { color: #C9A15A; font-size: 18px; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+            .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            .meta-table td { padding: 8px 12px; border: 1px solid #f0eada; font-size: 14px; }
+            .meta-table td.label { font-weight: bold; background-color: #fdfbf7; width: 30%; }
+            ul { padding-left: 20px; }
+            li { margin-bottom: 8px; font-size: 14px; }
+            .footer { margin-top: 50px; font-size: 11px; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+          </style>
+        </head>
+        <body>
+          <h1>MediGuide Hub — GDPR Profile Data</h1>
+          
+          <h2>Account Details</h2>
+          <table class="meta-table">
+            <tr>
+              <td class="label">Display Name</td>
+              <td>${displayName || "N/A"}</td>
+            </tr>
+            <tr>
+              <td class="label">Email Address</td>
+              <td>${email}</td>
+            </tr>
+            <tr>
+              <td class="label">Short Biography</td>
+              <td>${bio || "N/A"}</td>
+            </tr>
+            <tr>
+              <td class="label">Country / Address</td>
+              <td>${country}</td>
+            </tr>
+            <tr>
+              <td class="label">Language Preference</td>
+              <td>${language}</td>
+            </tr>
+            <tr>
+              <td class="label">Preferred Timezone</td>
+              <td>${timezone}</td>
+            </tr>
+            <tr>
+              <td class="label">Reading Streak</td>
+              <td>${streak} Days</td>
+            </tr>
+            <tr>
+              <td class="label">Last Active Status</td>
+              <td>${lastActive}</td>
+            </tr>
+          </table>
+
+          <h2>Health Interests</h2>
+          <ul>
+            ${healthInterests.map(i => `<li>${i}</li>`).join("")}
+          </ul>
+
+          <h2>Newsletter Subscriptions</h2>
+          <table class="meta-table">
+            <tr>
+              <td class="label">Subscribed</td>
+              <td>${newsletterSubscribed ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <td class="label">Frequency</td>
+              <td>${newsletterFrequency}</td>
+            </tr>
+            <tr>
+              <td class="label">Subscribed Categories</td>
+              <td>${selectedNewsletterCats.join(", ") || "None"}</td>
+            </tr>
+          </table>
+
+          <h2>Saved Articles</h2>
+          <ul>
+            ${savedPostsHtml}
+          </ul>
+
+          <h2>Reading History Log</h2>
+          <ul>
+            ${readingHistoryHtml}
+          </ul>
+
+          <h2>Bookmarks Log</h2>
+          <ul>
+            ${bookmarksHtml}
+          </ul>
+
+          <div class="footer">
+            Document generated automatically by MediGuide Hub on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
+          </div>
+
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
   };
 
   const getTabTitle = () => {

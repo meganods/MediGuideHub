@@ -1849,20 +1849,20 @@ function AdminContent() {
                   
                   {/* Dashboard stats cards */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="bg-[#113F48] p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Total Articles</span>
+                    <div className="bg-gradient-to-br from-[#113F48]/10 via-[#113F48]/5 to-transparent border border-[#113F48]/20 p-4 rounded-2xl shadow-sm text-[#113F48] space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-75 text-stone-500">Total Articles</span>
                       <h4 className="text-2xl font-extrabold">{posts.length}</h4>
                     </div>
-                    <div className="bg-[#0F6E56] p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Published</span>
+                    <div className="bg-gradient-to-br from-emerald-600/10 via-emerald-600/5 to-transparent border border-emerald-600/20 p-4 rounded-2xl shadow-sm text-emerald-800 space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-75 text-stone-500">Published</span>
                       <h4 className="text-2xl font-extrabold">{posts.filter(p => !p.status || p.status === "Published").length}</h4>
                     </div>
-                    <div className="bg-stone-600 p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Drafts</span>
+                    <div className="bg-gradient-to-br from-stone-600/10 via-stone-600/5 to-transparent border border-stone-600/20 p-4 rounded-2xl shadow-sm text-stone-700 space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-75 text-stone-500">Drafts</span>
                       <h4 className="text-2xl font-extrabold">{posts.filter(p => p.status === "Draft").length}</h4>
                     </div>
-                    <div className="bg-amber-600 p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Scheduled</span>
+                    <div className="bg-gradient-to-br from-amber-600/10 via-amber-600/5 to-transparent border border-amber-600/20 p-4 rounded-2xl shadow-sm text-amber-800 space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-75 text-stone-500">Scheduled</span>
                       <h4 className="text-2xl font-extrabold">{posts.filter(p => p.status === "Scheduled").length}</h4>
                     </div>
                   </div>
@@ -3038,15 +3038,15 @@ function AdminContent() {
               </div>
 
               {/* Overall Readiness Score Card */}
-              <div className="bg-gradient-to-br from-[#113F48] to-[#C9A15A] text-white p-6 rounded-3xl shadow-md flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="bg-gradient-to-br from-[#113F48]/10 via-transparent to-[#C9A15A]/15 border border-[#C9A15A]/25 text-[#113F48] p-6 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="space-y-2 text-center md:text-left">
                   <h4 className="text-2xl font-extrabold">Overall AdSense Readiness: Ready</h4>
-                  <p className="text-xs text-stone-200 max-w-lg">
+                  <p className="text-xs text-stone-600 max-w-lg">
                     Your platform meets all structural criteria, page limits, legal disclosures, and E-E-A-T requirements. Excellent candidate for immediate Google AdSense approval.
                   </p>
                 </div>
-                <div className="w-24 h-24 rounded-full bg-emerald-500/20 border-4 border-emerald-400 flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl font-black text-white">96%</span>
+                <div className="w-24 h-24 rounded-full bg-emerald-500/20 border-4 border-emerald-500 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-black text-emerald-800">96%</span>
                 </div>
               </div>
 

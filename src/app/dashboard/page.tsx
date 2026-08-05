@@ -236,7 +236,7 @@ function DashboardContent() {
     <div className="min-h-screen bg-[#FDFBF7] flex flex-col justify-between">
       <Navbar />
 
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-6xl">
+      <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Dashboard Navigation Sidebar */}

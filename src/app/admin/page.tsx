@@ -77,6 +77,53 @@ import {
   Award,
 } from "lucide-react";
 
+interface CustomSelectProps {
+  value: string;
+  onChange: (val: string) => void;
+  options: { label: string; value: string }[];
+  className?: string;
+}
+
+function CustomSelect({ value, onChange, options, className = "" }: CustomSelectProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectedOption = options.find(opt => opt.value === value) || options[0];
+
+  return (
+    <div className={`relative w-full ${className}`}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm text-[#113F48] text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#C9A15A]"
+      >
+        <span>{selectedOption ? selectedOption.label : value}</span>
+        <ChevronDown className="h-4 w-4 text-stone-400" />
+      </button>
+      {isOpen && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+          <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1 max-h-60 overflow-y-auto">
+            {options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => {
+                  onChange(opt.value);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 text-sm hover:bg-stone-50 transition-all ${
+                  value === opt.value ? "text-[#C9A15A] font-bold" : "text-stone-700"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function AdminContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -1488,19 +1535,19 @@ function AdminContent() {
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Category</label>
-                            <select
+                            <CustomSelect
                               value={postCategory}
-                              onChange={(e) => setPostCategory(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            >
-                              <option value="Overview">Overview</option>
-                              <option value="Part A">Part A</option>
-                              <option value="Part B">Part B</option>
-                              <option value="Part C">Part C</option>
-                              <option value="Part D">Part D</option>
-                              <option value="Comparison">Comparison</option>
-                              <option value="Enrollment">Enrollment</option>
-                            </select>
+                              onChange={(val) => setPostCategory(val)}
+                              options={[
+                                { label: "Overview", value: "Overview" },
+                                { label: "Part A", value: "Part A" },
+                                { label: "Part B", value: "Part B" },
+                                { label: "Part C", value: "Part C" },
+                                { label: "Part D", value: "Part D" },
+                                { label: "Comparison", value: "Comparison" },
+                                { label: "Enrollment", value: "Enrollment" }
+                              ]}
+                            />
                           </div>
                         </div>
 
@@ -1623,16 +1670,16 @@ function AdminContent() {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Schema Structured Data Type</label>
-                            <select
+                            <CustomSelect
                               value={seoSchemaType}
-                              onChange={(e) => setSeoSchemaType(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            >
-                              <option value="MedicalWebPage">MedicalWebPage</option>
-                              <option value="MedicalCondition">MedicalCondition</option>
-                              <option value="NewsArticle">NewsArticle</option>
-                              <option value="BlogPosting">BlogPosting</option>
-                            </select>
+                              onChange={(val) => setSeoSchemaType(val)}
+                              options={[
+                                { label: "MedicalWebPage", value: "MedicalWebPage" },
+                                { label: "MedicalCondition", value: "MedicalCondition" },
+                                { label: "NewsArticle", value: "NewsArticle" },
+                                { label: "BlogPosting", value: "BlogPosting" }
+                              ]}
+                            />
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Robots Tag</label>
@@ -1743,14 +1790,14 @@ function AdminContent() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Visibility Scope</label>
-                            <select
+                            <CustomSelect
                               value={postVisibility}
-                              onChange={(e) => setPostVisibility(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            >
-                              <option value="Public">Public (Everyone)</option>
-                              <option value="Private">Private (Admins Only)</option>
-                            </select>
+                              onChange={(val) => setPostVisibility(val)}
+                              options={[
+                                { label: "Public (Everyone)", value: "Public" },
+                                { label: "Private (Admins Only)", value: "Private" }
+                              ]}
+                            />
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Review Frequency</label>
@@ -2298,27 +2345,27 @@ function AdminContent() {
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Filter Resolved</label>
-                  <select
+                  <CustomSelect
                     value={msgFilterResolved}
-                    onChange={(e) => setMsgFilterResolved(e.target.value)}
-                    className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                  >
-                    <option value="all">All Inquiries</option>
-                    <option value="pending">Pending</option>
-                    <option value="resolved">Resolved</option>
-                  </select>
+                    onChange={(val) => setMsgFilterResolved(val)}
+                    options={[
+                      { label: "All Inquiries", value: "all" },
+                      { label: "Pending", value: "pending" },
+                      { label: "Resolved", value: "resolved" }
+                    ]}
+                  />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Filter Archived</label>
-                  <select
+                  <CustomSelect
                     value={msgFilterArchived}
-                    onChange={(e) => setMsgFilterArchived(e.target.value)}
-                    className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                  >
-                    <option value="unarchived">Active Inquiries</option>
-                    <option value="archived">Archived Inquiries</option>
-                    <option value="all">All Inquiries</option>
-                  </select>
+                    onChange={(val) => setMsgFilterArchived(val)}
+                    options={[
+                      { label: "Active Inquiries", value: "unarchived" },
+                      { label: "Archived Inquiries", value: "archived" },
+                      { label: "All Inquiries", value: "all" }
+                    ]}
+                  />
                 </div>
               </div>
 
@@ -2714,16 +2761,17 @@ function AdminContent() {
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Parent Category</label>
-                            <select
+                            <CustomSelect
                               value={catParent}
-                              onChange={(e) => setCatParent(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            >
-                              <option value="">None (Primary)</option>
-                              {categoriesList.filter(c => c.slug !== catSlug).map(c => (
-                                <option key={c.id} value={c.slug}>{c.name}</option>
-                              ))}
-                            </select>
+                              onChange={(val) => setCatParent(val)}
+                              options={[
+                                { label: "None (Primary)", value: "" },
+                                ...categoriesList.filter(c => c.slug !== catSlug).map(c => ({
+                                  label: c.name,
+                                  value: c.slug
+                                }))
+                              ]}
+                            />
                           </div>
                         </div>
 
@@ -2748,14 +2796,14 @@ function AdminContent() {
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Status</label>
-                            <select
+                            <CustomSelect
                               value={catStatus}
-                              onChange={(e) => setCatStatus(e.target.value as "Active" | "Inactive")}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            >
-                              <option value="Active">Active</option>
-                              <option value="Inactive">Inactive</option>
-                            </select>
+                              onChange={(val) => setCatStatus(val as "Active" | "Inactive")}
+                              options={[
+                                { label: "Active", value: "Active" },
+                                { label: "Inactive", value: "Inactive" }
+                              ]}
+                            />
                           </div>
                         </div>
 

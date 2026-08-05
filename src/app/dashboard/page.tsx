@@ -33,6 +33,7 @@ import {
   CheckCircle2, 
   X, 
   Menu,
+  ChevronDown,
   Bell, 
   Lock, 
   ShieldAlert,
@@ -43,6 +44,53 @@ import {
   Globe,
   Share2
 } from "lucide-react";
+
+interface CustomSelectProps {
+  value: string;
+  onChange: (val: string) => void;
+  options: { label: string; value: string }[];
+  className?: string;
+}
+
+function CustomSelect({ value, onChange, options, className = "" }: CustomSelectProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectedOption = options.find(opt => opt.value === value) || options[0];
+
+  return (
+    <div className={`relative w-full ${className}`}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-[#FDFBF7] border border-stone-200 rounded-xl px-4 py-3 text-sm text-[#113F48] text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#C9A15A]"
+      >
+        <span>{selectedOption ? selectedOption.label : value}</span>
+        <ChevronDown className="h-4 w-4 text-stone-400" />
+      </button>
+      {isOpen && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+          <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1 max-h-60 overflow-y-auto">
+            {options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => {
+                  onChange(opt.value);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 text-sm hover:bg-stone-50 transition-all ${
+                  value === opt.value ? "text-[#C9A15A] font-bold" : "text-stone-700"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 function DashboardContent() {
   const router = useRouter();
@@ -738,15 +786,15 @@ function DashboardContent() {
                     <div className="space-y-4 pt-2 border-t border-stone-100">
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-[#113F48]">Update Frequency</label>
-                        <select
+                        <CustomSelect
                           value={newsletterFrequency}
-                          onChange={(e) => setNewsletterFrequency(e.target.value)}
-                          className="w-full bg-[#FDFBF7] border border-stone-200 rounded-xl px-4 py-2 text-xs focus:outline-none text-[#113F48]"
-                        >
-                          <option value="Daily">Daily Summary</option>
-                          <option value="Weekly">Weekly Digest</option>
-                          <option value="Monthly">Monthly Circular</option>
-                        </select>
+                          onChange={(val) => setNewsletterFrequency(val)}
+                          options={[
+                            { label: "Daily Summary", value: "Daily" },
+                            { label: "Weekly Digest", value: "Weekly" },
+                            { label: "Monthly Circular", value: "Monthly" }
+                          ]}
+                        />
                       </div>
 
                       <div className="space-y-2">

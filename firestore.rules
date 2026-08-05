@@ -19,12 +19,12 @@ service cloud.firestore {
         request.auth.token.email == 'Admin@mediguide.com' ||
         request.auth.token.email == 'vishalratanshakya@gmail.com' ||
         request.auth.token.email == 'Vishalratanshakya@gmail.com' ||
-        (request.auth.token.keys().hasAny(['email']) && 
-         (request.auth.token.email.toLowerCase() == 'vishalratanshakya@gmail.com' ||
-          request.auth.token.email.toLowerCase() == 'admin@mediguide.com')) ||
+        (request.auth.token.email != null && 
+         (request.auth.token.email.lower() == 'vishalratanshakya@gmail.com' ||
+          request.auth.token.email.lower() == 'admin@mediguide.com')) ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
-        (request.auth.token.keys().hasAny(['role']) && request.auth.token.role == 'admin')
+        (request.auth.token.role != null && request.auth.token.role == 'admin')
       );
     }
 

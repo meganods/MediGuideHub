@@ -150,6 +150,7 @@ function DashboardContent() {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
+    setIsMobileSidebarOpen(false);
     router.push(`/dashboard?tab=${tab}`);
   };
 

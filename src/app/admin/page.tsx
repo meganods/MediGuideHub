@@ -72,6 +72,7 @@ import {
   Grid,
   Folder,
   Layers,
+  TrendingUp,
 } from "lucide-react";
 
 function AdminContent() {
@@ -952,6 +953,18 @@ function AdminContent() {
               >
                 <Grid className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "categories" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
                 Categories
+              </button>
+
+              <button
+                onClick={() => handleTabChange("search-analytics")}
+                className={`group w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ease-out ${
+                  activeTab === "search-analytics"
+                    ? "bg-[#C9A15A] text-white shadow-sm"
+                    : "text-white lg:text-stone-600 lg:hover:bg-[#F9FAFB] lg:hover:text-[#113F48] hover:bg-white/10 hover:text-white hover:translate-x-[3px]"
+                }`}
+              >
+                <TrendingUp className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "search-analytics" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
+                Search Analytics
               </button>
 
               <button
@@ -2817,6 +2830,83 @@ function AdminContent() {
 
                 </div>
               )}
+            </div>
+          )}
+
+          {/* TAB: Search Analytics */}
+          {activeTab === "search-analytics" && (
+            <div className="space-y-6">
+              
+              {/* Header */}
+              <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm">
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#C9A15A]">SEO &amp; Intent Analytics</span>
+                  <h3 className="text-lg font-bold text-[#113F48]">Search Engine Analytics</h3>
+                  <p className="text-xs text-stone-500">Analyze healthcare user intent, trending keywords, and no-result queries.</p>
+                </div>
+              </div>
+
+              {/* Statistics Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { label: "Total Searches", val: "24,500" },
+                  { label: "Unique Users", val: "18,200" },
+                  { label: "No Result Queries", val: "360" },
+                  { label: "Avg Search Speed", val: "280ms" }
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white border border-[#C9A15A]/15 p-4.5 rounded-2xl shadow-sm">
+                    <span className="text-[9px] font-bold text-stone-400 uppercase block">{stat.label}</span>
+                    <span className="text-xl font-extrabold text-[#113F48] block mt-1.5">{stat.val}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Trends & Lists */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                {/* Top Search Keywords */}
+                <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4">
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-[#113F48] border-b border-stone-100 pb-2">Top Search Keywords</h4>
+                  <div className="space-y-3">
+                    {[
+                      { word: "medicare enrollment", count: 8450, ctr: "13.6%" },
+                      { word: "part a hospital cost", count: 6200, ctr: "12.9%" },
+                      { word: "medigap plans 2026", count: 4100, ctr: "10.5%" },
+                      { word: "medicare advantage rules", count: 3800, ctr: "12.2%" },
+                      { word: "prescription deductible", count: 2500, ctr: "9.8%" }
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between items-center text-xs">
+                        <span className="font-semibold text-stone-700">{idx + 1}. {item.word}</span>
+                        <div className="flex gap-4 text-stone-400 font-medium">
+                          <span>{item.count} searches</span>
+                          <span className="text-emerald-600 font-bold">CTR: {item.ctr}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* No Result Queries */}
+                <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4">
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-red-600 border-b border-stone-100 pb-2">No Result Queries (Optimize Content)</h4>
+                  <div className="space-y-3">
+                    {[
+                      { word: "health insurance under 50", count: 145 },
+                      { word: "private dental near me", count: 120 },
+                      { word: "free checkups state list", count: 95 },
+                      { word: "vision deductibles table", count: 70 },
+                      { word: "retiree supplemental drug discount", count: 42 }
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between items-center text-xs">
+                        <span className="font-semibold text-stone-700">{idx + 1}. {item.word}</span>
+                        <span className="text-stone-400 font-bold">{item.count} hits</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
             </div>
           )}
 

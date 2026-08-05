@@ -1912,7 +1912,7 @@ function AdminContent() {
                         placeholder="Search title, content..."
                         value={articleSearchQuery}
                         onChange={(e) => setArticleSearchQuery(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                       />
                     </div>
                     <div className="space-y-1">
@@ -1920,7 +1920,7 @@ function AdminContent() {
                       <select
                         value={articleFilterCategory}
                         onChange={(e) => setArticleFilterCategory(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                       >
                         <option value="all">All Categories</option>
                         <option value="Overview">Overview</option>
@@ -1937,7 +1937,7 @@ function AdminContent() {
                       <select
                         value={articleFilterStatus}
                         onChange={(e) => setArticleFilterStatus(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                       >
                         <option value="all">All Statuses</option>
                         <option value="Published">Published</option>
@@ -1950,7 +1950,7 @@ function AdminContent() {
                       <select
                         value={articleSortBy}
                         onChange={(e) => setArticleSortBy(e.target.value)}
-                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                        className="w-full bg-white border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                       >
                         <option value="date">Publish Date</option>
                         <option value="views">Views</option>

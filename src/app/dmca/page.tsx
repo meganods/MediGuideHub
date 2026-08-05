@@ -4,9 +4,9 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Mail, Home } from "lucide-react";
+import { Mail, Home, ShieldAlert } from "lucide-react";
 
-export default function CookiePolicyPage() {
+export default function DMCAPolicyPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Cookie Policy</span>
+            <span className="text-[#113F48] font-semibold">DMCA Policy</span>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ export default function CookiePolicyPage() {
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Cookie Policy</h1>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">DMCA Copyright Policy</h1>
             <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
-              This Cookie Policy details how cookies are used on MediGuideHub to support site speed, performance metrics, and AdSense advertisements.
+              MediGuideHub respects the intellectual property rights of others. This DMCA policy outlines the process for reporting alleged copyright infringements.
             </p>
           </div>
         </section>
@@ -38,40 +38,35 @@ export default function CookiePolicyPage() {
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">1. What Are Cookies?</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">1. Reporting Infringement Claims</h2>
                 <p>
-                  Cookies are small text files stored by your browser when you visit a website. They help the platform remember preferences, keep connection states secure, track page navigation data, and deliver relevant advertisements.
+                  In accordance with the Digital Millennium Copyright Act (&ldquo;DMCA&rdquo;), we respond promptly to notices of alleged infringement. If you believe your copyrighted material is displayed on our website without authorization, please submit a written notification including the following:
                 </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>A physical or electronic signature of the copyright owner or authorized representative.</li>
+                  <li>Identification of the copyrighted work claimed to have been infringed.</li>
+                  <li>Identification of the material claimed to be infringing and its exact URL path.</li>
+                  <li>Your contact details (physical address, phone number, and email address).</li>
+                  <li>A statement that you have a good-faith belief that use of the material is not authorized by the copyright owner.</li>
+                  <li>A statement, under penalty of perjury, that the information in the notification is accurate.</li>
+                </ul>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">2. Essential Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">2. Counter-Notification</h2>
                 <p>
-                  These cookies are vital to navigate the website and use basic security features. Without these cookies, services like logging into dashboards or submitting contact forms would not work correctly. Essential cookies do not track marketing profiles.
+                  If your content was removed due to a DMCA claim and you believe this was an error, you may file a counter-notification. The counter-notice must be sent in writing to our designated agent and include your name, contact details, identification of the removed material, and a statement under penalty of perjury consenting to federal court jurisdiction.
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics &amp; Preference Cookies</h2>
+              <div className="space-y-3 border-t border-stone-100 pt-6">
+                <h2 className="text-lg font-bold text-[#113F48]">3. Designated Copyright Agent</h2>
                 <p>
-                  We utilize analytics logs to measure layout performance and article popularity. These cookies track anonymous metrics, such as what browser you use, how long you stay, and which article slugs you select. Preference cookies allow us to remember local settings like text sizing.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">4. Google AdSense Advertising Cookies</h2>
-                <p>
-                  Google AdSense uses cookies to serve ads based on your visits to our site and other pages across the web. The AdSense system uses mobile identifiers and DoubleClick cookies to avoid showing repetitive ads and target ads matching user demographics.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">5. Managing and Opting Out</h2>
-                <p>
-                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on MediGuideHub.
-                </p>
-                <p>
-                  To manage cookies across search engines, you can visit the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> to toggle personalized ads off, or consult your browser&apos;s Help panel for detailed setup parameters.
+                  All DMCA claims and counter-notifications must be sent directly to our designated copyright administrator:
+                  <br />
+                  <a href="mailto:support@mediguidehub.com" className="text-[#C9A15A] underline font-semibold block mt-1">
+                    support@mediguidehub.com
+                  </a>
                 </p>
               </div>
 
@@ -84,7 +79,7 @@ export default function CookiePolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-5">
             <h3 className="text-xl font-bold text-[#113F48]">Need Assistance?</h3>
             <p className="text-stone-500 text-sm max-w-md mx-auto">
-              If you have any questions regarding our terms, policies, or data handling, reach out to our team.
+              If you have any questions regarding copyright, legal terms, or guidelines, reach out to our team.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 

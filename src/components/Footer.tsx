@@ -51,11 +51,11 @@ export default function Footer() {
 
   const legalLinks = [
     { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms & Conditions", href: "/terms-conditions" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
     { label: "Cookie Policy", href: "/cookie-policy" },
-    { label: "Medical Disclaimer", href: "/disclaimer" },
-    { label: "Editorial Policy", href: "#" },
-    { label: "Accessibility Statement", href: "#" },
+    { label: "Medical Disclaimer", href: "/medical-disclaimer" },
+    { label: "Editorial Policy", href: "/editorial-policy" },
+    { label: "Accessibility Statement", href: "/accessibility" },
   ];
 
   return (
@@ -237,9 +237,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-1 justify-center md:justify-end">
             <Link href="/privacy-policy" className="hover:text-[#C9A15A] transition-colors">Privacy Policy</Link>
-            <Link href="/terms-conditions" className="hover:text-[#C9A15A] transition-colors">Terms &amp; Conditions</Link>
+            <Link href="/terms-and-conditions" className="hover:text-[#C9A15A] transition-colors">Terms &amp; Conditions</Link>
             <Link href="/cookie-policy" className="hover:text-[#C9A15A] transition-colors">Cookie Policy</Link>
-            <Link href="/disclaimer" className="hover:text-[#C9A15A] transition-colors">Medical Disclaimer</Link>
+            <Link href="/medical-disclaimer" className="hover:text-[#C9A15A] transition-colors">Medical Disclaimer</Link>
           </div>
         </div>
 

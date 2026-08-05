@@ -30,6 +30,11 @@ import {
   Notification,
   subscribeToUserNotifications,
   markNotificationAsRead,
+  resolveContactMessage,
+  archiveContactMessage,
+  getLegalPage,
+  updateLegalPage,
+  LegalPage,
 } from "@/lib/db";
 import { uploadImage } from "@/lib/cloudinary";
 import { BlogPost } from "@/lib/mockData";
@@ -58,6 +63,8 @@ import {
   Bell,
   Globe,
   HelpCircle,
+  ShieldCheck,
+  Archive,
 } from "lucide-react";
 
 function AdminContent() {
@@ -134,6 +141,58 @@ function AdminContent() {
   const [replyTextMap, setReplyTextMap] = useState<{ [key: string]: string }>({});
   const [savingSettings, setSavingSettings] = useState(false);
 
+  // Message Search & Filtering states
+  const [msgSearch, setMsgSearch] = useState("");
+  const [msgFilterResolved, setMsgFilterResolved] = useState("all");
+  const [msgFilterArchived, setMsgFilterArchived] = useState("unarchived");
+
+  // Legal Pages states
+  const [selectedLegalSlug, setSelectedLegalSlug] = useState("privacy-policy");
+  const [legalTitle, setLegalTitle] = useState("");
+  const [legalContent, setLegalContent] = useState("");
+  const [legalPublished, setLegalPublished] = useState(true);
+  const [legalLastUpdated, setLegalLastUpdated] = useState("");
+  const [legalHistory, setLegalHistory] = useState<any[]>([]);
+  const [legalLoading, setLegalLoading] = useState(false);
+  const [legalSaving, setLegalSaving] = useState(false);
+
+  // CMS States
+  const [cmsSubTab, setCmsSubTab] = useState("all");
+  const [editorTab, setEditorTab] = useState("content");
+
+  // Advanced CMS Editor fields
+  const [postImageAlt, setPostImageAlt] = useState("");
+  const [postImageCaption, setPostImageCaption] = useState("");
+  const [postImageCredit, setPostImageCredit] = useState("");
+  const [postVideoUrl, setPostVideoUrl] = useState("");
+  const [postRelatedArticles, setPostRelatedArticles] = useState("");
+  const [postFeatured, setPostFeatured] = useState(false);
+  const [postTrending, setPostTrending] = useState(false);
+
+  // SEO Tab fields
+  const [seoMetaTitle, setSeoMetaTitle] = useState("");
+  const [seoMetaDescription, setSeoMetaDescription] = useState("");
+  const [seoFocusKeyphrase, setSeoFocusKeyphrase] = useState("");
+  const [seoScore, setSeoScore] = useState(85);
+  const [seoSchemaType, setSeoSchemaType] = useState("MedicalWebPage");
+  const [seoRobotsMeta, setSeoRobotsMeta] = useState("index, follow");
+  const [seoCanonicalUrl, setSeoCanonicalUrl] = useState("");
+
+  // Advanced Settings fields
+  const [postVisibility, setPostVisibility] = useState("Public");
+  const [postAllowComments, setPostAllowComments] = useState(true);
+  const [postLastReviewed, setPostLastReviewed] = useState("");
+  const [postReviewFreq, setPostReviewFreq] = useState("6 months");
+  const [postLanguage, setPostLanguage] = useState("English");
+  const [postVersion, setPostVersion] = useState("1.0");
+
+  // Search & Filters states for Articles list
+  const [articleSearchQuery, setArticleSearchQuery] = useState("");
+  const [articleFilterCategory, setArticleFilterCategory] = useState("all");
+  const [articleFilterStatus, setArticleFilterStatus] = useState("all");
+  const [articleFilterAuthor, setArticleFilterAuthor] = useState("all");
+  const [articleSortBy, setArticleSortBy] = useState("date");
+
   const loadAllData = async () => {
     try {
       const allPosts = await getPosts();
@@ -160,6 +219,92 @@ function AdminContent() {
     } catch (e) {
       console.error("Error loading admin data:", e);
     }
+  };
+
+  const loadLegalPageData = async (slug: string) => {
+    setLegalLoading(true);
+    try {
+      const page = await getLegalPage(slug);
+      if (page) {
+        setLegalTitle(page.title);
+        setLegalContent(page.content);
+        setLegalPublished(page.published ?? true);
+        setLegalLastUpdated(page.lastUpdated || "August 2026");
+        setLegalHistory(page.versionHistory || []);
+      } else {
+        const defaultTitle = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+        setLegalTitle(defaultTitle);
+        setLegalContent(`# ${defaultTitle}\n\nThis page contains the official ${defaultTitle} details. Update this content using the Admin panel.`);
+        setLegalPublished(true);
+        setLegalLastUpdated("August 2026");
+        setLegalHistory([]);
+      }
+    } finally {
+      setLegalLoading(false);
+    }
+  };
+
+  const handleSaveLegalPage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLegalSaving(true);
+    try {
+      const currentDate = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long" });
+      const versionItem = {
+        date: currentDate,
+        content: legalContent,
+        updatedBy: user?.email || "Admin",
+      };
+      const updatedHistory = [versionItem, ...legalHistory].slice(0, 10);
+      
+      await updateLegalPage(selectedLegalSlug, {
+        title: legalTitle,
+        content: legalContent,
+        published: legalPublished,
+        lastUpdated: currentDate,
+        versionHistory: updatedHistory,
+      });
+      
+      setLegalLastUpdated(currentDate);
+      setLegalHistory(updatedHistory);
+      alert("Legal page saved successfully!");
+    } catch (e) {
+      console.error(e);
+      alert("Failed to save legal page.");
+    } finally {
+      setLegalSaving(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === "legal") {
+      loadLegalPageData(selectedLegalSlug);
+    }
+  }, [selectedLegalSlug, activeTab]);
+
+  const handleResolveMessage = async (msgId: string, resolvedState: boolean) => {
+    await resolveContactMessage(msgId, resolvedState);
+    await loadAllData();
+  };
+
+  const handleArchiveMessage = async (msgId: string, archivedState: boolean) => {
+    await archiveContactMessage(msgId, archivedState);
+    await loadAllData();
+  };
+
+  const handleExportMessagesCSV = () => {
+    if (messages.length === 0) return;
+    let csvContent = "data:text/csv;charset=utf-8,Name,Email,Subject,Inquiry Type,Message,Date,Replied,Resolved,Archived\n";
+    messages.forEach((m) => {
+      const safeMsg = m.message.replace(/"/g, '""');
+      csvContent += `"${m.name}","${m.email}","${m.subject}","${m.inquiryType || "General Question"}","${safeMsg}","${m.createdAt}",${m.replied},${m.resolved ?? false},${m.archived ?? false}\n`;
+    });
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `mediguide_contact_messages_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   useEffect(() => {
@@ -224,6 +369,31 @@ function AdminContent() {
     setPostAuthor(post.author);
     setPostReadTime(post.readTime);
     setPostImage(post.featuredImage);
+    setEditorTab("content");
+
+    // Load Advanced CMS fields
+    setPostImageAlt(post.imageAlt || "");
+    setPostImageCaption(post.imageCaption || "");
+    setPostImageCredit(post.imageCredit || "");
+    setPostVideoUrl(post.videoUrl || "");
+    setPostRelatedArticles(post.relatedArticles?.join(", ") || "");
+    setPostFeatured(post.featured || false);
+    setPostTrending(post.trending || false);
+
+    setSeoMetaTitle(post.metaTitle || "");
+    setSeoMetaDescription(post.metaDescription || "");
+    setSeoFocusKeyphrase(post.focusKeyphrase || "");
+    setSeoScore(post.seoScore || 85);
+    setSeoSchemaType(post.schemaType || "MedicalWebPage");
+    setSeoRobotsMeta(post.robotsMeta || "index, follow");
+    setSeoCanonicalUrl(post.canonicalUrl || "");
+
+    setPostVisibility(post.visibility || "Public");
+    setPostAllowComments(post.allowComments ?? true);
+    setPostLastReviewed(post.lastReviewedDate || "");
+    setPostReviewFreq(post.reviewFrequency || "6 months");
+    setPostLanguage(post.language || "English");
+    setPostVersion(post.versionNumber || "1.0");
   };
 
   const handleAddPostClick = (preserveDraft = false) => {
@@ -231,6 +401,7 @@ function AdminContent() {
 
     setEditingPost(null);
     setIsAddingPost(true);
+    setEditorTab("content");
 
     if (!preserveDraft || !hasDraftContent) {
       setPostTitle("");
@@ -241,6 +412,29 @@ function AdminContent() {
       setPostAuthor(user?.displayName || "");
       setPostReadTime("");
       setPostImage("");
+      
+      setPostImageAlt("");
+      setPostImageCaption("");
+      setPostImageCredit("");
+      setPostVideoUrl("");
+      setPostRelatedArticles("");
+      setPostFeatured(false);
+      setPostTrending(false);
+
+      setSeoMetaTitle("");
+      setSeoMetaDescription("");
+      setSeoFocusKeyphrase("");
+      setSeoScore(85);
+      setSeoSchemaType("MedicalWebPage");
+      setSeoRobotsMeta("index, follow");
+      setSeoCanonicalUrl("");
+
+      setPostVisibility("Public");
+      setPostAllowComments(true);
+      setPostLastReviewed("");
+      setPostReviewFreq("6 months");
+      setPostLanguage("English");
+      setPostVersion("1.0");
     }
   };
 
@@ -258,11 +452,20 @@ function AdminContent() {
     }
   };
 
-  const handleSavePost = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!postTitle || !postSlug || !postContent) return;
+  const handleSavePost = async (e: React.FormEvent, forceStatus?: "Published" | "Draft" | "Scheduled") => {
+    if (e) e.preventDefault();
+    if (!postTitle || !postSlug || !postContent) {
+      alert("Please enter title, slug, and content.");
+      return;
+    }
 
     try {
+      const parsedRelated = postRelatedArticles
+        ? postRelatedArticles.split(",").map((s) => s.trim()).filter(Boolean)
+        : [];
+
+      const calculatedStatus = forceStatus || (editingPost?.status || "Published");
+
       const pData: Omit<BlogPost, "id"> & { id?: string } = {
         title: postTitle,
         slug: postSlug,
@@ -273,18 +476,49 @@ function AdminContent() {
         readTime: postReadTime || "5 min read",
         featuredImage: postImage,
         publishedAt: editingPost ? editingPost.publishedAt : new Date().toISOString().split("T")[0],
+        
+        // Advanced CMS additions
+        status: calculatedStatus,
+        seoScore: seoScore || 85,
+        updatedAt: new Date().toISOString().split("T")[0],
+        imageAlt: postImageAlt,
+        imageCaption: postImageCaption,
+        imageCredit: postImageCredit,
+        videoUrl: postVideoUrl,
+        relatedArticles: parsedRelated,
+        featured: postFeatured,
+        trending: postTrending,
+        
+        metaTitle: seoMetaTitle || postTitle,
+        metaDescription: seoMetaDescription || postSummary,
+        focusKeyphrase: seoFocusKeyphrase,
+        schemaType: seoSchemaType,
+        robotsMeta: seoRobotsMeta,
+        canonicalUrl: seoCanonicalUrl || `https://mediguidehub.com/blog/${postSlug}`,
+        
+        visibility: postVisibility,
+        allowComments: postAllowComments,
+        lastReviewedDate: postLastReviewed || new Date().toISOString().split("T")[0],
+        reviewFrequency: postReviewFreq,
+        language: postLanguage,
+        versionNumber: postVersion,
       };
 
       if (editingPost) {
         pData.id = editingPost.id;
+        pData.views = editingPost.views || 0;
+      } else {
+        pData.views = Math.floor(Math.random() * 200) + 10; // Seed views
       }
 
       await savePost(pData);
       setIsAddingPost(false);
       setEditingPost(null);
       await loadAllData();
+      alert(`Article saved successfully as ${calculatedStatus}!`);
     } catch (err) {
       console.error(err);
+      alert("Failed to save article.");
     }
   };
 
@@ -606,6 +840,18 @@ function AdminContent() {
                 Settings
               </button>
 
+              <button
+                onClick={() => handleTabChange("legal")}
+                className={`group w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ease-out ${
+                  activeTab === "legal"
+                    ? "bg-[#C9A15A] text-white shadow-sm"
+                    : "text-white lg:text-stone-600 lg:hover:bg-[#F9FAFB] lg:hover:text-[#113F48] hover:bg-white/10 hover:text-white hover:translate-x-[3px]"
+                }`}
+              >
+                <ShieldCheck className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "legal" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
+                Legal Pages
+              </button>
+
               <div className="pt-4 mt-4 border-t border-white/10 lg:border-stone-100">
                 <Link
                   href="/"
@@ -718,207 +964,759 @@ function AdminContent() {
           {/* TAB 1: Manage Posts */}
           {activeTab === "posts" && (
             <div className="space-y-6">
-              {/* Form Section */}
-              {(isAddingPost || editingPost) ? (
-                <div className="bg-white border border-[#C9A15A]/25 p-6 sm:p-8 rounded-2xl shadow-sm space-y-6">
+              
+              {/* CMS Nested Sub Navigation */}
+              <div className="flex flex-wrap gap-2 border-b border-stone-200 pb-3">
+                {[
+                  { id: "all", label: "All Articles" },
+                  { id: "editor", label: isAddingPost || editingPost ? "Edit/Add Article" : "Add New Article" },
+                  { id: "Draft", label: "Drafts" },
+                  { id: "Scheduled", label: "Scheduled" },
+                  { id: "Published", label: "Published" },
+                  { id: "categories", label: "Categories" },
+                  { id: "tags", label: "Tags" },
+                  { id: "media", label: "Media Library" },
+                ].map((sub) => (
+                  <button
+                    key={sub.id}
+                    onClick={() => {
+                      setCmsSubTab(sub.id);
+                      if (sub.id === "editor" && !isAddingPost && !editingPost) {
+                        handleAddPostClick(false);
+                      } else if (sub.id !== "editor") {
+                        setIsAddingPost(false);
+                        setEditingPost(null);
+                      }
+                    }}
+                    className={`px-4 py-2 text-xs font-semibold rounded-lg border transition-all ${
+                      (cmsSubTab === sub.id || (sub.id === "editor" && (isAddingPost || editingPost)))
+                        ? "bg-[#113F48] text-white border-[#113F48]"
+                        : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50"
+                    }`}
+                  >
+                    {sub.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* EDITOR TAB VIEW */}
+              {(isAddingPost || editingPost || cmsSubTab === "editor") ? (
+                <div className="bg-white border border-[#C9A15A]/25 p-6 rounded-2xl shadow-sm space-y-6">
+                  
+                  {/* Editor Top Bar */}
                   <div className="flex justify-between items-center border-b border-stone-100 pb-4">
                     <h3 className="text-lg font-bold text-[#113F48]">
-                      {editingPost ? "Edit Blog Post" : "Create Blog Post"}
+                      {editingPost ? `Edit Article: ${postTitle}` : "Create New Article"}
                     </h3>
                     <button
-                      onClick={() => { setIsAddingPost(false); setEditingPost(null); }}
-                      className="text-stone-400 hover:text-[#113F48] text-sm font-semibold"
+                      onClick={() => {
+                        setIsAddingPost(false);
+                        setEditingPost(null);
+                        setCmsSubTab("all");
+                      }}
+                      className="text-stone-400 hover:text-red-500 text-xs font-semibold"
                     >
-                      Cancel
+                      Close Editor
                     </button>
                   </div>
 
-                  <form onSubmit={handleSavePost} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-semibold text-[#113F48]">Guide Title</label>
-                        <input
-                          type="text"
-                          required
-                          value={postTitle}
-                          onChange={(e) => {
-                            setPostTitle(e.target.value);
-                            if (!editingPost) {
-                              setPostSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, ""));
-                            }
-                          }}
-                          className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                        />
-                      </div>
+                  {/* Editor Tab Navigation */}
+                  <div className="flex flex-wrap gap-1.5 bg-stone-50 p-1 rounded-xl">
+                    {[
+                      { id: "content", label: "Content" },
+                      { id: "seo", label: "SEO Settings" },
+                      { id: "media", label: "Media Details" },
+                      { id: "taxonomies", label: "Categories & Tags" },
+                      { id: "advanced", label: "Advanced" },
+                      { id: "preview", label: "Live Preview" },
+                    ].map((tab) => (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() => setEditorTab(tab.id)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                          editorTab === tab.id
+                            ? "bg-white text-[#113F48] shadow-sm"
+                            : "text-stone-500 hover:text-stone-800"
+                        }`}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
 
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-semibold text-[#113F48]">URL Slug</label>
-                        <input
-                          type="text"
-                          required
-                          value={postSlug}
-                          onChange={(e) => setPostSlug(e.target.value)}
-                          className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-semibold text-[#113F48]">Category</label>
-                        <select
-                          value={postCategory}
-                          onChange={(e) => setPostCategory(e.target.value)}
-                          className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                        >
-                          <option value="Overview">Overview</option>
-                          <option value="Part A">Part A</option>
-                          <option value="Part B">Part B</option>
-                          <option value="Part C">Part C</option>
-                          <option value="Part D">Part D</option>
-                          <option value="Comparison">Comparison</option>
-                          <option value="Enrollment">Enrollment</option>
-                        </select>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-semibold text-[#113F48]">Author Name</label>
-                        <input
-                          type="text"
-                          required
-                          value={postAuthor}
-                          onChange={(e) => setPostAuthor(e.target.value)}
-                          className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                        />
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-semibold text-[#113F48]">Read Time Estimate</label>
-                        <input
-                          type="text"
-                          required
-                          value={postReadTime}
-                          onChange={(e) => setPostReadTime(e.target.value)}
-                          placeholder="8 min read"
-                          className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#113F48]">Summary / Meta Description</label>
-                      <input
-                        type="text"
-                        required
-                        value={postSummary}
-                        onChange={(e) => setPostSummary(e.target.value)}
-                        placeholder="Snippet appearing on cards and Google results..."
-                        className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                      />
-                    </div>
-
-                    {/* Image Upload Input */}
-                    <div className="space-y-2 border border-dashed border-stone-200 p-4 rounded-xl flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3">
-                        <div className="h-16 w-20 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400">
-                          {postImage ? (
-                            <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
-                          ) : (
-                            <span>No image</span>
-                          )}
+                  {/* FORM WRAPPER */}
+                  <form onSubmit={(e) => handleSavePost(e, "Published")} className="space-y-6">
+                    
+                    {/* TAB: CONTENT */}
+                    {editorTab === "content" && (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Article Title *</label>
+                            <input
+                              required
+                              value={postTitle}
+                              onChange={(e) => {
+                                setPostTitle(e.target.value);
+                                if (!editingPost) {
+                                  setPostSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, ""));
+                                }
+                              }}
+                              placeholder="Title of the guide..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">URL Slug *</label>
+                            <input
+                              required
+                              value={postSlug}
+                              onChange={(e) => setPostSlug(e.target.value)}
+                              placeholder="url-path-slug"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <h5 className="text-xs font-bold text-[#113F48]">Featured Image</h5>
-                          <p className="text-[10px] text-stone-400">Optional image for the blog post</p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Author Name</label>
+                            <input
+                              value={postAuthor}
+                              onChange={(e) => setPostAuthor(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Read Time</label>
+                            <input
+                              value={postReadTime}
+                              onChange={(e) => setPostReadTime(e.target.value)}
+                              placeholder="8 min read"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Category</label>
+                            <select
+                              value={postCategory}
+                              onChange={(e) => setPostCategory(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            >
+                              <option value="Overview">Overview</option>
+                              <option value="Part A">Part A</option>
+                              <option value="Part B">Part B</option>
+                              <option value="Part C">Part C</option>
+                              <option value="Part D">Part D</option>
+                              <option value="Comparison">Comparison</option>
+                              <option value="Enrollment">Enrollment</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Short Description (Meta Summary) *</label>
+                          <textarea
+                            required
+                            rows={3}
+                            value={postSummary}
+                            onChange={(e) => setPostSummary(e.target.value)}
+                            placeholder="Provide a detailed SEO description..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide block">Article Body Content *</label>
+                          
+                          {/* Rich Styling Toolbar */}
+                          <div className="flex flex-wrap gap-1 bg-stone-50 border border-stone-200 p-2 rounded-t-xl border-b-0">
+                            {[
+                              { label: "Heading 2", tag: "<h2>Heading</h2>" },
+                              { label: "Paragraph", tag: "<p>Text paragraph...</p>" },
+                              { label: "Bold", tag: "<strong>Bold text</strong>" },
+                              { label: "Italic", tag: "<em>Italic text</em>" },
+                              { label: "Warning Box", tag: "<div className=\"bg-red-50 border-l-4 border-red-500 p-4 text-xs font-bold text-red-800\">Medical Warning text</div>" },
+                              { label: "Callout Box", tag: "<div className=\"bg-[#FDF6EC] border-l-4 border-[#C9A15A] p-4 text-xs text-stone-700\">Callout box text</div>" },
+                              { label: "Table", tag: "<table className=\"w-full text-left\">\n  <thead><tr><th>Heading</th></tr></thead>\n  <tbody><tr><td>Value</td></tr></tbody>\n</table>" },
+                              { label: "Bullet List", tag: "<ul>\n  <li>List item</li>\n</ul>" },
+                            ].map((btn) => (
+                              <button
+                                key={btn.label}
+                                type="button"
+                                onClick={() => setPostContent(prev => prev + btn.tag)}
+                                className="bg-white border border-stone-200 px-2 py-1 rounded text-[10px] font-semibold text-stone-600 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/20 transition-all"
+                              >
+                                {btn.label}
+                              </button>
+                            ))}
+                          </div>
+
+                          <textarea
+                            required
+                            rows={14}
+                            value={postContent}
+                            onChange={(e) => setPostContent(e.target.value)}
+                            placeholder="Enter HTML or text content..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-b-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48] font-mono"
+                          />
+                        </div>
+
+                        <div className="flex gap-6 pt-2">
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={postFeatured}
+                              onChange={(e) => setPostFeatured(e.target.checked)}
+                              className="h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
+                            />
+                            <span className="text-xs font-semibold text-stone-700">Mark as Featured Article</span>
+                          </label>
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={postTrending}
+                              onChange={(e) => setPostTrending(e.target.checked)}
+                              className="h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
+                            />
+                            <span className="text-xs font-semibold text-stone-700">Mark as Trending</span>
+                          </label>
                         </div>
                       </div>
-                      <label className="cursor-pointer border border-[#C9A15A]/30 bg-[#FDF6EC]/30 text-stone-600 hover:text-[#C9A15A] text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1">
-                        <Upload className="h-3.5 w-3.5" />
-                        Upload
-                        <input type="file" accept="image/*" className="hidden" onChange={handlePostImageUpload} disabled={imageUploading} />
-                      </label>
+                    )}
+
+                    {/* TAB: SEO */}
+                    {editorTab === "seo" && (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Focus Keyphrase</label>
+                            <input
+                              value={seoFocusKeyphrase}
+                              onChange={(e) => setSeoFocusKeyphrase(e.target.value)}
+                              placeholder="e.g. Medicare Part A benefits"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">SEO Target Score (0 - 100)</label>
+                            <input
+                              type="number"
+                              value={seoScore}
+                              onChange={(e) => setSeoScore(Number(e.target.value))}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Meta SEO Title</label>
+                          <input
+                            value={seoMetaTitle}
+                            onChange={(e) => setSeoMetaTitle(e.target.value)}
+                            placeholder="Defaults to article title if blank..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Meta SEO Description</label>
+                          <textarea
+                            rows={3}
+                            value={seoMetaDescription}
+                            onChange={(e) => setSeoMetaDescription(e.target.value)}
+                            placeholder="Defaults to short description if blank..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Schema Structured Data Type</label>
+                            <select
+                              value={seoSchemaType}
+                              onChange={(e) => setSeoSchemaType(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            >
+                              <option value="MedicalWebPage">MedicalWebPage</option>
+                              <option value="MedicalCondition">MedicalCondition</option>
+                              <option value="NewsArticle">NewsArticle</option>
+                              <option value="BlogPosting">BlogPosting</option>
+                            </select>
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Robots Tag</label>
+                            <input
+                              value={seoRobotsMeta}
+                              onChange={(e) => setSeoRobotsMeta(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Canonical URL</label>
+                            <input
+                              value={seoCanonicalUrl}
+                              onChange={(e) => setSeoCanonicalUrl(e.target.value)}
+                              placeholder="https://mediguidehub.com/blog/url"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB: MEDIA */}
+                    {editorTab === "media" && (
+                      <div className="space-y-4">
+                        <div className="space-y-2 border border-dashed border-stone-200 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <div className="h-16 w-20 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400">
+                              {postImage ? (
+                                <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
+                              ) : (
+                                <span>No Image</span>
+                              )}
+                            </div>
+                            <div>
+                              <h5 className="text-xs font-bold text-[#113F48]">Featured Banner Image</h5>
+                              <p className="text-[10px] text-stone-400">Resolution size 1200x630px recommended.</p>
+                            </div>
+                          </div>
+                          <label className="cursor-pointer border border-[#C9A15A]/30 bg-[#FDF6EC]/30 text-stone-600 hover:text-[#C9A15A] text-xs font-semibold px-4 py-2.5 rounded-xl flex items-center gap-1">
+                            <Upload className="h-3.5 w-3.5" />
+                            Upload File
+                            <input type="file" accept="image/*" className="hidden" onChange={handlePostImageUpload} disabled={imageUploading} />
+                          </label>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Image Alternative Text</label>
+                            <input
+                              value={postImageAlt}
+                              onChange={(e) => setPostImageAlt(e.target.value)}
+                              placeholder="Clinical chart describing..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Image Caption Text</label>
+                            <input
+                              value={postImageCaption}
+                              onChange={(e) => setPostImageCaption(e.target.value)}
+                              placeholder="Medicare Enrollment Guide 2026"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Image Author Credit</label>
+                            <input
+                              value={postImageCredit}
+                              onChange={(e) => setPostImageCredit(e.target.value)}
+                              placeholder="Source: MediGuideHub Research"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">YouTube Video Integration URL</label>
+                          <input
+                            value={postVideoUrl}
+                            onChange={(e) => setPostVideoUrl(e.target.value)}
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB: CATEGORIES & TAGS */}
+                    {editorTab === "taxonomies" && (
+                      <div className="space-y-4">
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Article Tag Keywords</label>
+                          <input
+                            value={postRelatedArticles}
+                            onChange={(e) => setPostRelatedArticles(e.target.value)}
+                            placeholder="Medicare, Enrollment, Part A, Part B (comma separated)"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                          <p className="text-[10px] text-stone-400 mt-1">Tags help link relevant topics together on guides.</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB: ADVANCED */}
+                    {editorTab === "advanced" && (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Visibility Scope</label>
+                            <select
+                              value={postVisibility}
+                              onChange={(e) => setPostVisibility(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            >
+                              <option value="Public">Public (Everyone)</option>
+                              <option value="Private">Private (Admins Only)</option>
+                            </select>
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Review Frequency</label>
+                            <input
+                              value={postReviewFreq}
+                              onChange={(e) => setPostReviewFreq(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Language</label>
+                            <input
+                              value={postLanguage}
+                              onChange={(e) => setPostLanguage(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Version Number</label>
+                            <input
+                              value={postVersion}
+                              onChange={(e) => setPostVersion(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Last Reviewed Date</label>
+                            <input
+                              type="date"
+                              value={postLastReviewed}
+                              onChange={(e) => setPostLastReviewed(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5 flex items-end pb-3">
+                            <label className="flex items-center gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={postAllowComments}
+                                onChange={(e) => setPostAllowComments(e.target.checked)}
+                                className="h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
+                              />
+                              <span className="text-xs font-semibold text-stone-700">Allow Comments</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB: PREVIEW */}
+                    {editorTab === "preview" && (
+                      <div className="border border-stone-200 rounded-2xl p-6 bg-white space-y-6">
+                        <div className="space-y-2 border-b border-stone-100 pb-4">
+                          <span className="text-[10px] font-bold text-[#C9A15A] uppercase tracking-wider bg-[#FDF6EC] px-2.5 py-1 rounded border border-[#C9A15A]/20">{postCategory}</span>
+                          <h1 className="text-3xl font-extrabold text-[#113F48]">{postTitle || "Untiltled Article"}</h1>
+                          <p className="text-xs text-stone-400">By {postAuthor || "Admin"} • {postReadTime || "5 min read"}</p>
+                        </div>
+                        {postImage && (
+                          <div className="rounded-xl overflow-hidden max-h-72 border border-stone-100">
+                            <img src={postImage} alt={postImageAlt} className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                        <div 
+                          className="prose prose-stone max-w-none text-stone-600 text-sm leading-relaxed" 
+                          dangerouslySetInnerHTML={{ __html: postContent || "<p>No content written yet.</p>" }}
+                        />
+                      </div>
+                    )}
+
+                    {/* ACTIONS BUTTON BAR */}
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-stone-100 justify-end">
+                      <button
+                        type="button"
+                        onClick={(e) => handleSavePost(e, "Draft")}
+                        className="bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold px-4 py-2.5 rounded-xl text-xs transition-all"
+                      >
+                        Save Draft
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => handleSavePost(e, "Scheduled")}
+                        className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition-all"
+                      >
+                        Schedule Publication
+                      </button>
+                      <button
+                        type="submit"
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white font-semibold px-6 py-2.5 rounded-xl text-xs transition-all shadow-md shadow-[#113F48]/10"
+                      >
+                        Publish Now
+                      </button>
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#113F48]">Long-Form Article Content (HTML structure allowed)</label>
-                      <textarea
-                        required
-                        rows={12}
-                        value={postContent}
-                        onChange={(e) => setPostContent(e.target.value)}
-                        placeholder="<h2>Heading</h2><p>Article paragraphs...</p>"
-                        className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={imageUploading}
-                      className="w-full bg-[#113F48] hover:bg-[#C9A15A] text-white py-3.5 rounded-xl text-sm font-semibold transition-all shadow-md shadow-[#113F48]/10"
-                    >
-                      Publish Blog Post
-                    </button>
                   </form>
                 </div>
               ) : (
-                <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-bold text-[#113F48]">Blog Posts</h3>
+                /* ARTICLES LIST VIEW */
+                <div className="space-y-6">
+                  
+                  {/* Dashboard stats cards */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="bg-[#113F48] p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Total Articles</span>
+                      <h4 className="text-2xl font-extrabold">{posts.length}</h4>
+                    </div>
+                    <div className="bg-[#0F6E56] p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Published</span>
+                      <h4 className="text-2xl font-extrabold">{posts.filter(p => !p.status || p.status === "Published").length}</h4>
+                    </div>
+                    <div className="bg-stone-600 p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Drafts</span>
+                      <h4 className="text-2xl font-extrabold">{posts.filter(p => p.status === "Draft").length}</h4>
+                    </div>
+                    <div className="bg-amber-600 p-4 rounded-2xl shadow-sm border border-stone-100 text-white space-y-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider opacity-70">Scheduled</span>
+                      <h4 className="text-2xl font-extrabold">{posts.filter(p => p.status === "Scheduled").length}</h4>
+                    </div>
+                  </div>
+
+                  {/* Header action buttons */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white border border-[#C9A15A]/15 p-4 rounded-2xl shadow-sm">
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => handleAddPostClick(false)}
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1 shadow-sm"
+                      >
+                        <Plus className="h-4 w-4" /> New Article
+                      </button>
+                      <button
+                        onClick={() => {
+                          let csv = "data:text/csv;charset=utf-8,Title,Slug,Category,Status,Views,Date\n";
+                          posts.forEach(p => csv += `"${p.title}","${p.slug}","${p.category}","${p.status || "Published"}",${p.views || 0},"${p.publishedAt}"\n`);
+                          const encoded = encodeURI(csv);
+                          const link = document.createElement("a");
+                          link.setAttribute("href", encoded);
+                          link.setAttribute("download", `mediguide_articles_${Date.now()}.csv`);
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                        className="border border-stone-200 hover:bg-stone-50 text-stone-600 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                      >
+                        Export CSV
+                      </button>
+                    </div>
                     <button
-                      onClick={() => handleAddPostClick(false)}
-                      className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all flex items-center gap-1"
+                      onClick={loadAllData}
+                      className="text-stone-400 hover:text-stone-700 text-xs font-semibold"
                     >
-                      <Plus className="h-4 w-4" />
-                      Create Blog
+                      Refresh List
                     </button>
                   </div>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
-                      <thead>
-                        <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
-                          <th className="p-3">Title</th>
-                          <th className="p-3">Category</th>
-                          <th className="p-3">Author</th>
-                          <th className="p-3">Date</th>
-                          <th className="p-3 text-right">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-stone-100 text-sm">
-                        {posts.length === 0 && (
-                          <tr>
-                            <td colSpan={5} className="p-6 text-center text-sm text-stone-400">
-                              No blog posts yet. Create one to publish it on the website.
-                            </td>
-                          </tr>
-                        )}
-                        {posts.map((post) => (
-                          <tr key={post.id} className="hover:bg-stone-50/50 transition-colors">
-                            <td className="p-3 font-semibold text-[#113F48]">{post.title}</td>
-                            <td className="p-3"><span className="bg-[#FDF6EC] px-2 py-0.5 rounded border border-[#C9A15A]/20 text-xs font-medium">{post.category}</span></td>
-                            <td className="p-3 text-stone-600">{post.author}</td>
-                            <td className="p-3 text-stone-500 text-xs">{post.publishedAt}</td>
-                            <td className="p-3 text-right space-x-2">
-                              <button
-                                onClick={() => handleEditPostClick(post)}
-                                className="p-2 border border-stone-200 text-stone-500 hover:text-[#C9A15A] rounded-lg transition-colors"
-                              >
-                                <Edit className="h-4 w-4" />
-                              </button>
-                              <button
-                                onClick={() => handleDeletePost(post.id)}
-                                className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                              >
-                                <Trash2 className="h-4 w-4" />
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  {/* Search filters */}
+                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-stone-50 p-4 rounded-xl border border-stone-200">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Search Article</label>
+                      <input
+                        type="text"
+                        placeholder="Search title, content..."
+                        value={articleSearchQuery}
+                        onChange={(e) => setArticleSearchQuery(e.target.value)}
+                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Category</label>
+                      <select
+                        value={articleFilterCategory}
+                        onChange={(e) => setArticleFilterCategory(e.target.value)}
+                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      >
+                        <option value="all">All Categories</option>
+                        <option value="Overview">Overview</option>
+                        <option value="Part A">Part A</option>
+                        <option value="Part B">Part B</option>
+                        <option value="Part C">Part C</option>
+                        <option value="Part D">Part D</option>
+                        <option value="Comparison">Comparison</option>
+                        <option value="Enrollment">Enrollment</option>
+                      </select>
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Status</label>
+                      <select
+                        value={articleFilterStatus}
+                        onChange={(e) => setArticleFilterStatus(e.target.value)}
+                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      >
+                        <option value="all">All Statuses</option>
+                        <option value="Published">Published</option>
+                        <option value="Draft">Draft</option>
+                        <option value="Scheduled">Scheduled</option>
+                      </select>
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Sort By</label>
+                      <select
+                        value={articleSortBy}
+                        onChange={(e) => setArticleSortBy(e.target.value)}
+                        className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                      >
+                        <option value="date">Publish Date</option>
+                        <option value="views">Views</option>
+                        <option value="title">Title</option>
+                      </select>
+                    </div>
                   </div>
+
+                  {/* Articles Table list */}
+                  {cmsSubTab === "categories" ? (
+                    <div className="bg-white border border-stone-200 p-6 rounded-2xl space-y-4">
+                      <h4 className="font-bold text-[#113F48] text-sm">Managed Categories</h4>
+                      <ul className="divide-y divide-stone-100 text-xs text-stone-600">
+                        {["Overview", "Part A", "Part B", "Part C", "Part D", "Comparison", "Enrollment"].map((c, i) => (
+                          <li key={i} className="py-2.5 flex justify-between">
+                            <span>{c}</span>
+                            <span className="font-bold text-stone-400">{posts.filter(p => p.category === c).length} Articles</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : cmsSubTab === "tags" ? (
+                    <div className="bg-white border border-stone-200 p-6 rounded-2xl space-y-4">
+                      <h4 className="font-bold text-[#113F48] text-sm">Active Article Tag Keys</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {Array.from(new Set(posts.flatMap(p => p.relatedArticles || []))).map((t, idx) => (
+                          <span key={idx} className="bg-stone-50 border border-stone-200 px-2.5 py-1 rounded-lg text-xs font-semibold text-stone-600">
+                            #{t}
+                          </span>
+                        ))}
+                        {posts.flatMap(p => p.relatedArticles || []).length === 0 && (
+                          <span className="text-stone-400 text-xs">No tags defined yet. Edit articles to add keyword tags.</span>
+                        )}
+                      </div>
+                    </div>
+                  ) : cmsSubTab === "media" ? (
+                    <div className="bg-white border border-stone-200 p-6 rounded-2xl space-y-4">
+                      <h4 className="font-bold text-[#113F48] text-sm">Media File Library</h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        {posts.filter(p => p.featuredImage).map((p) => (
+                          <div key={p.id} className="border border-stone-200 rounded-xl overflow-hidden bg-stone-50 space-y-1.5 p-2">
+                            <img src={p.featuredImage} alt={p.title} className="h-28 w-full object-cover rounded-lg" />
+                            <span className="text-[10px] text-stone-500 font-semibold block truncate" title={p.title}>{p.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left border-collapse">
+                          <thead>
+                            <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
+                              <th className="p-3">Banner</th>
+                              <th className="p-3">Title</th>
+                              <th className="p-3">Category</th>
+                              <th className="p-3">Status</th>
+                              <th className="p-3">SEO Score</th>
+                              <th className="p-3">Views</th>
+                              <th className="p-3">Date</th>
+                              <th className="p-3 text-right">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-stone-100 text-xs">
+                            {posts
+                              .filter((post) => {
+                                const matchSearch = 
+                                  post.title.toLowerCase().includes(articleSearchQuery.toLowerCase()) ||
+                                  post.content.toLowerCase().includes(articleSearchQuery.toLowerCase());
+                                
+                                const matchCat = 
+                                  articleFilterCategory === "all" || 
+                                  post.category === articleFilterCategory;
+
+                                const matchStatus = 
+                                  articleFilterStatus === "all" ||
+                                  (post.status || "Published") === articleFilterStatus;
+
+                                const matchSubTab = 
+                                  cmsSubTab === "all" ||
+                                  cmsSubTab === "editor" ||
+                                  (post.status || "Published") === cmsSubTab;
+
+                                return matchSearch && matchCat && matchStatus && matchSubTab;
+                              })
+                              .sort((a, b) => {
+                                if (articleSortBy === "views") return (b.views || 0) - (a.views || 0);
+                                if (articleSortBy === "title") return a.title.localeCompare(b.title);
+                                return b.publishedAt.localeCompare(a.publishedAt);
+                              })
+                              .map((post) => (
+                                <tr key={post.id} className="hover:bg-stone-50/50 transition-colors">
+                                  <td className="p-3">
+                                    <div className="h-8 w-12 rounded bg-stone-100 border border-stone-200 overflow-hidden">
+                                      {post.featuredImage ? (
+                                        <img src={post.featuredImage} alt="" className="h-full w-full object-cover" />
+                                      ) : (
+                                        <div className="h-full w-full flex items-center justify-center text-[8px] text-stone-400">None</div>
+                                      )}
+                                    </div>
+                                  </td>
+                                  <td className="p-3">
+                                    <span className="font-semibold text-[#113F48] text-xs block">{post.title}</span>
+                                    <span className="text-[10px] text-stone-400 mt-0.5 block truncate max-w-xs">{post.slug}</span>
+                                  </td>
+                                  <td className="p-3">
+                                    <span className="bg-[#FDF6EC] px-2 py-0.5 rounded border border-[#C9A15A]/20 font-bold text-[10px]">
+                                      {post.category}
+                                    </span>
+                                  </td>
+                                  <td className="p-3">
+                                    <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border ${
+                                      (post.status || "Published") === "Published"
+                                        ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                        : (post.status === "Scheduled")
+                                        ? "bg-amber-50 text-amber-700 border-amber-200"
+                                        : "bg-stone-100 text-stone-600 border-stone-200"
+                                    }`}>
+                                      {post.status || "Published"}
+                                    </span>
+                                  </td>
+                                  <td className="p-3 font-semibold text-stone-600">{post.seoScore || 85}/100</td>
+                                  <td className="p-3 text-stone-500 font-bold">{post.views || 0}</td>
+                                  <td className="p-3 text-stone-400">{post.publishedAt}</td>
+                                  <td className="p-3 text-right space-x-1.5 flex justify-end items-center h-full pt-4">
+                                    <button
+                                      onClick={() => handleEditPostClick(post)}
+                                      className="p-1.5 border border-stone-200 text-stone-500 hover:text-[#C9A15A] rounded-lg transition-colors"
+                                      title="Edit Article"
+                                    >
+                                      <Edit className="h-3.5 w-3.5" />
+                                    </button>
+                                    <button
+                                      onClick={() => handleDeletePost(post.id)}
+                                      className="p-1.5 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                      title="Delete Article"
+                                    >
+                                      <Trash2 className="h-3.5 w-3.5" />
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+
                 </div>
               )}
+
             </div>
           )}
 
@@ -991,68 +1789,287 @@ function AdminContent() {
           {/* TAB 3: Contact Messages */}
           {activeTab === "messages" && (
             <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
-              <h3 className="text-lg font-bold text-[#113F48]">Visitor Inquiries</h3>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <h3 className="text-lg font-bold text-[#113F48]">Visitor Inquiries</h3>
+                  <p className="text-xs text-stone-500 mt-0.5">Manage, search, resolve, and reply to visitor messages.</p>
+                </div>
+                <button
+                  onClick={handleExportMessagesCSV}
+                  className="flex items-center gap-1 bg-[#113F48] text-white hover:bg-[#C9A15A] text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                >
+                  <Download className="h-4 w-4" /> Export CSV
+                </button>
+              </div>
+
+              {/* Filters & Search */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-stone-50 p-4 rounded-xl border border-stone-200">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Search Name, Email, or Message</label>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={msgSearch}
+                    onChange={(e) => setMsgSearch(e.target.value)}
+                    className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Filter Resolved</label>
+                  <select
+                    value={msgFilterResolved}
+                    onChange={(e) => setMsgFilterResolved(e.target.value)}
+                    className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                  >
+                    <option value="all">All Inquiries</option>
+                    <option value="pending">Pending</option>
+                    <option value="resolved">Resolved</option>
+                  </select>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Filter Archived</label>
+                  <select
+                    value={msgFilterArchived}
+                    onChange={(e) => setMsgFilterArchived(e.target.value)}
+                    className="w-full bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                  >
+                    <option value="unarchived">Active Inquiries</option>
+                    <option value="archived">Archived Inquiries</option>
+                    <option value="all">All Inquiries</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Inquiries List */}
               <div className="space-y-6">
-                {messages.map((msg) => (
-                  <div key={msg.id} className="border border-stone-100 p-5 rounded-xl space-y-4 bg-[#FDF6EC]/10">
-                    <div className="flex justify-between items-start flex-wrap gap-2">
-                      <div>
-                        <h4 className="font-bold text-[#113F48] text-base">{msg.subject}</h4>
-                        <p className="text-xs text-stone-500 mt-0.5">
-                          From: <span className="font-semibold text-stone-700">{msg.name}</span> ({msg.email})
-                        </p>
+                {messages
+                  .filter((msg) => {
+                    const matchSearch = 
+                      msg.name.toLowerCase().includes(msgSearch.toLowerCase()) ||
+                      msg.email.toLowerCase().includes(msgSearch.toLowerCase()) ||
+                      msg.message.toLowerCase().includes(msgSearch.toLowerCase()) ||
+                      msg.subject.toLowerCase().includes(msgSearch.toLowerCase());
+                    
+                    const matchResolved = 
+                      msgFilterResolved === "all" ||
+                      (msgFilterResolved === "resolved" && msg.resolved) ||
+                      (msgFilterResolved === "pending" && !msg.resolved);
+                    
+                    const matchArchived = 
+                      msgFilterArchived === "all" ||
+                      (msgFilterArchived === "archived" && msg.archived) ||
+                      (msgFilterArchived === "unarchived" && !msg.archived);
+
+                    return matchSearch && matchResolved && matchArchived;
+                  })
+                  .map((msg) => (
+                    <div key={msg.id} className="border border-stone-100 p-5 rounded-xl space-y-4 bg-[#FDF6EC]/5 hover:border-[#C9A15A]/30 transition-all">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="bg-[#113F48]/5 text-[#113F48] text-[10px] font-bold px-2 py-0.5 rounded border border-[#113F48]/10">
+                              {msg.inquiryType || "General Question"}
+                            </span>
+                            <h4 className="font-bold text-[#113F48] text-base">{msg.subject}</h4>
+                          </div>
+                          <p className="text-xs text-stone-500 mt-1">
+                            From: <span className="font-semibold text-stone-700">{msg.name}</span> ({msg.email})
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] text-stone-400 flex items-center gap-0.5 mr-2">
+                            <Clock className="h-3 w-3" />
+                            {new Date(msg.createdAt).toLocaleDateString()}
+                          </span>
+                          
+                          {/* Toggle Resolve Status */}
+                          <button
+                            onClick={() => handleResolveMessage(msg.id || "", !msg.resolved)}
+                            className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border transition-all ${
+                              msg.resolved 
+                                ? "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100" 
+                                : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100"
+                            }`}
+                          >
+                            {msg.resolved ? "Resolved" : "Mark Resolved"}
+                          </button>
+
+                          {/* Toggle Archive Status */}
+                          <button
+                            onClick={() => handleArchiveMessage(msg.id || "", !msg.archived)}
+                            className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border transition-all ${
+                              msg.archived 
+                                ? "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100" 
+                                : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100"
+                            }`}
+                          >
+                            {msg.archived ? "Archived" : "Archive"}
+                          </button>
+
+                          <button
+                            onClick={() => handleDeleteMessage(msg.id || "")}
+                            className="p-1.5 border border-red-200 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            title="Delete inquiry"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] text-stone-400 flex items-center gap-0.5">
-                          <Clock className="h-3 w-3" />
-                          {new Date(msg.createdAt).toLocaleDateString()}
-                        </span>
-                        <button
-                          onClick={() => handleDeleteMessage(msg.id || "")}
-                          className="p-2 border border-red-200 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          title="Delete inquiry"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                        {msg.replied ? (
-                          <span className="bg-[#E1F5EE] text-[#0F6E56] border border-[#0F6E56]/20 text-[10px] px-2 py-0.5 rounded-full font-bold">Replied</span>
-                        ) : (
-                          <span className="bg-[#FAEEDA] text-[#854F0B] text-[10px] px-2 py-0.5 rounded-full font-bold">Pending</span>
-                        )}
-                      </div>
+
+                      <p className="text-sm text-stone-700 leading-relaxed bg-white border border-stone-100 p-3.5 rounded-lg">
+                        {msg.message}
+                      </p>
+
+                      {msg.replied ? (
+                        <div className="bg-stone-50 border border-stone-200/80 p-3 rounded-lg text-sm text-stone-600">
+                          <strong className="text-stone-700 text-xs block mb-1">Reply:</strong>
+                          {msg.replyText}
+                        </div>
+                      ) : (
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder="Type answer here to simulate reply email..."
+                            value={replyTextMap[msg.id || ""] || ""}
+                            onChange={(e) => setReplyTextMap({ ...replyTextMap, [msg.id || ""]: e.target.value })}
+                            className="flex-1 bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                          <button
+                            onClick={() => handleReplySubmit(msg.id || "")}
+                            className="bg-[#113F48] text-white hover:bg-[#C9A15A] text-xs font-semibold px-4 py-2 rounded-xl transition-all"
+                          >
+                            Send Reply
+                          </button>
+                        </div>
+                      )}
                     </div>
-
-                    <p className="text-sm text-stone-700 leading-relaxed bg-white border border-stone-100 p-3.5 rounded-lg">
-                      {msg.message}
-                    </p>
-
-                    {msg.replied ? (
-                      <div className="bg-stone-50 border border-stone-200/80 p-3 rounded-lg text-sm text-stone-600">
-                        <strong className="text-stone-700 text-xs block mb-1">Reply:</strong>
-                        {msg.replyText}
-                      </div>
-                    ) : (
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          placeholder="Type answer here to simulate reply email..."
-                          value={replyTextMap[msg.id || ""] || ""}
-                          onChange={(e) => setReplyTextMap({ ...replyTextMap, [msg.id || ""]: e.target.value })}
-                          className="flex-1 bg-white border border-stone-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                        />
-                        <button
-                          onClick={() => handleReplySubmit(msg.id || "")}
-                          className="bg-[#113F48] text-white hover:bg-[#C9A15A] text-xs font-semibold px-4 py-2 rounded-xl transition-all"
-                        >
-                          Send Reply
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  ))}
                 {messages.length === 0 && (
                   <p className="text-center py-10 text-stone-400 text-sm">No visitor inquiries logged yet.</p>
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 8: Legal Pages Management */}
+          {activeTab === "legal" && (
+            <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-[#113F48]">Legal Pages &amp; Disclaimers</h3>
+                <p className="text-sm text-stone-500">Edit legal policy details, publish updates, and view revision history logs.</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                {/* Left Slug Selector */}
+                <div className="lg:col-span-4 space-y-2">
+                  <span className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide block mb-1">Select Legal Page</span>
+                  {[
+                    { label: "Privacy Policy", slug: "privacy-policy" },
+                    { label: "Terms & Conditions", slug: "terms-and-conditions" },
+                    { label: "Cookie Policy", slug: "cookie-policy" },
+                    { label: "Medical Disclaimer", slug: "medical-disclaimer" },
+                    { label: "Editorial Policy", slug: "editorial-policy" },
+                    { label: "Accessibility Statement", slug: "accessibility" },
+                    { label: "DMCA Policy", slug: "dmca" },
+                    { label: "Corrections Policy", slug: "corrections-policy" },
+                    { label: "Advertising Policy", slug: "advertising-policy" },
+                    { label: "Affiliate Disclosure", slug: "affiliate-disclosure" },
+                  ].map((item) => (
+                    <button
+                      key={item.slug}
+                      onClick={() => setSelectedLegalSlug(item.slug)}
+                      className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold border transition-all ${
+                        selectedLegalSlug === item.slug
+                          ? "bg-[#113F48] text-white border-[#113F48] shadow-sm"
+                          : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50"
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Right Editor Form */}
+                <div className="lg:col-span-8">
+                  {legalLoading ? (
+                    <div className="flex flex-col items-center justify-center py-20 text-stone-400 space-y-2">
+                      <Loader2 className="h-8 w-8 animate-spin text-[#C9A15A]" />
+                      <span className="text-xs">Loading page details...</span>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSaveLegalPage} className="space-y-4">
+                      
+                      <div className="flex justify-between items-center gap-4 border-b border-stone-100 pb-3 flex-wrap">
+                        <div className="text-xs text-stone-400 font-medium">
+                          Status: <span className="font-bold text-[#113F48]">{legalLastUpdated ? `Last Updated: ${legalLastUpdated}` : "Draft"}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="checkbox"
+                            id="publishedCheckbox"
+                            checked={legalPublished}
+                            onChange={(e) => setLegalPublished(e.target.checked)}
+                            className="h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
+                          />
+                          <label htmlFor="publishedCheckbox" className="text-xs font-semibold text-stone-600 cursor-pointer">
+                            Published
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Page Header Title</label>
+                        <input
+                          required
+                          value={legalTitle}
+                          onChange={(e) => setLegalTitle(e.target.value)}
+                          className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Page Content (Markdown / Text)</label>
+                        <textarea
+                          required
+                          rows={12}
+                          value={legalContent}
+                          onChange={(e) => setLegalContent(e.target.value)}
+                          className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48] font-mono resize-y"
+                          placeholder="# Header..."
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={legalSaving}
+                        className="w-full bg-[#113F48] hover:bg-[#C9A15A] text-white py-3.5 rounded-xl font-bold transition-all shadow text-xs"
+                      >
+                        {legalSaving ? "Saving Policy..." : "Save Legal Page Details"}
+                      </button>
+
+                      {/* Version History Log */}
+                      {legalHistory.length > 0 && (
+                        <div className="pt-6 border-t border-stone-100 space-y-3">
+                          <h4 className="text-xs font-bold text-[#113F48] uppercase tracking-wider">Revision History Log</h4>
+                          <div className="max-h-48 overflow-y-auto space-y-2 border border-stone-100 p-3 rounded-xl bg-stone-50">
+                            {legalHistory.map((item, idx) => (
+                              <div key={idx} className="flex justify-between items-start gap-4 border-b border-stone-200/60 pb-2 last:border-0 last:pb-0 text-[10px] text-stone-500">
+                                <div>
+                                  <span className="font-semibold text-stone-700 block">{item.date}</span>
+                                  <span className="block mt-0.5 text-stone-400">By: {item.updatedBy}</span>
+                                </div>
+                                <span className="bg-[#113F48]/5 border border-[#113F48]/10 text-[9px] px-1.5 py-0.5 rounded font-medium">Version {legalHistory.length - idx}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                    </form>
+                  )}
+                </div>
+
               </div>
             </div>
           )}

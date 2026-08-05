@@ -4,109 +4,126 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { ShieldCheck, Mail, ArrowRight, Home } from "lucide-react";
 
-function LegalLayout({ title, subtitle, lastUpdated, children }: {
-  title: string;
-  subtitle: string;
-  lastUpdated: string;
-  children: React.ReactNode;
-}) {
+export default function PrivacyPolicyPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
+
       <main className="flex-grow">
-        <section className="py-14 bg-[#F9FAFB] border-b border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
-            <p className="text-xs text-stone-400 font-medium">Last Updated: {lastUpdated}</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">{title}</h1>
-            <p className="text-stone-600 max-w-2xl leading-relaxed">{subtitle}</p>
+        {/* ── BREADCRUMB ── */}
+        <div className="bg-stone-50 border-b border-stone-100 py-3">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
+            <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[#113F48] font-semibold">Privacy Policy</span>
+          </div>
+        </div>
+
+        {/* ── HERO ── */}
+        <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
+            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">Privacy Policy</h1>
+            <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
+              This Privacy Policy explains how MediGuideHub collects, uses, protects, and handles your personal information in accordance with international privacy standards and Google AdSense guidelines.
+            </p>
           </div>
         </section>
-        <section className="py-14 bg-white">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-8">
-              {children}
+
+        {/* ── POLICY CONTENT ── */}
+        <section className="py-14 bg-white print:py-0">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
+              
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">1. Information We Collect</h2>
+                <p>
+                  At MediGuideHub, we only collect information necessary to deliver educational health resources, respond to inquiries, and display relevant context. We collect information in the following ways:
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>Contact Form Submissions:</strong> When you send a message, we collect your full name, email address, selected subject, and the contents of your inquiry.</li>
+                  <li><strong>Newsletter Subscriptions:</strong> When you subscribe to receive health updates, we collect your email address.</li>
+                  <li><strong>Usage Data & Cookies:</strong> We automatically gather standard logs, IP addresses, browser configurations, page visit metrics, and click tracking to optimize site speeds and layouts.</li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">2. Cookies and Advertising (Google AdSense)</h2>
+                <p>
+                  We display advertising through Google AdSense. Google and third-party advertising vendors use cookies to serve personalized ads based on your prior visits to MediGuideHub and other sites on the internet.
+                </p>
+                <p>
+                  These &ldquo;DoubleClick cookies&rdquo; enable Google and its partners to serve ads matching your demographic interests. You can opt out of personalized advertising by visiting the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> page.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics</h2>
+                <p>
+                  We employ analytics tracking to understand traffic patterns and article performance. These services help us measure bounce rates, session durations, and article reach so we can continuously write better health resources. The logs are entirely anonymized.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">4. Information Security</h2>
+                <p>
+                  We implement robust database configurations, secure HTTPS connections, and strict server access controls. All forms are encrypted via SSL during transmission to prevent unauthorized extraction.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">5. Third-Party Services</h2>
+                <p>
+                  We utilize secure hosting systems (Google Firebase, Cloudinary) to store site database logs and display images. These services adhere to rigorous security standards and handle data in accordance with their respective compliance policies.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-[#113F48]">6. User Rights</h2>
+                <p>
+                  You have the right to request access to, correction of, or complete deletion of any personal details you have shared with us (such as contact messages or newsletter emails). You can opt out of newsletters at any time by clicking &ldquo;Unsubscribe&rdquo; at the bottom of any email.
+                </p>
+              </div>
+
+              <div className="space-y-3 border-t border-stone-100 pt-6">
+                <h2 className="text-lg font-bold text-[#113F48]">7. Contact Privacy Inquiries</h2>
+                <p>
+                  For privacy concerns, data removal requests, or questions regarding Google AdSense cookies, please email: <a href="mailto:support@mediguidehub.com" className="text-[#C9A15A] underline font-semibold">support@mediguidehub.com</a>.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── BOTTOM CTA ── */}
+        <section className="py-16 bg-[#F9FAFB] border-t border-stone-200 print:hidden">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-5">
+            <h3 className="text-xl font-bold text-[#113F48]">Need Assistance?</h3>
+            <p className="text-stone-500 text-sm max-w-md mx-auto">
+              If you have any questions regarding our terms, policies, or data handling, reach out to our team.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold rounded-xl transition-all shadow"
+              >
+                <Mail className="h-4 w-4" /> Contact Us
+              </Link>
+              <Link 
+                href="/" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold rounded-xl transition-all"
+              >
+                <Home className="h-4 w-4" /> Return Home
+              </Link>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-4 border-t border-stone-100 pt-8 first:border-t-0 first:pt-0">
-      <h2 className="text-xl font-bold text-[#113F48]">{title}</h2>
-      <div className="text-stone-600 text-sm leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
-
-export default function PrivacyPolicyPage() {
-  return (
-    <LegalLayout
-      title="Privacy Policy"
-      subtitle="This Privacy Policy explains how MediGuide Hub collects, uses, and protects your personal information when you visit our website."
-      lastUpdated="August 4, 2026"
-    >
-      <Section title="1. Information We Collect">
-        <p><strong>Account information:</strong> If you create an account, we collect your name, email address, and a securely hashed password (via Firebase Authentication).</p>
-        <p><strong>Contact form submissions:</strong> If you use our Contact Us form, we collect your name, email address, and message content.</p>
-        <p><strong>Newsletter signups:</strong> If you subscribe to our newsletter, we collect your email address.</p>
-        <p><strong>Usage data:</strong> We may automatically collect information about how you use the site, including pages visited, time spent, browser type, and device information, typically through cookies and analytics tools.</p>
-        <p><strong>Advertising data:</strong> This site displays advertisements served by Google AdSense. Google and its partners may use cookies to serve ads based on your prior visits to this or other websites.</p>
-      </Section>
-
-      <Section title="2. How We Use Your Information">
-        <p>We use the information we collect to:</p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>Create and manage your account</li>
-          <li>Respond to inquiries submitted through our Contact form</li>
-          <li>Send newsletter updates, if you've subscribed (you can unsubscribe at any time)</li>
-          <li>Improve our website's content and user experience</li>
-          <li>Display relevant advertising through Google AdSense</li>
-        </ul>
-      </Section>
-
-      <Section title="3. How We Store Your Information">
-        <p>Account and message data is stored securely using Firebase (a Google Cloud service), with access restricted through security rules so that only you (or authorized administrators) can access your personal account data. Images you upload (such as a profile avatar) are hosted through Cloudinary.</p>
-      </Section>
-
-      <Section title="4. Third-Party Services">
-        <p>We use the following third-party services, each with its own privacy policy:</p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>Google Firebase (authentication and database)</li>
-          <li>Cloudinary (image hosting)</li>
-          <li>Google AdSense (advertising)</li>
-        </ul>
-      </Section>
-
-      <Section title="5. Cookies and Google AdSense">
-        <p>This site uses cookies, including third-party cookies from Google, to serve ads based on your visits to this and other sites. You may opt out of personalized advertising by visiting Google's Ads Settings page, or opt out of some third-party vendor cookies by visiting the Network Advertising Initiative opt-out page. See our full <Link href="/cookie-policy" className="text-[#C9A15A] underline">Cookie Policy</Link> for more detail.</p>
-      </Section>
-
-      <Section title="6. Your Choices">
-        <p>You may:</p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>Update or delete your account information at any time through your User Dashboard</li>
-          <li>Unsubscribe from our newsletter using the link in any email</li>
-          <li>Contact us to request deletion of your personal data</li>
-        </ul>
-      </Section>
-
-      <Section title="7. Children's Privacy">
-        <p>This site is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
-      </Section>
-
-      <Section title="8. Changes to This Policy">
-        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
-      </Section>
-
-      <Section title="9. Contact Us">
-        <p>If you have questions about this Privacy Policy, please reach out via our <Link href="/contact" className="text-[#C9A15A] underline">Contact Us</Link> page.</p>
-      </Section>
-    </LegalLayout>
   );
 }

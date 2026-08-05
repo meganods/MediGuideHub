@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Mail, Home } from "lucide-react";
 
-export default function CookiePolicyPage() {
+export default function EditorialPolicyPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Cookie Policy</span>
+            <span className="text-[#113F48] font-semibold">Editorial Policy</span>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ export default function CookiePolicyPage() {
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Cookie Policy</h1>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">Editorial Policy</h1>
             <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
-              This Cookie Policy details how cookies are used on MediGuideHub to support site speed, performance metrics, and AdSense advertisements.
+              This Editorial Policy outlines how we prepare, review, update, and manage health information to maintain strict E-E-A-T values.
             </p>
           </div>
         </section>
@@ -38,40 +38,37 @@ export default function CookiePolicyPage() {
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">1. What Are Cookies?</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">1. Content Review Process</h2>
                 <p>
-                  Cookies are small text files stored by your browser when you visit a website. They help the platform remember preferences, keep connection states secure, track page navigation data, and deliver relevant advertisements.
+                  Before publishing, every article is researched by professional health writers and reviewed internally. We double-check each metric, medication listing, and government policy rule to make sure the copy is easy to understand, accurate, and free of bias.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">2. Essential Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">2. Editorial Independence</h2>
                 <p>
-                  These cookies are vital to navigate the website and use basic security features. Without these cookies, services like logging into dashboards or submitting contact forms would not work correctly. Essential cookies do not track marketing profiles.
+                  MediGuideHub operates with absolute editorial independence. We do not host sponsored articles, nor do we let display ads or advertising agreements dictate our topics, content tone, coverage comparisons, or recommendations.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics &amp; Preference Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">3. Fact-Checking &amp; References</h2>
                 <p>
-                  We utilize analytics logs to measure layout performance and article popularity. These cookies track anonymous metrics, such as what browser you use, how long you stay, and which article slugs you select. Preference cookies allow us to remember local settings like text sizing.
+                  We build our guides on reliable public health databases. We cite official medical sources, government departments, and peer-reviewed journals when applicable, ensuring that readers can trace every stat back to a reputable source.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">4. Google AdSense Advertising Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">4. Content Updates</h2>
                 <p>
-                  Google AdSense uses cookies to serve ads based on your visits to our site and other pages across the web. The AdSense system uses mobile identifiers and DoubleClick cookies to avoid showing repetitive ads and target ads matching user demographics.
+                  Medical research, healthcare policies, and plan parameters change over time. We review and update our article catalog regularly to reflect updated guidelines. The &ldquo;Last Updated&rdquo; tag at the top of each page signals the most recent review.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">5. Managing and Opting Out</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">5. Corrections Policy</h2>
                 <p>
-                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on MediGuideHub.
-                </p>
-                <p>
-                  To manage cookies across search engines, you can visit the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> to toggle personalized ads off, or consult your browser&apos;s Help panel for detailed setup parameters.
+                  If you spot an error, typo, or outdated stat, please report it through our contact form. Our editorial board evaluates and applies updates within 2 business days.
                 </p>
               </div>
 

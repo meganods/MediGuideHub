@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Mail, Home } from "lucide-react";
 
-export default function CookiePolicyPage() {
+export default function AccessibilityPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Cookie Policy</span>
+            <span className="text-[#113F48] font-semibold">Accessibility</span>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ export default function CookiePolicyPage() {
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Cookie Policy</h1>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">Accessibility Statement</h1>
             <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
-              This Cookie Policy details how cookies are used on MediGuideHub to support site speed, performance metrics, and AdSense advertisements.
+              MediGuideHub is committed to digital inclusion, aiming to provide a platform that is accessible to all individuals regardless of ability or technology.
             </p>
           </div>
         </section>
@@ -38,40 +38,37 @@ export default function CookiePolicyPage() {
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">1. What Are Cookies?</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">1. WCAG 2.1 AA Commitment</h2>
                 <p>
-                  Cookies are small text files stored by your browser when you visit a website. They help the platform remember preferences, keep connection states secure, track page navigation data, and deliver relevant advertisements.
+                  We aim to align our layouts, contrast ratios, and site structures with the Web Content Accessibility Guidelines (WCAG) 2.1 level AA standards. This commitment ensures that users utilizing assistive technology can read all health resources with ease.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">2. Essential Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">2. Keyboard Accessibility</h2>
                 <p>
-                  These cookies are vital to navigate the website and use basic security features. Without these cookies, services like logging into dashboards or submitting contact forms would not work correctly. Essential cookies do not track marketing profiles.
+                  Our interactive navigation widgets, contact submit forms, and menu triggers are built to support standard keyboard operation. Visitors can tab through sections logically without gettting trapped in navigation cycles.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics &amp; Preference Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">3. Screen Reader Compatibility</h2>
                 <p>
-                  We utilize analytics logs to measure layout performance and article popularity. These cookies track anonymous metrics, such as what browser you use, how long you stay, and which article slugs you select. Preference cookies allow us to remember local settings like text sizing.
+                  We structure our HTML semantically (using header structures like H1, H2, and H3 in hierarchical order) and add alternative text descriptions to all clinical diagrams to support screen-reading software.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">4. Google AdSense Advertising Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">4. Color Contrast</h2>
                 <p>
-                  Google AdSense uses cookies to serve ads based on your visits to our site and other pages across the web. The AdSense system uses mobile identifiers and DoubleClick cookies to avoid showing repetitive ads and target ads matching user demographics.
+                  We design our typography and text elements to exceed WCAG requirements for color contrast, making our guides readable under varying screen brightnesses.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">5. Managing and Opting Out</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">5. Accessibility Feedback</h2>
                 <p>
-                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on MediGuideHub.
-                </p>
-                <p>
-                  To manage cookies across search engines, you can visit the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> to toggle personalized ads off, or consult your browser&apos;s Help panel for detailed setup parameters.
+                  Digital accessibility is an ongoing process. If you encounter any barriers on MediGuideHub, please let us know by sending a message or emailing support@mediguidehub.com. We make modifications to resolve reports as quickly as possible.
                 </p>
               </div>
 

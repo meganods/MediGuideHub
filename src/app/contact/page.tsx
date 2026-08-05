@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Script from "next/script";
 import { useAuth } from "@/lib/authContext";
 import { sendContactMessage } from "@/lib/db";
 import { 
@@ -16,7 +17,6 @@ import {
   BookOpen, 
   ArrowRight, 
   HelpCircle, 
-  PhoneCall, 
   Home, 
   AlertTriangle,
   FileText,
@@ -29,9 +29,11 @@ export default function ContactPage() {
   // Form states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("General Inquiry");
+  const [subject, setSubject] = useState("General Question");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
+  const [sentSubject, setSentSubject] = useState("");
+  const [sentEmail, setSentEmail] = useState("");
   
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -64,6 +66,8 @@ export default function ContactPage() {
         userEmail: user?.email || email
       });
       
+      setSentSubject(subject);
+      setSentEmail(email);
       setStatus("success");
       setName("");
       setEmail("");
@@ -87,21 +91,26 @@ export default function ContactPage() {
     },
     {
       q: "Can I request corrections to health content?",
-      a: "Yes. In keeping with our strict Editorial Standards, we welcome factual updates, medical corrections, and content feedback. Please choose 'Content Correction / Feedback' as your form subject."
+      a: "Yes. In keeping with our strict Editorial Standards, we welcome factual updates, medical corrections, and content feedback. Please choose 'Content Correction' as your form subject."
     },
     {
       q: "Can I submit partnership inquiries?",
-      a: "We welcome educational partnerships, media requests, and content collaborations. Please send us a message choosing the appropriate subject or email us directly."
+      a: "We welcome educational partnerships, media requests, and content collaborations. Please send us a message choosing 'Business Partnership' as the subject."
     },
     {
       q: "Can I report a technical issue?",
-      a: "Yes. To report display bugs, page load errors, or security concerns, use our contact form and select 'Technical Issue'. Our engineering team will review it promptly."
+      a: "Yes. To report display bugs, page load errors, or security concerns, use our contact form and select 'Technical Support'."
     }
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
+      <Script 
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js" 
+        async 
+        defer 
+      />
 
       <main className="flex-grow">
         
@@ -173,7 +182,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* ── CONTACT INFORMATION (4 CARDS) ── */}
+        {/* ── CONTACT INFORMATION ── */}
         <section className="py-14 bg-[#F9FAFB] border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -248,14 +257,25 @@ export default function ContactPage() {
                   </div>
 
                   {status === "success" ? (
-                    <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center space-y-4">
+                    <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center space-y-6">
                       <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center mx-auto">
                         <CheckCircle2 className="h-6 w-6 text-emerald-600" />
                       </div>
-                      <h3 className="text-xl font-bold text-emerald-800">Message Sent Successfully!</h3>
-                      <p className="text-emerald-700 text-sm leading-relaxed max-w-md mx-auto">
-                        Thank you for contacting MediGuideHub. Our editorial team will review your ticket and reply within 24–48 business hours.
-                      </p>
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold text-emerald-800">Message Sent Successfully!</h3>
+                        <p className="text-emerald-700 text-sm leading-relaxed max-w-md mx-auto">
+                          Thank you for contacting MediGuideHub. Our team has received your ticket regarding <strong>{sentSubject}</strong> and will respond within 24–48 business hours.
+                        </p>
+                      </div>
+                      
+                      {/* Simulated Auto-Reply Confirmation Copy */}
+                      <div className="bg-white border border-emerald-200/50 p-4 rounded-xl text-left max-w-md mx-auto space-y-2">
+                        <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">Auto Email Reply Sent to {sentEmail}:</span>
+                        <p className="text-xs text-stone-600 leading-relaxed italic">
+                          &ldquo;Thank you for contacting MediGuideHub. Our team has received your inquiry regarding &apos;{sentSubject}&apos; and will respond within 24–48 business hours.&rdquo;
+                        </p>
+                      </div>
+
                       <button
                         onClick={() => setStatus("idle")}
                         className="px-6 py-2.5 bg-[#113F48] text-white font-semibold rounded-lg hover:bg-[#C9A15A] transition-all text-xs"
@@ -305,9 +325,10 @@ export default function ContactPage() {
                         </div>
                       </div>
 
+                      {/* Inquiry Type Dropdown */}
                       <div className="space-y-1.5">
                         <label htmlFor="subjectSelect" className="text-xs font-bold text-[#113F48] uppercase tracking-wide">
-                          Subject *
+                          Inquiry Type *
                         </label>
                         <select
                           id="subjectSelect"
@@ -315,11 +336,11 @@ export default function ContactPage() {
                           onChange={(e) => setSubject(e.target.value)}
                           className="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48] transition-all"
                         >
-                          <option value="General Inquiry">General Inquiry</option>
-                          <option value="Content Correction / Feedback">Content Correction / Feedback</option>
-                          <option value="Partnership / Collaboration">Partnership Inquiry</option>
-                          <option value="Technical Issue">Technical Issue</option>
-                          <option value="Privacy / Data Request">Privacy Request</option>
+                          <option value="General Question">General Question</option>
+                          <option value="Content Correction">Content Correction</option>
+                          <option value="Business Partnership">Business Partnership</option>
+                          <option value="Technical Support">Technical Support</option>
+                          <option value="Feedback">Feedback</option>
                         </select>
                       </div>
 
@@ -348,8 +369,16 @@ export default function ContactPage() {
                           className="mt-1 h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
                         />
                         <label htmlFor="consentCheckbox" className="text-xs text-stone-500 leading-normal">
-                          I agree to the <Link href="/privacy-policy" className="text-[#C9A15A] underline hover:text-[#B58F4E]">Privacy Policy</Link> and <Link href="/terms-conditions" className="text-[#C9A15A] underline hover:text-[#B58F4E]">Terms &amp; Conditions</Link>.
+                          I agree to the <Link href="/privacy-policy" className="text-[#C9A15A] underline hover:text-[#B58F4E]">Privacy Policy</Link> and <Link href="/terms-and-conditions" className="text-[#C9A15A] underline hover:text-[#B58F4E]">Terms &amp; Conditions</Link>.
                         </label>
+                      </div>
+
+                      {/* Cloudflare Turnstile Spam Protection */}
+                      <div className="flex justify-center py-2 border-t border-stone-100">
+                        <div 
+                          className="cf-turnstile" 
+                          data-sitekey="1x00000000000000000000AA"
+                        />
                       </div>
 
                       <button

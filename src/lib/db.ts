@@ -44,6 +44,9 @@ export interface ContactMessage {
   replyText?: string;
   userId?: string;
   userEmail?: string;
+  resolved?: boolean;
+  archived?: boolean;
+  inquiryType?: string;
 }
 
 export interface NewsletterSubscriber {
@@ -582,4 +585,86 @@ export const saveSiteSettings = async (settings: SiteSettings): Promise<void> =>
     }
   }
   setLocal(KEYS.SITE_SETTINGS, [settings]);
+};
+
+export interface LegalPage {
+  slug: string;
+  title: string;
+  content: string;
+  lastUpdated: string;
+  published: boolean;
+  versionHistory: Array<{
+    date: string;
+    content: string;
+    updatedBy: string;
+  }>;
+}
+
+export const resolveContactMessage = async (id: string, resolved: boolean): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      await updateDoc(doc(firestore, "contactMessages", id), { resolved });
+      return;
+    } catch (e) {
+      console.error("Firebase resolveContactMessage error:", e);
+    }
+  }
+  const msgs = getLocal<ContactMessage>(KEYS.CONTACTS);
+  const idx = msgs.findIndex((m) => m.id === id);
+  if (idx !== -1) {
+    msgs[idx].resolved = resolved;
+    setLocal(KEYS.CONTACTS, msgs);
+  }
+};
+
+export const archiveContactMessage = async (id: string, archived: boolean): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      await updateDoc(doc(firestore, "contactMessages", id), { archived });
+      return;
+    } catch (e) {
+      console.error("Firebase archiveContactMessage error:", e);
+    }
+  }
+  const msgs = getLocal<ContactMessage>(KEYS.CONTACTS);
+  const idx = msgs.findIndex((m) => m.id === id);
+  if (idx !== -1) {
+    msgs[idx].archived = archived;
+    setLocal(KEYS.CONTACTS, msgs);
+  }
+};
+
+export const getLegalPage = async (slug: string): Promise<LegalPage | null> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const snapshot = await getDoc(doc(firestore, "legalPages", slug));
+      if (snapshot.exists()) {
+        return snapshot.data() as LegalPage;
+      }
+    } catch (e) {
+      console.error("Firebase error getting legal page:", e);
+    }
+  }
+  const pages = getLocal<LegalPage>("mediguide_legal_pages");
+  const page = pages.find((p) => p.slug === slug);
+  return page || null;
+};
+
+export const updateLegalPage = async (slug: string, updates: Partial<LegalPage>): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      await setDoc(doc(firestore, "legalPages", slug), { slug, ...updates }, { merge: true });
+      return;
+    } catch (e) {
+      console.error("Firebase error updating legal page:", e);
+    }
+  }
+  const pages = getLocal<LegalPage>("mediguide_legal_pages");
+  const idx = pages.findIndex((p) => p.slug === slug);
+  if (idx !== -1) {
+    pages[idx] = { ...pages[idx], ...updates } as LegalPage;
+  } else {
+    pages.push({ slug, ...updates } as LegalPage);
+  }
+  setLocal("mediguide_legal_pages", pages);
 };

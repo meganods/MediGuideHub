@@ -4,9 +4,9 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Mail, Home } from "lucide-react";
+import { Mail, Home, ShieldAlert } from "lucide-react";
 
-export default function CookiePolicyPage() {
+export default function MedicalDisclaimerPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Cookie Policy</span>
+            <span className="text-[#113F48] font-semibold">Medical Disclaimer</span>
           </div>
         </div>
 
@@ -25,9 +25,9 @@ export default function CookiePolicyPage() {
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Cookie Policy</h1>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">Medical Disclaimer</h1>
             <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
-              This Cookie Policy details how cookies are used on MediGuideHub to support site speed, performance metrics, and AdSense advertisements.
+              Please read this Medical Disclaimer carefully. It details the informational limits of MediGuideHub and your responsibilities regarding professional medical consultation.
             </p>
           </div>
         </section>
@@ -35,43 +35,52 @@ export default function CookiePolicyPage() {
         {/* ── CONTENT ── */}
         <section className="py-14 bg-white print:py-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            
+            {/* Highlighted Warning Box */}
+            <div className="bg-amber-50/50 border border-amber-200 rounded-2xl p-6 mb-8 flex items-start gap-4 shadow-sm">
+              <ShieldAlert className="h-6 w-6 text-[#C9A15A] flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <h4 className="font-bold text-amber-950 text-sm">Important Notice</h4>
+                <p className="text-amber-900 text-xs leading-relaxed font-semibold">
+                  MediGuideHub is an educational publication. Nothing published here constitutes diagnostic medical opinions, treatment guidance, plan comparison approvals, or insurance claims decisions.
+                </p>
+              </div>
+            </div>
+
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">1. What Are Cookies?</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">1. Educational Purposes Only</h2>
                 <p>
-                  Cookies are small text files stored by your browser when you visit a website. They help the platform remember preferences, keep connection states secure, track page navigation data, and deliver relevant advertisements.
+                  All articles,Condition profiles, checklist widgets, data tables, and reference guidelines hosted on MediGuideHub are provided for general educational and health awareness purposes only. The information does not constitute official advice.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">2. Essential Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">2. No Doctor-Patient Relationship</h2>
                 <p>
-                  These cookies are vital to navigate the website and use basic security features. Without these cookies, services like logging into dashboards or submitting contact forms would not work correctly. Essential cookies do not track marketing profiles.
+                  Reading articles, submitting contact forms, using search features, or joining community updates on MediGuideHub does not establish a doctor-patient, practitioner-client, or professional relationship between you and the writers, editors, or advisory staff of MediGuideHub.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics &amp; Preference Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">3. Not Emergency Medical Advice</h2>
                 <p>
-                  We utilize analytics logs to measure layout performance and article popularity. These cookies track anonymous metrics, such as what browser you use, how long you stay, and which article slugs you select. Preference cookies allow us to remember local settings like text sizing.
+                  If you are experiencing a medical emergency, you must immediately call your local emergency services (such as 102/112 in India, 911 in the United States) or visit the nearest emergency room. Never disregard or delay professional care because of something read on this platform.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">4. Google AdSense Advertising Cookies</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">4. Consult Qualified Professionals</h2>
                 <p>
-                  Google AdSense uses cookies to serve ads based on your visits to our site and other pages across the web. The AdSense system uses mobile identifiers and DoubleClick cookies to avoid showing repetitive ads and target ads matching user demographics.
+                  Always seek the advice of your physician, licensed nurse, or qualified healthcare provider with any questions you have regarding a medical condition, symptoms, medication dosages, or treatment programs.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">5. Managing and Opting Out</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">5. No Guarantee of Completeness or Currency</h2>
                 <p>
-                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on MediGuideHub.
-                </p>
-                <p>
-                  To manage cookies across search engines, you can visit the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> to toggle personalized ads off, or consult your browser&apos;s Help panel for detailed setup parameters.
+                  While our editorial board makes reasonable efforts to verify statistics against current official public databases, healthcare rules and medical findings evolve rapidly. We offer no guarantees that the information displayed is fully complete, completely accurate, or updated to the exact current date.
                 </p>
               </div>
 

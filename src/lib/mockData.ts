@@ -9,6 +9,32 @@ export interface BlogPost {
   featuredImage: string;
   author: string;
   readTime: string;
+  
+  // Advanced CMS fields
+  status?: "Published" | "Draft" | "Scheduled";
+  seoScore?: number;
+  views?: number;
+  updatedAt?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+  imageCredit?: string;
+  videoUrl?: string;
+  relatedArticles?: string[];
+  featured?: boolean;
+  trending?: boolean;
+  tags?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  focusKeyphrase?: string;
+  schemaType?: string;
+  robotsMeta?: string;
+  canonicalUrl?: string;
+  visibility?: string;
+  allowComments?: boolean;
+  lastReviewedDate?: string;
+  reviewFrequency?: string;
+  language?: string;
+  versionNumber?: string;
 }
 
 export interface FAQItem {

@@ -1449,7 +1449,7 @@ function AdminContent() {
                                 }
                               }}
                               placeholder="Title of the guide..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1459,7 +1459,7 @@ function AdminContent() {
                               value={postSlug}
                               onChange={(e) => setPostSlug(e.target.value)}
                               placeholder="url-path-slug"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -1470,7 +1470,7 @@ function AdminContent() {
                             <input
                               value={postAuthor}
                               onChange={(e) => setPostAuthor(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1479,7 +1479,7 @@ function AdminContent() {
                               value={postReadTime}
                               onChange={(e) => setPostReadTime(e.target.value)}
                               placeholder="8 min read"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1487,7 +1487,7 @@ function AdminContent() {
                             <select
                               value={postCategory}
                               onChange={(e) => setPostCategory(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             >
                               <option value="Overview">Overview</option>
                               <option value="Part A">Part A</option>
@@ -1508,7 +1508,7 @@ function AdminContent() {
                             value={postSummary}
                             onChange={(e) => setPostSummary(e.target.value)}
                             placeholder="Provide a detailed SEO description..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -1581,7 +1581,7 @@ function AdminContent() {
                               value={seoFocusKeyphrase}
                               onChange={(e) => setSeoFocusKeyphrase(e.target.value)}
                               placeholder="e.g. Medicare Part A benefits"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1590,7 +1590,7 @@ function AdminContent() {
                               type="number"
                               value={seoScore}
                               onChange={(e) => setSeoScore(Number(e.target.value))}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -1601,7 +1601,7 @@ function AdminContent() {
                             value={seoMetaTitle}
                             onChange={(e) => setSeoMetaTitle(e.target.value)}
                             placeholder="Defaults to article title if blank..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -1612,7 +1612,7 @@ function AdminContent() {
                             value={seoMetaDescription}
                             onChange={(e) => setSeoMetaDescription(e.target.value)}
                             placeholder="Defaults to short description if blank..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -1622,7 +1622,7 @@ function AdminContent() {
                             <select
                               value={seoSchemaType}
                               onChange={(e) => setSeoSchemaType(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             >
                               <option value="MedicalWebPage">MedicalWebPage</option>
                               <option value="MedicalCondition">MedicalCondition</option>
@@ -1635,7 +1635,7 @@ function AdminContent() {
                             <input
                               value={seoRobotsMeta}
                               onChange={(e) => setSeoRobotsMeta(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1644,7 +1644,7 @@ function AdminContent() {
                               value={seoCanonicalUrl}
                               onChange={(e) => setSeoCanonicalUrl(e.target.value)}
                               placeholder="https://mediguidehub.com/blog/url"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -1682,7 +1682,7 @@ function AdminContent() {
                               value={postImageAlt}
                               onChange={(e) => setPostImageAlt(e.target.value)}
                               placeholder="Clinical chart describing..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1691,7 +1691,7 @@ function AdminContent() {
                               value={postImageCaption}
                               onChange={(e) => setPostImageCaption(e.target.value)}
                               placeholder="Medicare Enrollment Guide 2026"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1700,7 +1700,7 @@ function AdminContent() {
                               value={postImageCredit}
                               onChange={(e) => setPostImageCredit(e.target.value)}
                               placeholder="Source: MediGuideHub Research"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -1711,7 +1711,7 @@ function AdminContent() {
                             value={postVideoUrl}
                             onChange={(e) => setPostVideoUrl(e.target.value)}
                             placeholder="https://www.youtube.com/watch?v=..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
                       </div>
@@ -1726,7 +1726,7 @@ function AdminContent() {
                             value={postRelatedArticles}
                             onChange={(e) => setPostRelatedArticles(e.target.value)}
                             placeholder="Medicare, Enrollment, Part A, Part B (comma separated)"
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                           <p className="text-[10px] text-stone-400 mt-1">Tags help link relevant topics together on guides.</p>
                         </div>
@@ -1742,7 +1742,7 @@ function AdminContent() {
                             <select
                               value={postVisibility}
                               onChange={(e) => setPostVisibility(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             >
                               <option value="Public">Public (Everyone)</option>
                               <option value="Private">Private (Admins Only)</option>
@@ -1753,7 +1753,7 @@ function AdminContent() {
                             <input
                               value={postReviewFreq}
                               onChange={(e) => setPostReviewFreq(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -1764,7 +1764,7 @@ function AdminContent() {
                             <input
                               value={postLanguage}
                               onChange={(e) => setPostLanguage(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -1772,7 +1772,7 @@ function AdminContent() {
                             <input
                               value={postVersion}
                               onChange={(e) => setPostVersion(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2409,7 +2409,7 @@ function AdminContent() {
                           required
                           value={legalTitle}
                           onChange={(e) => setLegalTitle(e.target.value)}
-                          className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                         />
                       </div>
 
@@ -2570,7 +2570,7 @@ function AdminContent() {
                                 }
                               }}
                               placeholder="e.g. Heart Health"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2580,7 +2580,7 @@ function AdminContent() {
                               value={catSlug}
                               onChange={(e) => setCatSlug(e.target.value)}
                               placeholder="e.g. heart-health"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -2592,7 +2592,7 @@ function AdminContent() {
                             value={catDesc}
                             onChange={(e) => setCatDesc(e.target.value)}
                             placeholder="Brief summary of articles in this category..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -2603,7 +2603,7 @@ function AdminContent() {
                               value={catIcon}
                               onChange={(e) => setCatIcon(e.target.value)}
                               placeholder="e.g. Heart, Shield, Activity, Folder"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2612,7 +2612,7 @@ function AdminContent() {
                               type="number"
                               value={catDisplayOrder}
                               onChange={(e) => setCatDisplayOrder(Number(e.target.value))}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2620,7 +2620,7 @@ function AdminContent() {
                             <select
                               value={catParent}
                               onChange={(e) => setCatParent(e.target.value)}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             >
                               <option value="">None (Primary)</option>
                               {categoriesList.filter(c => c.slug !== catSlug).map(c => (
@@ -2637,7 +2637,7 @@ function AdminContent() {
                               value={catBanner}
                               onChange={(e) => setCatBanner(e.target.value)}
                               placeholder="https://..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2646,7 +2646,7 @@ function AdminContent() {
                               value={catThumbnail}
                               onChange={(e) => setCatThumbnail(e.target.value)}
                               placeholder="https://..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2654,7 +2654,7 @@ function AdminContent() {
                             <select
                               value={catStatus}
                               onChange={(e) => setCatStatus(e.target.value as "Active" | "Inactive")}
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             >
                               <option value="Active">Active</option>
                               <option value="Inactive">Inactive</option>
@@ -2685,7 +2685,7 @@ function AdminContent() {
                             value={catSeoTitle}
                             onChange={(e) => setCatSeoTitle(e.target.value)}
                             placeholder="Defaults to Category Name if empty..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -2696,7 +2696,7 @@ function AdminContent() {
                             value={catSeoDesc}
                             onChange={(e) => setCatSeoDesc(e.target.value)}
                             placeholder="Brief description for search engine results..."
-                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                         </div>
 
@@ -2707,7 +2707,7 @@ function AdminContent() {
                               value={catSeoKeyword}
                               onChange={(e) => setCatSeoKeyword(e.target.value)}
                               placeholder="e.g. cardiovascular guidelines"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2716,7 +2716,7 @@ function AdminContent() {
                               value={catSeoCanonical}
                               onChange={(e) => setCatSeoCanonical(e.target.value)}
                               placeholder="https://mediguidehub.com/categories/..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>
@@ -2728,7 +2728,7 @@ function AdminContent() {
                               value={catSeoSchema}
                               onChange={(e) => setCatSeoSchema(e.target.value)}
                               placeholder="e.g. MedicalWebPage"
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                           <div className="space-y-1.5">
@@ -2737,7 +2737,7 @@ function AdminContent() {
                               value={catSeoOgImage}
                               onChange={(e) => setCatSeoOgImage(e.target.value)}
                               placeholder="https://..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
                         </div>

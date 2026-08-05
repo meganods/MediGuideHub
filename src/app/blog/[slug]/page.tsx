@@ -166,7 +166,7 @@ export default function BlogPostDetail(props: PageProps) {
         }}
       />
 
-      <main className="flex-grow py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow py-8 w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
         
         {/* Breadcrumb Navigation */}
         <nav className="text-xs text-stone-500 mb-6 flex items-center gap-1.5 font-medium">

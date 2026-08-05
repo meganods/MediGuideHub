@@ -225,7 +225,7 @@ function SearchResultsContent() {
         }}
       />
 
-      <main className="flex-grow py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <main className="flex-grow py-12 w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
         
         {/* Search controls */}
         <div className="bg-white border border-stone-200 p-6 rounded-3xl shadow-sm space-y-4">

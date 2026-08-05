@@ -92,7 +92,7 @@ export default function Home() {
 
       {/* ── SECTION 1: TRUST BAR ── */}
       <div className="bg-[#113F48] text-white py-3 border-b border-[#C9A15A]/20">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
           <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-center">
             <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-[#C9A15A]" /> Educational Healthcare Platform</span>
             <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#C9A15A]" /> Evidence-Based Information</span>
@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* ── SECTION 2: HERO SECTION ── */}
       <section className="relative overflow-hidden py-16 md:py-24 bg-gradient-to-b from-stone-50 to-[#FDFBF7] border-b border-stone-100">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Copy */}
@@ -195,7 +195,7 @@ export default function Home() {
 
       {/* ── SECTION 3: QUICK HEALTH CATEGORIES ── */}
       <section className="py-16 bg-white border-b border-stone-100">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Guides Directory</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#113F48]">Essential Healthcare Directories</h2>
@@ -225,7 +225,7 @@ export default function Home() {
       {/* ── SECTION 4: FEATURED ARTICLES ── */}
       {featuredPosts.length > 0 && (
         <section className="py-16 bg-[#FDFBF7] border-b border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
             <div className="flex justify-between items-end border-b border-stone-100 pb-3">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Selected Reading</span>
@@ -263,7 +263,7 @@ export default function Home() {
       {/* ── SECTION 5: TRENDING TOPICS ── */}
       {trendingTopics.length > 0 && (
         <section className="py-16 bg-white border-b border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
             <div className="text-center space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Daily Feed</span>
               <h2 className="text-2xl font-extrabold text-[#113F48]">Trending Healthcare Topics</h2>
@@ -283,7 +283,7 @@ export default function Home() {
 
       {/* ── SECTION 6: WHY TRUST MEDIGUIDEHUB ── */}
       <section className="py-16 bg-[#FDFBF7] border-b border-stone-100">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">E-E-A-T Framework</span>
             <h2 className="text-2xl font-extrabold text-[#113F48]">Why Readers Trust MediGuideHub</h2>
@@ -309,7 +309,7 @@ export default function Home() {
 
       {/* ── SECTION 7: EDITORIAL PROCESS ── */}
       <section className="py-16 bg-white border-b border-stone-100">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Workflow Integrity</span>
             <h2 className="text-2xl font-extrabold text-[#113F48]">Our Rigorous Editorial Review</h2>

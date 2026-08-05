@@ -90,7 +90,7 @@ export default function BlogIndex() {
         
         {/* ── HERO HEADER ── */}
         <section className="relative bg-gradient-to-b from-stone-50 to-[#FDFBF7] py-20 border-b border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center space-y-6">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none text-center space-y-6">
             <span className="text-xs font-bold text-[#C9A15A] uppercase tracking-[0.2em] bg-[#C9A15A]/10 px-3.5 py-1.5 rounded-full border border-[#C9A15A]/20">
               MediGuideHub Knowledge Base
             </span>
@@ -155,7 +155,7 @@ export default function BlogIndex() {
 
         {/* ── BROWSE BY CATEGORIES (CARDS) ── */}
         <section className="py-12 bg-white">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-6">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-6">
             <div className="flex justify-between items-end border-b border-stone-100 pb-3">
               <h3 className="text-lg font-bold text-[#113F48] flex items-center gap-1.5">
                 <Grid className="h-4.5 w-4.5 text-[#C9A15A]" /> Browse Health Categories
@@ -186,7 +186,7 @@ export default function BlogIndex() {
 
         {/* ── MAIN FEATURED & LATEST GRID ── */}
         <section className="py-16">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               
               {/* Left Main Stream */}

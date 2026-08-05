@@ -1309,10 +1309,10 @@ function AdminContent() {
                       </thead>
                       <tbody className="divide-y divide-stone-50 font-medium text-stone-600">
                         {[
-                          { query: "medicare enrollment timeline", clicks: "8,450", imps: "62,000", ctr: "13.6%" },
-                          { query: "what is medicare part a", clicks: "6,200", imps: "48,000", ctr: "12.9%" },
-                          { query: "compare medigap plans", clicks: "4,100", imps: "39,000", ctr: "10.5%" },
-                          { query: "medicare advantage eligibility", clicks: "3,800", imps: "31,000", ctr: "12.2%" },
+                          { query: "preventive care timeline", clicks: "8,450", imps: "62,000", ctr: "13.6%" },
+                          { query: "what is heart health", clicks: "6,200", imps: "48,000", ctr: "12.9%" },
+                          { query: "nutrition plans comparison", clicks: "5,100", imps: "41,000", ctr: "12.4%" },
+                          { query: "mental health exercises", clicks: "3,800", imps: "31,000", ctr: "12.2%" },
                         ].map((q, i) => (
                           <tr key={i} className="hover:bg-stone-50/50">
                             <td className="py-2.5 text-stone-700 font-semibold">{q.query}</td>
@@ -1375,11 +1375,11 @@ function AdminContent() {
                   <ul className="text-xs space-y-3.5 text-stone-600">
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Top Performing Category</span>
-                      <p className="text-stone-500">Part A (Generates 45% of total organic views)</p>
+                      <p className="text-stone-500">Preventive Care (Generates 45% of total organic views)</p>
                     </li>
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Best Performing Article</span>
-                      <p className="text-stone-500 truncate">{posts.sort((a,b)=>(b.views||0)-(a.views||0))[0]?.title || "Medicare Guides"}</p>
+                      <p className="text-stone-500 truncate">{posts.sort((a,b)=>(b.views||0)-(a.views||0))[0]?.title || "Healthcare Guides"}</p>
                     </li>
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Search Engine Warnings</span>
@@ -1627,7 +1627,7 @@ function AdminContent() {
                             <input
                               value={seoFocusKeyphrase}
                               onChange={(e) => setSeoFocusKeyphrase(e.target.value)}
-                              placeholder="e.g. Medicare Part A benefits"
+                              placeholder="e.g. Preventive Care benefits"
                               className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
@@ -1737,7 +1737,7 @@ function AdminContent() {
                             <input
                               value={postImageCaption}
                               onChange={(e) => setPostImageCaption(e.target.value)}
-                              placeholder="Medicare Enrollment Guide 2026"
+                              placeholder="Wellness Health Guide 2026"
                               className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
@@ -1772,7 +1772,7 @@ function AdminContent() {
                           <input
                             value={postRelatedArticles}
                             onChange={(e) => setPostRelatedArticles(e.target.value)}
-                            placeholder="Medicare, Enrollment, Part A, Part B (comma separated)"
+                            placeholder="Health, Nutrition, Fitness, Care (comma separated)"
                             className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                           />
                           <p className="text-[10px] text-stone-400 mt-1">Tags help link relevant topics together on guides.</p>
@@ -3033,10 +3033,10 @@ function AdminContent() {
                   <h4 className="font-bold text-xs uppercase tracking-wider text-[#113F48] border-b border-stone-100 pb-2">Top Search Keywords</h4>
                   <div className="space-y-3">
                     {[
-                      { word: "medicare enrollment", count: 8450, ctr: "13.6%" },
-                      { word: "part a hospital cost", count: 6200, ctr: "12.9%" },
-                      { word: "medigap plans 2026", count: 4100, ctr: "10.5%" },
-                      { word: "medicare advantage rules", count: 3800, ctr: "12.2%" },
+                      { word: "preventive care", count: 8450, ctr: "13.6%" },
+                      { word: "heart health guide", count: 6200, ctr: "12.9%" },
+                      { word: "nutrition plan", count: 5100, ctr: "12.4%" },
+                      { word: "mental health exercises", count: 3800, ctr: "12.2%" },
                       { word: "prescription deductible", count: 2500, ctr: "9.8%" }
                     ].map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center text-xs">
@@ -3350,8 +3350,8 @@ function AdminContent() {
                       className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
                     >
                       <option value="General">General</option>
-                      <option value="Medicare Parts">Medicare Parts</option>
-                      <option value="Enrollment">Enrollment</option>
+                      <option value="Preventive Care">Preventive Care</option>
+                      <option value="Nutrition">Nutrition</option>
                       <option value="Costs">Costs</option>
                     </select>
                   </div>
@@ -3363,7 +3363,7 @@ function AdminContent() {
                       required
                       value={faqQuestion}
                       onChange={(e) => setFaqQuestion(e.target.value)}
-                      placeholder="What is Medicare Part A?"
+                      placeholder="What is Preventive Care?"
                       className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
                     />
                   </div>
@@ -3375,7 +3375,7 @@ function AdminContent() {
                       rows={6}
                       value={faqAnswer}
                       onChange={(e) => setFaqAnswer(e.target.value)}
-                      placeholder="Medicare Part A covers inpatient hospital stays..."
+                      placeholder="Preventive care involves regular checkups..."
                       className="w-full bg-[#FDF6EC]/20 border border-[#C9A15A]/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48]"
                     />
                   </div>

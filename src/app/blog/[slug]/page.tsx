@@ -39,7 +39,7 @@ export default function BlogPostDetail(props: PageProps) {
 
   // Comments state
   const [comments, setComments] = useState<Array<{name: string, date: string, text: string}>>([
-    { name: "Sarah K.", date: "July 24, 2026", text: "This guide on Medicare Part A is extremely detailed. The table of benefits helped me understand when to sign up." },
+    { name: "Sarah K.", date: "July 24, 2026", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do." },
     { name: "Robert M.", date: "July 28, 2026", text: "Very helpful overview. I shared this with my parents who are approaching retirement age." }
   ]);
   const [commentName, setCommentName] = useState("");
@@ -113,7 +113,7 @@ export default function BlogPostDetail(props: PageProps) {
         <Navbar />
         <div className="flex-grow max-w-md mx-auto text-center py-24 px-4 space-y-4">
           <h2 className="text-2xl font-bold text-[#113F48]">Guide Not Found</h2>
-          <p className="text-stone-500">The Medicare guide you are looking for does not exist or has been removed.</p>
+          <p className="text-stone-500">The health guide you are looking for does not exist or has been removed.</p>
           <Link href="/blog" className="inline-flex items-center text-[#C9A15A] hover:underline font-semibold text-sm">
             <ChevronLeft className="h-4 w-4" /> Back to Guides
           </Link>
@@ -212,7 +212,7 @@ export default function BlogPostDetail(props: PageProps) {
               <div className="space-y-1">
                 <span className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Medical Integrity Notice</span>
                 <p className="text-[11px] text-stone-600 leading-relaxed">
-                  This educational guide is not clinical medical advice. Medicare guidelines, cost-shares, and coverage thresholds are subject to yearly policy modifications. Speak to a certified health insurance coordinator before selecting coverage options.
+                  This educational guide is not clinical medical advice. Health guidelines, cost-shares, and coverage thresholds are subject to yearly policy modifications. Speak to a certified healthcare coordinator before selecting coverage options.
                 </p>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function BlogPostDetail(props: PageProps) {
             <div className="border-t border-stone-100 pt-6 space-y-3">
               <h4 className="font-bold text-[#113F48] text-sm">References &amp; Resource Guides</h4>
               <ol className="list-decimal pl-5 text-[11px] text-stone-500 space-y-1 font-medium">
-                <li>Centers for Medicare &amp; Medicaid Services (CMS). <a href="https://www.cms.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">Official Medicare Cost Indices (2026)</a>.</li>
+                <li>National Institutes of Health (NIH). <a href="https://www.nih.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">Official Health Indices (2026)</a>.</li>
                 <li>U.S. Department of Health and Human Services (HHS). <a href="https://www.hhs.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">National Senior Health Coverage Statistics</a>.</li>
               </ol>
             </div>
@@ -305,7 +305,7 @@ export default function BlogPostDetail(props: PageProps) {
                   rows={3}
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
-                  placeholder="Share your thoughts or questions about this Medicare guide..."
+                  placeholder="Share your thoughts or questions about this health guide..."
                   className="w-full bg-[#FDFBF7] border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                 />
                 <button

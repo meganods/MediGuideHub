@@ -37,9 +37,9 @@ export default function FAQPage() {
             <div className="inline-flex items-center justify-center w-14 h-14 bg-white border border-stone-200 rounded-2xl shadow-sm mx-auto">
               <HelpCircle className="h-7 w-7 text-[#C9A15A]" />
             </div>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Medicare FAQ</h1>
-            <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
-              Answers to the most common questions about Medicare eligibility, enrollment windows, coverage types, and costs — written in plain language by our team of healthcare policy advisors.
+            <h1 className="text-4xl font-extrabold text-[#113F48]">Healthcare FAQ</h1>
+            <p className="text-stone-500 max-w-2xl text-sm leading-relaxed">
+              Answers to the most common questions about healthcare wellness, preventive care, nutrition, and mental health — written in plain language by our team of healthcare policy advisors.
             </p>
           </div>
         </section>
@@ -103,28 +103,28 @@ export default function FAQPage() {
         {/* Extra Static FAQs (AdSense content padding) */}
         <section className="py-14 bg-[#F9FAFB] border-t border-stone-100">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-extrabold text-[#113F48] mb-8">More Medicare Questions Answered</h2>
+            <h2 className="text-2xl font-extrabold text-[#113F48] mb-8">More Healthcare Questions Answered</h2>
             <div className="space-y-4">
               {[
                 {
-                  q: "Can I keep my current doctors if I switch to Medicare Advantage?",
-                  a: "Not necessarily. Medicare Advantage plans have provider networks (HMO or PPO), which means your current doctors must participate in the plan's network for you to receive covered services. Always check the plan's provider directory before enrolling. If you see a specialist regularly, verify they are in-network. Original Medicare (Parts A and B), by contrast, allows you to see any doctor in the US who accepts Medicare — providing much broader provider flexibility."
+                  q: "What is preventive healthcare and why is it important?",
+                  a: "Preventive healthcare focuses on maintaining wellness rather than treating illness. It includes routine check-ups, immunizations, and screenings designed to prevent health problems before they occur. Catching conditions early often leads to better outcomes and lower healthcare costs over time."
                 },
                 {
-                  q: "What happens if I miss my Medicare Initial Enrollment Period?",
-                  a: "If you miss your Initial Enrollment Period (IEP) — the 7-month window around your 65th birthday — you may face late enrollment penalties and have to wait for a General Enrollment Period (January 1 – March 31), with coverage beginning July 1. For Part B, the late penalty is 10% added to your premium permanently for every 12-month period you delayed enrollment without qualifying coverage from an employer. Part D carries a similar ongoing penalty calculated differently. Exceptions exist if you had creditable coverage through an employer."
+                  q: "How often should I get a full medical checkup?",
+                  a: "While the traditional recommendation was an annual physical, many experts now suggest that the frequency of checkups should depend on your age, risk factors, and current health status. However, for adults over 50, an annual checkup is generally recommended to screen for age-related conditions."
                 },
                 {
-                  q: "What is creditable coverage and why does it matter for Medicare?",
-                  a: "Creditable coverage refers to prescription drug coverage (Part D equivalent) or health insurance from an employer or union that is as good as or better than standard Medicare coverage. If you have creditable coverage, you can delay Medicare enrollment without incurring late penalties. Your employer must provide you with a written notice of whether your coverage is creditable each year. Keep this documentation carefully — you will need it when you eventually enroll in Medicare Part D."
+                  q: "How does mental health affect physical health?",
+                  a: "Mental and physical health are deeply connected. Chronic stress, depression, or anxiety can negatively impact your immune system, increase the risk of heart disease, and cause gastrointestinal issues. Conversely, regular physical exercise and a healthy diet can significantly improve mood and cognitive function."
                 },
                 {
-                  q: "What is the Medicare Savings Program?",
-                  a: "Medicare Savings Programs (MSPs) are state-administered programs that help people with limited income and resources pay for Medicare costs. Depending on your income level, the program may pay your Part A and/or Part B premiums, deductibles, and coinsurance. There are four types: Qualified Medicare Beneficiary (QMB), Specified Low-Income Medicare Beneficiary (SLMB), Qualifying Individual (QI), and Qualified Disabled and Working Individuals (QDWI). Contact your state Medicaid office or SHIP counselor to learn if you qualify."
+                  q: "What is the difference between a generic and a brand-name drug?",
+                  a: "Generic drugs have the same active ingredients, strength, dosage form, and route of administration as their brand-name counterparts. They are rigorously tested by the FDA to ensure they are just as safe and effective. The main difference is typically the cost, as generics are usually much cheaper."
                 },
                 {
-                  q: "Does Medicare cover international travel medical expenses?",
-                  a: "Generally, Original Medicare does not cover healthcare you receive outside the United States and its territories. There are very limited exceptions for emergencies when a foreign hospital is closer than a US hospital (such as in certain US border regions). Some Medigap supplement plans (Plans C, D, G, M, and N) include a foreign travel emergency benefit that covers 80% of medically necessary emergency care abroad, up to a lifetime maximum of $50,000 after a $250 annual deductible. If you travel internationally, review Medigap options or consider a separate travel health insurance policy."
+                  q: "How can I improve my cardiovascular health?",
+                  a: "Improving heart health involves a combination of lifestyle choices: eating a diet rich in fruits, vegetables, and whole grains, exercising for at least 150 minutes a week, managing stress, avoiding smoking, and getting regular health screenings to check blood pressure and cholesterol levels."
                 },
               ].map((item, i) => {
                 const id = `static-${i}`;
@@ -160,7 +160,7 @@ export default function FAQPage() {
                 <PhoneCall className="h-4 w-4" /> Ask Our Team
               </Link>
               <Link href="/blog" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold text-[#113F48] bg-white hover:bg-[#F9FAFB] border border-stone-200 hover:border-[#C9A15A] rounded-xl transition-all text-sm">
-                <BookOpen className="h-4 w-4" /> Browse Medicare Guides
+                <BookOpen className="h-4 w-4" /> Browse Healthcare Guides
               </Link>
             </div>
           </div>

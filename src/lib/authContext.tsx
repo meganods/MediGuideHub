@@ -36,6 +36,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide.com";
 const DEFAULT_ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@1234";
 
+const ADMIN_EMAILS = [
+  DEFAULT_ADMIN_EMAIL.toLowerCase(),
+  "vishalratanshakya@gmail.com"
+];
+
+const isAdminEmail = (email?: string | null): boolean => {
+  if (!email) return false;
+  return ADMIN_EMAILS.includes(email.trim().toLowerCase());
+};
+
 const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null => {
   if (email.trim().toLowerCase() !== DEFAULT_ADMIN_EMAIL || pass !== DEFAULT_ADMIN_PASSWORD) {
     return null;
@@ -85,12 +95,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     authUser: { uid: string; email?: string | null; displayName?: string | null },
     role: UserProfile["role"] = "user"
   ): Promise<UserProfile> => {
+    const isUserAdmin = isAdminEmail(authUser.email);
     const existing = await getUserProfile(authUser.uid);
     if (existing) {
+      if (isUserAdmin && existing.role !== "admin") {
+        existing.role = "admin";
+        try {
+          await saveUserProfile(existing);
+        } catch (e) {}
+      }
       return existing;
     }
 
-    const newProfile = buildProfileFromAuthUser(authUser, role);
+    const targetRole = isUserAdmin ? "admin" : role;
+    const newProfile = buildProfileFromAuthUser(authUser, targetRole);
     try {
       await saveUserProfile(newProfile);
     } catch (error) {
@@ -114,7 +132,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (fbUser) {
           const profile = await ensureProfileForAuthUser(
             fbUser,
-            fbUser.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL.toLowerCase() ? "admin" : "user"
+            isAdminEmail(fbUser.email) ? "admin" : "user"
           );
           localStorage.setItem("mediguide_current_user", JSON.stringify(profile));
           setUser(profile);

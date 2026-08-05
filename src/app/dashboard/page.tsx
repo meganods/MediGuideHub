@@ -120,7 +120,7 @@ function DashboardContent() {
   // Profile editable fields
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
-  const [bio, setBio] = useState("Proactive Medicare Explorer & health enthusiast.");
+  const [bio, setBio] = useState("Proactive Health Explorer & wellness enthusiast.");
   const [country, setCountry] = useState("India");
   const [language, setLanguage] = useState("English");
   const [timezone, setTimezone] = useState("IST (Indian Standard Time)");
@@ -527,7 +527,7 @@ function DashboardContent() {
                 <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Welcome back</span>
                   <h2 className="text-2xl font-extrabold text-[#113F48] mt-1">Hello, {displayName || "Health Reader"}!</h2>
-                  <p className="text-xs text-stone-500 mt-1">Manage your saved Medicare documents, interests, and profile privacy preferences.</p>
+                  <p className="text-xs text-stone-500 mt-1">Manage your saved health documents, interests, and profile privacy preferences.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -549,11 +549,10 @@ function DashboardContent() {
                   <h4 className="font-bold text-sm text-[#113F48]">Continue Reading</h4>
                   <div className="border border-stone-100 rounded-xl p-4 flex justify-between items-center bg-[#FDFBF7]">
                     <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-[#C9A15A] uppercase">Medicare Enrollment Periods</span>
-                      <p className="text-xs font-bold text-[#113F48]">Avoid Late Enrollment Penalties</p>
-                      <span className="text-[9px] text-stone-400 block">Progress: 85% completed</span>
+                      <span className="text-[10px] font-bold text-[#C9A15A] uppercase">Health Checkups</span>
+                      <h3 className="font-extrabold text-[#113F48] text-lg">Understanding Preventive Care</h3>
                     </div>
-                    <Link href="/blog/medicare-enrollment-periods" className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4.5 py-2 rounded-xl transition-all">Resume</Link>
+                    <Link href="/blog/preventive-care-guide" className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4.5 py-2 rounded-xl transition-all">Resume</Link>
                   </div>
                 </div>
 

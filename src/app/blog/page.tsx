@@ -98,7 +98,7 @@ export default function BlogIndex() {
               Empowering Health Literacy with Medical Integrity
             </h1>
             <p className="text-stone-600 max-w-2xl mx-auto text-sm leading-relaxed">
-              Objective clinical research guides, healthcare policy updates, and Medicare comparisons. Fact-checked by medical professionals.
+              Objective clinical research guides, healthcare policy updates, and health plan comparisons. Fact-checked by medical professionals.
             </p>
 
             {/* Direct Search Bar */}
@@ -238,9 +238,9 @@ export default function BlogIndex() {
                             </h4>
                             <p className="text-stone-500 text-xs leading-relaxed line-clamp-3">{post.summary}</p>
                           </div>
-                          <div className="pt-3 border-t border-stone-100 flex justify-between items-center text-xs">
-                            <span className="text-stone-500 font-medium">By {post.author}</span>
-                            <Link href={`/blog/${post.slug}`} className="text-[#C9A15A] font-bold hover:underline">Read Guide</Link>
+                          <div className="pt-4 border-t border-stone-100 flex justify-between items-center mt-2">
+                            <span className="text-stone-500 text-xs font-medium mt-1">By {post.author}</span>
+                            <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                           </div>
                         </div>
                       </article>
@@ -319,7 +319,7 @@ export default function BlogIndex() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-6">
             <h3 className="text-3xl font-extrabold tracking-tight">Stay Updated on Healthcare Guidelines</h3>
             <p className="text-stone-300 max-w-md mx-auto text-xs">
-              Subscribe to the MediGuideHub newsletter to receive latest Medicare updates, clinical reports, and policy modifications directly in your inbox.
+              Subscribe to the MediGuideHub newsletter to receive latest wellness updates, clinical reports, and health modifications directly in your inbox.
             </p>
             <form className="max-w-md mx-auto flex gap-2">
               <input

@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MediGuide Hub - Your Trusted Medicare Resource",
-  description: "Learn about Medicare plans, enrollment periods, eligibility, coverage options, and make informed healthcare decisions.",
+  title: "MediGuide Hub - Your Trusted Healthcare Resource",
+  description: "Learn about healthcare plans, wellness topics, preventive care, nutrition, and make informed healthcare decisions.",
 };
 
 export default function RootLayout({

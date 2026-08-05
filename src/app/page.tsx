@@ -43,10 +43,10 @@ export default function Home() {
     async function loadData() {
       const allFaqs = await getFAQs();
       setFaqs(allFaqs.length > 0 ? allFaqs : [
-        { id: "faq-1", question: "What is MediGuideHub?", answer: "MediGuideHub is an independent, free educational resource platform built to help seniors and patients understand healthcare policies, Medicare insurance options, and medical wellness guidelines.", category: "General" },
+        { id: "faq-1", question: "What is MediGuideHub?", answer: "MediGuideHub is an independent, free educational resource platform built to help people understand healthcare policies and medical wellness guidelines.", category: "General" },
         { id: "faq-2", question: "Is the information free?", answer: "Yes, all guide materials, comparison charts, and editorial reviews on MediGuideHub are 100% free to read without advertisements or registration walls.", category: "General" },
         { id: "faq-3", question: "Is this medical advice?", answer: "No, all articles are for educational and information purposes only. They are not a substitute for clinical diagnostics or licensed health coordinator advice.", category: "General" },
-        { id: "faq-4", question: "How often is content updated?", answer: "Our research editors review all resources quarterly, updating the cost indices and Medicare rules as HHS or CMS issues new premium regulations.", category: "General" },
+        { id: "faq-4", question: "How often is content updated?", answer: "Our research editors review all resources quarterly, updating the guidelines as new health regulations are issued.", category: "General" },
         { id: "faq-5", question: "How can I contact MediGuideHub?", answer: "You can reach out to our team directly via the contact form on our /contact page. We aim to respond within 24-48 business hours.", category: "General" }
       ]);
       const allPosts = await getPosts();
@@ -114,10 +114,10 @@ export default function Home() {
                 ✓ Clinically Fact-Checked &amp; Unbiased
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#113F48] leading-tight">
-                Objective Medicare &amp; <span className="text-[#C9A15A]">Health Guidelines</span>
+                Objective Healthcare &amp; <span className="text-[#C9A15A]">Wellness Guidelines</span>
               </h1>
               <p className="text-sm md:text-base text-stone-500 font-normal leading-relaxed max-w-xl">
-                We make healthcare options accessible. Explore evidence-based guides on Medicare Parts, wellness choices, and senior care policies review.
+                We make healthcare options accessible. Explore evidence-based guides on preventive care, wellness choices, and mental health resources.
               </p>
 
               {/* Direct Search Bar */}
@@ -155,9 +155,9 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow shadow-[#113F48]/10 text-xs"
+                  className="inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow-lg shadow-[#113F48]/10 text-base"
                 >
-                  Read Healthcare Guides <ArrowRight className="ml-1.5 h-4 w-4" />
+                  Read Healthcare Guides <ArrowRight className="ml-1.5 h-5 w-5" />
                 </Link>
                 <Link
                   href="/about"
@@ -182,8 +182,8 @@ export default function Home() {
                 </div>
                 <div className="h-px bg-stone-100" />
                 <ul className="space-y-2.5 text-xs text-stone-600 font-medium">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#C9A15A]" /> Free plan reviews</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#C9A15A]" /> Updated 2026 Medicare policies</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#C9A15A]" /> Free health reviews</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#C9A15A]" /> Updated 2026 wellness policies</li>
                   <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#C9A15A]" /> Zero referral bias</li>
                 </ul>
               </div>
@@ -210,7 +210,7 @@ export default function Home() {
               { title: "Heart Health", desc: "Cardiovascular reviews and policy indicators", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Women's Health", desc: "Dedicated resources for female health needs", icon: <Users className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Children's Health", desc: "Pediatric indices and vaccination guides", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" /> },
-              { title: "Senior Health", desc: "Senior benefit guides and Medicare advice", icon: <Award className="h-5 w-5 text-[#C9A15A]" /> }
+              { title: "Senior Health", desc: "Senior benefit guides and wellness advice", icon: <Award className="h-5 w-5 text-[#C9A15A]" /> }
             ].map((card, i) => (
               <div key={i} className="bg-[#FDFBF7] border border-stone-200 rounded-2xl p-6 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/15 transition-all text-center space-y-2">
                 <div className="bg-[#C9A15A]/10 w-fit p-2 rounded-xl mx-auto">{card.icon}</div>
@@ -249,9 +249,9 @@ export default function Home() {
                     </h4>
                     <p className="text-stone-500 text-xs line-clamp-3 leading-relaxed">{post.summary}</p>
                   </div>
-                  <div className="p-5 pt-3 border-t border-stone-100 flex justify-between items-center text-xs">
-                    <span className="text-stone-500">By {post.author}</span>
-                    <Link href={`/blog/${post.slug}`} className="text-[#C9A15A] font-bold hover:underline">Read Guide</Link>
+                  <div className="p-5 pt-3 border-t border-stone-100 flex justify-between items-center">
+                    <span className="text-stone-500 text-xs mt-1">By {post.author}</span>
+                    <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                   </div>
                 </article>
               ))}
@@ -355,7 +355,7 @@ export default function Home() {
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-6">
           <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Stay Updated with Trusted Healthcare Information</h3>
           <p className="text-stone-300 max-w-md mx-auto text-xs leading-relaxed">
-            Get E-E-A-T reviewed guides, Medicare policy updates, and important health advisories. No advertisements.
+            Get E-E-A-T reviewed guides, wellness policy updates, and important health advisories. No advertisements.
           </p>
           <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto flex gap-2">
             <input

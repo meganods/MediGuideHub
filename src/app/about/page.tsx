@@ -54,7 +54,7 @@ export default function AboutPage() {
     {
       icon: <Sparkles className="h-6 w-6 text-[#C9A15A]" />,
       title: "Continuous Improvement",
-      desc: "Medicare guidelines, policy rules, and medical practices update constantly. We update our articles regularly.",
+      desc: "Healthcare guidelines, policy rules, and medical practices update constantly. We update our articles regularly.",
     },
   ];
 

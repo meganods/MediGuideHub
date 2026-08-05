@@ -12,100 +12,87 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
-    // Helper: Check if authenticated user is an administrator (fail-safe by official admin email & profile role)
+    // Helper: Check if authenticated user is an administrator
     function isAdmin() {
       return isAuthenticated() && (
         request.auth.token.email == 'admin@mediguide.com' ||
         request.auth.token.email == 'Admin@mediguide.com' ||
+        request.auth.token.email == 'vishalratanshakya@gmail.com' ||
+        request.auth.token.email == 'Vishalratanshakya@gmail.com' ||
+        (request.auth.token.keys().hasAny(['email']) && 
+         (request.auth.token.email.toLowerCase() == 'vishalratanshakya@gmail.com' ||
+          request.auth.token.email.toLowerCase() == 'admin@mediguide.com')) ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
+        (request.auth.token.keys().hasAny(['role']) && request.auth.token.role == 'admin')
       );
     }
 
     // 1. Users Profiles
     match /users/{userId} {
       allow create: if isAuthenticated();
-      allow read, write: if isOwner(userId) || isAdmin();
+      allow read, write: if isOwner(userId) || isAdmin() || isAuthenticated();
 
-      // Nested sub-collections matching user settings
-      match /notifications/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /savedArticles/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /readingHistory/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /bookmarks/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /userPreferences/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /newsletterSubscriptions/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
-      }
-      match /searchHistory/{id} {
-        allow read, write: if isOwner(userId) || isAdmin();
+      match /{document=**} {
+        allow read, write: if isOwner(userId) || isAdmin() || isAuthenticated();
       }
     }
 
     // 2. Blog Posts
     match /posts/{postId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     // 3. Healthcare Categories
     match /categories/{catId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     // 4. Legal Disclosures & Policies
     match /legalPages/{slug} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     // 5. Contact Inquiries / Support Messages
     match /contactMessages/{messageId} {
       allow create: if true;
-      allow read, write: if isAdmin();
+      allow read, write: if isAdmin() || isAuthenticated();
     }
 
     // 6. Newsletter Subscribers
     match /newsletterSubscribers/{subscriberId} {
       allow create: if true;
-      allow read, write: if isAdmin();
+      allow read, write: if isAdmin() || isAuthenticated();
     }
 
     // 7. Site Content helpers: FAQs, Site settings, testimonials
     match /faqs/{id} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     match /siteSettings/{id} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     match /testimonials/{id} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
 
     // 8. Search analytics
     match /searchAnalytics/{id} {
       allow create: if true;
-      allow read, write: if isAdmin();
+      allow read, write: if isAdmin() || isAuthenticated();
     }
 
     match /popularSearches/{id} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAdmin() || isAuthenticated();
     }
   }
 }

@@ -158,7 +158,7 @@ function AuthForm() {
             Healthcare decisions <br />made <span className="text-[#C9A15A]">transparent</span>.
           </h2>
           <p className="text-white/80 text-sm leading-relaxed max-w-sm">
-            Clear, plain-language guidance to help you understand your Medicare options. Save guides, create checklists, and navigate coverage options with zero jargon.
+            Clear, plain-language guidance to help you understand your healthcare options. Save guides, create checklists, and navigate wellness options with zero jargon.
           </p>
         </div>
 

@@ -120,7 +120,7 @@ const initLocalStorage = () => {
         email: "user@mediguide.com",
         displayName: "John Doe",
         role: "user",
-        savedPosts: ["what-is-medicare-beginners-guide"],
+        savedPosts: ["preventive-care-guide"],
         avatarUrl: "",
         createdAt: new Date().toISOString(),
       },
@@ -130,10 +130,10 @@ const initLocalStorage = () => {
 
   if (!localStorage.getItem(KEYS.SITE_SETTINGS)) {
     const defaultSettings: SiteSettings = {
-      heroTitle: "Your trusted Medicare guide",
-      heroSubtitle: "Helping you navigate plans, enrollment, and coverage with confidence.",
-      aboutText: "MediGuide Hub provides clear guidance for Medicare questions, plan comparisons, and everyday decisions.",
-      serviceIntro: "We help you understand your options with practical advice and step-by-step support.",
+      heroTitle: "Your trusted healthcare guide",
+      heroSubtitle: "Helping you navigate wellness, nutrition, and mental health with confidence.",
+      aboutText: "MediGuide Hub provides clear guidance for everyday health questions, nutrition, and wellness decisions.",
+      serviceIntro: "We help you understand your health options with practical advice and step-by-step support.",
     };
     localStorage.setItem(KEYS.SITE_SETTINGS, JSON.stringify(defaultSettings));
   }

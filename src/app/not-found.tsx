@@ -52,7 +52,7 @@ export default function NotFound() {
             <div className="bg-white border border-stone-200 p-4 rounded-xl space-y-2">
               <span className="text-[9px] font-bold text-stone-400 uppercase tracking-wide">Popular Guides</span>
               <ul className="text-xs space-y-1.5 font-semibold text-[#113F48]">
-                <li><Link href="/blog" className="hover:text-[#C9A15A] flex items-center gap-1">Medicare Parts <ArrowRight className="h-3 w-3" /></Link></li>
+                <li><Link href="/blog" className="hover:text-[#C9A15A] flex items-center gap-1">Health Topics <ArrowRight className="h-3 w-3" /></Link></li>
                 <li><Link href="/blog" className="hover:text-[#C9A15A] flex items-center gap-1">Enrollment Periods <ArrowRight className="h-3 w-3" /></Link></li>
               </ul>
             </div>

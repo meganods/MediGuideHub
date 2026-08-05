@@ -264,7 +264,7 @@ function SearchResultsContent() {
           {/* Popular searches tags */}
           <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold text-stone-500">
             <span>Popular Searches:</span>
-            {["Diabetes", "Heart Health", "Nutrition", "Medicare Parts", "Preventive Care"].map(tag => (
+            {["Diabetes", "Heart Health", "Nutrition", "Mental Health", "Preventive Care"].map(tag => (
               <button
                 key={tag}
                 onClick={() => {
@@ -356,16 +356,17 @@ function SearchResultsContent() {
                     </h3>
                     <p className="text-xs text-stone-500 line-clamp-2 leading-relaxed">{post.summary}</p>
                     
-                    <div className="pt-2 flex items-center justify-between gap-4 text-[10px] text-stone-400">
+                    <div className="pt-2 flex items-center justify-between gap-4 text-[10px] text-stone-400 border-t border-stone-100 mt-3 pt-3">
                       <div className="flex items-center gap-3">
                         <span className="flex items-center gap-1"><Clock className="h-3 w-3 text-[#C9A15A]" /> {post.readTime}</span>
                         <span>By {post.author}</span>
                       </div>
-                      <div className="flex gap-2">
-                        <button onClick={() => handleSavePost(post.slug)} className="p-1 border border-stone-200 text-stone-400 hover:text-[#113F48] rounded hover:border-[#113F48]" title="Save"><Bookmark className="h-3.5 w-3.5" /></button>
-                        <button onClick={() => handleShareCopy(post.slug)} className="p-1 border border-stone-200 text-stone-400 hover:text-[#C9A15A] rounded hover:border-[#C9A15A]" title="Copy link">
+                      <div className="flex gap-2 items-center">
+                        <button onClick={() => handleSavePost(post.slug)} className="p-1.5 border border-stone-200 text-stone-400 hover:text-[#113F48] rounded hover:border-[#113F48]" title="Save"><Bookmark className="h-3.5 w-3.5" /></button>
+                        <button onClick={() => handleShareCopy(post.slug)} className="p-1.5 border border-stone-200 text-stone-400 hover:text-[#C9A15A] rounded hover:border-[#C9A15A]" title="Copy link">
                           {copiedSlug === post.slug ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Share2 className="h-3.5 w-3.5" />}
                         </button>
+                        <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-[#C9A15A] transition-colors shadow-md ml-2">Read Guide</Link>
                       </div>
                     </div>
                   </div>
@@ -377,7 +378,7 @@ function SearchResultsContent() {
                   <AlertTriangle className="h-12 w-12 text-[#C9A15A] mx-auto opacity-75" />
                   <div className="space-y-1">
                     <h3 className="font-bold text-stone-700">No Matching Healthcare Resources Found</h3>
-                    <p className="text-xs text-stone-400 max-w-sm mx-auto">Verify spelling, adjust reading length filters, or search generic keywords like Medicare.</p>
+                    <p className="text-xs text-stone-400 max-w-sm mx-auto">Verify spelling, adjust reading length filters, or search generic keywords like Nutrition.</p>
                   </div>
                   <div className="flex justify-center gap-2">
                     <button onClick={() => { setSearchQuery(""); router.push("/search"); }} className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4.5 py-2 rounded-xl transition-all">Clear Search</button>

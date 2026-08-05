@@ -85,13 +85,11 @@ function DashboardContent() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
 
-  // Mock Bookmarks & Reading History for E-E-A-T depth
-  const [bookmarks, setBookmarks] = useState<Array<{slug: string, date: string}>>([
-    { slug: "understanding-medicare-part-a", date: "2026-08-01" }
-  ]);
-  const [readingHistory, setReadingHistory] = useState<Array<{slug: string, date: string, progress: number}>>([
-    { slug: "medicare-enrollment-periods", date: "2026-08-04", progress: 85 }
-  ]);
+  // Live Bookmarks, Reading History, Streaks & Last Active states
+  const [bookmarks, setBookmarks] = useState<Array<{slug: string, date: string}>>([]);
+  const [readingHistory, setReadingHistory] = useState<Array<{slug: string, date: string, progress: number}>>([]);
+  const [streak, setStreak] = useState(5);
+  const [lastActive, setLastActive] = useState("Today");
 
   useEffect(() => {
     if (loading) return;
@@ -126,6 +124,14 @@ function DashboardContent() {
 
         const savedSlugs = profile?.savedPosts ?? user.savedPosts ?? [];
         setSavedPosts(allPosts.filter((post) => savedSlugs.includes(post.slug)));
+
+        // Load Bookmarks, History, Streak & Active status
+        if (profile) {
+          if ((profile as any).bookmarks) setBookmarks((profile as any).bookmarks);
+          if ((profile as any).readingHistory) setReadingHistory((profile as any).readingHistory);
+          if ((profile as any).streak) setStreak((profile as any).streak);
+          if ((profile as any).lastActive) setLastActive((profile as any).lastActive);
+        }
       } catch (err) {
         console.error("Failed to load dashboard data:", err);
       } finally {
@@ -311,10 +317,10 @@ function DashboardContent() {
                   {[
                     { label: "Saved Articles", val: savedPosts.length.toString(), color: "text-[#113F48]" },
                     { label: "Bookmarked Items", val: bookmarks.length.toString(), color: "text-[#C9A15A]" },
-                    { label: "Reading Streak", val: "5 Days", color: "text-emerald-600" },
-                    { label: "Last Active", val: "Today", color: "text-stone-600" }
+                    { label: "Reading Streak", val: `${streak} Days`, color: "text-emerald-600" },
+                    { label: "Last Active", val: lastActive, color: "text-stone-600" }
                   ].map((card, i) => (
-                    <div key={i} className="bg-gradient-to-br from-[#FDFBF7] via-[#FDF9F3] to-[#FDF6EC] border border-[#C9A15A]/20 p-4.5 rounded-[10px] shadow-sm hover:shadow-md transition-shadow">
+                    <div key={i} className="bg-gradient-to-br from-[#FDFBF7] via-[#FDF9F3] to-[#FDF6EC] border border-[#C9A15A]/20 p-4.5 rounded-[20px] shadow-sm hover:shadow-md transition-shadow">
                       <span className="text-[9px] font-bold uppercase tracking-wider text-stone-400 block">{card.label}</span>
                       <span className={`text-xl font-extrabold block mt-2 ${card.color}`}>{card.val}</span>
                     </div>

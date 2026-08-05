@@ -240,7 +240,6 @@ function DashboardContent() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] flex flex-col justify-between">
-      <Navbar />
 
       <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -782,7 +781,6 @@ function DashboardContent() {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }

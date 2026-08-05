@@ -314,7 +314,7 @@ export default function Home() {
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Workflow Integrity</span>
             <h2 className="text-2xl font-extrabold text-[#113F48]">Our Rigorous Editorial Review</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { num: "01", step: "Research", desc: "Gathering federal updates" },
               { num: "02", step: "Writing", desc: "Simplifying guidelines" },
@@ -323,12 +323,12 @@ export default function Home() {
               { num: "05", step: "Publishing", desc: "Deploying pages cleanly" },
               { num: "06", step: "Regular Updates", desc: "Reviewing every quarter" }
             ].map((e, idx) => (
-              <div key={idx} className="bg-[#FDFBF7] border border-stone-200 p-6 rounded-2xl space-y-2 text-center flex flex-col justify-between min-h-[140px]">
+              <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-6.5 space-y-2.5 shadow-sm hover:border-[#C9A15A] hover:bg-[#FDF6EC]/10 transition-all flex flex-col justify-between min-h-[150px]">
                 <div>
-                  <span className="text-2xl font-black text-[#C9A15A]/45 block mb-1">{e.num}</span>
-                  <h4 className="font-extrabold text-sm text-[#113F48]">{e.step}</h4>
+                  <span className="text-2xl font-black text-[#C9A15A]/45 block mb-1.5">{e.num}</span>
+                  <h4 className="font-extrabold text-base text-[#113F48]">{e.step}</h4>
                 </div>
-                <p className="text-xs text-stone-500 font-medium leading-normal">{e.desc}</p>
+                <p className="text-sm text-stone-500 leading-relaxed">{e.desc}</p>
               </div>
             ))}
           </div>

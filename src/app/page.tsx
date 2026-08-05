@@ -212,10 +212,10 @@ export default function Home() {
               { title: "Children's Health", desc: "Pediatric indices and vaccination guides", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Senior Health", desc: "Senior benefit guides and Medicare advice", icon: <Award className="h-5 w-5 text-[#C9A15A]" /> }
             ].map((card, i) => (
-              <div key={i} className="bg-[#FDFBF7] border border-stone-200 rounded-2xl p-5 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/15 transition-all text-center space-y-2">
+              <div key={i} className="bg-[#FDFBF7] border border-stone-200 rounded-2xl p-6 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/15 transition-all text-center space-y-2">
                 <div className="bg-[#C9A15A]/10 w-fit p-2 rounded-xl mx-auto">{card.icon}</div>
-                <h4 className="font-bold text-sm text-[#113F48]">{card.title}</h4>
-                <p className="text-[10px] text-stone-500">{card.desc}</p>
+                <h4 className="font-extrabold text-base text-[#113F48]">{card.title}</h4>
+                <p className="text-xs text-stone-500 leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -297,10 +297,10 @@ export default function Home() {
               { title: "Regular Content Updates", desc: "All data schedules are updated quarterly to match local regulations.", icon: <RefreshCcw className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Independent Information", desc: "No affiliation or sponsorships influence our coverage summaries.", icon: <Award className="h-5 w-5 text-[#C9A15A]" /> }
             ].map((trust, idx) => (
-              <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-6 space-y-2 shadow-sm">
+              <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-6.5 space-y-2.5 shadow-sm">
                 <div className="bg-[#C9A15A]/10 w-fit p-2 rounded-xl">{trust.icon}</div>
-                <h4 className="font-extrabold text-sm text-[#113F48]">{trust.title}</h4>
-                <p className="text-xs text-stone-500 leading-relaxed">{trust.desc}</p>
+                <h4 className="font-extrabold text-base text-[#113F48]">{trust.title}</h4>
+                <p className="text-sm text-stone-500 leading-relaxed">{trust.desc}</p>
               </div>
             ))}
           </div>
@@ -323,10 +323,12 @@ export default function Home() {
               { num: "05", step: "Publishing", desc: "Deploying pages cleanly" },
               { num: "06", step: "Regular Updates", desc: "Reviewing every quarter" }
             ].map((e, idx) => (
-              <div key={idx} className="bg-[#FDFBF7] border border-stone-200 p-5 rounded-2xl space-y-2 text-center">
-                <span className="text-xl font-black text-[#C9A15A]/30 block">{e.num}</span>
-                <h4 className="font-bold text-xs text-[#113F48]">{e.step}</h4>
-                <p className="text-[9px] text-stone-400">{e.desc}</p>
+              <div key={idx} className="bg-[#FDFBF7] border border-stone-200 p-6 rounded-2xl space-y-2 text-center flex flex-col justify-between min-h-[140px]">
+                <div>
+                  <span className="text-2xl font-black text-[#C9A15A]/45 block mb-1">{e.num}</span>
+                  <h4 className="font-extrabold text-sm text-[#113F48]">{e.step}</h4>
+                </div>
+                <p className="text-xs text-stone-500 font-medium leading-normal">{e.desc}</p>
               </div>
             ))}
           </div>

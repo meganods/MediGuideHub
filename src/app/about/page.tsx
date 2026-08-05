@@ -130,7 +130,7 @@ export default function AboutPage() {
               </div>
               
               {/* Right Column (Illustration / Image) */}
-              <div className="lg:col-span-5 relative hidden lg:block max-w-sm ml-auto mr-0">
+              <div className="lg:col-span-5 relative hidden lg:block max-w-md ml-auto mr-0">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#113F48]/10 to-[#C9A15A]/10 rounded-[2.5rem] transform translate-x-4 translate-y-4" />
                 <img 
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000" 

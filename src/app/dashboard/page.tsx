@@ -240,6 +240,22 @@ function DashboardContent() {
   // Interests recommendations
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
 
+  const getTabTitle = () => {
+    switch (activeTab) {
+      case "overview": return "Dashboard Home";
+      case "saved": return "Saved Articles";
+      case "history": return "Reading History";
+      case "bookmarks": return "Bookmarks";
+      case "interests": return "Health Interests";
+      case "notifications": return "Notifications";
+      case "newsletter": return "Newsletter Preferences";
+      case "profile": return "Profile Details";
+      case "privacy": return "Privacy Settings";
+      case "account": return "Account Settings";
+      default: return "Patient Dashboard";
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-[#FDFBF7] flex flex-col lg:flex-row relative">
 
@@ -325,7 +341,7 @@ function DashboardContent() {
               >
                 <Menu className="h-5 w-5" />
               </button>
-              <span className="font-extrabold text-sm text-[#113F48]">Patient Dashboard</span>
+              <span className="font-extrabold text-sm text-[#113F48]">{getTabTitle()}</span>
             </header>
             
             {/* VIEW 1: HOME / OVERVIEW */}

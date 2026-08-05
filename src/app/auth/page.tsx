@@ -20,12 +20,12 @@ function AuthForm() {
   const searchParams = useSearchParams();
   const { login, signup, user, forgotPassword, logout, signInWithGoogle } = useAuth();
 
-  const tabParam = searchParams.get("tab") || "signin";
+  const tabParam = searchParams.get("tab") || "signup";
   const redirectParam = searchParams.get("redirect") || "";
   const noticeMessage = searchParams.get("message") || "";
 
   const [activeTab, setActiveTab] = useState<"signin" | "signup">(
-    tabParam === "signup" ? "signup" : "signin"
+    tabParam === "signin" ? "signin" : "signup"
   );
   
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function AuthForm() {
 
   // Sync tab param if it changes in URL
   useEffect(() => {
-    setActiveTab(tabParam === "signup" ? "signup" : "signin");
+    setActiveTab(tabParam === "signin" ? "signin" : "signup");
   }, [tabParam]);
 
   // If user is already logged in, redirect them
@@ -75,7 +75,7 @@ function AuthForm() {
         if (decoded && decoded !== "/dashboard") {
           router.push(decoded);
         } else {
-          router.push("/dashboard");
+          router.push("/");
         }
       } else {
         const newUser = await signup(email, password, name);
@@ -109,7 +109,7 @@ function AuthForm() {
       if (decoded && decoded !== "/dashboard") {
         router.push(decoded);
       } else {
-        router.push("/dashboard");
+        router.push("/");
       }
     } catch (err: any) {
       console.error(err);

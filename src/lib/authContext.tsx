@@ -119,8 +119,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           localStorage.setItem("mediguide_current_user", JSON.stringify(profile));
           setUser(profile);
         } else {
-          localStorage.removeItem("mediguide_current_user");
-          setUser(null);
+          // Keep local fallback admin logged in even if Firebase Auth doesn't have an active session
+          const savedSession = localStorage.getItem("mediguide_current_user");
+          let isLocalAdmin = false;
+          if (savedSession) {
+            try {
+              const parsed = JSON.parse(savedSession);
+              if (parsed && parsed.role === "admin" && parsed.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
+                isLocalAdmin = true;
+              }
+            } catch (e) {}
+          }
+
+          if (!isLocalAdmin) {
+            localStorage.removeItem("mediguide_current_user");
+            setUser(null);
+          }
         }
         setLoading(false);
       });

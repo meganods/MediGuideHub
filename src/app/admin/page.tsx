@@ -153,7 +153,7 @@ function AdminContent() {
       setStats({
         users: allUsers.length,
         posts: allPosts.length,
-        messages: allMsgs.filter((msg) => !msg.read).length,
+        messages: allMsgs.filter((msg) => !msg.replied).length,
         subs: allSubs.length,
         faqs: allFaqs.length,
       });
@@ -184,7 +184,7 @@ function AdminContent() {
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const msgs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as ContactMessage));
         setMessages(msgs);
-        setStats((prev) => ({ ...prev, messages: msgs.length }));
+        setStats((prev) => ({ ...prev, messages: msgs.filter((msg) => !msg.replied).length }));
       });
       return () => unsubscribe();
     } else {
@@ -192,7 +192,7 @@ function AdminContent() {
       const interval = setInterval(() => {
         const localMsgs = JSON.parse(localStorage.getItem("mediguide_contacts") || "[]") as ContactMessage[];
         setMessages(localMsgs);
-        setStats((prev) => ({ ...prev, messages: localMsgs.length }));
+        setStats((prev) => ({ ...prev, messages: localMsgs.filter((msg) => !msg.replied).length }));
       }, 2000);
       return () => clearInterval(interval);
     }
@@ -208,6 +208,7 @@ function AdminContent() {
     setActiveTab(tab);
     setEditingPost(null);
     setIsAddingPost(false);
+    setIsSidebarOpen(false);
     router.push(`/admin?tab=${tab}`);
   };
 
@@ -416,29 +417,31 @@ function AdminContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB]">
-      <header className="sticky top-0 z-50 bg-white border-b border-stone-200 py-4 px-6 shadow-sm">
+    <div className="min-h-screen bg-[#F9FAFB] overflow-x-hidden">
+      <header className="sticky top-0 z-50 bg-white border-b border-stone-200 py-4 px-4 sm:px-6 shadow-sm">
         <div className="w-full mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl border border-stone-200 text-[#113F48]"
+              className="lg:hidden p-2 rounded-xl border border-stone-200 text-[#113F48] flex-shrink-0"
             >
               <Menu className="h-5 w-5" />
             </button>
-            <div className="bg-[#113F48] p-2 rounded-xl">
+            <div className="bg-[#113F48] p-2 rounded-xl flex-shrink-0">
               <Shield className="h-5 w-5 text-[#C9A15A]" />
             </div>
-            <span className="font-bold text-lg text-[#113F48] tracking-tight flex items-center">
-              MediGuide Hub <span className="text-[#C9A15A] text-[10px] font-semibold uppercase tracking-wider bg-[#C9A15A]/10 border border-[#C9A15A]/20 px-2 py-0.5 rounded ml-2">Admin Portal</span>
+            <span className="font-bold text-sm sm:text-base md:text-lg text-[#113F48] tracking-tight flex items-center gap-1.5 min-w-0 truncate">
+              <span className="hidden sm:inline truncate">MediGuide Hub</span>
+              <span className="sm:hidden">MediGuide</span>
+              <span className="hidden sm:inline-block text-[#C9A15A] text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider bg-[#C9A15A]/10 border border-[#C9A15A]/20 px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">Admin Portal</span>
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             {/* Notification Bell */}
             <div className="relative" ref={notificationRef}>
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="p-2 text-stone-600 hover:text-[#113F48] bg-stone-50 hover:bg-stone-100 rounded-xl transition-colors border border-stone-200 relative"
+                className="p-2 text-stone-600 hover:text-[#113F48] bg-stone-50 hover:bg-stone-100 rounded-xl transition-colors border border-stone-200 relative flex-shrink-0"
                 aria-label="Notifications"
               >
                 <Bell className="h-5 w-5" />
@@ -490,7 +493,7 @@ function AdminContent() {
                 await logout();
                 router.push("/admin/login");
               }}
-              className="bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold px-3 py-2 rounded-xl transition-all"
+              className="bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold px-3 py-2 rounded-xl transition-all whitespace-nowrap flex-shrink-0"
             >
               Log Out
             </button>
@@ -626,7 +629,7 @@ function AdminContent() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 <div className="bg-gradient-to-br from-[#113F48] via-[#1B5A64] to-[#C9A15A] text-white p-5 rounded-2xl shadow-sm transition-all duration-200 ease-out hover:-translate-y-[2px]">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold text-white/90">Total users</span>

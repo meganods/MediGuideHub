@@ -243,17 +243,8 @@ function DashboardContent() {
   return (
     <div className="min-h-screen w-full bg-[#FDFBF7] flex flex-col lg:flex-row relative">
 
-      {/* Mobile Sidebar Backdrop Overlay */}
-      {isMobileSidebarOpen && (
-        <div className="fixed inset-0 z-40 bg-black/40 lg:hidden" onClick={() => setIsMobileSidebarOpen(false)} />
-      )}
-
       {/* Dashboard Navigation Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-80 lg:min-h-screen lg:flex ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
-        <div className="flex justify-between items-center lg:hidden">
-          <span className="font-bold text-xs uppercase tracking-widest text-[#113F48]">Dashboard Menu</span>
-          <button onClick={() => setIsMobileSidebarOpen(false)} className="p-1 rounded hover:bg-stone-100 text-stone-500"><X className="h-5 w-5" /></button>
-        </div>
+      <aside className="hidden lg:flex w-80 min-h-screen bg-white border-r border-stone-200 flex-col p-6 space-y-6 flex-shrink-0">
         <div className="bg-stone-50 border border-stone-100 p-5 rounded-2xl text-center space-y-4">
               <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center">
                 {avatarPreview ? (
@@ -299,6 +290,12 @@ function DashboardContent() {
                   {tab.label}
                 </button>
               ))}
+              <Link
+                href="/"
+                className="w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl text-[#C9A15A] hover:bg-[#C9A15A]/10 transition-all text-left"
+              >
+                <Globe className="h-4 w-4" /> Go to Website
+              </Link>
               <button
                 onClick={() => logout().then(() => router.push("/"))}
                 className="w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl text-red-600 hover:bg-red-50 transition-all text-left"
@@ -311,17 +308,46 @@ function DashboardContent() {
           {/* Main Panel Content */}
           <main className="flex-1 p-6 md:p-12 space-y-8 bg-[#FDFBF7]">
             
-            {/* Mobile Header Bar with Sidebar Toggle */}
-            <header className="flex items-center gap-4 lg:hidden border-b border-stone-200 pb-4">
-              <button 
-                onClick={() => setIsMobileSidebarOpen(true)} 
-                className="p-2 rounded-xl border border-stone-200 bg-white text-stone-600 hover:text-[#113F48] hover:border-[#113F48] transition-all"
-                title="Open menu"
+            {/* Mobile Horizontal Navigation Tab Bar */}
+            <div className="flex lg:hidden overflow-x-auto pb-3 gap-2 scrollbar-none border-b border-stone-200 mb-2">
+              {[
+                { id: "overview", label: "Dashboard Home", icon: <Activity className="h-4 w-4" /> },
+                { id: "saved", label: "Saved Articles", icon: <Bookmark className="h-4 w-4" /> },
+                { id: "history", label: "Reading History", icon: <Clock3 className="h-4 w-4" /> },
+                { id: "bookmarks", label: "Bookmarks", icon: <Bookmark className="h-4 w-4 fill-current" /> },
+                { id: "interests", label: "Health Interests", icon: <HeartPulse className="h-4 w-4" /> },
+                { id: "notifications", label: "Notifications", icon: <Bell className="h-4 w-4" /> },
+                { id: "newsletter", label: "Newsletter", icon: <Mail className="h-4 w-4" /> },
+                { id: "profile", label: "Profile Details", icon: <UserIcon className="h-4 w-4" /> },
+                { id: "privacy", label: "Privacy Settings", icon: <Lock className="h-4 w-4" /> },
+                { id: "account", label: "Account Settings", icon: <Settings className="h-4 w-4" /> }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    activeTab === tab.id
+                      ? "bg-[#113F48] text-white"
+                      : "bg-white border border-stone-200 text-stone-600 hover:bg-[#FDF6EC]/30"
+                  }`}
+                >
+                  {tab.icon}
+                  {tab.label}
+                </button>
+              ))}
+              <Link
+                href="/"
+                className="flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-white border border-[#C9A15A]/30 text-[#C9A15A] hover:bg-[#C9A15A]/10 transition-all"
               >
-                <Menu className="h-5 w-5" />
+                <Globe className="h-4 w-4" /> Go to Website
+              </Link>
+              <button
+                onClick={() => logout().then(() => router.push("/"))}
+                className="flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-white border border-red-200 text-red-600 hover:bg-red-50 transition-all"
+              >
+                <LogOut className="h-4 w-4" /> Logout
               </button>
-              <span className="font-extrabold text-sm text-[#113F48]">Patient Dashboard</span>
-            </header>
+            </div>
             
             {/* VIEW 1: HOME / OVERVIEW */}
             {activeTab === "overview" && (

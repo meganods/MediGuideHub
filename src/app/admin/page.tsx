@@ -1156,16 +1156,16 @@ function AdminContent() {
               {/* OVERVIEW STATISTICS CARDS */}
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                 {[
-                  { label: "Total Visitors", val: "145,280", pct: "+12.4%", color: "text-emerald-600" },
-                  { label: "Unique Visitors", val: "98,450", pct: "+8.7%", color: "text-emerald-600" },
-                  { label: "Page Views", val: "310,400", pct: "+15.1%", color: "text-emerald-600" },
-                  { label: "Total Sessions", val: "122,190", pct: "+11.2%", color: "text-emerald-600" },
-                  { label: "Bounce Rate", val: "42.5%", pct: "-2.1%", color: "text-emerald-600" },
-                  { label: "Session Duration", val: "3m 45s", pct: "+0.3m", color: "text-emerald-600" },
-                  { label: "Returning Users", val: "24.2%", pct: "+1.5%", color: "text-emerald-600" },
-                  { label: "Organic Search Share", val: "78.4%", pct: "+4.2%", color: "text-emerald-600" },
-                  { label: "Subscribers", val: stats.subs.toString(), pct: "+9.1%", color: "text-emerald-600" },
-                  { label: "Articles", val: stats.posts.toString(), pct: "Updated", color: "text-stone-400" },
+                  { label: "Total Visitors", val: "0", pct: "0%", color: "text-stone-400" },
+                  { label: "Unique Visitors", val: "0", pct: "0%", color: "text-stone-400" },
+                  { label: "Page Views", val: "0", pct: "0%", color: "text-stone-400" },
+                  { label: "Total Sessions", val: "0", pct: "0%", color: "text-stone-400" },
+                  { label: "Bounce Rate", val: "0%", pct: "0%", color: "text-stone-400" },
+                  { label: "Session Duration", val: "0s", pct: "0%", color: "text-stone-400" },
+                  { label: "Returning Users", val: "0%", pct: "0%", color: "text-stone-400" },
+                  { label: "Organic Search Share", val: "0%", pct: "0%", color: "text-stone-400" },
+                  { label: "Subscribers", val: stats.subs.toString(), pct: "Live", color: "text-emerald-600" },
+                  { label: "Articles", val: stats.posts.toString(), pct: "Live", color: "text-emerald-600" },
                 ].map((card, i) => (
                   <div key={i} className="bg-white border border-[#C9A15A]/15 p-4.5 rounded-2xl shadow-sm space-y-2">
                     <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">{card.label}</span>
@@ -1188,18 +1188,18 @@ function AdminContent() {
                   </div>
                   <div className="flex items-end justify-between h-40 pt-4 border-b border-stone-100">
                     {[
-                      { day: "Mon", val: 75 },
-                      { day: "Tue", val: 88 },
-                      { day: "Wed", val: 92 },
-                      { day: "Thu", val: 85 },
-                      { day: "Fri", val: 78 },
-                      { day: "Sat", val: 45 },
-                      { day: "Sun", val: 52 },
+                      { day: "Mon", val: 0 },
+                      { day: "Tue", val: 0 },
+                      { day: "Wed", val: 0 },
+                      { day: "Thu", val: 0 },
+                      { day: "Fri", val: 0 },
+                      { day: "Sat", val: 0 },
+                      { day: "Sun", val: 0 },
                     ].map((bar, idx) => (
                       <div key={idx} className="flex flex-col items-center gap-2 w-full">
                         <div 
-                          className="w-4 bg-[#113F48] rounded-t hover:bg-[#C9A15A] transition-all" 
-                          style={{ height: `${bar.val}%` }} 
+                          className="w-4 bg-stone-100 rounded-t hover:bg-[#C9A15A] transition-all" 
+                          style={{ height: "4px" }} 
                         />
                         <span className="text-[9px] text-stone-400 font-bold">{bar.day}</span>
                       </div>
@@ -1220,9 +1220,9 @@ function AdminContent() {
                       <span className="text-xs font-bold text-[#113F48]">3 Platforms</span>
                     </div>
                     <ul className="text-[10px] space-y-2 font-semibold text-stone-600">
-                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-[#113F48]" /> Desktop: 62%</li>
-                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-[#C9A15A]" /> Mobile: 34%</li>
-                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-[#0F6E56]" /> Tablet: 4%</li>
+                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-stone-200" /> Desktop: 0%</li>
+                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-stone-200" /> Mobile: 0%</li>
+                      <li className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-stone-200" /> Tablet: 0%</li>
                     </ul>
                   </div>
                 </div>
@@ -1235,10 +1235,10 @@ function AdminContent() {
                   </div>
                   <div className="space-y-3.5 pt-2">
                     {[
-                      { source: "Organic Google Search", pct: 78, color: "bg-[#113F48]" },
-                      { source: "Direct Entry", pct: 12, color: "bg-[#C9A15A]" },
-                      { source: "Newsletter Referrals", pct: 7, color: "bg-[#0F6E56]" },
-                      { source: "Social Sharing", pct: 3, color: "bg-stone-500" },
+                      { source: "Organic Google Search", pct: 0, color: "bg-stone-200" },
+                      { source: "Direct Entry", pct: 0, color: "bg-stone-200" },
+                      { source: "Newsletter Referrals", pct: 0, color: "bg-stone-200" },
+                      { source: "Social Sharing", pct: 0, color: "bg-stone-200" },
                     ].map((src, i) => (
                       <div key={i} className="space-y-1">
                         <div className="flex justify-between text-[10px] font-bold text-stone-600">
@@ -1246,7 +1246,7 @@ function AdminContent() {
                           <span>{src.pct}%</span>
                         </div>
                         <div className="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
-                          <div className={`h-full ${src.color}`} style={{ width: `${src.pct}%` }} />
+                          <div className={`h-full ${src.color}`} style={{ width: "0%" }} />
                         </div>
                       </div>
                     ))}
@@ -1273,11 +1273,11 @@ function AdminContent() {
                       </thead>
                       <tbody className="divide-y divide-stone-50 font-medium text-stone-600">
                         {[
-                          { path: "/", views: "120,400", bounce: "40.2%", time: "3m 12s" },
-                          { path: "/about", views: "45,100", bounce: "38.5%", time: "2m 45s" },
-                          { path: "/contact", views: "28,300", bounce: "51.4%", time: "1m 30s" },
-                          { path: "/privacy-policy", views: "12,000", bounce: "48.2%", time: "4m 10s" },
-                          { path: "/medical-disclaimer", views: "9,500", bounce: "45.0%", time: "3m 50s" },
+                          { path: "/", views: "0", bounce: "0%", time: "0s" },
+                          { path: "/about", views: "0", bounce: "0%", time: "0s" },
+                          { path: "/contact", views: "0", bounce: "0%", time: "0s" },
+                          { path: "/privacy-policy", views: "0", bounce: "0%", time: "0s" },
+                          { path: "/medical-disclaimer", views: "0", bounce: "0%", time: "0s" },
                         ].map((p, i) => (
                           <tr key={i} className="hover:bg-stone-50/50">
                             <td className="py-2.5 font-mono text-[#C9A15A]">{p.path}</td>
@@ -1309,10 +1309,10 @@ function AdminContent() {
                       </thead>
                       <tbody className="divide-y divide-stone-50 font-medium text-stone-600">
                         {[
-                          { query: "preventive care timeline", clicks: "8,450", imps: "62,000", ctr: "13.6%" },
-                          { query: "what is heart health", clicks: "6,200", imps: "48,000", ctr: "12.9%" },
-                          { query: "nutrition plans comparison", clicks: "5,100", imps: "41,000", ctr: "12.4%" },
-                          { query: "mental health exercises", clicks: "3,800", imps: "31,000", ctr: "12.2%" },
+                          { query: "-", clicks: "0", imps: "0", ctr: "0%" },
+                          { query: "-", clicks: "0", imps: "0", ctr: "0%" },
+                          { query: "-", clicks: "0", imps: "0", ctr: "0%" },
+                          { query: "-", clicks: "0", imps: "0", ctr: "0%" },
                         ].map((q, i) => (
                           <tr key={i} className="hover:bg-stone-50/50">
                             <td className="py-2.5 text-stone-700 font-semibold">{q.query}</td>
@@ -1375,11 +1375,11 @@ function AdminContent() {
                   <ul className="text-xs space-y-3.5 text-stone-600">
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Top Performing Category</span>
-                      <p className="text-stone-500">Preventive Care (Generates 45% of total organic views)</p>
+                      <p className="text-stone-500">-</p>
                     </li>
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Best Performing Article</span>
-                      <p className="text-stone-500 truncate">{posts.sort((a,b)=>(b.views||0)-(a.views||0))[0]?.title || "Healthcare Guides"}</p>
+                      <p className="text-stone-500 truncate">{posts.sort((a,b)=>(b.views||0)-(a.views||0))[0]?.title || "-"}</p>
                     </li>
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Search Engine Warnings</span>
@@ -1387,7 +1387,7 @@ function AdminContent() {
                     </li>
                     <li className="space-y-0.5">
                       <span className="font-bold text-[#113F48] block">Content Integrity Status</span>
-                      <p className="text-[#C9A15A] font-semibold">100% of guides updated for 2026 guidelines.</p>
+                      <p className="text-[#C9A15A] font-semibold">100% of guides active.</p>
                     </li>
                   </ul>
                 </div>
@@ -3013,10 +3013,10 @@ function AdminContent() {
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { label: "Total Searches", val: "24,500" },
-                  { label: "Unique Users", val: "18,200" },
-                  { label: "No Result Queries", val: "360" },
-                  { label: "Avg Search Speed", val: "280ms" }
+                  { label: "Total Searches", val: "0" },
+                  { label: "Unique Users", val: "0" },
+                  { label: "No Result Queries", val: "0" },
+                  { label: "Avg Search Speed", val: "0ms" }
                 ].map((stat, i) => (
                   <div key={i} className="bg-white border border-[#C9A15A]/15 p-4.5 rounded-2xl shadow-sm">
                     <span className="text-[9px] font-bold text-stone-400 uppercase block">{stat.label}</span>
@@ -3033,11 +3033,11 @@ function AdminContent() {
                   <h4 className="font-bold text-xs uppercase tracking-wider text-[#113F48] border-b border-stone-100 pb-2">Top Search Keywords</h4>
                   <div className="space-y-3">
                     {[
-                      { word: "preventive care", count: 8450, ctr: "13.6%" },
-                      { word: "heart health guide", count: 6200, ctr: "12.9%" },
-                      { word: "nutrition plan", count: 5100, ctr: "12.4%" },
-                      { word: "mental health exercises", count: 3800, ctr: "12.2%" },
-                      { word: "prescription deductible", count: 2500, ctr: "9.8%" }
+                      { word: "-", count: 0, ctr: "0%" },
+                      { word: "-", count: 0, ctr: "0%" },
+                      { word: "-", count: 0, ctr: "0%" },
+                      { word: "-", count: 0, ctr: "0%" },
+                      { word: "-", count: 0, ctr: "0%" }
                     ].map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center text-xs">
                         <span className="font-semibold text-stone-700">{idx + 1}. {item.word}</span>
@@ -3055,11 +3055,11 @@ function AdminContent() {
                   <h4 className="font-bold text-xs uppercase tracking-wider text-red-600 border-b border-stone-100 pb-2">No Result Queries (Optimize Content)</h4>
                   <div className="space-y-3">
                     {[
-                      { word: "health insurance under 50", count: 145 },
-                      { word: "private dental near me", count: 120 },
-                      { word: "free checkups state list", count: 95 },
-                      { word: "vision deductibles table", count: 70 },
-                      { word: "retiree supplemental drug discount", count: 42 }
+                      { word: "-", count: 0 },
+                      { word: "-", count: 0 },
+                      { word: "-", count: 0 },
+                      { word: "-", count: 0 },
+                      { word: "-", count: 0 }
                     ].map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center text-xs">
                         <span className="font-semibold text-stone-700">{idx + 1}. {item.word}</span>

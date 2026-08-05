@@ -32,6 +32,7 @@ import {
   ArrowRight, 
   CheckCircle2, 
   X, 
+  Menu,
   Bell, 
   Lock, 
   ShieldAlert,
@@ -79,6 +80,7 @@ function DashboardContent() {
   const [uploading, setUploading] = useState(false);
   const [profileSuccess, setProfileSuccess] = useState(false);
   const [profileError, setProfileError] = useState("");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Account settings
   const [password, setPassword] = useState("");
@@ -239,10 +241,19 @@ function DashboardContent() {
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
 
   return (
-    <div className="h-screen w-screen bg-[#FDFBF7] flex overflow-hidden">
+    <div className="h-screen w-screen bg-[#FDFBF7] flex overflow-hidden relative">
+
+      {/* Mobile Sidebar Backdrop Overlay */}
+      {isMobileSidebarOpen && (
+        <div className="fixed inset-0 z-40 bg-black/40 lg:hidden" onClick={() => setIsMobileSidebarOpen(false)} />
+      )}
 
       {/* Dashboard Navigation Sidebar */}
-      <aside className="w-80 h-full bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 flex-shrink-0">
+      <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-80 lg:h-full lg:flex ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
+        <div className="flex justify-between items-center lg:hidden">
+          <span className="font-bold text-xs uppercase tracking-widest text-[#113F48]">Dashboard Menu</span>
+          <button onClick={() => setIsMobileSidebarOpen(false)} className="p-1 rounded hover:bg-stone-100 text-stone-500"><X className="h-5 w-5" /></button>
+        </div>
         <div className="bg-stone-50 border border-stone-100 p-5 rounded-2xl text-center space-y-4">
               <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center">
                 {avatarPreview ? (
@@ -298,7 +309,19 @@ function DashboardContent() {
           </aside>
 
           {/* Main Panel Content */}
-          <main className="flex-1 h-full overflow-y-auto p-8 md:p-12 space-y-8 bg-[#FDFBF7]">
+          <main className="flex-1 h-full overflow-y-auto p-6 md:p-12 space-y-8 bg-[#FDFBF7]">
+            
+            {/* Mobile Header Bar with Sidebar Toggle */}
+            <header className="flex items-center gap-4 lg:hidden border-b border-stone-200 pb-4">
+              <button 
+                onClick={() => setIsMobileSidebarOpen(true)} 
+                className="p-2 rounded-xl border border-stone-200 bg-white text-stone-600 hover:text-[#113F48] hover:border-[#113F48] transition-all"
+                title="Open menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+              <span className="font-extrabold text-sm text-[#113F48]">Patient Dashboard</span>
+            </header>
             
             {/* VIEW 1: HOME / OVERVIEW */}
             {activeTab === "overview" && (

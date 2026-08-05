@@ -20,7 +20,6 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Services", href: "/services/part-a" },
     { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact Us", href: "/contact" },
@@ -29,9 +28,6 @@ export default function Navbar() {
   const isActive = (href: string) => {
     if (href === "/") {
       return pathname === "/";
-    }
-    if (href.startsWith("/services")) {
-      return pathname.startsWith("/services");
     }
     return pathname.startsWith(href);
   };

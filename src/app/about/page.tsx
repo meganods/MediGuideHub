@@ -4,65 +4,91 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { HeartPulse, Shield, BookOpen, Users, CheckCircle2, ArrowRight, Award, Globe, Clock } from "lucide-react";
+import { 
+  HeartPulse, 
+  ShieldCheck, 
+  BookOpen, 
+  Eye, 
+  ArrowRight, 
+  Award, 
+  Lock, 
+  Mail, 
+  Clock, 
+  MapPin, 
+  CheckCircle2, 
+  FileText, 
+  Compass, 
+  ShieldAlert, 
+  Activity, 
+  Scale, 
+  Sparkles 
+} from "lucide-react";
 
 export default function AboutPage() {
-  const team = [
-    {
-      name: "Dr. Margaret Collins",
-      role: "Senior Healthcare Policy Advisor",
-      bio: "Former healthcare policy analyst with 18 years in Medicare and Medicaid program review. Dr. Collins oversees all clinical accuracy and regulatory compliance for MediGuide Hub content.",
-      initial: "M",
-    },
-    {
-      name: "James Okafor",
-      role: "Medicare Enrollment Specialist",
-      bio: "Licensed Medicare counselor and former SHIP (State Health Insurance Assistance Program) director who has helped over 4,000 beneficiaries navigate their coverage options over a 12-year career.",
-      initial: "J",
-    },
-    {
-      name: "Priya Nair",
-      role: "Healthcare Content Strategist",
-      bio: "Health communication expert with a Master's in Public Health from Johns Hopkins. Priya ensures our educational materials are accessible, jargon-free, and accurate for every reading level.",
-      initial: "P",
-    },
-    {
-      name: "Robert Chen",
-      role: "Digital Health Platform Lead",
-      bio: "Technology architect specializing in health information platforms. Robert leads the development of MediGuide Hub's interactive tools, ensuring data privacy and accessibility standards are met.",
-      initial: "R",
-    },
-  ];
-
   const values = [
     {
-      icon: <Shield className="h-6 w-6 text-[#C9A15A]" />,
-      title: "Unbiased Information",
-      desc: "We do not accept referral fees, commissions, or payments from insurance companies. Our editorial independence is absolute.",
+      icon: <CheckCircle2 className="h-6 w-6 text-[#C9A15A]" />,
+      title: "Accuracy",
+      desc: "We verify every fact, stat, and reference with primary medical literature and public health agency records.",
+    },
+    {
+      icon: <Eye className="h-6 w-6 text-[#C9A15A]" />,
+      title: "Transparency",
+      desc: "Our editorial process and funding sources are completely open. We operate with zero insurance company bias.",
     },
     {
       icon: <BookOpen className="h-6 w-6 text-[#C9A15A]" />,
-      title: "Expert-Reviewed Content",
-      desc: "Every article is reviewed by licensed Medicare counselors, policy advisors, or healthcare communication specialists before publishing.",
+      title: "Accessibility",
+      desc: "We break down complex medical terms and insurance jargon into clear, plain-language resources.",
     },
     {
-      icon: <Users className="h-6 w-6 text-[#C9A15A]" />,
-      title: "People First",
-      desc: "Medicare beneficiaries are at the center of every decision we make. We write for real people — not for search rankings or ad revenue maximization.",
+      icon: <Lock className="h-6 w-6 text-[#C9A15A]" />,
+      title: "Privacy",
+      desc: "We prioritize user privacy and employ secure data protection protocols to keep your browsing experience safe.",
     },
     {
-      icon: <Globe className="h-6 w-6 text-[#C9A15A]" />,
-      title: "Free & Accessible",
-      desc: "All guides, tools, and resources are completely free. We believe access to accurate Medicare education should never be gatekept behind a paywall.",
+      icon: <Scale className="h-6 w-6 text-[#C9A15A]" />,
+      title: "Integrity",
+      desc: "We make independent editorial decisions focused entirely on the educational welfare of our readers.",
+    },
+    {
+      icon: <Sparkles className="h-6 w-6 text-[#C9A15A]" />,
+      title: "Continuous Improvement",
+      desc: "Medicare guidelines, policy rules, and medical practices update constantly. We update our articles regularly.",
     },
   ];
 
-  const milestones = [
-    { year: "2021", event: "MediGuide Hub founded by a team of healthcare policy veterans frustrated by the lack of plain-language Medicare information online." },
-    { year: "2022", event: "Published our first 20 Medicare educational guides covering Parts A, B, C, and D. Reached 5,000 monthly readers in the first year." },
-    { year: "2023", event: "Launched the interactive Plan Finder Wizard and user account system. Partnered with two State Health Insurance Assistance Programs for content review." },
-    { year: "2024", event: "Reached 50,000+ monthly readers. Expanded our content library to cover Medigap, Special Enrollment Periods, and Low-Income Subsidy programs." },
-    { year: "2025", event: "Launched the MediGuide Hub community dashboard and personalized enrollment checklist tool. Continuing to grow our expert advisory board." },
+  const offers = [
+    {
+      icon: <FileText className="h-5 w-5 text-[#113F48]" />,
+      title: "Health Articles",
+      desc: "Comprehensive guides covering healthcare updates, wellness tips, and medical conditions.",
+    },
+    {
+      icon: <Compass className="h-5 w-5 text-[#113F48]" />,
+      title: "Medical Resources",
+      desc: "Hand-curated directories, tools, and databases to help you connect with care.",
+    },
+    {
+      icon: <Activity className="h-5 w-5 text-[#113F48]" />,
+      title: "Preventive Care Guides",
+      desc: "Practical checklists and guides to keep you proactive about screen-testing and wellness.",
+    },
+    {
+      icon: <ShieldAlert className="h-5 w-5 text-[#113F48]" />,
+      title: "Health Plan Education",
+      desc: "Clear explanations of coverage types, plan rules, and premium options.",
+    },
+    {
+      icon: <HeartPulse className="h-5 w-5 text-[#113F48]" />,
+      title: "Prescription Information",
+      desc: "Guides to understanding formulary tiers, generic alternatives, and cost savings.",
+    },
+    {
+      icon: <Award className="h-5 w-5 text-[#113F48]" />,
+      title: "Healthcare Awareness",
+      desc: "Resources to boost public health literacy and help patients navigate healthcare with confidence.",
+    },
   ];
 
   return (
@@ -70,42 +96,45 @@ export default function AboutPage() {
       <Navbar />
 
       <main className="flex-grow">
-
-        {/* Hero */}
+        
+        {/* ── HERO SECTION ── */}
         <section className="relative py-20 bg-white overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9A15A]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
+              {/* Left Column */}
               <div className="max-w-3xl space-y-6">
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A15A] bg-[#C9A15A]/10 px-3 py-1.5 rounded-full border border-[#C9A15A]/20 inline-block">
-                  About MediGuide Hub
+                  About MediGuideHub
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight">
-                  Helping You Make <span className="text-[#C9A15A]">Sense</span> of Medicare
+                  Demystifying Healthcare For a Healthier Tomorrow
                 </h1>
                 <p className="text-lg text-stone-600 leading-relaxed">
-                  MediGuide Hub was created with one simple goal: to make Medicare easier to understand.
-                </p>
-                <p className="text-stone-600 leading-relaxed">
-                  Every year, millions of Americans approach their 65th birthday and are handed a stack of unfamiliar terms — Part A, Part B, Part C, Part D, Medigap, IRMAA, enrollment windows, star ratings — with very little guidance on what any of it actually means for them personally. We built MediGuide Hub as a clear, independent resource focused purely on education.
+                  Helping people make informed healthcare decisions through trusted educational resources, expert-reviewed content, and easy-to-understand health information.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                  <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3.5 font-semibold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow-md text-sm">
-                    Read Our Guides <ArrowRight className="h-4 w-4" />
+                  <Link 
+                    href="/blog" 
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow-md text-sm"
+                  >
+                    Explore Health Resources <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 font-semibold text-[#113F48] bg-white hover:bg-[#F9FAFB] border border-stone-200 hover:border-[#C9A15A] rounded-xl transition-all text-sm">
-                    Contact the Team
+                  <Link 
+                    href="/contact" 
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold text-[#113F48] bg-white hover:bg-[#F9FAFB] border border-stone-200 hover:border-[#C9A15A] rounded-xl transition-all text-sm"
+                  >
+                    Contact Us
                   </Link>
                 </div>
               </div>
               
-              {/* Right Image */}
+              {/* Right Column (Illustration / Image) */}
               <div className="relative hidden lg:block">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#113F48]/10 to-[#C9A15A]/10 rounded-[2.5rem] transform translate-x-4 translate-y-4" />
                 <img 
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000" 
-                  alt="Modern medical facility" 
+                  alt="Professional healthcare educational illustration" 
                   className="relative rounded-[2.5rem] w-full h-auto object-cover shadow-2xl border border-stone-100"
                 />
               </div>
@@ -113,78 +142,71 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="py-14 bg-[#F9FAFB] border-t border-stone-100">
+        {/* ── OUR STORY ── */}
+        <section className="py-16 bg-[#F9FAFB] border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { num: "65M+", label: "Americans on Medicare" },
-                { num: "8+", label: "Expert Guides Published" },
-                { num: "100%", label: "Editorially Independent" },
-                { num: "Free", label: "Always & Forever" },
-              ].map((s) => (
-                <div key={s.label} className="bg-white border border-stone-200 rounded-2xl p-6 text-center shadow-sm">
-                  <div className="text-3xl font-extrabold text-[#C9A15A] mb-1">{s.num}</div>
-                  <div className="text-sm text-stone-500">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mission & Story Content Pack */}
-        <section className="py-20 bg-white border-t border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <div className="space-y-8">
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold text-[#113F48]">What we do</h2>
-                  <p className="text-stone-600 text-sm leading-relaxed">
-                    We publish clear, well-researched articles that break down each part of Medicare, explain how enrollment timing works, compare the differences between Original Medicare and Medicare Advantage, and answer the questions people most commonly search for when this topic first lands on their plate — whether that's for themselves, or for a parent they're helping to navigate the system.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold text-[#113F48]">What we don't do</h2>
-                  <p className="text-stone-600 text-sm leading-relaxed">
-                    We are not an insurance company or a licensed broker. We do not sell Medicare plans, and we are not paid by any insurer to favor one plan type over another. Our content is informational only, meant to help you ask better questions and feel more confident.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold text-[#113F48]">Who we're for</h2>
-                  <p className="text-stone-600 text-sm leading-relaxed">
-                    MediGuide Hub is written for two kinds of readers: people approaching Medicare eligibility themselves, and adult children or caregivers trying to help a parent understand their options. Both groups tend to have the same experience — a lot of unfamiliar acronyms and not enough time to sort through them. That's the gap we're trying to close.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h2 className="text-2xl font-bold text-[#113F48]">Our approach</h2>
-                  <p className="text-stone-600 text-sm leading-relaxed">
-                    Every article on this site is written to be read by someone with zero background in health insurance. We avoid jargon where we can, define it clearly when we can't avoid it, and update our content regularly so readers can stay informed as rules and figures change.
-                  </p>
-                </div>
+            <div className="max-w-3xl mx-auto space-y-6">
+              <h2 className="text-3xl font-extrabold text-[#113F48] text-center">Our Story</h2>
+              <div className="prose prose-stone max-w-none text-stone-600 space-y-4 text-sm leading-relaxed">
+                <p>
+                  MediGuideHub was founded by healthcare policy advocates and communications experts who observed a growing problem: the public is regularly overwhelmed by dense medical jargon and complicated health insurance rules. Finding objective, plain-language health information was increasingly difficult.
+                </p>
+                <p>
+                  We created this platform to bridge the gap between complex health systems and the individuals who rely on them. Our focus is centered on absolute transparency, educational independence, and universal accessibility. We do not sell insurance or medical services, enabling us to keep our information clear, free from outside bias, and entirely educational.
+                </p>
+                <p>
+                  By structuring topics into clear guides, we aim to reduce the confusion around preventive care, prescription rules, and health coverage, allowing patients and their families to focus on wellness instead of administration.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Values */}
-        <section className="py-20 bg-[#F9FAFB] border-t border-stone-100">
+        {/* ── MISSION & VISION ── */}
+        <section className="py-20 bg-white border-t border-stone-200">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              
+              {/* Mission Card */}
+              <div className="bg-[#F9FAFB] border border-stone-200 rounded-2xl p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-[#C9A15A]/10 w-12 h-12 rounded-xl flex items-center justify-center border border-[#C9A15A]/20">
+                  <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#113F48]">Our Mission</h3>
+                <p className="text-stone-600 text-sm leading-relaxed">
+                  Provide accurate, accessible, and easy-to-understand healthcare information that empowers individuals and families to make informed healthcare decisions.
+                </p>
+              </div>
+
+              {/* Vision Card */}
+              <div className="bg-[#F9FAFB] border border-stone-200 rounded-2xl p-8 space-y-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-[#113F48]/10 w-12 h-12 rounded-xl flex items-center justify-center border border-[#113F48]/20">
+                  <Compass className="h-6 w-6 text-[#113F48]" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#113F48]">Our Vision</h3>
+                <p className="text-stone-600 text-sm leading-relaxed">
+                  To become one of the most trusted educational healthcare platforms by delivering reliable information and improving health literacy worldwide.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── CORE VALUES ── */}
+        <section className="py-20 bg-[#F9FAFB] border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
               <h2 className="text-3xl font-extrabold text-[#113F48]">Our Core Values</h2>
-              <p className="text-stone-600">The principles that guide every decision we make at MediGuide Hub.</p>
+              <p className="text-stone-600 text-sm">The operating principles that guide our editorial team and platform decisions.</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {values.map((v) => (
-                <div key={v.title} className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow space-y-4">
+                <div key={v.title} className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300 space-y-4">
                   <div className="bg-[#F9FAFB] w-12 h-12 rounded-xl flex items-center justify-center border border-stone-200">
                     {v.icon}
                   </div>
-                  <h3 className="font-bold text-[#113F48]">{v.title}</h3>
+                  <h3 className="font-bold text-lg text-[#113F48]">{v.title}</h3>
                   <p className="text-stone-500 text-sm leading-relaxed">{v.desc}</p>
                 </div>
               ))}
@@ -192,101 +214,159 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team */}
-        <section className="py-20 bg-white border-t border-stone-100">
+        {/* ── WHAT WE OFFER ── */}
+        <section className="py-20 bg-white border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-              <h2 className="text-3xl font-extrabold text-[#113F48]">Our Team</h2>
-              <p className="text-stone-600">The experts and advocates behind MediGuide Hub&apos;s educational content.</p>
+              <h2 className="text-3xl font-extrabold text-[#113F48]">What We Offer</h2>
+              <p className="text-stone-600 text-sm">Educational tools and resources crafted to support your wellness journey.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-              {team.map((member) => (
-                <div key={member.name} className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow space-y-4 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[#113F48] flex items-center justify-center text-white text-2xl font-extrabold mx-auto shadow-lg shadow-[#113F48]/15">
-                    {member.initial}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {offers.map((o) => (
+                <div key={o.title} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-[#C9A15A] transition-colors duration-300 space-y-3">
+                  <div className="bg-[#113F48]/5 w-10 h-10 rounded-lg flex items-center justify-center">
+                    {o.icon}
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#113F48]">{member.name}</h3>
-                    <p className="text-[#C9A15A] text-xs font-semibold mt-0.5">{member.role}</p>
-                  </div>
-                  <p className="text-stone-500 text-sm leading-relaxed">{member.bio}</p>
+                  <h3 className="font-bold text-[#113F48]">{o.title}</h3>
+                  <p className="text-stone-500 text-sm leading-relaxed">{o.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Milestones */}
-        <section className="py-20 bg-[#F9FAFB] border-t border-stone-100">
+        {/* ── EDITORIAL STANDARDS ── */}
+        <section className="py-20 bg-[#F9FAFB] border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 space-y-3">
-              <h2 className="text-3xl font-extrabold text-[#113F48]">Our Journey</h2>
-              <p className="text-stone-600">Key milestones in MediGuide Hub&apos;s growth as an educational platform.</p>
-            </div>
-            <div className="space-y-6">
-              {milestones.map((m, i) => (
-                <div key={m.year} className="flex gap-6 items-start">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#113F48] flex flex-col items-center justify-center text-white shadow-md">
-                    <Clock className="h-4 w-4 text-[#C9A15A] mb-0.5" />
-                    <span className="text-xs font-bold">{m.year}</span>
+            <div className="max-w-4xl mx-auto space-y-8">
+              <div className="text-center space-y-3">
+                <h2 className="text-3xl font-extrabold text-[#113F48]">Editorial Standards</h2>
+                <p className="text-stone-600 text-sm">How we maintain E-E-A-T guidelines across all published guides.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "Peer-Reviewed Preparation",
+                    desc: "Every article undergoes strict internal review before publishing to verify all medical or regulatory metrics."
+                  },
+                  {
+                    title: "Regular Content Updates",
+                    desc: "We monitor healthcare rules annually and review all guidelines dynamically to ensure updates stay current."
+                  },
+                  {
+                    title: "Strictly Educational Focus",
+                    desc: "Our platform provides informational resources only, refraining from backing specific commercial insurers."
+                  },
+                  {
+                    title: "Verifiable Public Sources",
+                    desc: "We reference official national medical libraries, state portals, and peer-reviewed journals when applicable."
+                  },
+                  {
+                    title: "No Exaggerated Medical Claims",
+                    desc: "We do not host or present unsupported health claims, diagnostic opinions, or cure promotions."
+                  },
+                  {
+                    title: "Unbiased Content Creation",
+                    desc: "Our writing team is separate from commercial sponsors, ensuring editorial independence."
+                  }
+                ].map((std, i) => (
+                  <div key={i} className="bg-white border border-stone-200 rounded-xl p-5 space-y-2 shadow-sm">
+                    <h4 className="font-bold text-[#113F48] flex items-center gap-2">
+                      <CheckCircle2 className="h-4.5 w-4.5 text-[#C9A15A] flex-shrink-0" />
+                      {std.title}
+                    </h4>
+                    <p className="text-stone-500 text-xs leading-relaxed">{std.desc}</p>
                   </div>
-                  <div className={`flex-1 bg-white border border-stone-200 rounded-xl p-5 shadow-sm ${i === milestones.length - 1 ? "border-[#C9A15A]" : ""}`}>
-                    <p className="text-stone-600 text-sm leading-relaxed">{m.event}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Editorial Standards */}
-        <section className="py-20 bg-white border-t border-stone-100">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div className="text-center space-y-3">
-              <h2 className="text-3xl font-extrabold text-[#113F48]">Our Editorial Standards</h2>
-              <p className="text-stone-600">How we ensure the accuracy and integrity of every article we publish.</p>
-            </div>
-            <div className="space-y-4">
-              {[
-                "All Medicare coverage information is sourced from trusted industry references and reviewed for clarity before publication.",
-                "Premium rates, deductibles, and income brackets are verified against current marketplace information before any article is published or updated.",
-                "No article is published without review by at least one licensed Medicare counselor or healthcare policy professional.",
-                "We update our library regularly so readers can rely on current, practical guidance.",
-                "We clearly label all articles with their publication date and most recent review date so readers can assess currency of information.",
-                "We do not accept sponsored content, advertorial placements, or pay-for-placement arrangements. All recommended resources are editorially selected.",
-              ].map((standard, i) => (
-                <div key={i} className="flex gap-4 items-start bg-[#F9FAFB] border border-stone-200 rounded-xl p-5">
-                  <CheckCircle2 className="h-5 w-5 text-[#C9A15A] flex-shrink-0 mt-0.5" />
-                  <p className="text-stone-600 text-sm leading-relaxed">{standard}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-sm text-amber-800">
-              <strong className="block mb-2">Important Disclosure</strong>
-              MediGuide Hub is supported by display advertising through Google AdSense and similar networks. Advertising revenue does not influence our editorial content, article selection, or recommendations. We maintain a strict separation between our advertising operations and editorial team. For more information, see our <Link href="/privacy-policy" className="underline hover:text-amber-900">Privacy Policy</Link> and <Link href="/disclaimer" className="underline hover:text-amber-900">Medical Disclaimer</Link>.
-            </div>
-          </div>
-        </section>
-
-        {/* Disclaimer */}
-        <section className="py-12 bg-[#F9FAFB] border-t border-stone-100">
+        {/* ── MEDICAL DISCLAIMER ── */}
+        <section className="py-14 bg-white border-t border-stone-200">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white border border-stone-200 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="bg-[#F9FAFB] p-3 rounded-xl border border-stone-200 flex-shrink-0">
-                  <Award className="h-6 w-6 text-[#C9A15A]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-[#113F48] mb-1">Have a question or found an inaccuracy?</h3>
-                  <p className="text-stone-500 text-sm">We welcome corrections and feedback. Our editorial team responds within 2 business days.</p>
+            <div className="max-w-4xl mx-auto bg-amber-50/50 border border-amber-200 rounded-2xl p-6 sm:p-8 flex items-start gap-4 shadow-sm">
+              <ShieldAlert className="h-6 w-6 text-[#C9A15A] flex-shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <h3 className="font-bold text-[#113F48] text-base">Medical Disclaimer</h3>
+                <p className="text-stone-600 text-sm leading-relaxed font-medium">
+                  The information provided on MediGuideHub is intended for educational purposes only and should not be considered medical advice. Always consult a qualified healthcare professional regarding any medical condition or treatment.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRIVACY COMMITMENT ── */}
+        <section className="py-16 bg-[#F9FAFB] border-t border-stone-200">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto space-y-6 text-center">
+              <h2 className="text-2xl font-bold text-[#113F48]">Privacy Commitment</h2>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                At MediGuideHub, we believe your health inquiries are strictly personal. We use high-grade security configurations and secure HTTPS connections to safeguard your browsing experience. We do not sell user data or lease personal profiles, adhering strictly to secure data handling standards.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CONTACT SECTION ── */}
+        <section className="py-16 bg-white border-t border-stone-200">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto bg-stone-50 border border-stone-200 rounded-2xl p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-[#113F48]">Get in Touch</h3>
+                <p className="text-stone-500 text-sm leading-relaxed">
+                  Have questions about our editorial standards, feedback on our content, or general inquiries? Our team is ready to respond.
+                </p>
+                <div className="space-y-2.5 text-sm text-stone-600">
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-[#C9A15A] flex-shrink-0" />
+                    <span>support@mediguidehub.com</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-[#C9A15A] flex-shrink-0" />
+                    <span>Monday – Saturday (9:00 AM – 6:00 PM)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-[#C9A15A] flex-shrink-0" />
+                    <span>New Delhi, India</span>
+                  </div>
                 </div>
               </div>
-              <Link
-                href="/contact"
-                className="flex-shrink-0 flex items-center gap-2 px-6 py-3.5 font-semibold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow-md text-sm whitespace-nowrap"
+              <div className="flex justify-start md:justify-end">
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-white bg-[#113F48] hover:bg-[#C9A15A] rounded-xl transition-all shadow-md text-sm"
+                >
+                  Contact Page Button <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── BOTTOM CTA ── */}
+        <section className="py-20 bg-[#113F48] text-white">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 max-w-4xl">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+              Ready to Explore Reliable Healthcare Information?
+            </h2>
+            <p className="text-stone-300 max-w-md mx-auto text-sm">
+              Discover generic alternative savings, preventive checklists, and verified clinical guides.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+              <Link 
+                href="/blog" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-[#113F48] bg-white hover:bg-stone-50 rounded-xl transition-all text-sm shadow-md"
               >
-                Contact Us <ArrowRight className="h-4 w-4" />
+                Browse Articles
+              </Link>
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all text-sm"
+              >
+                Contact Us
               </Link>
             </div>
           </div>

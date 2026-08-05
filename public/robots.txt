@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /api/
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /auth
+Disallow: /api
 
-Sitemap: http://localhost:3000/sitemap.xml
+Sitemap: https://mediguidehub.com/sitemap.xml

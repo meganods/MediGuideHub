@@ -241,7 +241,7 @@ function DashboardContent() {
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
 
   return (
-    <div className="h-screen w-screen bg-[#FDFBF7] flex overflow-hidden relative">
+    <div className="min-h-screen w-full bg-[#FDFBF7] flex flex-col lg:flex-row relative">
 
       {/* Mobile Sidebar Backdrop Overlay */}
       {isMobileSidebarOpen && (
@@ -249,7 +249,7 @@ function DashboardContent() {
       )}
 
       {/* Dashboard Navigation Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-80 lg:h-full lg:flex ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
+      <aside className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-80 lg:min-h-screen lg:flex ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
         <div className="flex justify-between items-center lg:hidden">
           <span className="font-bold text-xs uppercase tracking-widest text-[#113F48]">Dashboard Menu</span>
           <button onClick={() => setIsMobileSidebarOpen(false)} className="p-1 rounded hover:bg-stone-100 text-stone-500"><X className="h-5 w-5" /></button>
@@ -289,7 +289,7 @@ function DashboardContent() {
                 <button
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
-                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${
+                  className={`w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all text-left ${
                     activeTab === tab.id
                       ? "bg-[#113F48] text-white"
                       : "text-stone-600 hover:bg-[#FDF6EC]/30 hover:text-[#C9A15A]"
@@ -301,7 +301,7 @@ function DashboardContent() {
               ))}
               <button
                 onClick={() => logout().then(() => router.push("/"))}
-                className="w-full flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 transition-all text-left"
+                className="w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl text-red-600 hover:bg-red-50 transition-all text-left"
               >
                 <LogOut className="h-4 w-4" /> Logout
               </button>
@@ -309,7 +309,7 @@ function DashboardContent() {
           </aside>
 
           {/* Main Panel Content */}
-          <main className="flex-1 h-full overflow-y-auto p-6 md:p-12 space-y-8 bg-[#FDFBF7]">
+          <main className="flex-1 p-6 md:p-12 space-y-8 bg-[#FDFBF7]">
             
             {/* Mobile Header Bar with Sidebar Toggle */}
             <header className="flex items-center gap-4 lg:hidden border-b border-stone-200 pb-4">

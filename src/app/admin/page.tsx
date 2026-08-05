@@ -1540,10 +1540,6 @@ function AdminContent() {
                               onChange={(val) => setPostCategory(val)}
                               options={[
                                 { label: "Overview", value: "Overview" },
-                                { label: "Part A", value: "Part A" },
-                                { label: "Part B", value: "Part B" },
-                                { label: "Part C", value: "Part C" },
-                                { label: "Part D", value: "Part D" },
                                 { label: "Comparison", value: "Comparison" },
                                 { label: "Enrollment", value: "Enrollment" }
                               ]}
@@ -1989,10 +1985,6 @@ function AdminContent() {
                             {[
                               { label: "All Categories", value: "all" },
                               { label: "Overview", value: "Overview" },
-                              { label: "Part A", value: "Part A" },
-                              { label: "Part B", value: "Part B" },
-                              { label: "Part C", value: "Part C" },
-                              { label: "Part D", value: "Part D" },
                               { label: "Comparison", value: "Comparison" },
                               { label: "Enrollment", value: "Enrollment" }
                             ].map((opt) => (
@@ -2108,7 +2100,7 @@ function AdminContent() {
                     <div className="bg-white border border-stone-200 p-6 rounded-2xl space-y-4">
                       <h4 className="font-bold text-[#113F48] text-sm">Managed Categories</h4>
                       <ul className="divide-y divide-stone-100 text-xs text-stone-600">
-                        {["Overview", "Part A", "Part B", "Part C", "Part D", "Comparison", "Enrollment"].map((c, i) => (
+                        {["Overview", "Comparison", "Enrollment"].map((c, i) => (
                           <li key={i} className="py-2.5 flex justify-between">
                             <span>{c}</span>
                             <span className="font-bold text-stone-400">{posts.filter(p => p.category === c).length} Articles</span>

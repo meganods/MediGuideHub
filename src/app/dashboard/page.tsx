@@ -301,10 +301,10 @@ function DashboardContent() {
             {/* VIEW 1: HOME / OVERVIEW */}
             {activeTab === "overview" && (
               <div className="space-y-6">
-                <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Welcome back</span>
-                  <h2 className="text-2xl font-extrabold text-[#113F48] mt-1">Hello, {displayName || "Health Reader"}!</h2>
-                  <p className="text-xs text-stone-500 mt-1">Manage your saved Medicare documents, interests, and profile privacy preferences.</p>
+                <div className="bg-gradient-to-br from-[#113F48] to-[#1C515C] text-white p-6 rounded-2xl shadow-md border-0">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A] bg-white/10 px-2 py-0.5 rounded">Welcome back</span>
+                  <h2 className="text-2xl font-extrabold text-white mt-2">Hello, {displayName || "Health Reader"}!</h2>
+                  <p className="text-xs text-stone-200 mt-1">Manage your saved Medicare documents, interests, and profile privacy preferences.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

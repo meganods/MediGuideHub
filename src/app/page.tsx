@@ -424,23 +424,23 @@ export default function Home() {
 
       {/* ── SECTION 12: FAQ ── */}
       <section className="py-16 bg-white border-b border-stone-100">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-8">
+        <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">FAQ Directory</span>
-            <h2 className="text-2xl font-extrabold text-[#113F48]">Common Questions</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#113F48]">Common Questions</h2>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.id} className="border border-stone-200 rounded-xl overflow-hidden">
+              <div key={faq.id} className="border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
                 <button
                   onClick={() => setActiveFaq(activeFaq === faq.id ? null : faq.id)}
-                  className="w-full text-left p-4 bg-[#FDFBF7] hover:bg-[#FDF6EC]/15 flex justify-between items-center text-xs font-bold text-[#113F48] transition-colors"
+                  className="w-full text-left p-5 sm:p-6 bg-[#FDFBF7] hover:bg-[#FDF6EC]/15 flex justify-between items-center text-sm sm:text-base font-extrabold text-[#113F48] transition-colors focus:outline-none"
                 >
                   <span>{faq.question}</span>
-                  <ChevronDown className={`h-4 w-4 text-[#C9A15A] transition-transform ${activeFaq === faq.id ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`h-5 w-5 text-[#C9A15A] transition-transform ${activeFaq === faq.id ? "rotate-180" : ""}`} />
                 </button>
                 {activeFaq === faq.id && (
-                  <div className="p-4 bg-white border-t border-stone-200 text-xs text-stone-600 leading-relaxed">
+                  <div className="p-5 sm:p-6 bg-white border-t border-stone-200 text-sm sm:text-base text-stone-600 leading-relaxed">
                     {faq.answer}
                   </div>
                 )}

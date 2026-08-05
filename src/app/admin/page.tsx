@@ -1350,8 +1350,8 @@ function AdminContent() {
           {activeTab === "posts" && (
             <div className="space-y-6">
               
-              {/* CMS Nested Sub Navigation */}
-              <div className="flex flex-wrap gap-2 border-b border-stone-200 pb-3">
+               {/* CMS Nested Sub Navigation */}
+              <div className="flex flex-nowrap overflow-x-auto pb-3 gap-2 border-b border-stone-200 scrollbar-none">
                 {[
                   { id: "all", label: "All Articles" },
                   { id: "editor", label: isAddingPost || editingPost ? "Edit/Add Article" : "Add New Article" },
@@ -1373,7 +1373,7 @@ function AdminContent() {
                         setEditingPost(null);
                       }
                     }}
-                    className={`px-4 py-2 text-xs font-semibold rounded-lg border transition-all ${
+                    className={`px-5 py-3 text-sm font-semibold rounded-xl border transition-all flex-shrink-0 ${
                       (cmsSubTab === sub.id || (sub.id === "editor" && (isAddingPost || editingPost)))
                         ? "bg-[#113F48] text-white border-[#113F48]"
                         : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50"
@@ -1870,11 +1870,11 @@ function AdminContent() {
                   </div>
 
                   {/* Header action buttons */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white border border-[#C9A15A]/15 p-4 rounded-2xl shadow-sm">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white border border-[#C9A15A]/15 p-5 rounded-2xl shadow-sm">
+                    <div className="flex flex-wrap gap-3 w-full sm:w-auto">
                       <button
                         onClick={() => handleAddPostClick(false)}
-                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1 shadow-sm"
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm flex-1 sm:flex-initial"
                       >
                         <Plus className="h-4 w-4" /> New Article
                       </button>
@@ -1890,14 +1890,14 @@ function AdminContent() {
                           link.click();
                           document.body.removeChild(link);
                         }}
-                        className="border border-stone-200 hover:bg-stone-50 text-stone-600 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                        className="bg-white border border-[#113F48]/20 hover:border-[#113F48] text-[#113F48] text-sm font-bold px-5 py-3 rounded-xl transition-all shadow-sm flex-1 sm:flex-initial"
                       >
                         Export CSV
                       </button>
                     </div>
                     <button
                       onClick={loadAllData}
-                      className="text-stone-400 hover:text-stone-700 text-xs font-semibold"
+                      className="w-full sm:w-auto bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-bold px-5 py-3 rounded-xl transition-all text-center"
                     >
                       Refresh List
                     </button>

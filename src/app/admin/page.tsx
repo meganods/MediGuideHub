@@ -35,6 +35,10 @@ import {
   getLegalPage,
   updateLegalPage,
   LegalPage,
+  getCategories,
+  saveCategory,
+  deleteCategory,
+  BlogCategory,
 } from "@/lib/db";
 import { uploadImage } from "@/lib/cloudinary";
 import { BlogPost } from "@/lib/mockData";
@@ -65,6 +69,9 @@ import {
   HelpCircle,
   ShieldCheck,
   Archive,
+  Grid,
+  Folder,
+  Layers,
 } from "lucide-react";
 
 function AdminContent() {
@@ -193,6 +200,32 @@ function AdminContent() {
   const [articleFilterAuthor, setArticleFilterAuthor] = useState("all");
   const [articleSortBy, setArticleSortBy] = useState("date");
 
+  // Category Management states
+  const [categoriesList, setCategoriesList] = useState<BlogCategory[]>([]);
+  const [isAddingCategory, setIsAddingCategory] = useState(false);
+  const [editingCategory, setEditingCategory] = useState<BlogCategory | null>(null);
+  const [categoryTab, setCategoryTab] = useState("basic");
+
+  // Form Basic Fields
+  const [catName, setCatName] = useState("");
+  const [catSlug, setCatSlug] = useState("");
+  const [catDesc, setCatDesc] = useState("");
+  const [catIcon, setCatIcon] = useState("");
+  const [catBanner, setCatBanner] = useState("");
+  const [catThumbnail, setCatThumbnail] = useState("");
+  const [catDisplayOrder, setCatDisplayOrder] = useState(1);
+  const [catParent, setCatParent] = useState("");
+  const [catFeatured, setCatFeatured] = useState(false);
+  const [catStatus, setCatStatus] = useState<"Active" | "Inactive">("Active");
+
+  // Form SEO Fields
+  const [catSeoTitle, setCatSeoTitle] = useState("");
+  const [catSeoDesc, setCatSeoDesc] = useState("");
+  const [catSeoKeyword, setCatSeoKeyword] = useState("");
+  const [catSeoCanonical, setCatSeoCanonical] = useState("");
+  const [catSeoSchema, setCatSeoSchema] = useState("MedicalWebPage");
+  const [catSeoOgImage, setCatSeoOgImage] = useState("");
+
   const loadAllData = async () => {
     try {
       const allPosts = await getPosts();
@@ -202,12 +235,45 @@ function AdminContent() {
       const allFaqs = await getFAQs();
       const settings = await getSiteSettings();
 
+      // Load Categories & Seed if empty
+      let allCats = await getCategories();
+      if (allCats.length === 0) {
+        const defaultCats = [
+          "Health Articles", "Preventive Care", "Mental Health", "Nutrition", 
+          "Heart Health", "Diabetes", "Women's Health", "Children's Health", 
+          "Fitness", "Medical Resources", "Health Insurance", "Prescription Guide", 
+          "Vaccination", "Senior Healthcare", "Emergency Care", "Wellness", "Lifestyle Diseases"
+        ];
+        for (let i = 0; i < defaultCats.length; i++) {
+          const name = defaultCats[i];
+          const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          await saveCategory({
+            name,
+            slug,
+            description: `Objective medical guide and reviews on ${name}.`,
+            icon: "Folder",
+            displayOrder: i + 1,
+            status: "Active",
+            featuredCategory: i < 6,
+            seoTitle: `${name} | MediGuideHub`,
+            seoDesc: `Get E-E-A-T compliant educational medical resources about ${name}.`,
+            seoFocusKeyword: name,
+            seoSchemaType: "MedicalWebPage",
+            articleCount: 0,
+            seoScore: 85,
+            createdAt: new Date().toISOString().split("T")[0]
+          });
+        }
+        allCats = await getCategories();
+      }
+
       setPosts(allPosts);
       setUsersList(allUsers);
       setMessages(allMsgs);
       setSubscribers(allSubs);
       setFaqs(allFaqs);
       setSiteSettings(settings);
+      setCategoriesList(allCats);
 
       setStats({
         users: allUsers.length,
@@ -577,6 +643,107 @@ function AdminContent() {
     }
   };
 
+  // Category operations
+  const handleEditCategoryClick = (cat: BlogCategory) => {
+    setEditingCategory(cat);
+    setIsAddingCategory(false);
+    setCategoryTab("basic");
+
+    setCatName(cat.name);
+    setCatSlug(cat.slug);
+    setCatDesc(cat.description || "");
+    setCatIcon(cat.icon || "Folder");
+    setCatBanner(cat.bannerImage || "");
+    setCatThumbnail(cat.thumbnail || "");
+    setCatDisplayOrder(cat.displayOrder || 1);
+    setCatParent(cat.parentCategory || "");
+    setCatFeatured(cat.featuredCategory || false);
+    setCatStatus(cat.status || "Active");
+
+    setCatSeoTitle(cat.seoTitle || "");
+    setCatSeoDesc(cat.seoDesc || "");
+    setCatSeoKeyword(cat.seoFocusKeyword || "");
+    setCatSeoCanonical(cat.seoCanonical || "");
+    setCatSeoSchema(cat.seoSchemaType || "MedicalWebPage");
+    setCatSeoOgImage(cat.seoOgImage || "");
+  };
+
+  const handleAddCategoryClick = () => {
+    setEditingCategory(null);
+    setIsAddingCategory(true);
+    setCategoryTab("basic");
+
+    setCatName("");
+    setCatSlug("");
+    setCatDesc("");
+    setCatIcon("Folder");
+    setCatBanner("");
+    setCatThumbnail("");
+    setCatDisplayOrder(categoriesList.length + 1);
+    setCatParent("");
+    setCatFeatured(false);
+    setCatStatus("Active");
+
+    setCatSeoTitle("");
+    setCatSeoDesc("");
+    setCatSeoKeyword("");
+    setCatSeoCanonical("");
+    setCatSeoSchema("MedicalWebPage");
+    setCatSeoOgImage("");
+  };
+
+  const handleSaveCategory = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!catName || !catSlug) {
+      alert("Name and slug are required.");
+      return;
+    }
+
+    try {
+      const cData: BlogCategory = {
+        name: catName,
+        slug: catSlug,
+        description: catDesc,
+        icon: catIcon || "Folder",
+        bannerImage: catBanner,
+        thumbnail: catThumbnail,
+        displayOrder: catDisplayOrder || 1,
+        parentCategory: catParent,
+        featuredCategory: catFeatured,
+        status: catStatus,
+        seoTitle: catSeoTitle || `${catName} | MediGuideHub`,
+        seoDesc: catSeoDesc || catDesc,
+        seoFocusKeyword: catSeoKeyword || catName,
+        seoCanonical: catSeoCanonical || `https://mediguidehub.com/categories/${catSlug}`,
+        seoSchemaType: catSeoSchema || "MedicalWebPage",
+        seoOgImage: catSeoOgImage,
+        createdAt: editingCategory?.createdAt || new Date().toISOString().split("T")[0],
+        seoScore: editingCategory?.seoScore || 85,
+        articleCount: editingCategory?.articleCount || 0
+      };
+
+      if (editingCategory) {
+        cData.id = editingCategory.id;
+      }
+
+      await saveCategory(cData);
+      setIsAddingCategory(false);
+      setEditingCategory(null);
+      await loadAllData();
+      alert("Category saved successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to save category.");
+    }
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    if (confirm("Are you sure you want to delete this category?")) {
+      await deleteCategory(id);
+      await loadAllData();
+    }
+  };
+
   // User operations
   const handleToggleBan = async (uid: string, currentState?: boolean) => {
     await banUserProfile(uid, !currentState);
@@ -773,6 +940,18 @@ function AdminContent() {
               >
                 <FileText className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "posts" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
                 Blog Posts
+              </button>
+
+              <button
+                onClick={() => handleTabChange("categories")}
+                className={`group w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ease-out ${
+                  activeTab === "categories"
+                    ? "bg-[#C9A15A] text-white shadow-sm"
+                    : "text-white lg:text-stone-600 lg:hover:bg-[#F9FAFB] lg:hover:text-[#113F48] hover:bg-white/10 hover:text-white hover:translate-x-[3px]"
+                }`}
+              >
+                <Grid className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "categories" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
+                Categories
               </button>
 
               <button
@@ -2120,6 +2299,358 @@ function AdminContent() {
                   {savingSettings ? "Saving..." : "Save site settings"}
                 </button>
               </form>
+            </div>
+          )}
+
+          {/* TAB: Category Management */}
+          {activeTab === "categories" && (
+            <div className="space-y-6">
+              {(isAddingCategory || editingCategory) ? (
+                <div className="bg-white border border-[#C9A15A]/25 p-6 rounded-2xl shadow-sm space-y-6">
+                  
+                  {/* Category Editor Header */}
+                  <div className="flex justify-between items-center border-b border-stone-100 pb-4">
+                    <h3 className="text-lg font-bold text-[#113F48]">
+                      {editingCategory ? `Edit Category: ${catName}` : "Create New Category"}
+                    </h3>
+                    <button
+                      onClick={() => {
+                        setIsAddingCategory(false);
+                        setEditingCategory(null);
+                      }}
+                      className="text-stone-400 hover:text-[#113F48] text-xs font-semibold"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+
+                  {/* Category Editor Tabs */}
+                  <div className="flex gap-2 bg-stone-50 p-1 rounded-xl w-fit">
+                    <button
+                      type="button"
+                      onClick={() => setCategoryTab("basic")}
+                      className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                        categoryTab === "basic" ? "bg-white text-[#113F48] shadow-sm" : "text-stone-500"
+                      }`}
+                    >
+                      Basic Info
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCategoryTab("seo")}
+                      className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                        categoryTab === "seo" ? "bg-white text-[#113F48] shadow-sm" : "text-stone-500"
+                      }`}
+                    >
+                      SEO Meta Settings
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleSaveCategory} className="space-y-4">
+                    
+                    {/* Basic Info Tab */}
+                    {categoryTab === "basic" && (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Category Name *</label>
+                            <input
+                              required
+                              value={catName}
+                              onChange={(e) => {
+                                setCatName(e.target.value);
+                                if (!editingCategory) {
+                                  setCatSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, ""));
+                                }
+                              }}
+                              placeholder="e.g. Heart Health"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Slug *</label>
+                            <input
+                              required
+                              value={catSlug}
+                              onChange={(e) => setCatSlug(e.target.value)}
+                              placeholder="e.g. heart-health"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Description</label>
+                          <textarea
+                            rows={3}
+                            value={catDesc}
+                            onChange={(e) => setCatDesc(e.target.value)}
+                            placeholder="Brief summary of articles in this category..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Display Icon</label>
+                            <input
+                              value={catIcon}
+                              onChange={(e) => setCatIcon(e.target.value)}
+                              placeholder="e.g. Heart, Shield, Activity, Folder"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Display Order</label>
+                            <input
+                              type="number"
+                              value={catDisplayOrder}
+                              onChange={(e) => setCatDisplayOrder(Number(e.target.value))}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Parent Category</label>
+                            <select
+                              value={catParent}
+                              onChange={(e) => setCatParent(e.target.value)}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            >
+                              <option value="">None (Primary)</option>
+                              {categoriesList.filter(c => c.slug !== catSlug).map(c => (
+                                <option key={c.id} value={c.slug}>{c.name}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Banner Image URL</label>
+                            <input
+                              value={catBanner}
+                              onChange={(e) => setCatBanner(e.target.value)}
+                              placeholder="https://..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Thumbnail Image URL</label>
+                            <input
+                              value={catThumbnail}
+                              onChange={(e) => setCatThumbnail(e.target.value)}
+                              placeholder="https://..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Status</label>
+                            <select
+                              value={catStatus}
+                              onChange={(e) => setCatStatus(e.target.value as "Active" | "Inactive")}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            >
+                              <option value="Active">Active</option>
+                              <option value="Inactive">Inactive</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div className="pt-2">
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={catFeatured}
+                              onChange={(e) => setCatFeatured(e.target.checked)}
+                              className="h-4 w-4 rounded border-stone-300 text-[#113F48] focus:ring-[#C9A15A]"
+                            />
+                            <span className="text-xs font-semibold text-stone-700">Feature this category on the homepage</span>
+                          </label>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* SEO Tab */}
+                    {categoryTab === "seo" && (
+                      <div className="space-y-4">
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">SEO Meta Title</label>
+                          <input
+                            value={catSeoTitle}
+                            onChange={(e) => setCatSeoTitle(e.target.value)}
+                            placeholder="Defaults to Category Name if empty..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">SEO Meta Description</label>
+                          <textarea
+                            rows={3}
+                            value={catSeoDesc}
+                            onChange={(e) => setCatSeoDesc(e.target.value)}
+                            placeholder="Brief description for search engine results..."
+                            className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Focus Keyword</label>
+                            <input
+                              value={catSeoKeyword}
+                              onChange={(e) => setCatSeoKeyword(e.target.value)}
+                              placeholder="e.g. cardiovascular guidelines"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Canonical URL</label>
+                            <input
+                              value={catSeoCanonical}
+                              onChange={(e) => setCatSeoCanonical(e.target.value)}
+                              placeholder="https://mediguidehub.com/categories/..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Schema Data Structured Type</label>
+                            <input
+                              value={catSeoSchema}
+                              onChange={(e) => setCatSeoSchema(e.target.value)}
+                              placeholder="e.g. MedicalWebPage"
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Open Graph Social Image URL</label>
+                            <input
+                              value={catSeoOgImage}
+                              onChange={(e) => setCatSeoOgImage(e.target.value)}
+                              placeholder="https://..."
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex gap-2 justify-end pt-4 border-t border-stone-100">
+                      <button
+                        type="submit"
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white font-semibold px-6 py-2.5 rounded-xl text-xs transition-all shadow shadow-[#113F48]/10"
+                      >
+                        Save Category Details
+                      </button>
+                    </div>
+
+                  </form>
+                </div>
+              ) : (
+                /* CATEGORIES LIST TABLE VIEW */
+                <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
+                  
+                  {/* Category Header Controls */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-stone-100 pb-4">
+                    <div>
+                      <h3 className="text-lg font-bold text-[#113F48]">Category Management</h3>
+                      <p className="text-xs text-stone-500 mt-0.5">Define structured taxonomy directories and parent paths.</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={handleAddCategoryClick}
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1 shadow-sm"
+                      >
+                        <Plus className="h-4 w-4" /> Add Category
+                      </button>
+                      <button
+                        onClick={() => {
+                          let csv = "data:text/csv;charset=utf-8,Category Name,Slug,Display Order,Featured,Status\n";
+                          categoriesList.forEach(c => csv += `"${c.name}","${c.slug}",${c.displayOrder},${c.featuredCategory},"${c.status}"\n`);
+                          const encoded = encodeURI(csv);
+                          const link = document.createElement("a");
+                          link.setAttribute("href", encoded);
+                          link.setAttribute("download", `mediguide_categories_${Date.now()}.csv`);
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                        className="border border-stone-200 hover:bg-stone-50 text-stone-600 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                      >
+                        Export CSV
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
+                          <th className="p-3">Icon</th>
+                          <th className="p-3">Category Name</th>
+                          <th className="p-3">Slug</th>
+                          <th className="p-3">Articles</th>
+                          <th className="p-3">SEO Score</th>
+                          <th className="p-3">Status</th>
+                          <th className="p-3 text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-100 text-xs text-stone-600">
+                        {categoriesList.map((cat) => {
+                          const articleCount = posts.filter(p => p.category === cat.name).length;
+                          return (
+                            <tr key={cat.id} className="hover:bg-stone-50/50 transition-colors">
+                              <td className="p-3">
+                                <span className="bg-[#113F48]/5 text-[#113F48] p-1.5 rounded-lg inline-block border border-[#113F48]/10 font-bold">
+                                  {cat.icon || "Folder"}
+                                </span>
+                              </td>
+                              <td className="p-3">
+                                <span className="font-semibold text-[#113F48] block">{cat.name}</span>
+                                {cat.parentCategory && (
+                                  <span className="text-[9px] text-[#C9A15A] font-bold block mt-0.5">Parent: {cat.parentCategory}</span>
+                                )}
+                              </td>
+                              <td className="p-3 font-mono text-[10px] text-stone-400">{cat.slug}</td>
+                              <td className="p-3 font-bold text-[#113F48]">{articleCount} Guides</td>
+                              <td className="p-3 font-semibold text-stone-500">{cat.seoScore || 85}/100</td>
+                              <td className="p-3">
+                                <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border ${
+                                  cat.status === "Active"
+                                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                    : "bg-red-50 text-red-700 border-red-200"
+                                }`}>
+                                  {cat.status || "Active"}
+                                </span>
+                              </td>
+                              <td className="p-3 text-right space-x-1.5">
+                                <button
+                                  onClick={() => handleEditCategoryClick(cat)}
+                                  className="p-1.5 border border-stone-200 text-stone-500 hover:text-[#C9A15A] rounded-lg transition-colors inline-block"
+                                  title="Edit Category"
+                                >
+                                  <Edit className="h-3.5 w-3.5" />
+                                </button>
+                                <button
+                                  onClick={() => handleDeleteCategory(cat.id || "")}
+                                  className="p-1.5 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors inline-block"
+                                  title="Delete Category"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              )}
             </div>
           )}
 

@@ -668,3 +668,74 @@ export const updateLegalPage = async (slug: string, updates: Partial<LegalPage>)
   }
   setLocal("mediguide_legal_pages", pages);
 };
+
+export interface BlogCategory {
+  id?: string;
+  name: string;
+  slug: string;
+  description?: string;
+  icon?: string;
+  bannerImage?: string;
+  thumbnail?: string;
+  displayOrder?: number;
+  parentCategory?: string;
+  featuredCategory?: boolean;
+  status?: "Active" | "Inactive";
+  seoTitle?: string;
+  seoDesc?: string;
+  seoFocusKeyword?: string;
+  seoCanonical?: string;
+  seoSchemaType?: string;
+  seoOgImage?: string;
+  articleCount?: number;
+  seoScore?: number;
+  createdAt?: string;
+}
+
+export const getCategories = async (): Promise<BlogCategory[]> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const snapshot = await getDocs(query(collection(firestore, "categories"), orderBy("displayOrder", "asc")));
+      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
+    } catch (e) {
+      console.error("Firebase error getting categories:", e);
+    }
+  }
+  return getLocal<BlogCategory>("mediguide_categories");
+};
+
+export const saveCategory = async (cat: BlogCategory): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const id = cat.id || doc(collection(firestore, "categories")).id;
+      await setDoc(doc(firestore, "categories", id), { ...cat, id }, { merge: true });
+      return;
+    } catch (e) {
+      console.error("Firebase error saving category:", e);
+    }
+  }
+  const cats = getLocal<BlogCategory>("mediguide_categories");
+  if (cat.id) {
+    const idx = cats.findIndex((c) => c.id === cat.id);
+    if (idx !== -1) {
+      cats[idx] = cat;
+    }
+  } else {
+    cat.id = `cat-${Date.now()}`;
+    cats.push(cat);
+  }
+  setLocal("mediguide_categories", cats);
+};
+
+export const deleteCategory = async (id: string): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      await deleteDoc(doc(firestore, "categories", id));
+      return;
+    } catch (e) {
+      console.error("Firebase error deleting category:", e);
+    }
+  }
+  const cats = getLocal<BlogCategory>("mediguide_categories");
+  setLocal("mediguide_categories", cats.filter((c) => c.id !== id));
+};

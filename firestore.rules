@@ -12,11 +12,13 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
-    // Helper: Check if authenticated user is an administrator (fail-safe by official admin email & profile role)
+    // Helper: Check if authenticated user is an administrator (fail-safe by admin email list & profile role)
     function isAdmin() {
       return isAuthenticated() && (
         request.auth.token.email == 'admin@mediguide.com' ||
         request.auth.token.email == 'Admin@mediguide.com' ||
+        request.auth.token.email == 'vishalratanshakya@gmail.com' ||
+        request.auth.token.email == 'Vishalratanshakya@gmail.com' ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
       );

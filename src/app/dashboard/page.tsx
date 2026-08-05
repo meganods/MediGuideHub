@@ -73,9 +73,9 @@ function DashboardContent() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("Proactive Medicare Explorer & health enthusiast.");
-  const [country, setCountry] = useState("United States");
+  const [country, setCountry] = useState("India");
   const [language, setLanguage] = useState("English");
-  const [timezone, setTimezone] = useState("EST (Eastern Standard Time)");
+  const [timezone, setTimezone] = useState("IST (Indian Standard Time)");
   const [avatarPreview, setAvatarPreview] = useState("");
   const [uploading, setUploading] = useState(false);
   const [profileSuccess, setProfileSuccess] = useState(false);
@@ -240,6 +240,36 @@ function DashboardContent() {
 
   // Interests recommendations
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
+
+  const handleDownloadData = () => {
+    const payload = {
+      displayName,
+      email,
+      bio,
+      country,
+      language,
+      timezone,
+      healthInterests,
+      newsletterSubscribed,
+      newsletterFrequency,
+      selectedNewsletterCats,
+      streak,
+      lastActive,
+      bookmarksCount: bookmarks.length,
+      savedPostsCount: savedPosts.length,
+      bookmarks,
+      savedPosts: savedPosts.map(p => ({ title: p.title, category: p.category, slug: p.slug })),
+      readingHistory: readingHistory.map(h => ({ slug: h.slug, date: h.date, progress: h.progress }))
+    };
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `mediguide_user_${displayName.replace(/\s+/g, '_') || "profile"}_data.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
 
   const getTabTitle = () => {
     switch (activeTab) {
@@ -752,7 +782,7 @@ function DashboardContent() {
                       <span className="font-bold text-xs text-[#113F48] block">Download Data (GDPR)</span>
                       <p className="text-[10px] text-stone-400">Download a full JSON profile payload of your account logs.</p>
                     </div>
-                    <button onClick={() => alert("Preparing download package...")} className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">Download</button>
+                    <button onClick={handleDownloadData} className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">Download</button>
                   </div>
 
                   <div className="p-4 border border-red-100 rounded-xl bg-red-50/10 flex justify-between items-center">

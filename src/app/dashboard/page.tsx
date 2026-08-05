@@ -239,14 +239,11 @@ function DashboardContent() {
   const interestRecommended = posts.filter(p => healthInterests.includes(p.category) || healthInterests.some(i => p.title.toLowerCase().includes(i.toLowerCase()))).slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] flex flex-col justify-between">
+    <div className="h-screen w-screen bg-[#FDFBF7] flex overflow-hidden">
 
-      <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Dashboard Navigation Sidebar */}
-          <aside className="lg:col-span-3 space-y-2">
-            <div className="bg-white border border-stone-200 p-5 rounded-2xl shadow-sm text-center space-y-4">
+      {/* Dashboard Navigation Sidebar */}
+      <aside className="w-80 h-full bg-white border-r border-stone-200 flex flex-col p-6 overflow-y-auto space-y-6 flex-shrink-0">
+        <div className="bg-stone-50 border border-stone-100 p-5 rounded-2xl text-center space-y-4">
               <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden bg-stone-100 border border-stone-200 flex items-center justify-center">
                 {avatarPreview ? (
                   <img src={avatarPreview} alt="User Avatar" className="w-full h-full object-cover" />
@@ -301,7 +298,7 @@ function DashboardContent() {
           </aside>
 
           {/* Main Panel Content */}
-          <main className="lg:col-span-9 space-y-6">
+          <main className="flex-1 h-full overflow-y-auto p-8 md:p-12 space-y-8 bg-[#FDFBF7]">
             
             {/* VIEW 1: HOME / OVERVIEW */}
             {activeTab === "overview" && (
@@ -777,9 +774,6 @@ function DashboardContent() {
             )}
 
           </main>
-
-        </div>
-      </div>
 
     </div>
   );

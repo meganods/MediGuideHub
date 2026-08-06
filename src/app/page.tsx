@@ -314,23 +314,46 @@ export default function Home() {
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Workflow Integrity</span>
             <h2 className="text-2xl font-extrabold text-[#113F48]">Our Rigorous Editorial Review</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { num: "01", step: "Research", desc: "Gathering federal updates" },
-              { num: "02", step: "Writing", desc: "Simplifying guidelines" },
-              { num: "03", step: "Editorial Review", desc: "Styling for readability" },
-              { num: "04", step: "Fact Checking", desc: "Reviewing references" },
-              { num: "05", step: "Publishing", desc: "Deploying pages cleanly" },
-              { num: "06", step: "Regular Updates", desc: "Reviewing every quarter" }
-            ].map((e, idx) => (
-              <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-6.5 space-y-2.5 shadow-sm hover:border-[#C9A15A] hover:bg-[#FDF6EC]/10 transition-all flex flex-col justify-between min-h-[150px]">
-                <div>
-                  <span className="text-2xl font-black text-[#C9A15A]/45 block mb-1.5">{e.num}</span>
-                  <h4 className="font-extrabold text-base text-[#113F48]">{e.step}</h4>
+          <div className="relative w-full overflow-hidden">
+            <style dangerouslySetInnerHTML={{__html: `
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-marquee-scroll {
+                display: flex;
+                width: max-content;
+                animation: marquee 25s linear infinite;
+              }
+              .animate-marquee-scroll:hover {
+                animation-play-state: paused;
+              }
+            `}} />
+            <div className="animate-marquee-scroll flex gap-6 py-2">
+              {[
+                { num: "01", step: "Research", desc: "Gathering federal updates" },
+                { num: "02", step: "Writing", desc: "Simplifying guidelines" },
+                { num: "03", step: "Editorial Review", desc: "Styling for readability" },
+                { num: "04", step: "Fact Checking", desc: "Reviewing references" },
+                { num: "05", step: "Publishing", desc: "Deploying pages cleanly" },
+                { num: "06", step: "Regular Updates", desc: "Reviewing every quarter" }
+              ].concat([
+                { num: "01", step: "Research", desc: "Gathering federal updates" },
+                { num: "02", step: "Writing", desc: "Simplifying guidelines" },
+                { num: "03", step: "Editorial Review", desc: "Styling for readability" },
+                { num: "04", step: "Fact Checking", desc: "Reviewing references" },
+                { num: "05", step: "Publishing", desc: "Deploying pages cleanly" },
+                { num: "06", step: "Regular Updates", desc: "Reviewing every quarter" }
+              ]).map((e, idx) => (
+                <div key={idx} className="bg-white border border-stone-200 rounded-2xl p-6.5 space-y-2.5 shadow-sm hover:border-[#C9A15A] hover:bg-[#FDF6EC]/10 transition-all flex flex-col justify-between min-h-[150px] w-[280px] shrink-0">
+                  <div>
+                    <span className="text-2xl font-black text-[#C9A15A]/45 block mb-1.5">{e.num}</span>
+                    <h4 className="font-extrabold text-base text-[#113F48]">{e.step}</h4>
+                  </div>
+                  <p className="text-sm text-stone-500 leading-relaxed whitespace-normal">{e.desc}</p>
                 </div>
-                <p className="text-sm text-stone-500 leading-relaxed">{e.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

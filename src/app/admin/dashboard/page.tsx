@@ -1808,11 +1808,15 @@ function AdminContent() {
                             <CustomSelect
                               value={postCategory}
                               onChange={(val) => setPostCategory(val)}
-                              options={[
-                                { label: "Overview", value: "Overview" },
-                                { label: "Comparison", value: "Comparison" },
-                                { label: "Enrollment", value: "Enrollment" }
-                              ]}
+                              options={
+                                categoriesList.length > 0
+                                  ? categoriesList.map((cat) => ({ label: cat.name, value: cat.name }))
+                                  : [
+                                      { label: "Overview", value: "Overview" },
+                                      { label: "Comparison", value: "Comparison" },
+                                      { label: "Enrollment", value: "Enrollment" }
+                                    ]
+                              }
                             />
                           </div>
                         </div>

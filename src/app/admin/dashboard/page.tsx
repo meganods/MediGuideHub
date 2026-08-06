@@ -635,6 +635,10 @@ function AdminContent() {
     setActiveTab(tab);
     setEditingPost(null);
     setIsAddingPost(false);
+    setIsAddingCategory(false);
+    setEditingCategory(null);
+    setIsAddingFAQ(false);
+    setEditingFAQ(null);
     setIsSidebarOpen(false);
     router.push(`/admin/dashboard?tab=${tab}`);
   };

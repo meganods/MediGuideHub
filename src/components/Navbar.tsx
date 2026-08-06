@@ -4,12 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { useAdminAuth } from "@/lib/adminAuthContext";
 import { ShieldCheck, LogOut, Menu, X, HeartPulse } from "lucide-react";
 
 export default function Navbar() {
   const { user } = useAuth();
-  const { adminUser } = useAdminAuth();
   const pathname = usePathname();
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -62,16 +60,6 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              {adminUser && (
-                <div className="flex items-center space-x-3">
-                  <Link
-                    href="/admin/dashboard"
-                    className="flex items-center justify-center px-4 h-11 font-medium text-white bg-[#113F48] hover:bg-[#1C545E] rounded-xl transition-all shadow-md shadow-[#113F48]/10 hover:shadow-lg"
-                  >
-                    Admin Console
-                  </Link>
-                </div>
-              )}
               {user ? (
                 <div className="flex items-center space-x-3">
                   <Link
@@ -82,22 +70,20 @@ export default function Navbar() {
                   </Link>
                 </div>
               ) : (
-                !adminUser && (
-                  <div className="flex items-center space-x-3">
-                    <Link
-                      href="/login"
-                      className="flex items-center justify-center px-4 h-11 font-medium text-[#113F48] hover:text-[#C9A15A] transition-all"
-                    >
-                      Login
-                    </Link>
-                    <Link
-                      href="/register"
-                      className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
-                    >
-                      Register
-                    </Link>
-                  </div>
-                )
+                <div className="flex items-center space-x-3">
+                  <Link
+                    href="/login"
+                    className="flex items-center justify-center px-4 h-11 font-medium text-[#113F48] hover:text-[#C9A15A] transition-all"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
+                  >
+                    Register
+                  </Link>
+                </div>
               )}
             </div>
 
@@ -165,17 +151,6 @@ export default function Navbar() {
 
           <div className="flex flex-col space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-2">Account</span>
-            {adminUser && (
-              <div className="flex flex-col space-y-2 mb-2">
-                <Link
-                  href="/admin/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full h-12 font-medium text-white bg-[#113F48] hover:bg-[#1C545E] rounded-xl transition-all shadow-md shadow-[#113F48]/10"
-                >
-                  Admin Console
-                </Link>
-              </div>
-            )}
             {user ? (
               <div className="flex flex-col space-y-2">
                 <Link
@@ -187,24 +162,22 @@ export default function Navbar() {
                 </Link>
               </div>
             ) : (
-              !adminUser && (
-                <div className="flex flex-col space-y-2">
-                  <Link
-                    href="/login"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full h-12 font-medium text-[#113F48] bg-[#F9FAFB] border border-stone-200 rounded-xl transition-all"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/register"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10"
-                  >
-                    Register
-                  </Link>
-                </div>
-              )
+              <div className="flex flex-col space-y-2">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center w-full h-12 font-medium text-[#113F48] bg-[#F9FAFB] border border-stone-200 rounded-xl transition-all"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10"
+                >
+                  Register
+                </Link>
+              </div>
             )}
           </div>
         </div>

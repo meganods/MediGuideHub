@@ -1687,7 +1687,7 @@ function AdminContent() {
                         {/* Featured Banner Image Upload */}
                         <div className="space-y-2 border border-dashed border-[#C9A15A]/30 p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FDF6EC]/10">
                           <div className="flex items-center gap-3">
-                            <div className="h-12 w-16 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[8px] text-stone-400">
+                            <div className="h-20 w-36 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400 flex-shrink-0">
                               {postImage ? (
                                 <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
                               ) : (
@@ -1871,7 +1871,7 @@ function AdminContent() {
                       <div className="space-y-4">
                         <div className="space-y-2 border border-dashed border-stone-200 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
                           <div className="flex items-center gap-3">
-                            <div className="h-16 w-20 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400">
+                            <div className="h-20 w-36 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400 flex-shrink-0">
                               {postImage ? (
                                 <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
                               ) : (

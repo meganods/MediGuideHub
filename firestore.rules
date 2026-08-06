@@ -15,8 +15,8 @@ service cloud.firestore {
     // Helper: Check user role
     function hasRole(role) {
       return isAuthenticated() && 
-        exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
-        getUserData().role == role;
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) ?
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role : false);
     }
 
     // Role-specific helpers (Strictly locked to admin@mediguide.com)

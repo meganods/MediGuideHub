@@ -38,7 +38,7 @@ export default function FAQPage() {
               <HelpCircle className="h-7 w-7 text-[#C9A15A]" />
             </div>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Healthcare FAQ</h1>
-            <p className="text-stone-500 max-w-2xl text-sm leading-relaxed">
+            <p className="text-stone-500 max-w-2xl text-sm leading-relaxed mx-auto">
               Answers to the most common questions about healthcare wellness, preventive care, nutrition, and mental health — written in plain language by our team of healthcare policy advisors.
             </p>
           </div>

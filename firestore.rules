@@ -2,124 +2,137 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: Check if user is authenticated
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    // Helper: Get user profile data
-    function getUserData() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
-    }
-
-    // Helper: Check user role
-    function hasRole(role) {
-      return isAuthenticated() && 
-        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) ?
-          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role : false);
-    }
-
-    // Role-specific helpers (Strictly locked to admin@mediguide.com)
-    function isAdmin() {
-      return isAuthenticated() && (request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
-    }
-
-    function isEditor() {
-      return isAdmin() || hasRole('editor');
-    }
-
-    function isAuthor() {
-      return isEditor() || hasRole('author');
-    }
-
-    // Helper: Check if user is accessing their own user document
-    function isOwner(userId) {
-      return isAuthenticated() && request.auth.uid == userId;
-    }
-
-    // Helper: Check if post is published and not soft-deleted
-    function isPublicContent(data) {
-      return data.status == 'published' && (!('deleted' in data) || data.deleted == false);
-    }
-
     // 1. User Profiles & Settings
     match /users/{userId} {
-      allow create: if isAuthenticated();
-      // Allow read access if authenticated and requesting own document, or if checking admin/editor role
-      allow read: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin') || hasRole('editor'));
-      // Allow write access if authenticated and modifying own document, or if administrator
-      allow write: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        request.auth.uid == userId || 
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+      allow write: if request.auth != null && (
+        request.auth.uid == userId || 
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
 
       // Nested collections: bookmarks, readingHistory, preferences, notifications
       match /{document=**} {
-        allow read, write: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
+        allow read, write: if request.auth != null && (
+          request.auth.uid == userId || 
+          request.auth.token.email == 'admin@mediguide.com' ||
+          (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+           get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+        );
       }
     }
 
     // 2. Blog Posts
     match /posts/{postId} {
       allow read: if true;
-      allow write: if isAuthor();
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor', 'author'])
+      );
     }
 
     // 3. Categories
     match /categories/{catId} {
       allow read: if true;
-      allow write: if isEditor();
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
     }
 
     // 4. FAQs
     match /faqs/{faqId} {
       allow read: if true;
-      allow write: if isEditor();
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
     }
 
-    // 5. Messages / Contact Inbox
-    match /contactMessages/{messageId} {
+    // 5. Contact Messages
+    match /contactMessages/{msgId} {
       allow create: if true;
-      allow read, write: if isEditor();
+      allow read, write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
     }
 
     // 6. Newsletter Subscribers
     match /newsletterSubscribers/{subId} {
       allow create: if true;
-      allow read, write: if isEditor();
+      allow read, write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
     }
 
-    // 7. Site Settings & SEO Settings
-    match /siteSettings/{id} {
+    // 7. Site Settings
+    match /siteSettings/{settingsId} {
       allow read: if true;
-      allow write: if isAdmin();
-    }
-    match /seoSettings/{id} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
     }
 
     // 8. Legal Pages
     match /legalPages/{pageId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
     }
 
     // 9. Activity Logs
     match /activityLogs/{logId} {
-      allow create: if isAuthenticated();
-      allow read: if isAdmin();
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
       allow update, delete: if false;
     }
 
     // 10. Search Analytics
     match /searchAnalytics/{id} {
       allow create: if true;
-      allow read: if isEditor();
-      allow update, delete: if isAdmin();
+      allow read: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+      allow update, delete: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
     }
 
     // 11. Comments
     match /comments/{commentId} {
       allow read, create: if true;
-      allow delete: if isAdmin();
+      allow delete: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
     }
   }
 }

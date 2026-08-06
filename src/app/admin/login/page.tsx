@@ -45,7 +45,13 @@ function AdminLoginForm() {
       router.push("/admin/dashboard");
     } catch (err: any) {
       console.error(err);
-      setError(err?.message || "Admin login failed. Please verify your credentials.");
+      let errMsg = "Admin login failed. Please verify your credentials.";
+      if (err?.message && err.message.includes("auth/invalid-credential")) {
+        errMsg = "Incorrect admin email address or password. Please try again.";
+      } else if (err?.code === "auth/invalid-credential") {
+        errMsg = "Incorrect admin email address or password. Please try again.";
+      }
+      setError(errMsg);
       setStatus("idle");
     }
   };

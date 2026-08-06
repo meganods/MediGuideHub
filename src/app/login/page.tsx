@@ -68,10 +68,15 @@ function LoginFormContent() {
       } else {
         router.push("/");
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err);
-      setError(err?.message || "Authentication failed. Please verify your credentials.");
+      let errMsg = "Authentication failed. Please verify your credentials.";
+      if (err?.message && err.message.includes("auth/invalid-credential")) {
+        errMsg = "Incorrect email address or password. Please try again.";
+      } else if (err?.code === "auth/invalid-credential") {
+        errMsg = "Incorrect email address or password. Please try again.";
+      }
+      setError(errMsg);
       setStatus("idle");
     }
   };

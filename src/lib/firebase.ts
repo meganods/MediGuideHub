@@ -22,6 +22,7 @@ let adminApp;
 let auth: Auth | null = null;
 let adminAuth: Auth | null = null;
 let firestore: Firestore | null = null;
+let adminFirestore: Firestore | null = null;
 
 if (isFirebaseConfigured) {
   try {
@@ -32,6 +33,7 @@ if (isFirebaseConfigured) {
     const apps = getApps();
     adminApp = apps.find(a => a.name === "adminApp") || initializeApp(firebaseConfig, "adminApp");
     adminAuth = getAuth(adminApp);
+    adminFirestore = getFirestore(adminApp);
   } catch (error) {
     console.error("Firebase failed to initialize:", error);
   }
@@ -43,5 +45,5 @@ if (isFirebaseConfigured) {
   }
 }
 
-export { app, auth, firestore, adminAuth };
+export { app, auth, firestore, adminAuth, adminFirestore };
 export default app;

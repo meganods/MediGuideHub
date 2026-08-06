@@ -1,4 +1,8 @@
-import { firestore, auth, isFirebaseConfigured } from "./firebase";
+import { firestore, adminFirestore, auth, isFirebaseConfigured } from "./firebase";
+
+const getAdminFirestore = () => {
+  return adminFirestore || firestore;
+};
 import {
   collection,
   doc,
@@ -159,9 +163,9 @@ const setLocal = <T>(key: string, data: T[]): void => {
    1. BLOG POSTS SERVICES
    ========================================== */
 export const getPosts = async (): Promise<BlogPost[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const q = query(collection(firestore, "posts"), orderBy("publishedAt", "desc"));
+      const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
       const snapshot = await getDocs(q);
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogPost));
     } catch (e) {
@@ -172,9 +176,9 @@ export const getPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const q = query(collection(firestore, "posts"), where("slug", "==", slug));
+      const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
       const snapshot = await getDocs(q);
       if (!snapshot.empty) {
         return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as BlogPost;
@@ -194,13 +198,13 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
     readTime: post.readTime || "5 min read",
   };
 
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       if (cleanPost.id) {
-        await setDoc(doc(firestore, "posts", cleanPost.id), cleanPost, { merge: true });
+        await setDoc(doc(getAdminFirestore()!, "posts", cleanPost.id), cleanPost, { merge: true });
         return { ...cleanPost, id: cleanPost.id } as BlogPost;
       } else {
-        const docRef = await addDoc(collection(firestore, "posts"), cleanPost);
+        const docRef = await addDoc(collection(getAdminFirestore()!, "posts"), cleanPost);
         return { ...cleanPost, id: docRef.id } as BlogPost;
       }
     } catch (e) {
@@ -225,9 +229,9 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
 };
 
 export const deletePost = async (id: string): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await deleteDoc(doc(firestore, "posts", id));
+      await deleteDoc(doc(getAdminFirestore()!, "posts", id));
       return;
     } catch (e) {
       console.error("Firebase deletePost error:", e);
@@ -242,9 +246,9 @@ export const deletePost = async (id: string): Promise<void> => {
    2. FAQS SERVICES
    ========================================== */
 export const getFAQs = async (): Promise<FAQItem[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(collection(firestore, "faqs"));
+      const snapshot = await getDocs(collection(getAdminFirestore()!, "faqs"));
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as FAQItem));
     } catch (e) {
       console.error("Firebase error getting FAQs:", e);
@@ -254,13 +258,13 @@ export const getFAQs = async (): Promise<FAQItem[]> => {
 };
 
 export const saveFAQ = async (faq: Omit<FAQItem, "id"> & { id?: string }): Promise<FAQItem> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       if (faq.id) {
-        await setDoc(doc(firestore, "faqs", faq.id), faq, { merge: true });
+        await setDoc(doc(getAdminFirestore()!, "faqs", faq.id), faq, { merge: true });
         return faq as FAQItem;
       } else {
-        const docRef = await addDoc(collection(firestore, "faqs"), faq);
+        const docRef = await addDoc(collection(getAdminFirestore()!, "faqs"), faq);
         return { ...faq, id: docRef.id } as FAQItem;
       }
     } catch (e) {
@@ -280,9 +284,9 @@ export const saveFAQ = async (faq: Omit<FAQItem, "id"> & { id?: string }): Promi
 };
 
 export const deleteFAQ = async (id: string): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await deleteDoc(doc(firestore, "faqs", id));
+      await deleteDoc(doc(getAdminFirestore()!, "faqs", id));
       return;
     } catch (e) {
       console.error("Firebase deleteFAQ error:", e);
@@ -297,9 +301,9 @@ export const deleteFAQ = async (id: string): Promise<void> => {
    3. CONTACT MESSAGES SERVICES
    ========================================== */
 export const getContactMessages = async (): Promise<ContactMessage[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(query(collection(firestore, "contactMessages"), orderBy("createdAt", "desc")));
+      const snapshot = await getDocs(query(collection(getAdminFirestore()!, "contactMessages"), orderBy("createdAt", "desc")));
       return snapshot.docs.map((doc) => ({ id: doc.id, read: doc.data().read ?? false, ...doc.data() } as ContactMessage));
     } catch (e) {
       console.warn("Firebase error getting contact messages (Permission check failed or missing):", (e as any).message || e);
@@ -328,9 +332,9 @@ export const sendContactMessage = async (msg: Omit<ContactMessage, "createdAt" |
     read: false,
   };
 
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const docRef = await addDoc(collection(firestore, "contactMessages"), fullMsg);
+      const docRef = await addDoc(collection(getAdminFirestore()!, "contactMessages"), fullMsg);
       await addNotificationToAdmins(
         "New Contact Message",
         `From ${fullMsg.name}: "${fullMsg.subject}"`,
@@ -350,9 +354,9 @@ export const sendContactMessage = async (msg: Omit<ContactMessage, "createdAt" |
 };
 
 export const replyContactMessage = async (id: string, replyText: string): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const msgRef = doc(firestore, "contactMessages", id);
+      const msgRef = doc(getAdminFirestore()!, "contactMessages", id);
       const snapshot = await getDoc(msgRef);
       const msgData = snapshot.data();
       
@@ -386,9 +390,9 @@ export const replyContactMessage = async (id: string, replyText: string): Promis
 };
 
 export const deleteContactMessage = async (id: string): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await deleteDoc(doc(firestore, "contactMessages", id));
+      await deleteDoc(doc(getAdminFirestore()!, "contactMessages", id));
       return;
     } catch (e) {
       console.error("Firebase deleteContactMessage error:", e);
@@ -403,9 +407,9 @@ export const deleteContactMessage = async (id: string): Promise<void> => {
    4. NEWSLETTER SERVICES
    ========================================== */
 export const getSubscribers = async (): Promise<NewsletterSubscriber[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(collection(firestore, "newsletterSubscribers"));
+      const snapshot = await getDocs(collection(getAdminFirestore()!, "newsletterSubscribers"));
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as NewsletterSubscriber));
     } catch (e) {
       console.warn("Firebase error getting subscribers (Permission check failed or missing):", (e as any).message || e);
@@ -421,14 +425,14 @@ export const subscribeNewsletter = async (email: string): Promise<boolean> => {
     subscribedAt: new Date().toISOString(),
   };
 
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       // Check duplicate
-      const q = query(collection(firestore, "newsletterSubscribers"), where("email", "==", cleanEmail));
+      const q = query(collection(getAdminFirestore()!, "newsletterSubscribers"), where("email", "==", cleanEmail));
       const snap = await getDocs(q);
       if (!snap.empty) return false; // Already subscribed
 
-      await addDoc(collection(firestore, "newsletterSubscribers"), sub);
+      await addDoc(collection(getAdminFirestore()!, "newsletterSubscribers"), sub);
       return true;
     } catch (e) {
       console.error("Firebase subscribeNewsletter error:", e);
@@ -448,9 +452,9 @@ export const subscribeNewsletter = async (email: string): Promise<boolean> => {
    5. USERS & PROFILES SERVICES
    ========================================== */
 export const getUsers = async (): Promise<UserProfile[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(collection(firestore, "users"));
+      const snapshot = await getDocs(collection(getAdminFirestore()!, "users"));
       return snapshot.docs.map((doc) => ({ uid: doc.id, ...doc.data() } as UserProfile));
     } catch (e) {
       console.warn("Firebase error getting users (Permission check failed or missing):", (e as any).message || e);
@@ -460,8 +464,8 @@ export const getUsers = async (): Promise<UserProfile[]> => {
 };
 
 export async function updateUserRole(userId: string, newRole: string) {
-  if (!isFirebaseConfigured || !firestore) return;
-  const userRef = doc(firestore, "users", userId);
+  if (!isFirebaseConfigured || !getAdminFirestore()!) return;
+  const userRef = doc(getAdminFirestore()!, "users", userId);
   await updateDoc(userRef, { role: newRole });
 }
 
@@ -473,12 +477,12 @@ export function subscribeToUserNotifications(
   userId: string,
   callback: (notifications: Notification[]) => void
 ) {
-  if (!isFirebaseConfigured || !firestore || !auth?.currentUser) {
+  if (!isFirebaseConfigured || !getAdminFirestore()! || !auth?.currentUser) {
     callback([]);
     return () => {}; // empty unsubscribe
   }
   
-  const notificationsRef = collection(firestore, "users", userId, "notifications");
+  const notificationsRef = collection(getAdminFirestore()!, "users", userId, "notifications");
   const q = query(notificationsRef, orderBy("createdAt", "desc"));
   
   const unsubscribe = onSnapshot(
@@ -500,8 +504,8 @@ export function subscribeToUserNotifications(
 }
 
 export async function markNotificationAsRead(userId: string, notificationId: string) {
-  if (!isFirebaseConfigured || !firestore) return;
-  const notificationRef = doc(firestore, "users", userId, "notifications", notificationId);
+  if (!isFirebaseConfigured || !getAdminFirestore()!) return;
+  const notificationRef = doc(getAdminFirestore()!, "users", userId, "notifications", notificationId);
   await updateDoc(notificationRef, { read: true });
 }
 
@@ -511,9 +515,9 @@ export async function addNotificationToUser(
   message: string,
   actionUrl?: string
 ) {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const notifsRef = collection(firestore!, "users", userId, "notifications");
+      const notifsRef = collection(getAdminFirestore()!!, "users", userId, "notifications");
       await addDoc(notifsRef, {
         title,
         message,
@@ -544,12 +548,12 @@ export async function addNotificationToAdmins(
   message: string,
   actionUrl?: string
 ) {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const q = query(collection(firestore!, "users"), where("role", "==", "admin"));
+      const q = query(collection(getAdminFirestore()!!, "users"), where("role", "==", "admin"));
       const snapshot = await getDocs(q);
       snapshot.forEach(async (docRef) => {
-        const notifsRef = collection(firestore!, "users", docRef.id, "notifications");
+        const notifsRef = collection(getAdminFirestore()!!, "users", docRef.id, "notifications");
         await addDoc(notifsRef, {
           title,
           message,
@@ -565,9 +569,9 @@ export async function addNotificationToAdmins(
 }
 
 export const getUserProfile = async (uid: string): Promise<UserProfile | null> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const docRef = doc(firestore, "users", uid);
+      const docRef = doc(getAdminFirestore()!, "users", uid);
       const snapshot = await getDoc(docRef);
       if (snapshot.exists()) {
         return { uid, ...snapshot.data() } as UserProfile;
@@ -581,9 +585,9 @@ export const getUserProfile = async (uid: string): Promise<UserProfile | null> =
 };
 
 export const saveUserProfile = async (profile: UserProfile): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await setDoc(doc(firestore, "users", profile.uid), profile, { merge: true });
+      await setDoc(doc(getAdminFirestore()!, "users", profile.uid), profile, { merge: true });
       return;
     } catch (e) {
       console.error("Firebase saveUserProfile error:", e);
@@ -616,9 +620,9 @@ export const updateUserSavedPosts = async (uid: string, slug: string, action: "s
 };
 
 export const banUserProfile = async (uid: string, banState: boolean): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await updateDoc(doc(firestore, "users", uid), { banned: banState });
+      await updateDoc(doc(getAdminFirestore()!, "users", uid), { banned: banState });
       return;
     } catch (e) {
       console.error("Firebase banUserProfile error:", e);
@@ -633,9 +637,9 @@ export const banUserProfile = async (uid: string, banState: boolean): Promise<vo
 };
 
 export const getSiteSettings = async (): Promise<SiteSettings> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDoc(doc(firestore, "siteSettings", "app"));
+      const snapshot = await getDoc(doc(getAdminFirestore()!, "siteSettings", "app"));
       if (snapshot.exists()) {
         return snapshot.data() as SiteSettings;
       }
@@ -653,9 +657,9 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
 };
 
 export const saveSiteSettings = async (settings: SiteSettings): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await setDoc(doc(firestore, "siteSettings", "app"), settings, { merge: true });
+      await setDoc(doc(getAdminFirestore()!, "siteSettings", "app"), settings, { merge: true });
       return;
     } catch (e) {
       console.error("Firebase error saving site settings:", e);
@@ -678,9 +682,9 @@ export interface LegalPage {
 }
 
 export const resolveContactMessage = async (id: string, resolved: boolean): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await updateDoc(doc(firestore, "contactMessages", id), { resolved });
+      await updateDoc(doc(getAdminFirestore()!, "contactMessages", id), { resolved });
       return;
     } catch (e) {
       console.error("Firebase resolveContactMessage error:", e);
@@ -695,9 +699,9 @@ export const resolveContactMessage = async (id: string, resolved: boolean): Prom
 };
 
 export const archiveContactMessage = async (id: string, archived: boolean): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await updateDoc(doc(firestore, "contactMessages", id), { archived });
+      await updateDoc(doc(getAdminFirestore()!, "contactMessages", id), { archived });
       return;
     } catch (e) {
       console.error("Firebase archiveContactMessage error:", e);
@@ -712,9 +716,9 @@ export const archiveContactMessage = async (id: string, archived: boolean): Prom
 };
 
 export const getLegalPage = async (slug: string): Promise<LegalPage | null> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDoc(doc(firestore, "legalPages", slug));
+      const snapshot = await getDoc(doc(getAdminFirestore()!, "legalPages", slug));
       if (snapshot.exists()) {
         return snapshot.data() as LegalPage;
       }
@@ -728,9 +732,9 @@ export const getLegalPage = async (slug: string): Promise<LegalPage | null> => {
 };
 
 export const updateLegalPage = async (slug: string, updates: Partial<LegalPage>): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await setDoc(doc(firestore, "legalPages", slug), { slug, ...updates }, { merge: true });
+      await setDoc(doc(getAdminFirestore()!, "legalPages", slug), { slug, ...updates }, { merge: true });
       return;
     } catch (e) {
       console.error("Firebase error updating legal page:", e);
@@ -770,9 +774,9 @@ export interface BlogCategory {
 }
 
 export const getCategories = async (): Promise<BlogCategory[]> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(query(collection(firestore, "categories"), orderBy("displayOrder", "asc")));
+      const snapshot = await getDocs(query(collection(getAdminFirestore()!, "categories"), orderBy("displayOrder", "asc")));
       return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
     } catch (e) {
       console.warn("Firebase error getting categories (Permission check failed or missing):", (e as any).message || e);
@@ -782,10 +786,10 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
 };
 
 export const saveCategory = async (cat: BlogCategory): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const id = cat.id || doc(collection(firestore, "categories")).id;
-      await setDoc(doc(firestore, "categories", id), { ...cat, id }, { merge: true });
+      const id = cat.id || doc(collection(getAdminFirestore()!, "categories")).id;
+      await setDoc(doc(getAdminFirestore()!, "categories", id), { ...cat, id }, { merge: true });
       return;
     } catch (e) {
       console.warn("Firebase error saving category (Permission check failed or missing):", (e as any).message || e);
@@ -805,9 +809,9 @@ export const saveCategory = async (cat: BlogCategory): Promise<void> => {
 };
 
 export const deleteCategory = async (id: string): Promise<void> => {
-  if (isFirebaseConfigured && firestore) {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      await deleteDoc(doc(firestore, "categories", id));
+      await deleteDoc(doc(getAdminFirestore()!, "categories", id));
       return;
     } catch (e) {
       console.error("Firebase error deleting category:", e);

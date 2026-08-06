@@ -42,7 +42,7 @@ import {
 } from "@/lib/db";
 import { uploadImage } from "@/lib/cloudinary";
 import { BlogPost } from "@/lib/mockData";
-import { firestore, isFirebaseConfigured } from "@/lib/firebase";
+import { adminFirestore, isFirebaseConfigured } from "@/lib/firebase";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import {
   Users,
@@ -511,8 +511,8 @@ function AdminContent() {
   useEffect(() => {
     if (loading || !user || user.role !== "admin") return;
 
-    if (isFirebaseConfigured && firestore) {
-      const q = query(collection(firestore, "contactMessages"), orderBy("createdAt", "desc"));
+    if (isFirebaseConfigured && adminFirestore) {
+      const q = query(collection(adminFirestore, "contactMessages"), orderBy("createdAt", "desc"));
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const msgs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as ContactMessage));
         setMessages(msgs);

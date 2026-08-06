@@ -2368,7 +2368,8 @@ function AdminContent() {
                         <table className="w-full min-w-[1100px] text-left border-collapse">
                           <thead>
                             <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
-                              <th className="p-3">Banner</th>
+                              <th className="p-3 w-16 text-center">S.NO.</th>
+                              <th className="p-3">IMG</th>
                               <th className="p-3">Title</th>
                               <th className="p-3">Category</th>
                               <th className="p-3">Status</th>
@@ -2407,6 +2408,7 @@ function AdminContent() {
                               })
                               .map((post, idx) => (
                                 <tr key={post.id} className="hover:bg-stone-50/50 transition-colors">
+                                  <td className="p-3 font-bold text-stone-400 text-xs w-16 text-center">{idx + 1}</td>
                                   <td className="p-3">
                                     <div className="h-8 w-12 rounded bg-stone-100 border border-stone-200 overflow-hidden flex-shrink-0">
                                       {post.featuredImage ? (

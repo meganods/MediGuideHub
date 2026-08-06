@@ -68,6 +68,9 @@ export interface UserProfile {
   avatarUrl?: string;
   createdAt: string;
   banned?: boolean;
+  streak?: number;
+  lastActiveDate?: string;
+  lastActive?: string;
 }
 
 export interface SiteSettings {

@@ -9,6 +9,7 @@ import { useAuth } from "@/lib/authContext";
 import { 
   getPosts, 
   getUserProfile, 
+  saveUserProfile,
   updateUserSavedPosts, 
   subscribeToUserNotifications, 
   markNotificationAsRead, 
@@ -138,8 +139,8 @@ function DashboardContent() {
   // Live Bookmarks, Reading History, Streaks & Last Active states
   const [bookmarks, setBookmarks] = useState<Array<{slug: string, date: string}>>([]);
   const [readingHistory, setReadingHistory] = useState<Array<{slug: string, date: string, progress: number}>>([]);
-  const [streak, setStreak] = useState(5);
-  const [lastActive, setLastActive] = useState("Today");
+  const [streak, setStreak] = useState(1);
+  const [lastActive, setLastActive] = useState("Just Now");
 
   useEffect(() => {
     if (loading) return;
@@ -175,8 +176,34 @@ function DashboardContent() {
         if (profile) {
           if ((profile as any).bookmarks) setBookmarks((profile as any).bookmarks);
           if ((profile as any).readingHistory) setReadingHistory((profile as any).readingHistory);
-          if ((profile as any).streak) setStreak((profile as any).streak);
-          if ((profile as any).lastActive) setLastActive((profile as any).lastActive);
+          
+          const now = new Date();
+          const todayStr = now.toDateString();
+          const prevLastActive = (profile as any).lastActiveDate || "";
+          let newStreak = (profile as any).streak || 1;
+
+          if (prevLastActive && prevLastActive !== todayStr) {
+            const prevDate = new Date(prevLastActive);
+            const diffTime = Math.abs(now.getTime() - prevDate.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 1) {
+              newStreak += 1;
+            } else if (diffDays > 1) {
+              newStreak = 1;
+            }
+          }
+
+          setStreak(newStreak);
+          setLastActive("Just Now");
+
+          // Save tracking data back to Firestore
+          await saveUserProfile({
+            ...profile,
+            streak: newStreak,
+            lastActiveDate: todayStr,
+            lastActive: "Just Now"
+          });
         }
       } catch (err) {
         console.error("Failed to load dashboard data:", err);

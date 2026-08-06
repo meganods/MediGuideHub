@@ -102,9 +102,9 @@ function CustomSelect({ value, onChange, options, className = "" }: CustomSelect
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
           <div className="absolute left-0 mt-1 w-full bg-white border border-stone-200 rounded-xl shadow-lg z-50 py-1 max-h-60 overflow-y-auto">
-            {options.map((opt) => (
+            {options.map((opt, idx) => (
               <button
-                key={opt.value}
+                key={`${opt.value}-${idx}`}
                 type="button"
                 onClick={() => {
                   onChange(opt.value);

@@ -2135,7 +2135,7 @@ function AdminContent() {
                   ) : (
                     <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
                       <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
+                        <table className="w-full min-w-[1100px] text-left border-collapse">
                           <thead>
                             <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
                               <th className="p-3">Banner</th>
@@ -2209,20 +2209,20 @@ function AdminContent() {
                                   <td className="p-3 font-semibold text-stone-600">{post.seoScore || 85}/100</td>
                                   <td className="p-3 text-stone-500 font-bold">{post.views || 0}</td>
                                   <td className="p-3 text-stone-400">{post.publishedAt}</td>
-                                  <td className="p-3 text-right space-x-2.5 flex justify-end items-center h-full pt-3.5">
+                                  <td className="p-3 text-right space-x-2 flex justify-end items-center h-full pt-4">
                                     <button
                                       onClick={() => handleEditPostClick(post)}
-                                      className="p-2.5 bg-blue-50 border border-blue-200 text-blue-600 hover:bg-blue-100 hover:text-blue-800 rounded-xl transition-all flex items-center justify-center"
+                                      className="p-2 border border-stone-200 text-stone-500 hover:text-[#C9A15A] hover:bg-stone-50 rounded-xl transition-all"
                                       title="Edit Article"
                                     >
-                                      <Edit className="h-5 w-5" />
+                                      <Edit className="h-4 w-4" />
                                     </button>
                                     <button
                                       onClick={() => handleDeletePost(post.id)}
-                                      className="p-2.5 bg-red-50 border border-red-200 text-red-600 hover:bg-red-100 hover:text-red-800 rounded-xl transition-all flex items-center justify-center"
+                                      className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
                                       title="Delete Article"
                                     >
-                                      <Trash2 className="h-5 w-5" />
+                                      <Trash2 className="h-4 w-4" />
                                     </button>
                                   </td>
                                 </tr>
@@ -2927,7 +2927,7 @@ function AdminContent() {
                   </div>
 
                   <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
+                    <table className="w-full min-w-[1000px] text-left border-collapse">
                       <thead>
                         <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
                           <th className="p-3">Icon</th>
@@ -2967,20 +2967,20 @@ function AdminContent() {
                                   {cat.status || "Active"}
                                 </span>
                               </td>
-                              <td className="p-3 text-right space-x-2.5">
+                              <td className="p-3 text-right space-x-2">
                                 <button
                                   onClick={() => handleEditCategoryClick(cat)}
-                                  className="p-2.5 bg-blue-50 border border-blue-200 text-blue-600 hover:bg-blue-100 hover:text-blue-800 rounded-xl transition-all inline-flex items-center justify-center"
+                                  className="p-2 border border-stone-200 text-stone-500 hover:text-[#C9A15A] hover:bg-stone-50 rounded-xl transition-all inline-flex items-center justify-center"
                                   title="Edit Category"
                                 >
-                                  <Edit className="h-5 w-5" />
+                                  <Edit className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteCategory(cat.id || "")}
-                                  className="p-2.5 bg-red-50 border border-red-200 text-red-600 hover:bg-red-100 hover:text-red-800 rounded-xl transition-all inline-flex items-center justify-center"
+                                  className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all inline-flex items-center justify-center"
                                   title="Delete Category"
                                 >
-                                  <Trash2 className="h-5 w-5" />
+                                  <Trash2 className="h-4 w-4" />
                                 </button>
                               </td>
                             </tr>

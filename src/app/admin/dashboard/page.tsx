@@ -2363,7 +2363,7 @@ function AdminContent() {
                                         {post.featuredImage ? (
                                           <img src={post.featuredImage} alt="" className="h-full w-full object-cover" />
                                         ) : (
-                                          <div className="h-full w-full flex items-center justify-center text-[10px] text-stone-500 font-bold bg-[#FDF6EC]/60">{idx + 1}</div>
+                                          <div className="h-full w-full flex items-center justify-center text-[8px] text-stone-400 font-semibold bg-stone-50">None</div>
                                         )}
                                       </div>
                                     </div>

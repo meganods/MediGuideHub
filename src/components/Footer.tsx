@@ -150,7 +150,9 @@ export default function Footer() {
                 <Phone className="h-4 w-4 text-[#C9A15A] mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block text-xs font-bold text-[#113F48] uppercase tracking-wide">Phone</span>
-                  <span className="text-stone-500">+91 XXXXX XXXXX</span>
+                  <a href="tel:+919897654098" className="hover:text-[#C9A15A] transition-colors">
+                    +91 9897654098
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">

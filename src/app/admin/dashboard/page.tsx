@@ -2209,20 +2209,20 @@ function AdminContent() {
                                   <td className="p-3 font-semibold text-stone-600">{post.seoScore || 85}/100</td>
                                   <td className="p-3 text-stone-500 font-bold">{post.views || 0}</td>
                                   <td className="p-3 text-stone-400">{post.publishedAt}</td>
-                                  <td className="p-3 text-right space-x-1.5 flex justify-end items-center h-full pt-4">
+                                  <td className="p-3 text-right space-x-2 flex justify-end items-center h-full pt-4">
                                     <button
                                       onClick={() => handleEditPostClick(post)}
-                                      className="p-1.5 border border-stone-200 text-stone-500 hover:text-[#C9A15A] rounded-lg transition-colors"
+                                      className="p-2 border border-stone-200 text-stone-500 hover:text-[#C9A15A] hover:bg-stone-50 rounded-xl transition-all"
                                       title="Edit Article"
                                     >
-                                      <Edit className="h-3.5 w-3.5" />
+                                      <Edit className="h-4 w-4" />
                                     </button>
                                     <button
                                       onClick={() => handleDeletePost(post.id)}
-                                      className="p-1.5 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                      className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
                                       title="Delete Article"
                                     >
-                                      <Trash2 className="h-3.5 w-3.5" />
+                                      <Trash2 className="h-4 w-4" />
                                     </button>
                                   </td>
                                 </tr>
@@ -2967,20 +2967,20 @@ function AdminContent() {
                                   {cat.status || "Active"}
                                 </span>
                               </td>
-                              <td className="p-3 text-right space-x-1.5">
+                              <td className="p-3 text-right space-x-2">
                                 <button
                                   onClick={() => handleEditCategoryClick(cat)}
-                                  className="p-1.5 border border-stone-200 text-stone-500 hover:text-[#C9A15A] rounded-lg transition-colors inline-block"
+                                  className="p-2 border border-stone-200 text-stone-500 hover:text-[#C9A15A] hover:bg-stone-50 rounded-xl transition-all inline-flex items-center justify-center"
                                   title="Edit Category"
                                 >
-                                  <Edit className="h-3.5 w-3.5" />
+                                  <Edit className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteCategory(cat.id || "")}
-                                  className="p-1.5 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors inline-block"
+                                  className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all inline-flex items-center justify-center"
                                   title="Delete Category"
                                 >
-                                  <Trash2 className="h-3.5 w-3.5" />
+                                  <Trash2 className="h-4 w-4" />
                                 </button>
                               </td>
                             </tr>

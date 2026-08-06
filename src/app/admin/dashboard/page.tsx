@@ -324,6 +324,39 @@ function AdminContent() {
   const [catSeoSchema, setCatSeoSchema] = useState("MedicalWebPage");
   const [catSeoOgImage, setCatSeoOgImage] = useState("");
 
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [toast, setToast] = useState<{ message: string; visible: boolean; type: "success" | "error" }>({
+    message: "",
+    visible: false,
+    type: "success"
+  });
+
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToast({ message, visible: true, type });
+  };
+
+  useEffect(() => {
+    if (toast.visible) {
+      const timer = setTimeout(() => {
+        setToast((prev) => ({ ...prev, visible: false }));
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast.visible]);
+
+  const handleSyncAnalytics = async () => {
+    setIsSyncing(true);
+    try {
+      await loadAllData();
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      showToast("Analytics data synced successfully!");
+    } catch (err) {
+      showToast("Failed to sync analytics data.", "error");
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const loadAllData = async () => {
     try {
       const allPosts = await getPosts();
@@ -1428,10 +1461,11 @@ function AdminContent() {
                     <p className="text-xs text-stone-500 mt-1">Real-time health content traffic, search engine visibility, and visitor interactions.</p>
                   </div>
                   <button
-                    onClick={loadAllData}
-                    className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all"
+                    onClick={handleSyncAnalytics}
+                    disabled={isSyncing}
+                    className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all disabled:opacity-60 flex items-center gap-1.5"
                   >
-                    Sync Analytics Data
+                    {isSyncing ? "Syncing..." : "Sync Analytics Data"}
                   </button>
                 </div>
 
@@ -4098,6 +4132,13 @@ function AdminContent() {
               className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
             />
           </div>
+        </div>
+      )}
+      {/* Toast Notification */}
+      {toast.visible && (
+        <div className="fixed top-5 right-5 z-[99999] bg-[#113F48] text-white border border-[#C9A15A]/30 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-2.5 animate-in fade-in slide-in-from-top-5 duration-300">
+          <CheckCircle className="h-4.5 w-4.5 text-[#C9A15A]" />
+          <span className="text-xs font-bold">{toast.message}</span>
         </div>
       )}
     </div>

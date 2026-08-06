@@ -331,6 +331,11 @@ export const sendContactMessage = async (msg: Omit<ContactMessage, "createdAt" |
   if (isFirebaseConfigured && firestore) {
     try {
       const docRef = await addDoc(collection(firestore, "contactMessages"), fullMsg);
+      await addNotificationToAdmins(
+        "New Contact Message",
+        `From ${fullMsg.name}: "${fullMsg.subject}"`,
+        "/admin/dashboard?tab=messages"
+      );
       return { ...fullMsg, id: docRef.id };
     } catch (e) {
       console.error("Firebase sendContactMessage error:", e);
@@ -347,11 +352,24 @@ export const sendContactMessage = async (msg: Omit<ContactMessage, "createdAt" |
 export const replyContactMessage = async (id: string, replyText: string): Promise<void> => {
   if (isFirebaseConfigured && firestore) {
     try {
-      await updateDoc(doc(firestore, "contactMessages", id), {
+      const msgRef = doc(firestore, "contactMessages", id);
+      const snapshot = await getDoc(msgRef);
+      const msgData = snapshot.data();
+      
+      await updateDoc(msgRef, {
         replied: true,
         read: true,
         replyText,
       });
+
+      if (msgData?.userId) {
+        await addNotificationToUser(
+          msgData.userId,
+          "Message Replied By Admin",
+          `Subject: ${msgData.subject}`,
+          "/dashboard"
+        );
+      }
       return;
     } catch (e) {
       console.error("Firebase replyContactMessage error:", e);
@@ -485,6 +503,65 @@ export async function markNotificationAsRead(userId: string, notificationId: str
   if (!isFirebaseConfigured || !firestore) return;
   const notificationRef = doc(firestore, "users", userId, "notifications", notificationId);
   await updateDoc(notificationRef, { read: true });
+}
+
+export async function addNotificationToUser(
+  userId: string,
+  title: string,
+  message: string,
+  actionUrl?: string
+) {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const notifsRef = collection(firestore!, "users", userId, "notifications");
+      await addDoc(notifsRef, {
+        title,
+        message,
+        createdAt: new Date().toISOString(),
+        read: false,
+        actionUrl: actionUrl || "",
+      });
+    } catch (e) {
+      console.error("Error adding notification to Firebase:", e);
+    }
+  } else {
+    const key = `local_notifs_${userId}`;
+    const notifs = getLocal<any>(key);
+    notifs.unshift({
+      id: `notif-${Date.now()}`,
+      title,
+      message,
+      createdAt: new Date().toISOString(),
+      read: false,
+      actionUrl: actionUrl || "",
+    });
+    setLocal(key, notifs);
+  }
+}
+
+export async function addNotificationToAdmins(
+  title: string,
+  message: string,
+  actionUrl?: string
+) {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const q = query(collection(firestore!, "users"), where("role", "==", "admin"));
+      const snapshot = await getDocs(q);
+      snapshot.forEach(async (docRef) => {
+        const notifsRef = collection(firestore!, "users", docRef.id, "notifications");
+        await addDoc(notifsRef, {
+          title,
+          message,
+          createdAt: new Date().toISOString(),
+          read: false,
+          actionUrl: actionUrl || "",
+        });
+      });
+    } catch (e) {
+      console.error("Error adding notification to admins:", e);
+    }
+  }
 }
 
 export const getUserProfile = async (uid: string): Promise<UserProfile | null> => {

@@ -115,7 +115,7 @@ export default function HTMLSitemap() {
           
           {/* Breadcrumb Navigation */}
           <nav className="flex items-center gap-1.5 text-[11px] font-bold text-stone-400 uppercase tracking-wider">
-            <Link href="/" className="hover:text-[#2563EB] hover:underline transition-colors cursor-pointer">Home</Link>
+            <Link href="/" className="hover:text-[#C9A15A] hover:underline transition-colors cursor-pointer">Home</Link>
             <ChevronRight className="h-3 w-3 text-stone-300" />
             <span className="text-[#113F48]">Sitemap</span>
           </nav>
@@ -155,7 +155,7 @@ export default function HTMLSitemap() {
               <p className="text-xs text-stone-500">Try searching another keyword or review our directory links below.</p>
               <button 
                 onClick={() => setSearchQuery("")}
-                className="text-xs font-bold text-[#2563EB] hover:underline"
+                className="text-xs font-bold text-[#C9A15A] hover:underline"
               >
                 Clear Search Filter
               </button>
@@ -172,7 +172,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <Home className="h-4.5 w-4.5 text-[#C9A15A]" /> Core Directory
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {filteredCore.length} / {coreRoutes.length}
                   </span>
                 </h3>
@@ -181,10 +181,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={link.href}
                       href={link.href} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span>{link.label}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB]" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A]" />
                     </Link>
                   ))}
                 </div>
@@ -196,7 +196,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <Shield className="h-4.5 w-4.5 text-[#C9A15A]" /> Legal &amp; Policies
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {filteredLegal.length} / {legalRoutes.length}
                   </span>
                 </h3>
@@ -205,10 +205,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={link.href}
                       href={link.href} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span>{link.label}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB]" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A]" />
                     </Link>
                   ))}
                 </div>
@@ -220,7 +220,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <Folder className="h-4.5 w-4.5 text-[#C9A15A]" /> Health Categories
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {filteredCategories.length} / {categories.length}
                   </span>
                 </h3>
@@ -229,10 +229,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={cat.slug || cat.name}
                       href={`/blog?category=${encodeURIComponent(cat.name)}`} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span>{cat.name}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB]" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A]" />
                     </Link>
                   ))}
                 </div>
@@ -251,7 +251,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <Award className="h-4.5 w-4.5 text-[#C9A15A]" /> Featured Articles
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {featuredArticles.length}
                   </span>
                 </h3>
@@ -260,10 +260,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={post.slug} 
                       href={`/blog/${post.slug}`} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span className="truncate">• {post.title}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB] shrink-0 ml-2" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A] shrink-0 ml-2" />
                     </Link>
                   ))}
                   {featuredArticles.length === 0 && (
@@ -278,7 +278,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <Clock className="h-4.5 w-4.5 text-[#C9A15A]" /> Latest Publications
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {latestArticles.length}
                   </span>
                 </h3>
@@ -287,10 +287,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={post.slug} 
                       href={`/blog/${post.slug}`} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span className="truncate">• {post.title}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB] shrink-0 ml-2" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A] shrink-0 ml-2" />
                     </Link>
                   ))}
                   {latestArticles.length === 0 && (
@@ -305,7 +305,7 @@ export default function HTMLSitemap() {
                   <span className="flex items-center gap-2">
                     <TrendingUp className="h-4.5 w-4.5 text-[#C9A15A]" /> Popular Guides
                   </span>
-                  <span className="text-[10px] bg-[#2563EB]/10 text-[#2563EB] px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="text-[10px] bg-[#C9A15A]/10 text-[#C9A15A] px-2.5 py-0.5 rounded-full font-bold">
                     {popularArticles.length}
                   </span>
                 </h3>
@@ -314,10 +314,10 @@ export default function HTMLSitemap() {
                     <Link 
                       key={post.slug} 
                       href={`/blog/${post.slug}`} 
-                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                      className="group flex items-center justify-between text-xs font-bold text-stone-600 hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                     >
                       <span className="truncate">• {post.title}</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB] shrink-0 ml-2" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A] shrink-0 ml-2" />
                     </Link>
                   ))}
                   {popularArticles.length === 0 && (
@@ -342,10 +342,10 @@ export default function HTMLSitemap() {
                   <Link 
                     key={faq.id} 
                     href="/faq" 
-                    className="group flex items-center justify-between hover:text-[#2563EB] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
+                    className="group flex items-center justify-between hover:text-[#C9A15A] hover:underline hover:bg-stone-50/50 p-2.5 rounded-xl transition-all cursor-pointer w-full"
                   >
                     <span className="truncate">• {faq.question}</span>
-                    <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#2563EB] shrink-0 ml-2" />
+                    <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all text-[#C9A15A] shrink-0 ml-2" />
                   </Link>
                 ))}
               </div>
@@ -359,11 +359,11 @@ export default function HTMLSitemap() {
               <span className="text-[10px] text-stone-400 font-bold">Total Platform Pages Indexed: {totalPagesIndexed} Pages</span>
             </div>
             <div className="flex gap-4">
-              <a href="/sitemap.xml" target="_blank" className="hover:text-[#2563EB] hover:underline transition-colors flex items-center gap-1">
+              <a href="/sitemap.xml" target="_blank" className="hover:text-[#C9A15A] hover:underline transition-colors flex items-center gap-1">
                 XML Sitemap <ExternalLink className="h-3 w-3" />
               </a>
               <span>•</span>
-              <Link href="/" className="hover:text-[#2563EB] hover:underline transition-colors">
+              <Link href="/" className="hover:text-[#C9A15A] hover:underline transition-colors">
                 Back to Home
               </Link>
             </div>
@@ -376,13 +376,13 @@ export default function HTMLSitemap() {
       <footer className="bg-white border-t border-stone-200 py-8 text-xs font-semibold text-stone-500">
         <div className="w-full mx-auto px-4 sm:px-8 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex gap-4 flex-wrap justify-center">
-            <Link href="/" className="hover:text-[#2563EB] hover:underline transition-colors">Back to Home</Link>
+            <Link href="/" className="hover:text-[#C9A15A] hover:underline transition-colors">Back to Home</Link>
             <span>•</span>
-            <Link href="/contact" className="hover:text-[#2563EB] hover:underline transition-colors">Contact</Link>
+            <Link href="/contact" className="hover:text-[#C9A15A] hover:underline transition-colors">Contact</Link>
             <span>•</span>
-            <Link href="/privacy-policy" className="hover:text-[#2563EB] hover:underline transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-[#C9A15A] hover:underline transition-colors">Privacy Policy</Link>
             <span>•</span>
-            <a href="/sitemap.xml" className="hover:text-[#2563EB] hover:underline transition-colors">XML Sitemap</a>
+            <a href="/sitemap.xml" className="hover:text-[#C9A15A] hover:underline transition-colors">XML Sitemap</a>
           </div>
           <span>&copy; {new Date().getFullYear()} MediGuideHub. All rights reserved.</span>
         </div>

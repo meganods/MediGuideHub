@@ -78,8 +78,12 @@ export default function BlogIndex() {
   const trendingPosts = posts.filter(p => p.trending).slice(0, 4);
   const editorPicks = posts.filter(p => p.seoScore && p.seoScore > 90).slice(0, 3);
   const recentlyUpdated = posts
-    .filter(p => p.updatedAt)
-    .sort((a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""))
+    .filter(p => p.updatedAt || p.publishedAt)
+    .sort((a, b) => {
+      const dateA = a.updatedAt || a.publishedAt || "";
+      const dateB = b.updatedAt || b.publishedAt || "";
+      return dateB.localeCompare(dateA);
+    })
     .slice(0, 4);
 
   return (
@@ -167,7 +171,7 @@ export default function BlogIndex() {
               )}
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-              {categories.slice(0, 16).map((cat) => (
+              {Array.from(new Map(categories.map(cat => [cat.name, cat])).values()).slice(0, 16).map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.name)}
@@ -301,7 +305,9 @@ export default function BlogIndex() {
                       {recentlyUpdated.map((post) => (
                         <div key={post.slug} className="flex justify-between items-start gap-2">
                           <Link href={`/blog/${post.slug}`} className="font-bold text-[#113F48] hover:text-[#C9A15A] transition-colors truncate max-w-xs">{post.title}</Link>
-                          <span className="text-[9px] bg-stone-100 text-stone-500 px-1.5 py-0.5 rounded flex-shrink-0">Updated</span>
+                          <span className="text-[9px] bg-stone-100 text-stone-500 px-1.5 py-0.5 rounded flex-shrink-0">
+                            {post.updatedAt ? "Updated" : "New"}
+                          </span>
                         </div>
                       ))}
                     </div>

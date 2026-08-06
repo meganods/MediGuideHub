@@ -473,7 +473,7 @@ function AdminContent() {
           <script>
             window.onload = function() {
               window.print();
-              setTimeout(function() { window.close(); }, 500);
+              window.close();
             };
           </script>
         </body>
@@ -973,7 +973,7 @@ function AdminContent() {
           <script>
             window.onload = function() {
               window.print();
-              setTimeout(function() { window.close(); }, 500);
+              window.close();
             };
           </script>
         </body>
@@ -2104,7 +2104,7 @@ function AdminContent() {
                                 <script>
                                   window.onload = function() {
                                     window.print();
-                                    setTimeout(function() { window.close(); }, 500);
+                                    window.close();
                                   };
                                 </script>
                               </body>
@@ -3175,7 +3175,7 @@ function AdminContent() {
                                 <script>
                                   window.onload = function() {
                                     window.print();
-                                    setTimeout(function() { window.close(); }, 500);
+                                    window.close();
                                   };
                                 </script>
                               </body>
@@ -3475,7 +3475,7 @@ function AdminContent() {
                            <script>
                              window.onload = function() {
                                window.print();
-                               setTimeout(function() { window.close(); }, 500);
+                               window.close();
                              };
                            </script>
                          </body>

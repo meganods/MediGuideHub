@@ -580,6 +580,52 @@ function AdminContent() {
   }, [user, loading]);
 
   useEffect(() => {
+    if (loading || !user || user.role !== "admin") return;
+
+    if (isFirebaseConfigured && adminFirestore) {
+      const q = query(collection(adminFirestore, "posts"), orderBy("publishedAt", "desc"));
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogPost));
+        setPosts(list);
+        setStats((prev) => ({ ...prev, posts: list.length }));
+      }, (error) => {
+        console.warn("Posts listener status:", error.message);
+      });
+      return () => unsubscribe();
+    } else {
+      const interval = setInterval(async () => {
+        const list = await getPosts();
+        setPosts(list);
+        setStats((prev) => ({ ...prev, posts: list.length }));
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [user, loading]);
+
+  useEffect(() => {
+    if (loading || !user || user.role !== "admin") return;
+
+    if (isFirebaseConfigured && adminFirestore) {
+      const q = collection(adminFirestore, "newsletterSubscribers");
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as NewsletterSubscriber));
+        setSubscribers(list);
+        setStats((prev) => ({ ...prev, subs: list.length }));
+      }, (error) => {
+        console.warn("Subscribers listener status:", error.message);
+      });
+      return () => unsubscribe();
+    } else {
+      const interval = setInterval(async () => {
+        const list = await getSubscribers();
+        setSubscribers(list);
+        setStats((prev) => ({ ...prev, subs: list.length }));
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [user, loading]);
+
+  useEffect(() => {
     setTimeout(() => {
       setActiveTab(tabParam);
     }, 0);

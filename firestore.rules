@@ -21,7 +21,7 @@ service cloud.firestore {
 
     // Role-specific helpers (Strictly locked to admin@mediguide.com)
     function isAdmin() {
-      return isAuthenticated() && request.auth.token.email == 'admin@mediguide.com';
+      return isAuthenticated() && (request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
     }
 
     function isEditor() {

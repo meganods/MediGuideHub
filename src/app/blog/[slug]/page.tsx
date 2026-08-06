@@ -82,6 +82,21 @@ export default function BlogPostDetail(props: PageProps) {
     loadPost();
   }, [params.slug, user]);
 
+  const [toast, setToast] = useState<{ message: string; visible: boolean }>({ message: "", visible: false });
+
+  const showToast = (message: string) => {
+    setToast({ message, visible: true });
+  };
+
+  useEffect(() => {
+    if (toast.visible) {
+      const timer = setTimeout(() => {
+        setToast((prev) => ({ ...prev, visible: false }));
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast.visible]);
+
   const handleToggleSave = async () => {
     if (!user) {
       router.push("/auth?redirect=" + encodeURIComponent(`/blog/${params.slug}`));
@@ -89,10 +104,15 @@ export default function BlogPostDetail(props: PageProps) {
     }
     try {
       const action = isSaved ? "unsave" : "save";
-      await updateUserSavedPosts(user.uid, params.slug, action);
+      const updatedProfile = await updateUserSavedPosts(user.uid, params.slug, action);
+      if (updatedProfile) {
+        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+      }
       setIsSaved(!isSaved);
+      showToast(action === "save" ? "Article bookmarked successfully!" : "Article removed from bookmarks.");
     } catch (e) {
       console.error("Failed to save post status:", e);
+      showToast("Failed to update bookmark.");
     }
   };
 
@@ -424,6 +444,14 @@ export default function BlogPostDetail(props: PageProps) {
         </div>
 
       </main>
+
+      {/* Toast Notification */}
+      {toast.visible && (
+        <div className="fixed top-5 right-5 z-50 bg-[#113F48] text-white border border-[#C9A15A]/30 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-2.5 animate-in fade-in slide-in-from-top-5 duration-300">
+          <Bookmark className="h-4.5 w-4.5 text-[#C9A15A] fill-[#C9A15A]" />
+          <span className="text-xs font-bold">{toast.message}</span>
+        </div>
+      )}
 
       <Footer />
     </div>

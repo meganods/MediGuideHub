@@ -19,15 +19,9 @@ service cloud.firestore {
         getUserData().role == role;
     }
 
-    // Role-specific helpers
+    // Role-specific helpers (Strictly locked to admin@mediguide.com)
     function isAdmin() {
-      return hasRole('admin') || 
-        (isAuthenticated() && (
-          request.auth.token.email == 'admin@mediguide.com' ||
-          request.auth.token.email == 'vishalratanshakya@gmail.com' ||
-          request.auth.token.email == 'vishal@gmail.com' ||
-          request.auth.token.email == 'ratanvishal2003@gmail.com'
-        ));
+      return isAuthenticated() && request.auth.token.email == 'admin@mediguide.com';
     }
 
     function isEditor() {

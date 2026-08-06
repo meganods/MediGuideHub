@@ -37,10 +37,7 @@ const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@medigu
 const DEFAULT_ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@1234";
 
 const ADMIN_EMAILS = [
-  DEFAULT_ADMIN_EMAIL.toLowerCase(),
-  "vishalratanshakya@gmail.com",
-  "vishal@gmail.com",
-  "ratanvishal2003@gmail.com"
+  DEFAULT_ADMIN_EMAIL.toLowerCase()
 ];
 
 const isAdminEmail = (email?: string | null): boolean => {

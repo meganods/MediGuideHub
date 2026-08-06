@@ -540,17 +540,6 @@ function DashboardContent() {
                   ))}
                 </div>
 
-                {/* Continue Reading Section */}
-                <div className="bg-white border border-stone-200 p-5 rounded-2xl shadow-sm space-y-3">
-                  <h4 className="font-bold text-sm text-[#113F48]">Continue Reading</h4>
-                  <div className="border border-stone-100 rounded-xl p-4 flex justify-between items-center bg-[#FDFBF7]">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-[#C9A15A] uppercase">Health Checkups</span>
-                      <h3 className="font-extrabold text-[#113F48] text-lg">Understanding Preventive Care</h3>
-                    </div>
-                    <Link href="/blog/preventive-care-guide" className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4.5 py-2 rounded-xl transition-all">Resume</Link>
-                  </div>
-                </div>
 
                 {/* Interest Recommendations */}
                 <div className="space-y-3">

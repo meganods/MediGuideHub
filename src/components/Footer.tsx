@@ -35,18 +35,18 @@ export default function Footer() {
     { label: "About Us", href: "/about" },
     { label: "Our Mission", href: "/about#mission" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Careers", href: "#" },
+    { label: "Careers", href: "/about" },
     { label: "FAQ", href: "/faq" },
     { label: "Health Blog", href: "/blog" },
   ];
 
   const healthcareLinks = [
-    { label: "Find Doctors", href: "#" },
-    { label: "Health Plans", href: "#" },
-    { label: "Preventive Care", href: "#" },
-    { label: "Prescription Guide", href: "#" },
+    { label: "Find Doctors", href: "/search?q=doctor" },
+    { label: "Health Plans", href: "/blog?category=Health Insurance" },
+    { label: "Preventive Care", href: "/blog?category=Preventive Care" },
+    { label: "Prescription Guide", href: "/blog?category=Prescription" },
     { label: "Health Articles", href: "/blog" },
-    { label: "Medical Resources", href: "#" },
+    { label: "Medical Resources", href: "/faq" },
   ];
 
   const legalLinks = [

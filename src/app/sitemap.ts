@@ -1,24 +1,21 @@
 import { MetadataRoute } from "next";
-import { getPosts } from "@/lib/db";
+import { getPosts, getCategories } from "@/lib/db";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://mediguidehub.com";
+  const baseUrl = "https://medi-guide-hub.vercel.app";
 
-  // Static routes configuration
+  // Static routes configuration as explicitly requested
   const staticRoutes = [
     "",
     "/about",
-    "/accessibility",
     "/contact",
-    "/cookie-policy",
-    "/editorial-policy",
-    "/faq",
-    "/medical-disclaimer",
+    "/blogs",
+    "/articles",
+    "/categories",
     "/privacy-policy",
     "/terms-and-conditions",
-    "/advertising-policy",
-    "/corrections-policy",
-    "/blog",
+    "/disclaimer",
+    "/cookie-policy",
   ];
 
   const staticEntries = staticRoutes.map((route) => ({
@@ -29,21 +26,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   try {
-    // Dynamic blog articles routes
     const posts = await getPosts();
-    const dynamicEntries = posts.map((post) => {
+    const categories = await getCategories();
+
+    // Dynamic /blog/[slug] and /article/[slug] entries
+    const postEntries = posts.flatMap((post) => {
       const dateStr = post.updatedAt || post.publishedAt || new Date().toISOString();
-      return {
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(dateStr),
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      };
+      const lastMod = new Date(dateStr);
+      return [
+        {
+          url: `${baseUrl}/blog/${post.slug}`,
+          lastModified: lastMod,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        },
+        {
+          url: `${baseUrl}/article/${post.slug}`,
+          lastModified: lastMod,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        }
+      ];
     });
 
-    return [...staticEntries, ...dynamicEntries];
+    // Dynamic /category/[slug] entries
+    const categoryEntries = categories.map((cat) => ({
+      url: `${baseUrl}/category/${cat.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+
+    return [...staticEntries, ...postEntries, ...categoryEntries];
   } catch (error) {
-    console.error("Error generating sitemap dynamic blog entries:", error);
+    console.error("Error generating dynamic sitemap entries:", error);
     return staticEntries;
   }
 }

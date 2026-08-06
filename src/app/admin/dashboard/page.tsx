@@ -297,6 +297,10 @@ function AdminContent() {
   const [isAddingCategory, setIsAddingCategory] = useState(false);
   const [editingCategory, setEditingCategory] = useState<BlogCategory | null>(null);
   const [categoryTab, setCategoryTab] = useState("basic");
+  const [categoriesPage, setCategoriesPage] = useState(1);
+  const categoriesPerPage = 10;
+  const totalCategoriesPages = Math.ceil(categoriesList.length / categoriesPerPage);
+  const paginatedCategories = categoriesList.slice((categoriesPage - 1) * categoriesPerPage, categoriesPage * categoriesPerPage);
 
   // Form Basic Fields
   const [catName, setCatName] = useState("");
@@ -639,6 +643,7 @@ function AdminContent() {
     setEditingCategory(null);
     setIsAddingFAQ(false);
     setEditingFAQ(null);
+    setCategoriesPage(1);
     setIsSidebarOpen(false);
     router.push(`/admin/dashboard?tab=${tab}`);
   };
@@ -3422,7 +3427,7 @@ function AdminContent() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-stone-100 text-xs text-stone-600">
-                        {categoriesList.map((cat) => {
+                        {paginatedCategories.map((cat) => {
                           const articleCount = posts.filter(p => p.category === cat.name).length;
                           return (
                             <tr key={cat.id} className="hover:bg-stone-50/50 transition-colors">
@@ -3445,7 +3450,7 @@ function AdminContent() {
                                   cat.status === "Active"
                                     ? "bg-emerald-50 text-emerald-700 border-emerald-200"
                                     : "bg-red-50 text-red-700 border-red-200"
-                                }`}>
+                                  }`}>
                                   {cat.status || "Active"}
                                 </span>
                               </td>
@@ -3470,6 +3475,29 @@ function AdminContent() {
                         })}
                       </tbody>
                     </table>
+                  </div>
+
+                  {/* Categories Pagination controls */}
+                  <div className="flex items-center justify-between pt-4 border-t border-stone-100 text-xs mt-4">
+                    <span className="text-stone-500">
+                      Showing {Math.min((categoriesPage - 1) * categoriesPerPage + 1, categoriesList.length)} to {Math.min(categoriesPage * categoriesPerPage, categoriesList.length)} of {categoriesList.length} categories
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setCategoriesPage(p => Math.max(1, p - 1))}
+                        disabled={categoriesPage === 1}
+                        className="px-3 py-1.5 rounded-lg border border-stone-200 text-[#113F48] hover:bg-stone-50 transition-all font-semibold disabled:opacity-50"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        onClick={() => setCategoriesPage(p => Math.min(totalCategoriesPages, p + 1))}
+                        disabled={categoriesPage === totalCategoriesPages || totalCategoriesPages <= 1}
+                        className="px-3 py-1.5 rounded-lg border border-stone-200 text-[#113F48] hover:bg-stone-50 transition-all font-semibold disabled:opacity-50"
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
 
                 </div>

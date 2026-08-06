@@ -328,8 +328,8 @@ export default function Home() {
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Daily Feed</span>
               <h2 className="text-2xl font-extrabold text-[#113F48]">Trending Healthcare Topics</h2>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {trendingTopics.slice(0, 8).map((post) => (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {trendingTopics.slice(0, 3).map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="bg-[#FDFBF7] border border-stone-200 hover:border-[#C9A15A] p-4 rounded-xl transition-all space-y-1 block">
                   <span className="text-[9px] font-bold text-[#C9A15A] uppercase">{post.category}</span>
                   <h4 className="font-bold text-xs text-[#113F48] line-clamp-2 leading-snug">{post.title}</h4>

@@ -906,10 +906,20 @@ export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[
     try {
       const q = query(
         collection(firestore, "comments"),
-        where("postSlug", "==", postSlug),
-        orderBy("createdAt", "asc")
+        where("postSlug", "==", postSlug)
       );
       const snapshot = await getDocs(q);
+      
+      const mapAndSort = (docs: any[]) => {
+        return docs
+          .map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment))
+          .sort((a, b) => {
+            const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+            const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+            return dateA - dateB;
+          });
+      };
+
       // Seed if live db is empty for this post slug to keep standard demo comment list
       if (snapshot.empty && postSlug === "medicare-advantage-plans-overview") {
         const defaultComments = [
@@ -920,15 +930,21 @@ export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[
           await addDoc(collection(firestore, "comments"), c);
         }
         const refetched = await getDocs(q);
-        return refetched.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+        return mapAndSort(refetched.docs);
       }
-      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+      return mapAndSort(snapshot.docs);
     } catch (e) {
       console.warn("Firebase error getting comments for post:", e);
     }
   }
   const allComments = await getComments();
-  return allComments.filter((c) => c.postSlug === postSlug);
+  return allComments
+    .filter((c) => c.postSlug === postSlug)
+    .sort((a, b) => {
+      const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      return dateA - dateB;
+    });
 };
 
 export const addComment = async (comment: BlogComment): Promise<void> => {

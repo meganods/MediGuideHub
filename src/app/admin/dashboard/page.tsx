@@ -270,6 +270,8 @@ function AdminContent() {
   const [catParent, setCatParent] = useState("");
   const [catFeatured, setCatFeatured] = useState(false);
   const [catStatus, setCatStatus] = useState<"Active" | "Inactive">("Active");
+  const [catBannerUploading, setCatBannerUploading] = useState(false);
+  const [catThumbnailUploading, setCatThumbnailUploading] = useState(false);
 
   // Form SEO Fields
   const [catSeoTitle, setCatSeoTitle] = useState("");
@@ -568,6 +570,34 @@ function AdminContent() {
       console.error(err);
     } finally {
       setImageUploading(false);
+    }
+  };
+
+  const handleCatBannerUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setCatBannerUploading(true);
+    try {
+      const url = await uploadImage(file);
+      setCatBanner(url);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setCatBannerUploading(false);
+    }
+  };
+
+  const handleCatThumbnailUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setCatThumbnailUploading(true);
+    try {
+      const url = await uploadImage(file);
+      setCatThumbnail(url);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setCatThumbnailUploading(false);
     }
   };
 
@@ -2767,22 +2797,52 @@ function AdminContent() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Banner Image URL</label>
-                            <input
-                              value={catBanner}
-                              onChange={(e) => setCatBanner(e.target.value)}
-                              placeholder="https://..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            />
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide flex justify-between items-center">
+                              <span>Banner Image URL</span>
+                              {catBannerUploading && <Loader2 className="animate-spin h-3.5 w-3.5 text-[#C9A15A]" />}
+                            </label>
+                            <div className="flex gap-2">
+                              <input
+                                value={catBanner}
+                                onChange={(e) => setCatBanner(e.target.value)}
+                                placeholder="https://..."
+                                className="flex-1 bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              />
+                              <label className="bg-[#113F48] hover:bg-[#C9A15A] text-white px-3.5 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all flex items-center justify-center gap-1.5 flex-shrink-0">
+                                <Upload className="h-3.5 w-3.5" />
+                                <span>Upload</span>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={handleCatBannerUpload}
+                                />
+                              </label>
+                            </div>
                           </div>
                           <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Thumbnail Image URL</label>
-                            <input
-                              value={catThumbnail}
-                              onChange={(e) => setCatThumbnail(e.target.value)}
-                              placeholder="https://..."
-                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
-                            />
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide flex justify-between items-center">
+                              <span>Thumbnail Image URL</span>
+                              {catThumbnailUploading && <Loader2 className="animate-spin h-3.5 w-3.5 text-[#C9A15A]" />}
+                            </label>
+                            <div className="flex gap-2">
+                              <input
+                                value={catThumbnail}
+                                onChange={(e) => setCatThumbnail(e.target.value)}
+                                placeholder="https://..."
+                                className="flex-1 bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                              />
+                              <label className="bg-[#113F48] hover:bg-[#C9A15A] text-white px-3.5 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all flex items-center justify-center gap-1.5 flex-shrink-0">
+                                <Upload className="h-3.5 w-3.5" />
+                                <span>Upload</span>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={handleCatThumbnailUpload}
+                                />
+                              </label>
+                            </div>
                           </div>
                           <div className="space-y-1.5">
                             <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Status</label>

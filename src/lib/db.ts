@@ -442,6 +442,14 @@ export const subscribeNewsletter = async (email: string): Promise<boolean> => {
       if (!snap.empty) return false; // Already subscribed
 
       await addDoc(collection(getAdminFirestore()!, "newsletterSubscribers"), sub);
+      
+      // Trigger notification for admin users
+      await addNotificationToAdmins(
+        "New Subscriber",
+        `A new reader has subscribed to the newsletter: ${cleanEmail}`,
+        "/admin/dashboard?tab=subscribers"
+      );
+      
       return true;
     } catch (e) {
       console.error("Firebase subscribeNewsletter error:", e);
@@ -453,6 +461,19 @@ export const subscribeNewsletter = async (email: string): Promise<boolean> => {
 
   subs.push({ ...sub, id: `sub-${Date.now()}` });
   setLocal(KEYS.SUBSCRIBERS, subs);
+
+  // Local storage fallback: notify local admin users
+  const localUsers = getLocal<UserProfile>(KEYS.USERS);
+  const localAdmins = localUsers.filter((u) => u.role === "admin" || u.email === "admin@mediguide.com");
+  for (const admin of localAdmins) {
+    await addNotificationToUser(
+      admin.uid,
+      "New Subscriber",
+      `A new reader has subscribed to the newsletter: ${cleanEmail}`,
+      "/admin/dashboard?tab=subscribers"
+    );
+  }
+
   return true;
 };
 

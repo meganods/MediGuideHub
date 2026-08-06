@@ -117,8 +117,8 @@ export default function ContactPage() {
         {/* ── HERO SECTION ── */}
         <section className="relative py-20 bg-white overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9A15A]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full max-w-none">
               
               {/* Left Content */}
               <div className="space-y-6">
@@ -184,8 +184,8 @@ export default function ContactPage() {
 
         {/* ── CONTACT INFORMATION ── */}
         <section className="py-14 bg-[#F9FAFB] border-t border-stone-200">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-none">
               
               {/* Card 1: Email */}
               <div className="bg-white border border-stone-200 rounded-2xl p-6 space-y-4 shadow-sm hover:shadow-md transition-shadow">
@@ -245,8 +245,8 @@ export default function ContactPage() {
 
         {/* ── CONTACT FORM & NOTICE SECTION ── */}
         <section id="contact-form-section" className="py-20 bg-white border-t border-stone-200">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full max-w-none">
               
               {/* Form Side */}
               <div className="lg:col-span-7 space-y-6">
@@ -445,7 +445,7 @@ export default function ContactPage() {
 
         {/* ── GOOGLE MAP SECTION ── */}
         <section className="bg-[#F9FAFB] border-t border-stone-200">
-          <div className="w-full mx-auto">
+          <div className="w-full mx-auto max-w-none">
             <div className="relative h-96 w-full">
               <iframe
                 src="https://www.google.com/maps?q=New%20Delhi%20India&z=12&output=embed"
@@ -466,7 +466,7 @@ export default function ContactPage() {
 
         {/* ── FREQUENTLY ASKED QUESTIONS ── */}
         <section className="py-20 bg-white border-t border-stone-200">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
             <div className="text-center mb-14 space-y-3">
               <h2 className="text-3xl font-extrabold text-[#113F48]">Frequently Asked Questions</h2>
               <p className="text-stone-500 text-sm">Quick answers to common questions about contacting our team.</p>
@@ -487,7 +487,7 @@ export default function ContactPage() {
 
         {/* ── BOTTOM CTA ── */}
         <section className="py-20 bg-[#113F48] text-white">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 max-w-4xl">
+          <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 text-center space-y-6 max-w-none">
             <h2 className="text-3xl font-extrabold tracking-tight leading-tight">
               Need More Healthcare Information?
             </h2>

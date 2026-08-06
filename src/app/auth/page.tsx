@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function AuthRedirectPage() {
+function AuthRedirectComponent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -27,5 +27,17 @@ export default function AuthRedirectPage() {
     <div className="flex min-h-screen items-center justify-center bg-[#F9FAFB]">
       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C9A15A]" />
     </div>
+  );
+}
+
+export default function AuthRedirectPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center bg-[#F9FAFB]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C9A15A]" />
+      </div>
+    }>
+      <AuthRedirectComponent />
+    </Suspense>
   );
 }

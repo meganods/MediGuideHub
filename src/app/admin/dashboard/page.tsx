@@ -164,6 +164,7 @@ function AdminContent() {
   const [showNotifications, setShowNotifications] = useState(false);
   const unreadCount = notifications.filter((n) => !n.read).length;
   const notificationRef = useRef<HTMLDivElement>(null);
+  const editorImageInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -1776,14 +1777,14 @@ function AdminContent() {
                             
                             <input
                               type="file"
-                              id="editor-image-upload"
+                              ref={editorImageInputRef}
                               className="hidden"
                               accept="image/*"
                               onChange={handleEditorImageUpload}
                             />
                             <button
                               type="button"
-                              onClick={() => document.getElementById("editor-image-upload")?.click()}
+                              onClick={() => editorImageInputRef.current?.click()}
                               disabled={isUploadingEditorImage}
                               className="bg-white border border-stone-200 px-2 py-1 rounded text-[10px] font-semibold text-stone-600 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/20 transition-all flex items-center gap-1 disabled:opacity-50"
                             >

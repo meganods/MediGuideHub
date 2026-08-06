@@ -56,6 +56,7 @@ export default function Footer() {
     { label: "Medical Disclaimer", href: "/medical-disclaimer" },
     { label: "Editorial Policy", href: "/editorial-policy" },
     { label: "Accessibility Statement", href: "/accessibility" },
+    { label: "Sitemap", href: "/sitemap" },
   ];
 
   return (

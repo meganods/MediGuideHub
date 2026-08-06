@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/authContext";
+import { AdminAuthProvider } from "@/lib/adminAuthContext";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -40,7 +41,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased text-[#113F48] bg-white overflow-x-hidden" suppressHydrationWarning>
         <AuthProvider>
-          {children}
+          <AdminAuthProvider>
+            {children}
+          </AdminAuthProvider>
         </AuthProvider>
       </body>
     </html>

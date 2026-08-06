@@ -34,45 +34,6 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide.com";
-const DEFAULT_ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@1234";
-
-const ADMIN_EMAILS = [
-  DEFAULT_ADMIN_EMAIL.toLowerCase()
-];
-
-const isAdminEmail = (email?: string | null): boolean => {
-  if (!email) return false;
-  return ADMIN_EMAILS.includes(email.trim().toLowerCase());
-};
-
-const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null => {
-  if (email.trim().toLowerCase() !== DEFAULT_ADMIN_EMAIL || pass !== DEFAULT_ADMIN_PASSWORD) {
-    return null;
-  }
-
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
-  let profile = users.find((u) => u.email === DEFAULT_ADMIN_EMAIL);
-
-  if (!profile) {
-    profile = {
-      uid: `user-${Date.now()}`,
-      email: DEFAULT_ADMIN_EMAIL,
-      displayName: "Hub Administrator",
-      role: "admin",
-      savedPosts: [],
-      createdAt: new Date().toISOString(),
-    };
-    users.push(profile);
-    localStorage.setItem("mediguide_users", JSON.stringify(users));
-  }
-
-  localStorage.setItem("mediguide_current_user", JSON.stringify(profile));
-  return profile;
-};
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -80,30 +41,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const isRegisteringRef = useRef(false);
 
   const buildProfileFromAuthUser = (
-    authUser: { uid: string; email?: string | null; displayName?: string | null },
-    role: UserProfile["role"] = "user"
+    authUser: { uid: string; email?: string | null; displayName?: string | null }
   ): UserProfile => ({
     uid: authUser.uid,
     email: authUser.email || "",
     displayName: authUser.displayName || authUser.email?.split("@")[0] || "User",
-    role,
+    role: "user",
     savedPosts: [],
     createdAt: new Date().toISOString(),
   });
 
   const ensureProfileForAuthUser = async (
-    authUser: { uid: string; email?: string | null; displayName?: string | null },
-    role: UserProfile["role"] = "user"
+    authUser: { uid: string; email?: string | null; displayName?: string | null }
   ): Promise<UserProfile> => {
-    const isUserAdmin = isAdminEmail(authUser.email);
     const existing = await getUserProfile(authUser.uid);
     if (existing) {
-      if (isUserAdmin && existing.role !== "admin") {
-        existing.role = "admin";
-        try {
-          await saveUserProfile(existing);
-        } catch (e) {}
-      } else if (!isUserAdmin && existing.role === "admin") {
+      if (existing.role === "admin") {
         existing.role = "user";
         try {
           await saveUserProfile(existing);
@@ -112,8 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return existing;
     }
 
-    const targetRole = isUserAdmin ? "admin" : role;
-    const newProfile = buildProfileFromAuthUser(authUser, targetRole);
+    const newProfile = buildProfileFromAuthUser(authUser);
     try {
       await saveUserProfile(newProfile);
     } catch (error) {
@@ -130,8 +82,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         const parsed = JSON.parse(savedSession);
         if (parsed) {
-          const isUserAdmin = isAdminEmail(parsed.email);
-          if (parsed.role === "admin" && !isUserAdmin) {
+          if (parsed.role === "admin") {
             parsed.role = "user";
             localStorage.setItem("mediguide_current_user", JSON.stringify(parsed));
           }
@@ -146,29 +97,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
         if (fbUser) {
-          const profile = await ensureProfileForAuthUser(
-            fbUser,
-            isAdminEmail(fbUser.email) ? "admin" : "user"
-          );
+          if (fbUser.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
+            await signOut(firebaseAuth!);
+            setUser(null);
+            localStorage.removeItem("mediguide_current_user");
+            setLoading(false);
+            return;
+          }
+          const profile = await ensureProfileForAuthUser(fbUser);
           localStorage.setItem("mediguide_current_user", JSON.stringify(profile));
           setUser(profile);
         } else {
-          // Keep local fallback admin logged in even if Firebase Auth doesn't have an active session
-          const savedSession = localStorage.getItem("mediguide_current_user");
-          let isLocalAdmin = false;
-          if (savedSession) {
-            try {
-              const parsed = JSON.parse(savedSession);
-              if (parsed && parsed.role === "admin" && parsed.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
-                isLocalAdmin = true;
-              }
-            } catch (e) {}
-          }
-
-          if (!isLocalAdmin) {
-            localStorage.removeItem("mediguide_current_user");
-            setUser(null);
-          }
+          localStorage.removeItem("mediguide_current_user");
+          setUser(null);
         }
         setLoading(false);
       });
@@ -181,43 +122,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, pass: string): Promise<UserProfile> => {
     const cleanEmail = email.trim().toLowerCase();
+    if (cleanEmail === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
+      throw new Error("Admin logins must use the administrator login portal.");
+    }
     
     if (isFirebaseConfigured && firebaseAuth) {
-      try {
-        const credentials = await signInWithEmailAndPassword(firebaseAuth, cleanEmail, pass);
-        const profile = await ensureProfileForAuthUser(
-          credentials.user,
-          credentials.user.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL ? "admin" : "user"
-        );
-        if (profile.banned) {
-          await signOut(firebaseAuth);
-          throw new Error("This account has been banned by an administrator.");
-        }
-        setUser(profile);
-        return profile;
-      } catch (error) {
-        const localProfile = fallbackToLocalAdmin(cleanEmail, pass);
-        if (localProfile) {
-          if (localProfile.banned) {
-            throw new Error("This account has been banned by an administrator.");
-          }
-          setUser(localProfile);
-          return localProfile;
-        }
-        throw error;
+      const credentials = await signInWithEmailAndPassword(firebaseAuth, cleanEmail, pass);
+      const profile = await ensureProfileForAuthUser(credentials.user);
+      if (profile.banned) {
+        await signOut(firebaseAuth);
+        throw new Error("This account has been banned by an administrator.");
       }
+      setUser(profile);
+      return profile;
     } else {
       // Mock Authentication
       const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
       const found = users.find((u) => u.email === cleanEmail);
       if (!found) {
         // Create user on the fly to make local testing extremely smooth!
-        const isFirstAdmin = cleanEmail === "admin@mediguide.com";
         const newProfile: UserProfile = {
           uid: `user-${Date.now()}`,
           email: cleanEmail,
           displayName: cleanEmail.split("@")[0].toUpperCase(),
-          role: isFirstAdmin ? "admin" : "user",
+          role: "user",
           savedPosts: [],
           createdAt: new Date().toISOString(),
         };
@@ -238,17 +166,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signup = async (email: string, pass: string, name: string): Promise<UserProfile> => {
     const cleanEmail = email.trim().toLowerCase();
+    if (cleanEmail === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
+      throw new Error("Admin registration is not permitted through this portal.");
+    }
     
     if (isFirebaseConfigured && firebaseAuth) {
       isRegisteringRef.current = true;
       try {
         const credentials = await createUserWithEmailAndPassword(firebaseAuth, cleanEmail, pass);
-        const isFirstAdmin = cleanEmail === "admin@mediguide.com";
         const newProfile: UserProfile = {
           uid: credentials.user.uid,
           email: cleanEmail,
           displayName: name,
-          role: isFirstAdmin ? "admin" : "user",
+          role: "user",
           savedPosts: [],
           createdAt: new Date().toISOString(),
         };
@@ -264,12 +194,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (users.some((u) => u.email === cleanEmail)) {
         throw new Error("User already exists with this email address.");
       }
-      const isFirstAdmin = cleanEmail === "admin@mediguide.com";
       const newProfile: UserProfile = {
         uid: `user-${Date.now()}`,
         email: cleanEmail,
         displayName: name,
-        role: isFirstAdmin ? "admin" : "user",
+        role: "user",
         savedPosts: [],
         createdAt: new Date().toISOString(),
       };
@@ -376,9 +305,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (isFirebaseConfigured && firebaseAuth) {
       const provider = new GoogleAuthProvider();
       const credentials = await signInWithPopup(firebaseAuth, provider);
-      const profile = await ensureProfileForAuthUser(credentials.user, "user");
+      const profile = await ensureProfileForAuthUser(credentials.user);
       if (profile.banned) {
-        await signOut(firebaseAuth);
+        await signOut(firebaseAuth!);
         throw new Error("This account has been banned by an administrator.");
       }
       setUser(profile);

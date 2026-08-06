@@ -2,15 +2,15 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/authContext";
+import { useAdminAuth } from "@/lib/adminAuthContext";
 
 export default function AdminCategoriesPage() {
   const router = useRouter();
-  const { user, loading } = useAuth();
+  const { adminUser: user, adminLoading: loading } = useAdminAuth();
 
   useEffect(() => {
     if (!loading) {
-      if (user && user.role === "admin") {
+      if (user) {
         router.replace("/admin/dashboard?tab=categories");
       } else {
         router.replace("/admin/login");

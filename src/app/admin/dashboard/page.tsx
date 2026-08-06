@@ -3,7 +3,7 @@
 import React, { useEffect, useState, Suspense, useRef } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "@/lib/authContext";
+import { useAdminAuth } from "@/lib/adminAuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -152,7 +152,7 @@ function CustomSelect({ value, onChange, options, className = "" }: CustomSelect
 function AdminContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user, loading, logout } = useAuth();
+  const { adminUser: user, adminLoading: loading, adminLogout: logout } = useAdminAuth();
 
   const tabParam = searchParams.get("tab") || "dashboard";
   const [activeTab, setActiveTab] = useState(tabParam);

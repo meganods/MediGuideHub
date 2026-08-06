@@ -2,15 +2,15 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/authContext";
+import { useAdminAuth } from "@/lib/adminAuthContext";
 
 export default function AdminSettingsPage() {
   const router = useRouter();
-  const { user, loading } = useAuth();
+  const { adminUser: user, adminLoading: loading } = useAdminAuth();
 
   useEffect(() => {
     if (!loading) {
-      if (user && user.role === "admin") {
+      if (user) {
         router.replace("/admin/dashboard?tab=settings");
       } else {
         router.replace("/admin/login");

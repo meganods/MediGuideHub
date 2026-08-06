@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "@/lib/authContext";
+import { useAdminAuth } from "@/lib/adminAuthContext";
 import { Shield, Lock, Mail, ShieldAlert, CheckCircle2, AlertTriangle, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 
 function AdminLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { login, logout, user, forgotPassword } = useAuth();
+  const { adminLogin, adminUser, forgotPassword } = useAdminAuth();
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +19,10 @@ function AdminLoginForm() {
   const [status, setStatus] = useState<"idle" | "submitting">("idle");
 
   useEffect(() => {
-    if (user && user.role === "admin") {
+    if (adminUser) {
       router.push("/admin/dashboard");
     }
-  }, [user, router]);
+  }, [adminUser, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,13 +35,7 @@ function AdminLoginForm() {
 
     setStatus("submitting");
     try {
-      const loggedInUser = await login(email, password);
-      if (loggedInUser.role !== "admin") {
-        await logout();
-        setError("This account doesn't have admin access.");
-        setStatus("idle");
-        return;
-      }
+      await adminLogin(email, password);
       router.push("/admin/dashboard");
     } catch (err: any) {
       console.error(err);
@@ -50,6 +44,8 @@ function AdminLoginForm() {
         errMsg = "Incorrect admin email address or password. Please try again.";
       } else if (err?.code === "auth/invalid-credential") {
         errMsg = "Incorrect admin email address or password. Please try again.";
+      } else if (err?.message) {
+        errMsg = err.message;
       }
       setError(errMsg);
       setStatus("idle");

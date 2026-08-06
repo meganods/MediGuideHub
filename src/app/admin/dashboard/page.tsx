@@ -262,6 +262,15 @@ function AdminContent() {
   const [seoRobotsMeta, setSeoRobotsMeta] = useState("index, follow");
   const [seoCanonicalUrl, setSeoCanonicalUrl] = useState("");
 
+  // Image Insert Toolbar configuration
+  const [showImageConfigModal, setShowImageConfigModal] = useState(false);
+  const [configImageUrl, setConfigImageUrl] = useState("");
+  const [configImageWidth, setConfigImageWidth] = useState("100%");
+  const [configImageHeight, setConfigImageHeight] = useState("auto");
+  const [configImageAlign, setConfigImageAlign] = useState("center");
+  const [configImageAlt, setConfigImageAlt] = useState("");
+  const [isUploadingEditorImage, setIsUploadingEditorImage] = useState(false);
+
   // Advanced Settings fields
   const [postVisibility, setPostVisibility] = useState("Public");
   const [postAllowComments, setPostAllowComments] = useState(true);
@@ -998,6 +1007,50 @@ function AdminContent() {
     printHtml(htmlContent);
   };
 
+  const handleEditorImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsUploadingEditorImage(true);
+    try {
+      const url = await uploadImage(file);
+      if (url) {
+        setConfigImageUrl(url);
+        setShowImageConfigModal(true);
+      } else {
+        alert("Failed to upload image.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error uploading image.");
+    } finally {
+      setIsUploadingEditorImage(false);
+    }
+  };
+
+  const handleInsertEditorImage = () => {
+    let imgStyle = `width: ${configImageWidth}; height: ${configImageHeight}; border-radius: 12px;`;
+    let html = "";
+    
+    if (configImageAlign === "center") {
+      html = `\n<div style="text-align: center; margin: 24px 0;">\n  <img src="${configImageUrl}" alt="${configImageAlt}" style="${imgStyle} display: inline-block;" />\n</div>\n`;
+    } else if (configImageAlign === "left") {
+      html = `\n<img src="${configImageUrl}" alt="${configImageAlt}" style="${imgStyle} float: left; margin: 0 20px 20px 0;" />\n`;
+    } else if (configImageAlign === "right") {
+      html = `\n<img src="${configImageUrl}" alt="${configImageAlt}" style="${imgStyle} float: right; margin: 0 0 20px 20px;" />\n`;
+    } else {
+      html = `\n<img src="${configImageUrl}" alt="${configImageAlt}" style="${imgStyle}" />\n`;
+    }
+    
+    setPostContent(prev => prev + html);
+    setShowImageConfigModal(false);
+    // Reset configuration values
+    setConfigImageUrl("");
+    setConfigImageWidth("100%");
+    setConfigImageHeight("auto");
+    setConfigImageAlign("center");
+    setConfigImageAlt("");
+  };
+
   const recentMessages = messages.slice(0, 5);
   const recentPosts = posts.slice(0, 5);
 
@@ -1700,7 +1753,7 @@ function AdminContent() {
                           <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide block">Article Body Content *</label>
                           
                           {/* Rich Styling Toolbar */}
-                          <div className="flex flex-wrap gap-1 bg-stone-50 border border-stone-200 p-2 rounded-t-xl border-b-0">
+                          <div className="flex flex-wrap gap-1 bg-stone-50 border border-stone-200 p-2 rounded-t-xl border-b-0 items-center">
                             {[
                               { label: "Heading 2", tag: "<h2>Heading</h2>" },
                               { label: "Paragraph", tag: "<p>Text paragraph...</p>" },
@@ -1720,6 +1773,28 @@ function AdminContent() {
                                 {btn.label}
                               </button>
                             ))}
+                            
+                            <input
+                              type="file"
+                              id="editor-image-upload"
+                              className="hidden"
+                              accept="image/*"
+                              onChange={handleEditorImageUpload}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => document.getElementById("editor-image-upload")?.click()}
+                              disabled={isUploadingEditorImage}
+                              className="bg-white border border-stone-200 px-2 py-1 rounded text-[10px] font-semibold text-stone-600 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/20 transition-all flex items-center gap-1 disabled:opacity-50"
+                            >
+                              {isUploadingEditorImage ? (
+                                <>
+                                  <Loader2 className="h-3 w-3 animate-spin text-[#C9A15A]" /> Uploading...
+                                </>
+                              ) : (
+                                "Upload Image"
+                              )}
+                            </button>
                           </div>
 
                           <textarea
@@ -3751,6 +3826,109 @@ function AdminContent() {
           )}
 
         </main>
+      {showImageConfigModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl border border-stone-200 shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="bg-[#113F48] p-5 text-white flex justify-between items-center">
+              <h3 className="font-bold text-base">Adjust Inserted Image</h3>
+              <button 
+                type="button"
+                onClick={() => setShowImageConfigModal(false)}
+                className="text-white/70 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-4">
+              {/* Image Preview */}
+              <div className="h-32 w-full rounded-xl bg-stone-50 border border-stone-200 overflow-hidden flex items-center justify-center">
+                <img src={configImageUrl} alt="Preview" className="h-full object-contain" />
+              </div>
+
+              {/* Alt Text */}
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Alternative Alt Text</label>
+                <input
+                  type="text"
+                  value={configImageAlt}
+                  onChange={(e) => setConfigImageAlt(e.target.value)}
+                  placeholder="e.g. Doctor consulting patient..."
+                  className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {/* Width */}
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Width</label>
+                  <input
+                    type="text"
+                    value={configImageWidth}
+                    onChange={(e) => setConfigImageWidth(e.target.value)}
+                    placeholder="e.g. 100%, 300px"
+                    className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                  />
+                </div>
+
+                {/* Height */}
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide">Height</label>
+                  <input
+                    type="text"
+                    value={configImageHeight}
+                    onChange={(e) => setConfigImageHeight(e.target.value)}
+                    placeholder="e.g. auto, 200px"
+                    className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                  />
+                </div>
+              </div>
+
+              {/* Alignment */}
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-[#113F48] uppercase tracking-wide block">Alignment</label>
+                <div className="grid grid-cols-3 gap-2 mt-1">
+                  {[
+                    { val: "left", label: "Left Align" },
+                    { val: "center", label: "Center Align" },
+                    { val: "right", label: "Right Align" }
+                  ].map((align) => (
+                    <button
+                      key={align.val}
+                      type="button"
+                      onClick={() => setConfigImageAlign(align.val)}
+                      className={`py-2 px-3 text-xs font-semibold rounded-xl border text-center transition-all ${
+                        configImageAlign === align.val
+                          ? "bg-[#113F48] text-white border-[#113F48]"
+                          : "bg-white text-stone-600 border-stone-200 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/25"
+                      }`}
+                    >
+                      {align.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-stone-50 p-4 border-t border-stone-200 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setShowImageConfigModal(false)}
+                className="px-4 py-2 text-xs font-bold text-stone-500 hover:text-stone-700 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleInsertEditorImage}
+                className="px-5 py-2.5 bg-[#C9A15A] hover:bg-[#B58F4E] text-white text-xs font-bold rounded-xl transition-all shadow-md"
+              >
+                Insert Image
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
       </div>
     </div>

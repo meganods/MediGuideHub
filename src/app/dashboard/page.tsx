@@ -147,10 +147,6 @@ function DashboardContent() {
     if (!user) {
       router.push("/login?redirect=" + encodeURIComponent("/dashboard"));
     } else {
-      if (user.role === "admin") {
-        router.push("/admin/dashboard");
-        return;
-      }
       setDisplayName(user.displayName || "");
       setEmail(user.email || "");
       setAvatarPreview(user.avatarUrl || "");

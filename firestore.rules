@@ -19,6 +19,7 @@ service cloud.firestore {
         getUserData().role == role;
     }
 
+    // Role-specific helpers
     function isAdmin() {
       return hasRole('admin') || 
         (isAuthenticated() && (

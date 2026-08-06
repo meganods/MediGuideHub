@@ -64,29 +64,16 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* User Account / Admin CTA Section */}
             <div className="hidden md:flex items-center space-x-4">
               {user ? (
-                user.role === "admin" ? (
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={handleLogout}
-                      className="flex items-center gap-1.5 px-4 h-11 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-all cursor-pointer"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      Logout
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-3">
-                    <Link
-                      href="/dashboard"
-                      className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
-                    >
-                      Dashboard
-                    </Link>
-                  </div>
-                )
+                <div className="flex items-center space-x-3">
+                  <Link
+                    href={user.role === "admin" ? "/admin" : "/dashboard"}
+                    className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
+                  >
+                    Dashboard
+                  </Link>
+                </div>
               ) : (
                 <div className="flex items-center space-x-3">
                   <Link
@@ -170,30 +157,15 @@ export default function Navbar() {
           <div className="flex flex-col space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-2">Account</span>
             {user ? (
-              user.role === "admin" ? (
-                <div className="flex flex-col space-y-2">
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      handleLogout();
-                    }}
-                    className="flex items-center justify-center gap-2 w-full h-12 font-medium text-red-600 bg-red-50 border border-red-200 rounded-xl transition-all cursor-pointer"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-col space-y-2">
-                  <Link
-                    href="/dashboard"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
-                  >
-                    Dashboard
-                  </Link>
-                </div>
-              )
+              <div className="flex flex-col space-y-2">
+                <Link
+                  href={user.role === "admin" ? "/admin" : "/dashboard"}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
+                >
+                  Dashboard
+                </Link>
+              </div>
             ) : (
               <div className="flex flex-col space-y-2">
                 <Link

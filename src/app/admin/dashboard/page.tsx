@@ -473,7 +473,7 @@ function AdminContent() {
     setEditingPost(null);
     setIsAddingPost(false);
     setIsSidebarOpen(false);
-    router.push(`/admin?tab=${tab}`);
+    router.push(`/admin/dashboard?tab=${tab}`);
   };
 
   // Blog operations

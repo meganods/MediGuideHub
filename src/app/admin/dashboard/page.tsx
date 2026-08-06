@@ -889,6 +889,221 @@ function AdminContent() {
     document.body.removeChild(link);
   };
 
+  const handleExportArticlesPDF = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    const rows = posts.map(p => `
+      <tr>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.title}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.category}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.status || "Published"}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.seoScore || 85}/100</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.views || 0}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${p.publishedAt}</td>
+      </tr>
+    `).join("");
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Articles Directory</title>
+          <style>
+            body { font-family: system-ui, -apple-system, sans-serif; color: #113f48; padding: 30px; }
+            h1 { font-size: 22px; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; }
+            th { background-color: #f8fafc; font-weight: bold; border: 1px solid #e2e8f0; padding: 10px; text-align: left; font-size: 12px; }
+            td { font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <h1>MediGuide Hub — Articles Directory</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>SEO Score</th>
+                <th>Views</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
+  const handleExportMessagesPDF = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    const rows = messages.map(m => `
+      <tr>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.name}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.email}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.subject}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.inquiryType || "General Question"}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.message}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${m.createdAt}</td>
+      </tr>
+    `).join("");
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Visitor Inquiries</title>
+          <style>
+            body { font-family: system-ui, -apple-system, sans-serif; color: #113f48; padding: 30px; }
+            h1 { font-size: 22px; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; }
+            th { background-color: #f8fafc; font-weight: bold; border: 1px solid #e2e8f0; padding: 10px; text-align: left; font-size: 11px; }
+            td { font-size: 11px; }
+          </style>
+        </head>
+        <body>
+          <h1>MediGuide Hub — Visitor Inquiries</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Type</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
+  const handleExportCategoriesPDF = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    const rows = categoriesList.map(c => {
+      const count = posts.filter(p => p.category === c.name).length;
+      return `
+        <tr>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${c.name}</td>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${c.slug}</td>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${c.parentCategory || "None"}</td>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${count} Guides</td>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${c.seoScore || 85}/100</td>
+          <td style="border: 1px solid #e2e8f0; padding: 10px;">${c.status || "Active"}</td>
+        </tr>
+      `;
+    }).join("");
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Categories Directory</title>
+          <style>
+            body { font-family: system-ui, -apple-system, sans-serif; color: #113f48; padding: 30px; }
+            h1 { font-size: 22px; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; }
+            th { background-color: #f8fafc; font-weight: bold; border: 1px solid #e2e8f0; padding: 10px; text-align: left; font-size: 12px; }
+            td { font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <h1>MediGuide Hub — Categories Directory</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Category Name</th>
+                <th>Slug</th>
+                <th>Parent Category</th>
+                <th>Articles</th>
+                <th>SEO Score</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
+  const handleExportSubscribersPDF = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    const rows = subscribers.map(s => `
+      <tr>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${s.email}</td>
+        <td style="border: 1px solid #e2e8f0; padding: 10px;">${s.subscribedAt}</td>
+      </tr>
+    `).join("");
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Newsletter Subscribers</title>
+          <style>
+            body { font-family: system-ui, -apple-system, sans-serif; color: #113f48; padding: 30px; }
+            h1 { font-size: 22px; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 20px; }
+            table { width: 100%; border-collapse: collapse; }
+            th { background-color: #f8fafc; font-weight: bold; border: 1px solid #e2e8f0; padding: 10px; text-align: left; font-size: 12px; }
+            td { font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <h1>MediGuide Hub — Newsletter Subscribers</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Subscriber Email</th>
+                <th>Date Subscribed</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function() { window.close(); }, 500);
+            };
+          </script>
+        </body>
+      </html>
+    `;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
   const recentMessages = messages.slice(0, 5);
   const recentPosts = posts.slice(0, 5);
 
@@ -1969,6 +2184,13 @@ function AdminContent() {
                       >
                         Export CSV
                       </button>
+                      <button
+                        type="button"
+                        onClick={handleExportArticlesPDF}
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-sm font-bold px-5 py-3 rounded-xl transition-all shadow-sm flex-1 sm:flex-initial"
+                      >
+                        Export PDF
+                      </button>
                     </div>
                     <button
                       onClick={loadAllData}
@@ -2343,12 +2565,21 @@ function AdminContent() {
                   <h3 className="text-lg font-bold text-[#113F48]">Visitor Inquiries</h3>
                   <p className="text-xs text-stone-500 mt-0.5">Manage, search, resolve, and reply to visitor messages.</p>
                 </div>
-                <button
-                  onClick={handleExportMessagesCSV}
-                  className="flex items-center gap-1 bg-[#113F48] text-white hover:bg-[#C9A15A] text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
-                >
-                  <Download className="h-4 w-4" /> Export CSV
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleExportMessagesCSV}
+                    className="flex items-center gap-1 bg-white border border-[#113F48]/20 hover:border-[#113F48] text-[#113F48] text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                  >
+                    <Download className="h-4 w-4" /> Export CSV
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleExportMessagesPDF}
+                    className="flex items-center gap-1 bg-[#113F48] text-white hover:bg-[#C9A15A] text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                  >
+                    Export PDF
+                  </button>
+                </div>
               </div>
 
               {/* Filters & Search */}
@@ -2983,6 +3214,13 @@ function AdminContent() {
                       >
                         Export CSV
                       </button>
+                      <button
+                        type="button"
+                        onClick={handleExportCategoriesPDF}
+                        className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                      >
+                        Export PDF
+                      </button>
                     </div>
                   </div>
 
@@ -3340,13 +3578,22 @@ function AdminContent() {
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold text-[#113F48]">Newsletter Subscriber Database</h3>
                 {subscribers.length > 0 && (
-                  <button
-                    onClick={handleExportCSV}
-                    className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5"
-                  >
-                    <Download className="h-4 w-4" />
-                    Export CSV
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleExportCSV}
+                      className="bg-white border border-[#113F48]/20 hover:border-[#113F48] text-[#113F48] text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5"
+                    >
+                      <Download className="h-4 w-4" />
+                      Export CSV
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleExportSubscribersPDF}
+                      className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5"
+                    >
+                      Export PDF
+                    </button>
+                  </div>
                 )}
               </div>
 

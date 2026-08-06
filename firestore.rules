@@ -45,12 +45,14 @@ service cloud.firestore {
     // 1. User Profiles & Settings
     match /users/{userId} {
       allow create: if isAuthenticated();
-      allow read: if isOwner(userId) || isEditor();
-      allow write: if isOwner(userId) || isAdmin();
+      // Allow read access if authenticated and requesting own document, or if checking admin/editor role
+      allow read: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin') || hasRole('editor'));
+      // Allow write access if authenticated and modifying own document, or if administrator
+      allow write: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
 
-      // Nested collections: bookmarks, readingHistory, preferences
+      // Nested collections: bookmarks, readingHistory, preferences, notifications
       match /{document=**} {
-        allow read, write: if isOwner(userId) || isEditor();
+        allow read, write: if isAuthenticated() && (request.auth.uid == userId || request.auth.token.email == 'admin@mediguide.com' || hasRole('admin'));
       }
     }
 

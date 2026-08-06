@@ -82,7 +82,14 @@ export default function BlogIndex() {
         post.author.toLowerCase().includes(search.toLowerCase());
       
       const matchesCategory =
-        selectedCategory === "All" || post.category === selectedCategory;
+        selectedCategory === "All" ||
+        post.category === selectedCategory ||
+        post.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
+        selectedCategory.toLowerCase().includes(post.category.toLowerCase()) ||
+        (selectedCategory === "Heart" && post.category === "Heart Health") ||
+        (selectedCategory === "Fitness" && post.category === "Fitness & Wellness") ||
+        (selectedCategory === "Wellness" && post.category === "Fitness & Wellness") ||
+        (selectedCategory === "Senior Healthcare" && post.category === "Senior Health");
 
       // Read time calculation
       let minutes = 5;

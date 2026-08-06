@@ -39,7 +39,8 @@ const DEFAULT_ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@
 const ADMIN_EMAILS = [
   DEFAULT_ADMIN_EMAIL.toLowerCase(),
   "vishalratanshakya@gmail.com",
-  "vishal@gmail.com"
+  "vishal@gmail.com",
+  "ratanvishal2003@gmail.com"
 ];
 
 const isAdminEmail = (email?: string | null): boolean => {

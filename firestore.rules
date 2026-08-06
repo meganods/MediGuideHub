@@ -19,13 +19,13 @@ service cloud.firestore {
         getUserData().role == role;
     }
 
-    // Role-specific helpers
     function isAdmin() {
       return hasRole('admin') || 
         (isAuthenticated() && (
           request.auth.token.email == 'admin@mediguide.com' ||
           request.auth.token.email == 'vishalratanshakya@gmail.com' ||
-          request.auth.token.email == 'vishal@gmail.com'
+          request.auth.token.email == 'vishal@gmail.com' ||
+          request.auth.token.email == 'ratanvishal2003@gmail.com'
         ));
     }
 

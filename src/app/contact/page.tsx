@@ -106,11 +106,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <Script 
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js" 
-        async 
-        defer 
-      />
+
 
       <main className="flex-grow">
         
@@ -373,13 +369,7 @@ export default function ContactPage() {
                         </label>
                       </div>
 
-                      {/* Cloudflare Turnstile Spam Protection */}
-                      <div className="flex justify-center py-2 border-t border-stone-100">
-                        <div 
-                          className="cf-turnstile" 
-                          data-sitekey="1x00000000000000000000AA"
-                        />
-                      </div>
+
 
                       <button
                         type="submit"

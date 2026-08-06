@@ -14,7 +14,7 @@ export default function EditorialPolicyPage() {
       <main className="flex-grow">
         {/* ── BREADCRUMB ── */}
         <div className="bg-stone-50 border-b border-stone-100 py-3">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-xs text-stone-500 flex gap-2">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
             <span className="text-[#113F48] font-semibold">Editorial Policy</span>
@@ -23,10 +23,10 @@ export default function EditorialPolicyPage() {
 
         {/* ── HERO ── */}
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-3">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none space-y-3">
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Editorial Policy</h1>
-            <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
+            <p className="text-stone-600 leading-relaxed text-sm">
               This Editorial Policy outlines how we prepare, review, update, and manage health information to maintain strict E-E-A-T values.
             </p>
           </div>
@@ -34,7 +34,7 @@ export default function EditorialPolicyPage() {
 
         {/* ── CONTENT ── */}
         <section className="py-14 bg-white print:py-0">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none">
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
@@ -78,7 +78,7 @@ export default function EditorialPolicyPage() {
 
         {/* ── BOTTOM CTA ── */}
         <section className="py-16 bg-[#F9FAFB] border-t border-stone-200 print:hidden">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-5">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none text-center space-y-5">
             <h3 className="text-xl font-bold text-[#113F48]">Need Assistance?</h3>
             <p className="text-stone-500 text-sm max-w-md mx-auto">
               If you have any questions regarding our terms, policies, or data handling, reach out to our team.

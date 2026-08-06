@@ -269,7 +269,22 @@ export default function BlogPostDetail(props: PageProps) {
                          prose-table:w-full prose-table:border-collapse prose-table:my-6
                          prose-th:bg-[#FDF6EC] prose-th:p-2.5 prose-th:border prose-th:border-stone-200 prose-th:text-left prose-th:text-xs prose-th:font-semibold
                          prose-td:p-2.5 prose-td:border prose-td:border-stone-200 prose-td:text-xs"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: (() => {
+                const raw = post.content || "";
+                // Check if content contains any HTML tags
+                const hasHtml = /<[a-z][\s\S]*>/i.test(raw);
+                if (hasHtml) {
+                  return raw;
+                }
+                // Plain text: split by double newlines for paragraphs, single newlines for <br>
+                const paragraphs = raw
+                  .split(/\n\n+/)
+                  .map(para => para.trim())
+                  .filter(Boolean)
+                  .map(para => `<p>${para.replace(/\n/g, "<br/>")}</p>`)
+                  .join("");
+                return paragraphs || `<p>${raw}</p>`;
+              })() }}
             />
 
             {/* References Block */}

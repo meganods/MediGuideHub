@@ -2100,7 +2100,18 @@ function AdminContent() {
                         )}
                         <div 
                           className="prose prose-stone max-w-none text-stone-600 text-sm leading-relaxed" 
-                          dangerouslySetInnerHTML={{ __html: postContent || "<p>No content written yet.</p>" }}
+                          dangerouslySetInnerHTML={{ __html: (() => {
+                            const raw = postContent || "<p>No content written yet.</p>";
+                            const hasHtml = /<[a-z][\s\S]*>/i.test(raw);
+                            if (hasHtml) return raw;
+                            const paragraphs = raw
+                              .split(/\n\n+/)
+                              .map(p => p.trim())
+                              .filter(Boolean)
+                              .map(p => `<p>${p.replace(/\n/g, "<br/>")}</p>`)
+                              .join("");
+                            return paragraphs || `<p>${raw}</p>`;
+                          })() }}
                         />
                       </div>
                     )}

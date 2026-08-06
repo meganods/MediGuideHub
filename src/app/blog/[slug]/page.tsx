@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { getPostBySlug, getPosts, updateUserSavedPosts, BlogPost } from "@/lib/db";
+import { getPostBySlug, getPosts, updateUserSavedPosts, BlogPost, getCommentsForPost, addComment, BlogComment } from "@/lib/db";
 import { 
   Bookmark, 
   Clock, 
@@ -38,10 +38,7 @@ export default function BlogPostDetail(props: PageProps) {
   const [copied, setCopied] = useState(false);
 
   // Comments state
-  const [comments, setComments] = useState<Array<{name: string, date: string, text: string}>>([
-    { name: "Sarah K.", date: "July 24, 2026", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do." },
-    { name: "Robert M.", date: "July 28, 2026", text: "Very helpful overview. I shared this with my parents who are approaching retirement age." }
-  ]);
+  const [comments, setComments] = useState<BlogComment[]>([]);
   const [commentName, setCommentName] = useState("");
   const [commentText, setCommentText] = useState("");
 
@@ -56,6 +53,8 @@ export default function BlogPostDetail(props: PageProps) {
         if (user) {
           setIsSaved(user.savedPosts?.includes(params.slug) || false);
         }
+        const postComments = await getCommentsForPost(params.slug);
+        setComments(postComments);
       }
       setLoading(false);
     }
@@ -84,15 +83,26 @@ export default function BlogPostDetail(props: PageProps) {
     }
   };
 
-  const handleAddComment = (e: React.FormEvent) => {
+  const handleAddComment = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!commentName || !commentText) return;
-    setComments([
-      ...comments,
-      { name: commentName, date: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }), text: commentText }
-    ]);
-    setCommentName("");
-    setCommentText("");
+    if (!commentName || !commentText || !post) return;
+    const newComment = {
+      postSlug: post.slug,
+      postTitle: post.title,
+      name: commentName,
+      text: commentText,
+      date: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      createdAt: new Date().toISOString()
+    };
+    try {
+      await addComment(newComment);
+      const postComments = await getCommentsForPost(post.slug);
+      setComments(postComments);
+      setCommentName("");
+      setCommentText("");
+    } catch (err) {
+      console.error("Error adding comment:", err);
+    }
   };
 
   if (loading) {

@@ -113,5 +113,11 @@ service cloud.firestore {
       allow read: if isEditor();
       allow update, delete: if isAdmin();
     }
+
+    // 11. Comments
+    match /comments/{commentId} {
+      allow read, create: if true;
+      allow delete: if isAdmin();
+    }
   }
 }

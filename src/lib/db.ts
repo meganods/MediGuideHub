@@ -837,3 +837,97 @@ export const deleteCategory = async (id: string): Promise<void> => {
   const cats = getLocal<BlogCategory>("mediguide_categories");
   setLocal("mediguide_categories", cats.filter((c) => c.id !== id));
 };
+
+/* ==========================================
+   10. COMMENTS SERVICES
+   ========================================== */
+export interface BlogComment {
+  id?: string;
+  postSlug: string;
+  postTitle: string;
+  name: string;
+  text: string;
+  date: string;
+  createdAt: string;
+}
+
+export const getComments = async (): Promise<BlogComment[]> => {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
+    try {
+      const snapshot = await getDocs(collection(getAdminFirestore()!, "comments"));
+      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+    } catch (e) {
+      console.warn("Firebase error getting comments:", e);
+    }
+  }
+  // Load default comments if empty in local simulation
+  const local = getLocal<BlogComment>("mediguide_comments");
+  if (local.length === 0) {
+    const defaultComments = [
+      { id: "c1", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Sarah K.", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do.", date: "July 24, 2026", createdAt: "2026-07-24T12:00:00.000Z" },
+      { id: "c2", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Robert M.", text: "Very helpful overview. I shared this with my parents who are approaching retirement age.", date: "July 28, 2026", createdAt: "2026-07-28T12:00:00.000Z" }
+    ];
+    setLocal("mediguide_comments", defaultComments);
+    return defaultComments;
+  }
+  return local;
+};
+
+export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[]> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      const q = query(
+        collection(firestore, "comments"),
+        where("postSlug", "==", postSlug),
+        orderBy("createdAt", "asc")
+      );
+      const snapshot = await getDocs(q);
+      // Seed if live db is empty for this post slug to keep standard demo comment list
+      if (snapshot.empty && postSlug === "medicare-advantage-plans-overview") {
+        const defaultComments = [
+          { postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Sarah K.", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do.", date: "July 24, 2026", createdAt: "2026-07-24T12:00:00.000Z" },
+          { postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Robert M.", text: "Very helpful overview. I shared this with my parents who are approaching retirement age.", date: "July 28, 2026", createdAt: "2026-07-28T12:00:00.000Z" }
+        ];
+        for (const c of defaultComments) {
+          await addDoc(collection(firestore, "comments"), c);
+        }
+        const refetched = await getDocs(q);
+        return refetched.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+      }
+      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+    } catch (e) {
+      console.warn("Firebase error getting comments for post:", e);
+    }
+  }
+  const allComments = await getComments();
+  return allComments.filter((c) => c.postSlug === postSlug);
+};
+
+export const addComment = async (comment: BlogComment): Promise<void> => {
+  if (isFirebaseConfigured && firestore) {
+    try {
+      await addDoc(collection(firestore, "comments"), comment);
+      return;
+    } catch (e) {
+      console.error("Firebase addComment error:", e);
+    }
+  }
+  const local = getLocal<BlogComment>("mediguide_comments");
+  comment.id = `comment-${Date.now()}-${Math.random()}`;
+  local.push(comment);
+  setLocal("mediguide_comments", local);
+};
+
+export const deleteComment = async (id: string): Promise<void> => {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
+    try {
+      await deleteDoc(doc(getAdminFirestore()!, "comments", id));
+      return;
+    } catch (e) {
+      console.error("Firebase deleteComment error:", e);
+    }
+  }
+  const local = getLocal<BlogComment>("mediguide_comments");
+  const filtered = local.filter((c) => c.id !== id);
+  setLocal("mediguide_comments", filtered);
+};

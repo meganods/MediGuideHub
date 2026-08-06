@@ -12,6 +12,9 @@ import {
   deletePost,
   getUsers,
   subscribeToUsers,
+  getComments,
+  deleteComment,
+  BlogComment,
   banUserProfile,
   saveUserProfile,
   getContactMessages,
@@ -286,6 +289,9 @@ function AdminContent() {
   const totalUsersPages = Math.max(1, Math.ceil(usersList.length / usersPerPage));
   const paginatedUsers = usersList.slice((usersPage - 1) * usersPerPage, usersPage * usersPerPage);
 
+  // Comments state
+  const [commentsList, setCommentsList] = useState<BlogComment[]>([]);
+
   // Category Management states
   const [categoriesList, setCategoriesList] = useState<BlogCategory[]>([]);
   const [isAddingCategory, setIsAddingCategory] = useState(false);
@@ -322,6 +328,7 @@ function AdminContent() {
       const allSubs = await getSubscribers();
       const allFaqs = await getFAQs();
       const settings = await getSiteSettings();
+      const allComments = await getComments();
 
       // Load Categories & Seed if empty
       let allCats = await getCategories();
@@ -362,6 +369,7 @@ function AdminContent() {
       setFaqs(allFaqs);
       setSiteSettings(settings);
       setCategoriesList(allCats);
+      setCommentsList(allComments);
 
       setStats({
         users: allUsers.length,
@@ -548,6 +556,27 @@ function AdminContent() {
       setStats((prev) => ({ ...prev, users: updatedUsers.length }));
     });
     return () => unsubscribe();
+  }, [user, loading]);
+
+  useEffect(() => {
+    if (loading || !user || user.role !== "admin") return;
+
+    if (isFirebaseConfigured && adminFirestore) {
+      const q = query(collection(adminFirestore, "comments"), orderBy("createdAt", "desc"));
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+        setCommentsList(list);
+      }, (error) => {
+        console.warn("Comments listener status:", error.message);
+      });
+      return () => unsubscribe();
+    } else {
+      const interval = setInterval(async () => {
+        const list = await getComments();
+        setCommentsList(list);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
   }, [user, loading]);
 
   useEffect(() => {
@@ -762,6 +791,13 @@ function AdminContent() {
   const handleDeletePost = async (id: string) => {
     if (confirm("Are you sure you want to delete this guide?")) {
       await deletePost(id);
+      await loadAllData();
+    }
+  };
+
+  const handleDeleteComment = async (id: string) => {
+    if (confirm("Are you sure you want to delete this comment?")) {
+      await deleteComment(id);
       await loadAllData();
     }
   };
@@ -1198,6 +1234,23 @@ function AdminContent() {
               >
                 <Users className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "users" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
                 Users
+              </button>
+
+              <button
+                onClick={() => handleTabChange("comments")}
+                className={`group w-full flex items-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ease-out ${
+                  activeTab === "comments"
+                    ? "bg-[#C9A15A] text-white shadow-sm"
+                    : "text-white lg:text-stone-600 lg:hover:bg-[#F9FAFB] lg:hover:text-[#113F48] hover:bg-white/10 hover:text-white hover:translate-x-[3px]"
+                }`}
+              >
+                <MessageSquare className={`h-4 w-4 transition-transform duration-200 ease-out ${activeTab === "comments" ? "scale-110" : "group-hover:scale-[1.12]"}`} />
+                Comments
+                {commentsList.length > 0 && (
+                  <span className="ml-auto bg-[#FAEEDA] text-[#854F0B] text-[10px] px-2 py-0.5 rounded-full font-bold">
+                    {commentsList.length}
+                  </span>
+                )}
               </button>
 
               <button
@@ -3649,7 +3702,61 @@ function AdminContent() {
             </div>
           )}
 
-          {/* TAB 4: Subscribers List */}
+          {/* TAB: Comments List */}
+          {activeTab === "comments" && (
+            <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
+              <div>
+                <h3 className="text-lg font-bold text-[#113F48]">Reader Discussions & Comments</h3>
+                <p className="text-xs text-stone-500 mt-0.5">Monitor and moderate comments left by readers on blog posts.</p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-[#C9A15A]/15 text-stone-500 text-xs font-bold uppercase tracking-wider bg-[#FDF6EC]/40">
+                      <th className="p-3 w-16 text-center">S.NO.</th>
+                      <th className="p-3">Commenter</th>
+                      <th className="p-3">Post Title</th>
+                      <th className="p-3">Comment Text</th>
+                      <th className="p-3">Date</th>
+                      <th className="p-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 text-sm">
+                    {commentsList.map((c, idx) => (
+                      <tr key={c.id || idx} className="hover:bg-stone-50/50 transition-colors">
+                        <td className="p-3 font-bold text-stone-400 text-xs w-16 text-center">{idx + 1}</td>
+                        <td className="p-3 font-semibold text-[#113F48]">{c.name}</td>
+                        <td className="p-3 text-stone-600 text-xs">
+                          <Link href={`/blog/${c.postSlug}`} target="_blank" className="hover:text-[#C9A15A] underline">
+                            {c.postTitle}
+                          </Link>
+                        </td>
+                        <td className="p-3 text-stone-700 text-xs max-w-sm leading-relaxed">{c.text}</td>
+                        <td className="p-3 text-stone-400 text-xs">{c.date}</td>
+                        <td className="p-3 text-right">
+                          <button
+                            onClick={() => handleDeleteComment(c.id || "")}
+                            className="p-2 border border-stone-200 text-stone-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all"
+                            title="Delete Comment"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                    {commentsList.length === 0 && (
+                      <tr>
+                        <td colSpan={6} className="p-6 text-center text-sm text-stone-400">
+                          No reader comments yet.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
           {activeTab === "subscribers" && (
             <div className="bg-white border border-[#C9A15A]/20 p-6 rounded-2xl shadow-sm space-y-6">
               <div className="flex justify-between items-center">

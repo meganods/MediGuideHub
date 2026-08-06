@@ -145,10 +145,10 @@ function DashboardContent() {
     if (loading) return;
 
     if (!user) {
-      router.push("/auth?redirect=" + encodeURIComponent("/dashboard"));
+      router.push("/login?redirect=" + encodeURIComponent("/dashboard"));
     } else {
       if (user.role === "admin") {
-        router.push("/admin");
+        router.push("/admin/dashboard");
         return;
       }
       setDisplayName(user.displayName || "");

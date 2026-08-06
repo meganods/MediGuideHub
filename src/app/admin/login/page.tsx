@@ -20,7 +20,7 @@ function AdminLoginForm() {
 
   useEffect(() => {
     if (user && user.role === "admin") {
-      router.push("/admin");
+      router.push("/admin/dashboard");
     }
   }, [user, router]);
 
@@ -42,7 +42,7 @@ function AdminLoginForm() {
         setStatus("idle");
         return;
       }
-      router.push("/admin");
+      router.push("/admin/dashboard");
     } catch (err: any) {
       console.error(err);
       setError(err?.message || "Admin login failed. Please verify your credentials.");

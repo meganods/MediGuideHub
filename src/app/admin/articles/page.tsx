@@ -4,14 +4,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 
-export default function AdminRootPage() {
+export default function AdminArticlesPage() {
   const router = useRouter();
   const { user, loading } = useAuth();
 
   useEffect(() => {
     if (!loading) {
       if (user && user.role === "admin") {
-        router.replace("/admin/dashboard");
+        router.replace("/admin/dashboard?tab=posts");
       } else {
         router.replace("/admin/login");
       }

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { ShieldCheck, User as UserIcon, LogOut, Menu, X, HeartPulse } from "lucide-react";
+import { ShieldCheck, LogOut, Menu, X, HeartPulse } from "lucide-react";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -69,31 +69,39 @@ export default function Navbar() {
               {user ? (
                 user.role === "admin" ? (
                   <div className="flex items-center space-x-3">
-                    <Link
-                      href="/auth?tab=signin"
-                      className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center gap-1.5 px-4 h-11 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-all cursor-pointer"
                     >
-                      Login
-                    </Link>
+                      <LogOut className="h-4 w-4" />
+                      Logout
+                    </button>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-3">
                     <Link
                       href="/dashboard"
-                      className="flex items-center gap-1.5 px-4 h-11 text-sm font-medium text-[#113F48] bg-[#F9FAFB] hover:bg-stone-50 rounded-xl border border-stone-200 hover:border-[#C9A15A]/50 transition-all"
+                      className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
                     >
-                      <UserIcon className="h-4 w-4 text-[#C9A15A]" />
-                      My Dashboard
+                      Dashboard
                     </Link>
                   </div>
                 )
               ) : (
-                <Link
-                  href="/auth?tab=signin"
-                  className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
-                >
-                  Login
-                </Link>
+                <div className="flex items-center space-x-3">
+                  <Link
+                    href="/login"
+                    className="flex items-center justify-center px-4 h-11 font-medium text-[#113F48] hover:text-[#C9A15A] transition-all"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
+                  >
+                    Register
+                  </Link>
+                </div>
               )}
             </div>
 
@@ -163,35 +171,46 @@ export default function Navbar() {
             <span className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-2">Account</span>
             {user ? (
               user.role === "admin" ? (
-                <>
-                  <Link
-                    href="/auth?tab=signin"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] rounded-xl transition-all"
+                <div className="flex flex-col space-y-2">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleLogout();
+                    }}
+                    className="flex items-center justify-center gap-2 w-full h-12 font-medium text-red-600 bg-red-50 border border-red-200 rounded-xl transition-all cursor-pointer"
                   >
-                    Login
-                  </Link>
-                </>
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                  </button>
+                </div>
               ) : (
-                <>
+                <div className="flex flex-col space-y-2">
                   <Link
                     href="/dashboard"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full h-12 font-medium text-[#113F48] bg-[#F9FAFB] border border-stone-200 rounded-xl transition-all"
+                    className="flex items-center justify-center gap-2 w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
                   >
-                    <UserIcon className="h-4 w-4" />
-                    My Dashboard
+                    Dashboard
                   </Link>
-                </>
+                </div>
               )
             ) : (
-              <Link
-                href="/auth?tab=signin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10"
-              >
-                Login
-              </Link>
+              <div className="flex flex-col space-y-2">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center w-full h-12 font-medium text-[#113F48] bg-[#F9FAFB] border border-stone-200 rounded-xl transition-all"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10"
+                >
+                  Register
+                </Link>
+              </div>
             )}
           </div>
         </div>

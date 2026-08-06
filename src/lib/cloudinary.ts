@@ -20,6 +20,7 @@ export const uploadImage = async (file: File | string): Promise<string> => {
         "upload_preset",
         process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || ""
       );
+      formData.append("folder", "MediGuide Hub");
 
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -35,8 +36,8 @@ export const uploadImage = async (file: File | string): Promise<string> => {
 
       const data = await response.json();
       return data.secure_url;
-    } catch (error) {
-      console.error("Cloudinary upload failed, falling back to mock:", error);
+    } catch {
+      console.warn("Cloudinary credentials are not configured or invalid. Using local simulation fallback.");
     }
   }
 

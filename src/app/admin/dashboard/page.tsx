@@ -11,6 +11,7 @@ import {
   savePost,
   deletePost,
   getUsers,
+  subscribeToUsers,
   banUserProfile,
   saveUserProfile,
   getContactMessages,
@@ -531,6 +532,16 @@ function AdminContent() {
       }, 2000);
       return () => clearInterval(interval);
     }
+  }, [user, loading]);
+
+  useEffect(() => {
+    if (loading || !user || user.role !== "admin") return;
+
+    const unsubscribe = subscribeToUsers((updatedUsers) => {
+      setUsersList(updatedUsers);
+      setStats((prev) => ({ ...prev, users: updatedUsers.length }));
+    });
+    return () => unsubscribe();
   }, [user, loading]);
 
   useEffect(() => {

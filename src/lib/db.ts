@@ -466,6 +466,20 @@ export const getUsers = async (): Promise<UserProfile[]> => {
   return getLocal<UserProfile>(KEYS.USERS);
 };
 
+export const subscribeToUsers = (callback: (users: UserProfile[]) => void) => {
+  if (isFirebaseConfigured && getAdminFirestore()!) {
+    const q = collection(getAdminFirestore()!, "users");
+    return onSnapshot(q, (snapshot) => {
+      const list = snapshot.docs.map((doc) => ({ uid: doc.id, ...doc.data() } as UserProfile));
+      callback(list);
+    }, (e) => {
+      console.error("subscribeToUsers error:", e);
+    });
+  }
+  callback(getLocal<UserProfile>(KEYS.USERS));
+  return () => {};
+};
+
 export async function updateUserRole(userId: string, newRole: string) {
   if (!isFirebaseConfigured || !getAdminFirestore()!) return;
   const userRef = doc(getAdminFirestore()!, "users", userId);

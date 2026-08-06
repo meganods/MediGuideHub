@@ -328,12 +328,12 @@ export default function Home() {
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Daily Feed</span>
               <h2 className="text-2xl font-extrabold text-[#113F48]">Trending Healthcare Topics</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {trendingTopics.slice(0, 3).map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="bg-[#FDFBF7] border border-stone-200 hover:border-[#C9A15A] p-4 rounded-xl transition-all space-y-1 block">
-                  <span className="text-[9px] font-bold text-[#C9A15A] uppercase">{post.category}</span>
-                  <h4 className="font-bold text-xs text-[#113F48] line-clamp-2 leading-snug">{post.title}</h4>
-                  <span className="text-[9px] text-stone-400 block">{post.readTime}</span>
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="bg-white border border-stone-200 hover:border-[#C9A15A] p-6.5 rounded-2xl transition-all space-y-3.5 block shadow-sm hover:shadow-md">
+                  <span className="text-[10px] font-bold text-[#C9A15A] uppercase tracking-wider block">{post.category}</span>
+                  <h4 className="font-extrabold text-sm sm:text-base text-[#113F48] line-clamp-2 leading-snug hover:text-[#C9A15A] transition-colors">{post.title}</h4>
+                  <span className="text-[10px] text-stone-400 font-medium block">{post.readTime}</span>
                 </Link>
               ))}
             </div>

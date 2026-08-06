@@ -2,9 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getFAQs, getPosts, getCategories, FAQItem, BlogPost, BlogCategory } from "@/lib/db";
+import { useAuth } from "@/lib/authContext";
+import { getFAQs, getPosts, getCategories, updateUserSavedPosts, FAQItem, BlogPost, BlogCategory } from "@/lib/db";
 import {
   ArrowRight,
   Heart,
@@ -27,10 +29,13 @@ import {
   Lock,
   Activity,
   Layers,
-  ArrowUpRight
+  ArrowUpRight,
+  Bookmark
 } from "lucide-react";
 
 export default function Home() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [faqs, setFaqs] = useState<FAQItem[]>([]);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [categories, setCategories] = useState<BlogCategory[]>([]);
@@ -38,6 +43,50 @@ export default function Home() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
   const [activeFaq, setActiveFaq] = useState<string | null>(null);
+  
+  const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
+  const [toast, setToast] = useState<{ message: string; visible: boolean }>({ message: "", visible: false });
+
+  const showToast = (message: string) => {
+    setToast({ message, visible: true });
+  };
+
+  useEffect(() => {
+    if (toast.visible) {
+      const timer = setTimeout(() => {
+        setToast((prev) => ({ ...prev, visible: false }));
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast.visible]);
+
+  useEffect(() => {
+    if (user) {
+      setSavedSlugs(user.savedPosts || []);
+    } else {
+      setSavedSlugs([]);
+    }
+  }, [user]);
+
+  const handleToggleSave = async (slug: string) => {
+    if (!user) {
+      router.push("/auth?redirect=" + encodeURIComponent("/"));
+      return;
+    }
+    const isSaved = savedSlugs.includes(slug);
+    const action = isSaved ? "unsave" : "save";
+    try {
+      const updatedProfile = await updateUserSavedPosts(user.uid, slug, action);
+      if (updatedProfile) {
+        setSavedSlugs(updatedProfile.savedPosts || []);
+        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+        showToast(action === "save" ? "Article bookmarked successfully!" : "Article removed from bookmarks.");
+      }
+    } catch (e) {
+      console.error("Failed to save post:", e);
+      showToast("Failed to update bookmark.");
+    }
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -241,6 +290,17 @@ export default function Home() {
                       <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover" />
                     )}
                     <span className="absolute top-3 left-3 bg-[#113F48] text-white text-[9px] font-bold px-2 py-0.5 rounded">{post.category}</span>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleToggleSave(post.slug);
+                      }}
+                      className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm cursor-pointer"
+                      title="Save Article"
+                    >
+                      <Bookmark className={`h-4 w-4 ${savedSlugs.includes(post.slug) ? "fill-[#C9A15A] text-[#C9A15A]" : ""}`} />
+                    </button>
                   </div>
                   <div className="p-5 flex-grow space-y-2">
                     <span className="text-[10px] text-stone-400 block">{post.publishedAt} • {post.readTime}</span>
@@ -472,6 +532,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Toast Notification */}
+      {toast.visible && (
+        <div className="fixed top-5 right-5 z-50 bg-[#113F48] text-white border border-[#C9A15A]/30 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-2.5 animate-in fade-in slide-in-from-top-5 duration-300">
+          <Bookmark className="h-4.5 w-4.5 text-[#C9A15A] fill-[#C9A15A]" />
+          <span className="text-xs font-bold">{toast.message}</span>
+        </div>
+      )}
 
       <Footer />
     </div>

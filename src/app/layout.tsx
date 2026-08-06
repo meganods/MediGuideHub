@@ -3,6 +3,7 @@ import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/authContext";
 import { AdminAuthProvider } from "@/lib/adminAuthContext";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body className="font-sans antialiased text-[#113F48] bg-white overflow-x-hidden" suppressHydrationWarning>
         <AuthProvider>
           <AdminAuthProvider>
+            <ScrollToTop />
             {children}
           </AdminAuthProvider>
         </AuthProvider>

@@ -592,6 +592,7 @@ export async function addNotificationToAdmins(
 }
 
 export const getUserProfile = async (uid: string): Promise<UserProfile | null> => {
+  if (!uid) return null;
   if (isFirebaseConfigured && firestore) {
     try {
       const docRef = doc(firestore, "users", uid);
@@ -600,7 +601,7 @@ export const getUserProfile = async (uid: string): Promise<UserProfile | null> =
         return { uid, ...snapshot.data() } as UserProfile;
       }
     } catch (e) {
-      console.error("Firebase error getting user profile:", e);
+      console.warn("Firebase error getting user profile:", e);
     }
   }
   const users = getLocal<UserProfile>(KEYS.USERS);

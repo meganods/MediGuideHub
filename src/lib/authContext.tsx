@@ -56,12 +56,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   ): Promise<UserProfile> => {
     const existing = await getUserProfile(authUser.uid);
     if (existing) {
-      if (existing.role === "admin") {
-        existing.role = "user";
-        try {
-          await saveUserProfile(existing);
-        } catch (e) {}
-      }
       return existing;
     }
 

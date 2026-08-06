@@ -594,7 +594,6 @@ function DashboardContent() {
                 { id: "overview", label: "Dashboard Home", icon: <Activity className="h-4 w-4" /> },
                 { id: "saved", label: "Saved Articles", icon: <Bookmark className="h-4 w-4" /> },
                 { id: "history", label: "Reading History", icon: <Clock3 className="h-4 w-4" /> },
-                { id: "bookmarks", label: "Bookmarks", icon: <Bookmark className="h-4 w-4 fill-current" /> },
                 { id: "interests", label: "Health Interests", icon: <HeartPulse className="h-4 w-4" /> },
                 { id: "notifications", label: "Notifications", icon: <Bell className="h-4 w-4" /> },
                 { id: "newsletter", label: "Newsletter preferences", icon: <Mail className="h-4 w-4" /> },
@@ -654,10 +653,9 @@ function DashboardContent() {
                   <p className="text-xs text-stone-500 mt-1">Manage your saved health documents, interests, and profile privacy preferences.</p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {[
                     { label: "Saved Articles", val: savedPosts.length.toString(), color: "text-[#113F48]" },
-                    { label: "Bookmarked Items", val: bookmarks.length.toString(), color: "text-[#C9A15A]" },
                     { label: "Reading Streak", val: `${streak} Days`, color: "text-emerald-600" },
                     { label: "Last Active", val: lastActive, color: "text-stone-600" }
                   ].map((card, i) => (
@@ -773,40 +771,7 @@ function DashboardContent() {
               </div>
             )}
 
-            {/* VIEW 4: BOOKMARKS */}
-            {activeTab === "bookmarks" && (
-              <div className="bg-white border border-stone-200 p-6 rounded-2xl shadow-sm space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-[#113F48]">Bookmarks</h3>
-                  <p className="text-xs text-stone-500">Access saved quick-reference bookmarks.</p>
-                </div>
 
-                <div className="space-y-3">
-                  {bookmarks.map((bmark) => {
-                    const postMatch = posts.find(p => p.slug === bmark.slug);
-                    return (
-                      <div key={bmark.slug} className="border border-stone-100 rounded-xl p-4 bg-stone-50/30 flex justify-between items-center">
-                        <div className="space-y-1">
-                          <span className="text-[9px] font-bold text-[#C9A15A] uppercase">{postMatch?.category || "Guide"}</span>
-                          <h4 className="font-bold text-xs text-[#113F48]">{postMatch?.title || bmark.slug}</h4>
-                          <span className="text-[9px] text-stone-400 block">Bookmarked on {bmark.date}</span>
-                        </div>
-                        <div className="flex gap-2">
-                          <Link href={`/blog/${bmark.slug}`} className="p-2 border border-stone-200 hover:border-[#113F48] text-stone-600 hover:text-[#113F48] rounded-xl text-xs font-bold transition-all">View</Link>
-                          <button onClick={() => handleDeleteBookmark(bmark.slug)} className="text-stone-400 hover:text-red-600 p-2"><Trash2 className="h-4 w-4" /></button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  {bookmarks.length === 0 && (
-                    <div className="text-center py-12 text-stone-400">
-                      <Bookmark className="h-8 w-8 mx-auto text-stone-300 mb-2 fill-stone-100" />
-                      <p className="text-xs">No bookmarks saved.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
 
             {/* VIEW 5: HEALTH INTERESTS */}
             {activeTab === "interests" && (

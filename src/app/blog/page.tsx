@@ -73,7 +73,7 @@ export default function BlogIndex() {
     loadData();
   }, []);
 
-  // Filter and sort logic
+  const seenSlugs = new Set<string>();
   const filteredPosts = posts
     .filter((post) => {
       const matchesSearch =
@@ -103,6 +103,11 @@ export default function BlogIndex() {
       if (sortBy === "views") return (b.views || 0) - (a.views || 0);
       if (sortBy === "popular" || sortBy === "trending") return (b.views || 0) - (a.views || 0);
       return b.publishedAt.localeCompare(a.publishedAt); // default newest
+    })
+    .filter((post) => {
+      if (seenSlugs.has(post.slug)) return false;
+      seenSlugs.add(post.slug);
+      return true;
     });
 
   // Derived sections
@@ -232,8 +237,8 @@ export default function BlogIndex() {
                 <div className="space-y-6">
                   <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest flex items-center gap-1"><FileText className="h-3.5 w-3.5 text-[#C9A15A]" /> Latest Health Articles</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {filteredPosts.map((post) => (
-                      <article key={post.slug} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+                    {filteredPosts.map((post, idx) => (
+                      <article key={post.id || post.slug + "-" + idx} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                         <div className="relative h-44 w-full bg-stone-50">
                           {post.featuredImage && (
                             <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover" />

@@ -72,8 +72,10 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
     authUser: { uid: string; email?: string | null; displayName?: string | null }
   ): Promise<UserProfile> => {
     const existing = await getUserProfile(authUser.uid);
+    const isDefaultAdmin = authUser.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL;
+
     if (existing) {
-      if (existing.role !== "admin") {
+      if (isDefaultAdmin && existing.role !== "admin") {
         existing.role = "admin";
         try {
           await saveUserProfile(existing);
@@ -83,10 +85,12 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     const newProfile = buildProfileFromAuthUser(authUser);
-    try {
-      await saveUserProfile(newProfile);
-    } catch (error) {
-      console.warn("Could not save newly created admin profile:", error);
+    if (isDefaultAdmin) {
+      try {
+        await saveUserProfile(newProfile);
+      } catch (error) {
+        console.warn("Could not save newly created admin profile:", error);
+      }
     }
     return newProfile;
   };

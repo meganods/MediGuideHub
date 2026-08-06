@@ -280,6 +280,11 @@ function AdminContent() {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  // Users Pagination states
+  const [usersPage, setUsersPage] = useState(1);
+  const usersPerPage = 10;
+  const totalUsersPages = Math.max(1, Math.ceil(usersList.length / usersPerPage));
+  const paginatedUsers = usersList.slice((usersPage - 1) * usersPerPage, usersPage * usersPerPage);
 
   // Category Management states
   const [categoriesList, setCategoriesList] = useState<BlogCategory[]>([]);
@@ -2486,7 +2491,7 @@ function AdminContent() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-stone-100 text-sm">
-                    {usersList.map((target) => (
+                    {paginatedUsers.map((target) => (
                       <tr key={target.uid} className="hover:bg-stone-50/50 transition-colors">
                         <td className="p-3 font-semibold text-[#113F48]">{target.displayName || "Beneficiary"}</td>
                         <td className="p-3 text-stone-600">{target.email}</td>
@@ -2532,6 +2537,29 @@ function AdminContent() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Users Pagination controls */}
+              <div className="flex items-center justify-between pt-4 border-t border-stone-100 text-xs">
+                <span className="text-stone-500">
+                  Showing {Math.min((usersPage - 1) * 10 + 1, usersList.length)} to {Math.min(usersPage * 10, usersList.length)} of {usersList.length} users
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setUsersPage(p => Math.max(1, p - 1))}
+                    disabled={usersPage === 1}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-[#113F48] hover:bg-stone-50 transition-all font-semibold disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => setUsersPage(p => Math.min(totalUsersPages, p + 1))}
+                    disabled={usersPage === totalUsersPages || totalUsersPages <= 1}
+                    className="px-3 py-1.5 rounded-lg border border-stone-200 text-[#113F48] hover:bg-stone-50 transition-all font-semibold disabled:opacity-50"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </div>
           )}

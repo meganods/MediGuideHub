@@ -494,12 +494,12 @@ export function subscribeToUserNotifications(
   userId: string,
   callback: (notifications: Notification[]) => void
 ) {
-  if (!isFirebaseConfigured || !getAdminFirestore()! || !auth?.currentUser) {
+  if (!isFirebaseConfigured || !firestore || !auth?.currentUser) {
     callback([]);
     return () => {}; // empty unsubscribe
   }
   
-  const notificationsRef = collection(getAdminFirestore()!, "users", userId, "notifications");
+  const notificationsRef = collection(firestore, "users", userId, "notifications");
   const q = query(notificationsRef, orderBy("createdAt", "desc"));
   
   const unsubscribe = onSnapshot(
@@ -521,8 +521,8 @@ export function subscribeToUserNotifications(
 }
 
 export async function markNotificationAsRead(userId: string, notificationId: string) {
-  if (!isFirebaseConfigured || !getAdminFirestore()!) return;
-  const notificationRef = doc(getAdminFirestore()!, "users", userId, "notifications", notificationId);
+  if (!isFirebaseConfigured || !firestore) return;
+  const notificationRef = doc(firestore, "users", userId, "notifications", notificationId);
   await updateDoc(notificationRef, { read: true });
 }
 
@@ -532,9 +532,9 @@ export async function addNotificationToUser(
   message: string,
   actionUrl?: string
 ) {
-  if (isFirebaseConfigured && getAdminFirestore()!) {
+  if (isFirebaseConfigured && firestore) {
     try {
-      const notifsRef = collection(getAdminFirestore()!!, "users", userId, "notifications");
+      const notifsRef = collection(firestore, "users", userId, "notifications");
       await addDoc(notifsRef, {
         title,
         message,
@@ -586,9 +586,9 @@ export async function addNotificationToAdmins(
 }
 
 export const getUserProfile = async (uid: string): Promise<UserProfile | null> => {
-  if (isFirebaseConfigured && getAdminFirestore()!) {
+  if (isFirebaseConfigured && firestore) {
     try {
-      const docRef = doc(getAdminFirestore()!, "users", uid);
+      const docRef = doc(firestore, "users", uid);
       const snapshot = await getDoc(docRef);
       if (snapshot.exists()) {
         return { uid, ...snapshot.data() } as UserProfile;
@@ -602,9 +602,9 @@ export const getUserProfile = async (uid: string): Promise<UserProfile | null> =
 };
 
 export const saveUserProfile = async (profile: UserProfile): Promise<void> => {
-  if (isFirebaseConfigured && getAdminFirestore()!) {
+  if (isFirebaseConfigured && firestore) {
     try {
-      await setDoc(doc(getAdminFirestore()!, "users", profile.uid), profile, { merge: true });
+      await setDoc(doc(firestore, "users", profile.uid), profile, { merge: true });
       return;
     } catch (e) {
       console.error("Firebase saveUserProfile error:", e);

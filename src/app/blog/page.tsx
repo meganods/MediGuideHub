@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { getPosts, getCategories, BlogPost, BlogCategory } from "@/lib/db";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/authContext";
+import { getPosts, getCategories, updateUserSavedPosts, BlogPost, BlogCategory } from "@/lib/db";
 import { 
   Search, 
   BookOpen, 
@@ -17,10 +19,14 @@ import {
   Sparkles,
   TrendingUp,
   FileText,
-  Grid
+  Grid,
+  Bookmark
 } from "lucide-react";
 
 export default function BlogIndex() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [categories, setCategories] = useState<BlogCategory[]>([]);
   const [search, setSearch] = useState("");
@@ -30,6 +36,32 @@ export default function BlogIndex() {
   const [filterReadTime, setFilterReadTime] = useState("all"); // all, short (<5m), medium (5-10m), long (>10m)
   const [sortBy, setSortBy] = useState("newest"); // newest, oldest, popular, views
   const [showFilters, setShowFilters] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setSavedSlugs(user.savedPosts || []);
+    } else {
+      setSavedSlugs([]);
+    }
+  }, [user]);
+
+  const handleToggleSave = async (slug: string) => {
+    if (!user) {
+      router.push("/auth?redirect=" + encodeURIComponent("/blog"));
+      return;
+    }
+    const isSaved = savedSlugs.includes(slug);
+    const action = isSaved ? "unsave" : "save";
+    try {
+      const updatedProfile = await updateUserSavedPosts(user.uid, slug, action);
+      if (updatedProfile) {
+        setSavedSlugs(updatedProfile.savedPosts || []);
+        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+      }
+    } catch (e) {
+      console.error("Failed to save post:", e);
+    }
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -233,6 +265,17 @@ export default function BlogIndex() {
                             <img src={post.featuredImage} alt={post.title} className="w-full h-full object-cover" />
                           )}
                           <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded">{post.category}</span>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleToggleSave(post.slug);
+                            }}
+                            className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm"
+                            title="Save Article"
+                          >
+                            <Bookmark className={`h-4 w-4 ${savedSlugs.includes(post.slug) ? "fill-[#C9A15A] text-[#C9A15A]" : ""}`} />
+                          </button>
                         </div>
                         <div className="p-5 flex flex-col justify-between flex-grow space-y-3">
                           <div className="space-y-2">

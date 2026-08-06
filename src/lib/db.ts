@@ -71,6 +71,12 @@ export interface UserProfile {
   streak?: number;
   lastActiveDate?: string;
   lastActive?: string;
+  bookmarks?: Array<{ slug: string; date: string }>;
+  readingHistory?: Array<{ slug: string; date: string; progress: number }>;
+  healthInterests?: string[];
+  newsletterSubscribed?: boolean;
+  newsletterFrequency?: string;
+  selectedNewsletterCats?: string[];
 }
 
 export interface SiteSettings {

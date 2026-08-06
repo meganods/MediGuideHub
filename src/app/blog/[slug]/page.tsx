@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { getPostBySlug, getPosts, updateUserSavedPosts, BlogPost, getCommentsForPost, addComment, BlogComment } from "@/lib/db";
+import { getPostBySlug, getPosts, updateUserSavedPosts, saveUserProfile, BlogPost, getCommentsForPost, addComment, BlogComment } from "@/lib/db";
 import { 
   Bookmark, 
   Clock, 
@@ -52,6 +52,27 @@ export default function BlogPostDetail(props: PageProps) {
         setPost(foundPost);
         if (user) {
           setIsSaved(user.savedPosts?.includes(params.slug) || false);
+          
+          const existingHistory = (user as any).readingHistory || [];
+          const alreadyLogged = existingHistory.some((h: any) => h.slug === params.slug);
+          if (!alreadyLogged) {
+            const newHistoryItem = {
+              slug: params.slug,
+              date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+              progress: 100
+            };
+            const updatedHistory = [newHistoryItem, ...existingHistory];
+            const updatedProfile = {
+              ...user,
+              readingHistory: updatedHistory
+            };
+            try {
+              await saveUserProfile(updatedProfile);
+              localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+            } catch (err) {
+              console.error("Failed to log reading history:", err);
+            }
+          }
         }
         const postComments = await getCommentsForPost(params.slug);
         setComments(postComments);

@@ -14,7 +14,8 @@ import {
   subscribeToUserNotifications, 
   markNotificationAsRead, 
   BlogPost, 
-  Notification 
+  Notification,
+  UserProfile
 } from "@/lib/db";
 import { uploadImage } from "@/lib/cloudinary";
 import { 
@@ -176,6 +177,10 @@ function DashboardContent() {
         if (profile) {
           if ((profile as any).bookmarks) setBookmarks((profile as any).bookmarks);
           if ((profile as any).readingHistory) setReadingHistory((profile as any).readingHistory);
+          if ((profile as any).healthInterests) setHealthInterests((profile as any).healthInterests);
+          if ((profile as any).newsletterSubscribed !== undefined) setNewsletterSubscribed((profile as any).newsletterSubscribed);
+          if ((profile as any).newsletterFrequency) setNewsletterFrequency((profile as any).newsletterFrequency);
+          if ((profile as any).selectedNewsletterCats) setSelectedNewsletterCats((profile as any).selectedNewsletterCats);
           
           const now = new Date();
           const todayStr = now.toDateString();
@@ -285,11 +290,88 @@ function DashboardContent() {
     }
   };
 
-  const toggleInterest = (interest: string) => {
+  const buildFullProfile = (profile: any): UserProfile => ({
+    uid: user?.uid || "",
+    email: profile?.email || user?.email || "",
+    displayName: profile?.displayName || user?.displayName || "",
+    role: profile?.role || "user",
+    savedPosts: profile?.savedPosts || [],
+    avatarUrl: profile?.avatarUrl || user?.avatarUrl || "",
+    banned: profile?.banned || false,
+    streak: profile?.streak || 1,
+    lastActiveDate: profile?.lastActiveDate || "",
+    lastActive: profile?.lastActive || "",
+    createdAt: profile?.createdAt || user?.createdAt || new Date().toISOString(),
+    bookmarks: profile?.bookmarks || [],
+    readingHistory: profile?.readingHistory || [],
+    healthInterests: profile?.healthInterests || [],
+    newsletterSubscribed: profile?.newsletterSubscribed !== undefined ? profile.newsletterSubscribed : true,
+    newsletterFrequency: profile?.newsletterFrequency || "Weekly",
+    selectedNewsletterCats: profile?.selectedNewsletterCats || ["Health Articles", "Preventive Care"]
+  });
+
+  const updateReadingHistoryDb = async (newHistory: Array<{slug: string, date: string, progress: number}>) => {
+    if (!user) return;
+    try {
+      const profile = await getUserProfile(user.uid);
+      const updatedProfile = buildFullProfile({
+        ...profile,
+        readingHistory: newHistory
+      });
+      await saveUserProfile(updatedProfile);
+      localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+    } catch (e) {
+      console.error("Failed to save reading history:", e);
+    }
+  };
+
+  const handleClearHistory = async () => {
+    setReadingHistory([]);
+    await updateReadingHistoryDb([]);
+  };
+
+  const handleDeleteHistoryItem = async (slug: string) => {
+    const updated = readingHistory.filter(h => h.slug !== slug);
+    setReadingHistory(updated);
+    await updateReadingHistoryDb(updated);
+  };
+
+  const handleDeleteBookmark = async (slug: string) => {
+    const updated = bookmarks.filter(b => b.slug !== slug);
+    setBookmarks(updated);
+    if (user) {
+      try {
+        const profile = await getUserProfile(user.uid);
+        const updatedProfile = buildFullProfile({
+          ...profile,
+          bookmarks: updated
+        });
+        await saveUserProfile(updatedProfile);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
+
+  const toggleInterest = async (interest: string) => {
+    let updated: string[];
     if (healthInterests.includes(interest)) {
-      setHealthInterests(healthInterests.filter(i => i !== interest));
+      updated = healthInterests.filter(i => i !== interest);
     } else {
-      setHealthInterests([...healthInterests, interest]);
+      updated = [...healthInterests, interest];
+    }
+    setHealthInterests(updated);
+    if (user) {
+      try {
+        const profile = await getUserProfile(user.uid);
+        const updatedProfile = buildFullProfile({
+          ...profile,
+          healthInterests: updated
+        });
+        await saveUserProfile(updatedProfile);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
@@ -298,6 +380,25 @@ function DashboardContent() {
       setSelectedNewsletterCats(selectedNewsletterCats.filter(c => c !== cat));
     } else {
       setSelectedNewsletterCats([...selectedNewsletterCats, cat]);
+    }
+  };
+
+  const handleUpdateNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user) return;
+    try {
+      const profile = await getUserProfile(user.uid);
+      const updatedProfile = buildFullProfile({
+        ...profile,
+        newsletterSubscribed,
+        newsletterFrequency,
+        selectedNewsletterCats
+      });
+      await saveUserProfile(updatedProfile);
+      alert("Newsletter preferences updated successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to update newsletter preferences.");
     }
   };
 
@@ -641,7 +742,7 @@ function DashboardContent() {
                     <p className="text-xs text-stone-500">Track and monitor your reading completion rates.</p>
                   </div>
                   {readingHistory.length > 0 && (
-                    <button onClick={() => setReadingHistory([])} className="text-xs text-red-600 font-bold hover:underline">Clear All</button>
+                    <button onClick={handleClearHistory} className="text-xs text-red-600 font-bold hover:underline">Clear All</button>
                   )}
                 </div>
 
@@ -657,7 +758,7 @@ function DashboardContent() {
                         </div>
                         <div className="flex gap-2">
                           <Link href={`/blog/${hist.slug}`} className="bg-[#113F48] hover:bg-[#C9A15A] text-white text-xs font-semibold px-4.5 py-1.5 rounded-xl transition-all">Resume</Link>
-                          <button onClick={() => setReadingHistory(readingHistory.filter(h => h.slug !== hist.slug))} className="text-stone-400 hover:text-red-600 p-2"><X className="h-4 w-4" /></button>
+                          <button onClick={() => handleDeleteHistoryItem(hist.slug)} className="text-stone-400 hover:text-red-600 p-2"><X className="h-4 w-4" /></button>
                         </div>
                       </div>
                     );
@@ -692,7 +793,7 @@ function DashboardContent() {
                         </div>
                         <div className="flex gap-2">
                           <Link href={`/blog/${bmark.slug}`} className="p-2 border border-stone-200 hover:border-[#113F48] text-stone-600 hover:text-[#113F48] rounded-xl text-xs font-bold transition-all">View</Link>
-                          <button onClick={() => setBookmarks(bookmarks.filter(b => b.slug !== bmark.slug))} className="text-stone-400 hover:text-red-600 p-2"><Trash2 className="h-4 w-4" /></button>
+                          <button onClick={() => handleDeleteBookmark(bmark.slug)} className="text-stone-400 hover:text-red-600 p-2"><Trash2 className="h-4 w-4" /></button>
                         </div>
                       </div>
                     );
@@ -780,7 +881,7 @@ function DashboardContent() {
                   <p className="text-xs text-stone-500">Configure email bulletins and update frequencies.</p>
                 </div>
 
-                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Newsletter preferences updated!"); }}>
+                <form className="space-y-4" onSubmit={handleUpdateNewsletter}>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input

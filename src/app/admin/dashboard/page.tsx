@@ -259,6 +259,7 @@ function AdminContent() {
   const [seoScore, setSeoScore] = useState(85);
   const [postViews, setPostViews] = useState(0);
   const [seoSchemaType, setSeoSchemaType] = useState("MedicalWebPage");
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [seoRobotsMeta, setSeoRobotsMeta] = useState("index, follow");
   const [seoCanonicalUrl, setSeoCanonicalUrl] = useState("");
 
@@ -1689,7 +1690,13 @@ function AdminContent() {
                           <div className="flex items-center gap-3">
                             <div className="h-20 w-36 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400 flex-shrink-0">
                               {postImage ? (
-                                <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
+                                <img 
+                                  src={postImage} 
+                                  alt="Post preview" 
+                                  className="h-full w-full object-cover cursor-zoom-in" 
+                                  onClick={() => setLightboxImage(postImage)} 
+                                  title="Click to view full image"
+                                />
                               ) : (
                                 <span>No Image</span>
                               )}
@@ -1873,7 +1880,13 @@ function AdminContent() {
                           <div className="flex items-center gap-3">
                             <div className="h-20 w-36 bg-stone-100 rounded-lg overflow-hidden border border-stone-200 flex items-center justify-center text-[10px] text-stone-400 flex-shrink-0">
                               {postImage ? (
-                                <img src={postImage} alt="Post preview" className="h-full w-full object-cover" />
+                                <img 
+                                  src={postImage} 
+                                  alt="Post preview" 
+                                  className="h-full w-full object-cover cursor-zoom-in" 
+                                  onClick={() => setLightboxImage(postImage)} 
+                                  title="Click to view full image"
+                                />
                               ) : (
                                 <span>No Image</span>
                               )}
@@ -2392,7 +2405,13 @@ function AdminContent() {
                                   <td className="p-3">
                                     <div className="h-8 w-12 rounded bg-stone-100 border border-stone-200 overflow-hidden flex-shrink-0">
                                       {post.featuredImage ? (
-                                        <img src={post.featuredImage} alt="" className="h-full w-full object-cover" />
+                                        <img 
+                                          src={post.featuredImage} 
+                                          alt="" 
+                                          className="h-full w-full object-cover cursor-zoom-in" 
+                                          onClick={() => setLightboxImage(post.featuredImage)}
+                                          title="Click to view full image"
+                                        />
                                       ) : (
                                         <div className="h-full w-full flex items-center justify-center text-xs text-stone-600 font-bold bg-[#FDF6EC]/60">{idx + 1}</div>
                                       )}
@@ -3772,6 +3791,26 @@ function AdminContent() {
         </main>
       </div>
       </div>
+
+      {/* Reusable Image Lightbox Modal */}
+      {lightboxImage && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4">
+          <div className="relative max-w-4xl max-h-[85vh] w-full flex items-center justify-center">
+            <button
+              onClick={() => setLightboxImage(null)}
+              className="absolute -top-12 right-0 p-2 text-white hover:text-stone-300 transition-colors bg-white/10 rounded-full hover:bg-white/20"
+              title="Close image preview"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <img 
+              src={lightboxImage} 
+              alt="Full size preview" 
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

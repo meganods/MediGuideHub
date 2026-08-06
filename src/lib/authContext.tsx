@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useRef } from "react";
 import { auth as firebaseAuth, isFirebaseConfigured } from "./firebase";
 import {
   onAuthStateChanged,
@@ -77,6 +77,7 @@ const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null =
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const isRegisteringRef = useRef(false);
 
   const buildProfileFromAuthUser = (
     authUser: { uid: string; email?: string | null; displayName?: string | null },
@@ -128,6 +129,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (isFirebaseConfigured && firebaseAuth) {
       const unsubscribe = onAuthStateChanged(firebaseAuth, async (fbUser) => {
+        if (isRegisteringRef.current) {
+          return;
+        }
         if (fbUser) {
           const profile = await ensureProfileForAuthUser(
             fbUser,
@@ -223,19 +227,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const cleanEmail = email.trim().toLowerCase();
     
     if (isFirebaseConfigured && firebaseAuth) {
-      const credentials = await createUserWithEmailAndPassword(firebaseAuth, cleanEmail, pass);
-      const isFirstAdmin = cleanEmail === "admin@mediguide.com";
-      const newProfile: UserProfile = {
-        uid: credentials.user.uid,
-        email: cleanEmail,
-        displayName: name,
-        role: isFirstAdmin ? "admin" : "user",
-        savedPosts: [],
-        createdAt: new Date().toISOString(),
-      };
-      await saveUserProfile(newProfile);
-      await signOut(firebaseAuth);
-      return newProfile;
+      isRegisteringRef.current = true;
+      try {
+        const credentials = await createUserWithEmailAndPassword(firebaseAuth, cleanEmail, pass);
+        const isFirstAdmin = cleanEmail === "admin@mediguide.com";
+        const newProfile: UserProfile = {
+          uid: credentials.user.uid,
+          email: cleanEmail,
+          displayName: name,
+          role: isFirstAdmin ? "admin" : "user",
+          savedPosts: [],
+          createdAt: new Date().toISOString(),
+        };
+        await saveUserProfile(newProfile);
+        await signOut(firebaseAuth);
+        return newProfile;
+      } finally {
+        isRegisteringRef.current = false;
+      }
     } else {
       // Mock signup
       const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];

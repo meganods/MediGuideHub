@@ -256,6 +256,7 @@ function AdminContent() {
   const [seoMetaDescription, setSeoMetaDescription] = useState("");
   const [seoFocusKeyphrase, setSeoFocusKeyphrase] = useState("");
   const [seoScore, setSeoScore] = useState(85);
+  const [postViews, setPostViews] = useState(0);
   const [seoSchemaType, setSeoSchemaType] = useState("MedicalWebPage");
   const [seoRobotsMeta, setSeoRobotsMeta] = useState("index, follow");
   const [seoCanonicalUrl, setSeoCanonicalUrl] = useState("");
@@ -573,6 +574,7 @@ function AdminContent() {
     setSeoMetaDescription(post.metaDescription || "");
     setSeoFocusKeyphrase(post.focusKeyphrase || "");
     setSeoScore(post.seoScore || 85);
+    setPostViews(post.views || 0);
     setSeoSchemaType(post.schemaType || "MedicalWebPage");
     setSeoRobotsMeta(post.robotsMeta || "index, follow");
     setSeoCanonicalUrl(post.canonicalUrl || "");
@@ -614,6 +616,7 @@ function AdminContent() {
       setSeoMetaDescription("");
       setSeoFocusKeyphrase("");
       setSeoScore(85);
+      setPostViews(0);
       setSeoSchemaType("MedicalWebPage");
       setSeoRobotsMeta("index, follow");
       setSeoCanonicalUrl("");
@@ -723,9 +726,9 @@ function AdminContent() {
 
       if (editingPost) {
         pData.id = editingPost.id;
-        pData.views = editingPost.views || 0;
+        pData.views = postViews;
       } else {
-        pData.views = Math.floor(Math.random() * 200) + 10; // Seed views
+        pData.views = postViews || Math.floor(Math.random() * 200) + 10; // Seed views
       }
 
       await savePost(pData);
@@ -1763,6 +1766,15 @@ function AdminContent() {
                               className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Views</label>
+                            <input
+                              type="number"
+                              value={postViews}
+                              onChange={(e) => setPostViews(Number(e.target.value))}
+                              className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
+                            />
+                          </div>
                         </div>
 
                         <div className="space-y-1.5">
@@ -2342,15 +2354,18 @@ function AdminContent() {
                                 if (articleSortBy === "title") return a.title.localeCompare(b.title);
                                 return b.publishedAt.localeCompare(a.publishedAt);
                               })
-                              .map((post) => (
+                              .map((post, idx) => (
                                 <tr key={post.id} className="hover:bg-stone-50/50 transition-colors">
                                   <td className="p-3">
-                                    <div className="h-8 w-12 rounded bg-stone-100 border border-stone-200 overflow-hidden">
-                                      {post.featuredImage ? (
-                                        <img src={post.featuredImage} alt="" className="h-full w-full object-cover" />
-                                      ) : (
-                                        <div className="h-full w-full flex items-center justify-center text-[8px] text-stone-400">None</div>
-                                      )}
+                                    <div className="flex items-center space-x-2.5">
+                                      <span className="font-bold text-stone-400 text-xs w-5 text-right">{idx + 1}</span>
+                                      <div className="h-8 w-12 rounded bg-stone-100 border border-stone-200 overflow-hidden flex-shrink-0">
+                                        {post.featuredImage ? (
+                                          <img src={post.featuredImage} alt="" className="h-full w-full object-cover" />
+                                        ) : (
+                                          <div className="h-full w-full flex items-center justify-center text-[10px] text-stone-500 font-bold bg-[#FDF6EC]/60">{idx + 1}</div>
+                                        )}
+                                      </div>
                                     </div>
                                   </td>
                                   <td className="p-3">

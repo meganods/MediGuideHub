@@ -228,36 +228,10 @@ export default function BlogIndex() {
               {/* Main Stream */}
               <div className="w-full space-y-12">
                 
-                {/* 1. Featured Article Cover */}
-                {featuredPost && selectedCategory === "All" && !search && (
-                  <div className="space-y-4">
-                    <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest flex items-center gap-1"><Sparkles className="h-3.5 w-3.5 text-[#C9A15A]" /> Featured Publication</h3>
-                    <div className="bg-white border border-stone-200 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                      <div className="relative h-96 w-full bg-stone-100">
-                        {featuredPost.featuredImage && (
-                          <img src={featuredPost.featuredImage} alt={featuredPost.title} className="w-full h-full object-cover" />
-                        )}
-                        <span className="absolute top-4 left-4 bg-[#113F48] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-md">{featuredPost.category}</span>
-                      </div>
-                      <div className="p-8 space-y-3">
-                        <span className="text-[10px] font-bold text-stone-400">{featuredPost.publishedAt} • {featuredPost.readTime}</span>
-                        <h2 className="text-2xl font-extrabold text-[#113F48] hover:text-[#C9A15A] transition-colors leading-tight">
-                          <Link href={`/blog/${featuredPost.slug}`}>{featuredPost.title}</Link>
-                        </h2>
-                        <p className="text-stone-600 text-sm leading-relaxed">{featuredPost.summary}</p>
-                        <div className="pt-3 flex justify-between items-center border-t border-stone-100">
-                          <span className="text-xs font-semibold text-stone-500">By {featuredPost.author}</span>
-                          <Link href={`/blog/${featuredPost.slug}`} className="text-xs font-bold text-[#C9A15A] hover:text-[#113F48] transition-colors flex items-center gap-0.5">Read Guide <ArrowRight className="h-3.5 w-3.5" /></Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* 2. List of filtered Articles */}
+                {/* List of filtered Articles */}
                 <div className="space-y-6">
                   <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest flex items-center gap-1"><FileText className="h-3.5 w-3.5 text-[#C9A15A]" /> Latest Health Articles</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {filteredPosts.map((post) => (
                       <article key={post.slug} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                         <div className="relative h-44 w-full bg-stone-50">
@@ -293,7 +267,7 @@ export default function BlogIndex() {
                       </article>
                     ))}
                     {filteredPosts.length === 0 && (
-                      <div className="col-span-3 text-center py-20 bg-white border border-stone-200 rounded-2xl p-6 space-y-2">
+                      <div className="col-span-4 text-center py-20 bg-white border border-stone-200 rounded-2xl p-6 space-y-2">
                         <BookOpen className="h-10 w-10 text-stone-300 mx-auto" />
                         <h4 className="font-bold text-stone-700">No Articles Found</h4>
                         <p className="text-xs text-stone-400">Try adjusting your filters or keyword query.</p>

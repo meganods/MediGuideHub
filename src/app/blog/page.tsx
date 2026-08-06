@@ -223,10 +223,10 @@ export default function BlogIndex() {
         {/* ── MAIN FEATURED & LATEST GRID ── */}
         <section className="py-16">
           <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="space-y-12">
               
-              {/* Left Main Stream */}
-              <div className="lg:col-span-8 space-y-12">
+              {/* Main Stream */}
+              <div className="w-full space-y-12">
                 
                 {/* 1. Featured Article Cover */}
                 {featuredPost && selectedCategory === "All" && !search && (
@@ -257,7 +257,7 @@ export default function BlogIndex() {
                 {/* 2. List of filtered Articles */}
                 <div className="space-y-6">
                   <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest flex items-center gap-1"><FileText className="h-3.5 w-3.5 text-[#C9A15A]" /> Latest Health Articles</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredPosts.map((post) => (
                       <article key={post.slug} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                         <div className="relative h-44 w-full bg-stone-50">
@@ -293,7 +293,7 @@ export default function BlogIndex() {
                       </article>
                     ))}
                     {filteredPosts.length === 0 && (
-                      <div className="col-span-2 text-center py-20 bg-white border border-stone-200 rounded-2xl p-6 space-y-2">
+                      <div className="col-span-3 text-center py-20 bg-white border border-stone-200 rounded-2xl p-6 space-y-2">
                         <BookOpen className="h-10 w-10 text-stone-300 mx-auto" />
                         <h4 className="font-bold text-stone-700">No Articles Found</h4>
                         <p className="text-xs text-stone-400">Try adjusting your filters or keyword query.</p>
@@ -303,61 +303,6 @@ export default function BlogIndex() {
                 </div>
 
               </div>
-
-              {/* Right Side Bar */}
-              <aside className="lg:col-span-4 space-y-8">
-                
-                {/* 1. Trending Posts */}
-                {trendingPosts.length > 0 && (
-                  <div className="bg-white border border-stone-200 rounded-2xl p-6 space-y-4 shadow-sm">
-                    <h4 className="font-bold text-[#113F48] text-sm flex items-center gap-1 border-b border-stone-100 pb-2"><Flame className="h-4 w-4 text-[#C9A15A]" /> Trending Posts</h4>
-                    <div className="space-y-3.5">
-                      {trendingPosts.map((post, i) => (
-                        <div key={post.slug} className="flex gap-3 text-xs">
-                          <span className="text-base font-extrabold text-stone-300">0{i+1}</span>
-                          <div className="space-y-1">
-                            <Link href={`/blog/${post.slug}`} className="font-bold text-[#113F48] hover:text-[#C9A15A] transition-colors line-clamp-2 leading-snug">{post.title}</Link>
-                            <span className="text-[10px] text-stone-400 block">{post.category}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* 2. Editor's Picks */}
-                {editorPicks.length > 0 && (
-                  <div className="bg-white border border-stone-200 rounded-2xl p-6 space-y-4 shadow-sm">
-                    <h4 className="font-bold text-[#113F48] text-sm flex items-center gap-1 border-b border-stone-100 pb-2"><Award className="h-4 w-4 text-[#C9A15A]" /> Editor&apos;s Choices</h4>
-                    <div className="space-y-3">
-                      {editorPicks.map((post) => (
-                        <div key={post.slug} className="space-y-1">
-                          <Link href={`/blog/${post.slug}`} className="font-bold text-[#113F48] text-xs hover:text-[#C9A15A] transition-colors block">{post.title}</Link>
-                          <span className="text-[9px] text-stone-400 block">Review Score: {post.seoScore}/100</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* 3. Recently Updated */}
-                {recentlyUpdated.length > 0 && (
-                  <div className="bg-white border border-stone-200 rounded-2xl p-6 space-y-4 shadow-sm">
-                    <h4 className="font-bold text-[#113F48] text-sm flex items-center gap-1 border-b border-stone-100 pb-2"><RotateCcw className="h-4 w-4 text-[#C9A15A]" /> Recently Revised</h4>
-                    <div className="space-y-3 text-xs">
-                      {recentlyUpdated.map((post) => (
-                        <div key={post.slug} className="flex justify-between items-start gap-2">
-                          <Link href={`/blog/${post.slug}`} className="font-bold text-[#113F48] hover:text-[#C9A15A] transition-colors truncate max-w-xs">{post.title}</Link>
-                          <span className="text-[9px] bg-stone-100 text-stone-500 px-1.5 py-0.5 rounded flex-shrink-0">
-                            {post.updatedAt ? "Updated" : "New"}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-              </aside>
 
             </div>
           </div>

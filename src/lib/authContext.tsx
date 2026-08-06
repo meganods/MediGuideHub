@@ -103,6 +103,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           await saveUserProfile(existing);
         } catch (e) {}
+      } else if (!isUserAdmin && existing.role === "admin") {
+        existing.role = "user";
+        try {
+          await saveUserProfile(existing);
+        } catch (e) {}
       }
       return existing;
     }
@@ -123,7 +128,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const savedSession = localStorage.getItem("mediguide_current_user");
     if (savedSession) {
       try {
-        setUser(JSON.parse(savedSession));
+        const parsed = JSON.parse(savedSession);
+        if (parsed) {
+          const isUserAdmin = isAdminEmail(parsed.email);
+          if (parsed.role === "admin" && !isUserAdmin) {
+            parsed.role = "user";
+            localStorage.setItem("mediguide_current_user", JSON.stringify(parsed));
+          }
+          setUser(parsed);
+        }
       } catch (e) {}
     }
 

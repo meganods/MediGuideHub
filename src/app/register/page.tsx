@@ -53,14 +53,9 @@ function RegisterFormContent() {
       if (newUser.role === "admin") {
         throw new Error("Admin registration is not permitted on this portal.");
       }
-      setSuccessMessage("Account created successfully! Redirecting...");
+      setSuccessMessage("Account created successfully! Redirecting to login...");
       setTimeout(() => {
-        const decoded = redirectParam ? decodeURIComponent(redirectParam) : "";
-        if (decoded) {
-          router.push(decoded);
-        } else {
-          router.push("/");
-        }
+        router.push("/login?message=" + encodeURIComponent("Account created successfully! Please sign in."));
       }, 2000);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

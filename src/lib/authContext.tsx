@@ -234,8 +234,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         createdAt: new Date().toISOString(),
       };
       await saveUserProfile(newProfile);
-      localStorage.setItem("mediguide_current_user", JSON.stringify(newProfile));
-      setUser(newProfile);
+      await signOut(firebaseAuth);
       return newProfile;
     } else {
       // Mock signup
@@ -254,8 +253,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       };
       users.push(newProfile);
       localStorage.setItem("mediguide_users", JSON.stringify(users));
-      localStorage.setItem("mediguide_current_user", JSON.stringify(newProfile));
-      setUser(newProfile);
       return newProfile;
     }
   };

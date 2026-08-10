@@ -77,7 +77,7 @@ function RegisterFormContent() {
             <HeartPulse className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-extrabold tracking-tight">MediGuide Hub</h1>
+            <h1 className="text-xl font-extrabold tracking-tight">mediguide4u</h1>
             <p className="text-[10px] text-[#C9A15A] tracking-widest uppercase font-semibold">Independent Portal</p>
           </div>
         </div>
@@ -103,7 +103,7 @@ function RegisterFormContent() {
         <div className="space-y-6">
           <div>
             <h3 className="text-2xl font-bold text-[#113F48]">Create your account</h3>
-            <p className="text-stone-400 text-xs mt-1.5">Join MediGuide Hub in seconds.</p>
+            <p className="text-stone-400 text-xs mt-1.5">Join mediguide4u in seconds.</p>
           </div>
 
           {noticeMessage && (

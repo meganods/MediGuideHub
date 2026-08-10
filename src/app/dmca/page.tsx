@@ -27,7 +27,7 @@ export default function DMCAPolicyPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">DMCA Copyright Policy</h1>
             <p className="text-stone-600 max-w-2xl leading-relaxed text-sm">
-              MediGuideHub respects the intellectual property rights of others. This DMCA policy outlines the process for reporting alleged copyright infringements.
+              mediguide4u respects the intellectual property rights of others. This DMCA policy outlines the process for reporting alleged copyright infringements.
             </p>
           </div>
         </section>

@@ -27,7 +27,7 @@ export default function AccessibilityPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Accessibility Statement</h1>
             <p className="text-stone-600 leading-relaxed text-sm">
-              MediGuideHub is committed to digital inclusion, aiming to provide a platform that is accessible to all individuals regardless of ability or technology.
+              mediguide4u is committed to digital inclusion, aiming to provide a platform that is accessible to all individuals regardless of ability or technology.
             </p>
           </div>
         </section>
@@ -68,7 +68,7 @@ export default function AccessibilityPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">5. Accessibility Feedback</h2>
                 <p>
-                  Digital accessibility is an ongoing process. If you encounter any barriers on MediGuideHub, please let us know by sending a message or emailing support@mediguidehub.com. We make modifications to resolve reports as quickly as possible.
+                  Digital accessibility is an ongoing process. If you encounter any barriers on mediguide4u, please let us know by sending a message or emailing support@mediguidehub.com. We make modifications to resolve reports as quickly as possible.
                 </p>
               </div>
 

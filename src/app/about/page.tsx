@@ -105,7 +105,7 @@ export default function AboutPage() {
               {/* Left Column */}
               <div className="lg:col-span-7 space-y-6">
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A15A] bg-[#C9A15A]/10 px-3 py-1.5 rounded-full border border-[#C9A15A]/20 inline-block">
-                  About MediGuideHub
+                  About mediguide4u
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight">
                   Demystifying Healthcare For a Healthier Tomorrow
@@ -149,7 +149,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-extrabold text-[#113F48] text-center">Our Story</h2>
               <div className="prose prose-stone max-w-none text-stone-600 space-y-4 text-sm leading-relaxed">
                 <p>
-                  MediGuideHub was founded by healthcare policy advocates and communications experts who observed a growing problem: the public is regularly overwhelmed by dense medical jargon and complicated health insurance rules. Finding objective, plain-language health information was increasingly difficult.
+                  mediguide4u was founded by healthcare policy advocates and communications experts who observed a growing problem: the public is regularly overwhelmed by dense medical jargon and complicated health insurance rules. Finding objective, plain-language health information was increasingly difficult.
                 </p>
                 <p>
                   We created this platform to bridge the gap between complex health systems and the individuals who rely on them. Our focus is centered on absolute transparency, educational independence, and universal accessibility. We do not sell insurance or medical services, enabling us to keep our information clear, free from outside bias, and entirely educational.
@@ -291,7 +291,7 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <h3 className="font-bold text-[#113F48] text-base">Medical Disclaimer</h3>
                 <p className="text-stone-600 text-sm leading-relaxed font-medium">
-                  The information provided on MediGuideHub is intended for educational purposes only and should not be considered medical advice. Always consult a qualified healthcare professional regarding any medical condition or treatment.
+                  The information provided on mediguide4u is intended for educational purposes only and should not be considered medical advice. Always consult a qualified healthcare professional regarding any medical condition or treatment.
                 </p>
               </div>
             </div>
@@ -304,7 +304,7 @@ export default function AboutPage() {
             <div className="max-w-3xl mx-auto space-y-6 text-center">
               <h2 className="text-2xl font-bold text-[#113F48]">Privacy Commitment</h2>
               <p className="text-stone-600 text-sm leading-relaxed">
-                At MediGuideHub, we believe your health inquiries are strictly personal. We use high-grade security configurations and secure HTTPS connections to safeguard your browsing experience. We do not sell user data or lease personal profiles, adhering strictly to secure data handling standards.
+                At mediguide4u, we believe your health inquiries are strictly personal. We use high-grade security configurations and secure HTTPS connections to safeguard your browsing experience. We do not sell user data or lease personal profiles, adhering strictly to secure data handling standards.
               </p>
             </div>
           </div>

@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Privacy Policy</h1>
             <p className="text-stone-600 leading-relaxed text-sm">
-              This Privacy Policy explains how MediGuideHub collects, uses, protects, and handles your personal information in accordance with international privacy standards and Google AdSense guidelines.
+              This Privacy Policy explains how mediguide4u collects, uses, protects, and handles your personal information in accordance with international privacy standards and Google AdSense guidelines.
             </p>
           </div>
         </section>
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">1. Information We Collect</h2>
                 <p>
-                  At MediGuideHub, we only collect information necessary to deliver educational health resources, respond to inquiries, and display relevant context. We collect information in the following ways:
+                  At mediguide4u, we only collect information necessary to deliver educational health resources, respond to inquiries, and display relevant context. We collect information in the following ways:
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Contact Form Submissions:</strong> When you send a message, we collect your full name, email address, selected subject, and the contents of your inquiry.</li>
@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">2. Cookies and Advertising (Google AdSense)</h2>
                 <p>
-                  We display advertising through Google AdSense. Google and third-party advertising vendors use cookies to serve personalized ads based on your prior visits to MediGuideHub and other sites on the internet.
+                  We display advertising through Google AdSense. Google and third-party advertising vendors use cookies to serve personalized ads based on your prior visits to mediguide4u and other sites on the internet.
                 </p>
                 <p>
                   These &ldquo;DoubleClick cookies&rdquo; enable Google and its partners to serve ads matching your demographic interests. You can opt out of personalized advertising by visiting the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> page.

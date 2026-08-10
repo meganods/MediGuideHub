@@ -85,7 +85,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 1,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Preventive Care Guides | MediGuideHub",
+    seoTitle: "Preventive Care Guides | mediguide4u",
     seoDesc: "Essential screening recommendations and health preservation advice."
   },
   {
@@ -97,7 +97,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 2,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Nutrition & Diet Guidelines | MediGuideHub",
+    seoTitle: "Nutrition & Diet Guidelines | mediguide4u",
     seoDesc: "Practical nutritional advice to fuel your body and mind."
   },
   {
@@ -109,7 +109,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 3,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Mental Health & Wellness | MediGuideHub",
+    seoTitle: "Mental Health & Wellness | mediguide4u",
     seoDesc: "Resources and strategies for stress reduction and mental clarity."
   },
   {
@@ -121,7 +121,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 4,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Heart Health & Cardiovascular Care | MediGuideHub",
+    seoTitle: "Heart Health & Cardiovascular Care | mediguide4u",
     seoDesc: "Protect your heart with clinical insights and lifestyle strategies."
   },
   {
@@ -133,7 +133,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 5,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Fitness & Wellness Advice | MediGuideHub",
+    seoTitle: "Fitness & Wellness Advice | mediguide4u",
     seoDesc: "Incorporate regular exercise and movement into your daily life."
   },
   {
@@ -145,7 +145,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     displayOrder: 6,
     status: "Active",
     featuredCategory: true,
-    seoTitle: "Senior Health & Healthy Aging | MediGuideHub",
+    seoTitle: "Senior Health & Healthy Aging | mediguide4u",
     seoDesc: "Comprehensive guides for healthy aging and senior independence."
   }
 ];
@@ -481,8 +481,8 @@ export const INITIAL_FAQS: FAQItem[] = [
   {
     id: "faq-1",
     category: "General",
-    question: "Is MediGuide Hub affiliated with any outside medical organization?",
-    answer: "No. MediGuide Hub is a privately owned, educational website. We provide objective, clear information and guides about general healthcare to help you live a healthier life."
+    question: "Is mediguide4u affiliated with any outside medical organization?",
+    answer: "No. mediguide4u is a privately owned, educational website. We provide objective, clear information and guides about general healthcare to help you live a healthier life."
   },
   {
     id: "faq-2",
@@ -504,7 +504,7 @@ export const INITIAL_TESTIMONIALS: TestimonialItem[] = [
     name: "Arthur Pendelton",
     role: "Health Enthusiast",
     rating: 5,
-    content: "MediGuide Hub's articles on preventive care completely changed my daily routine. A must-read for anyone looking to improve their health!"
+    content: "mediguide4u's articles on preventive care completely changed my daily routine. A must-read for anyone looking to improve their health!"
   },
   {
     id: "t-2",

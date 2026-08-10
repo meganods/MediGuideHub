@@ -27,7 +27,7 @@ export default function TermsAndConditionsPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Terms &amp; Conditions</h1>
             <p className="text-stone-600 leading-relaxed text-sm">
-              Please read these Terms &amp; Conditions carefully before using MediGuideHub. By accessing our platform, you agree to be bound by these terms.
+              Please read these Terms &amp; Conditions carefully before using mediguide4u. By accessing our platform, you agree to be bound by these terms.
             </p>
           </div>
         </section>
@@ -40,14 +40,14 @@ export default function TermsAndConditionsPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">1. Website Usage</h2>
                 <p>
-                  MediGuideHub provides general health information and medical education resources. All visitors must be at least 18 years of age or accessing under parental guidance. You agree to use the site only for lawful purposes and in a manner that does not infringe the rights of, or restrict the use of the platform by, any third party.
+                  mediguide4u provides general health information and medical education resources. All visitors must be at least 18 years of age or accessing under parental guidance. You agree to use the site only for lawful purposes and in a manner that does not infringe the rights of, or restrict the use of the platform by, any third party.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">2. Intellectual Property</h2>
                 <p>
-                  All content, text, infographics, brand logos, custom designs, and database code featured on MediGuideHub are the intellectual property of MediGuideHub and are protected by international copyright laws. Unauthorized reproduction, duplication, or resale of any content is strictly prohibited.
+                  All content, text, infographics, brand logos, custom designs, and database code featured on mediguide4u are the intellectual property of mediguide4u and are protected by international copyright laws. Unauthorized reproduction, duplication, or resale of any content is strictly prohibited.
                 </p>
               </div>
 
@@ -61,14 +61,14 @@ export default function TermsAndConditionsPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">4. External Links &amp; AdSense Advertisements</h2>
                 <p>
-                  MediGuideHub features links to third-party resources and hosts Google AdSense advertisements. We do not control, endorse, or verify the content, privacy policies, or business practices of third-party platforms or advertisers. Clicking external links is done at your own risk.
+                  mediguide4u features links to third-party resources and hosts Google AdSense advertisements. We do not control, endorse, or verify the content, privacy policies, or business practices of third-party platforms or advertisers. Clicking external links is done at your own risk.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">5. Limitation of Liability</h2>
                 <p>
-                  MediGuideHub is an educational platform. Under no circumstances will MediGuideHub, its founders, or medical advisors be liable for any direct, indirect, or incidental decisions made in reliance on website articles. All information is provided &ldquo;as is&rdquo; without warranties of completeness or accuracy.
+                  mediguide4u is an educational platform. Under no circumstances will mediguide4u, its founders, or medical advisors be liable for any direct, indirect, or incidental decisions made in reliance on website articles. All information is provided &ldquo;as is&rdquo; without warranties of completeness or accuracy.
                 </p>
               </div>
 

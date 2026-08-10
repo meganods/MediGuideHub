@@ -71,7 +71,7 @@ export default function BlogIndex() {
       const updatedProfile = await updateUserSavedPosts(user.uid, slug, action);
       if (updatedProfile) {
         setSavedSlugs(updatedProfile.savedPosts || []);
-        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+        localStorage.setItem("mediguide4u_current_user", JSON.stringify(updatedProfile));
         showToast(action === "save" ? "Article bookmarked successfully!" : "Article removed from bookmarks.");
       }
     } catch (e) {
@@ -157,7 +157,7 @@ export default function BlogIndex() {
         <section className="relative bg-gradient-to-b from-stone-50 to-[#FDFBF7] py-20 border-b border-stone-100">
           <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none text-center space-y-6">
             <span className="text-xs font-bold text-[#C9A15A] uppercase tracking-[0.2em] bg-[#C9A15A]/10 px-3.5 py-1.5 rounded-full border border-[#C9A15A]/20">
-              MediGuideHub Knowledge Base
+              mediguide4u Knowledge Base
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight max-w-3xl mx-auto">
               Empowering Health Literacy with Medical Integrity
@@ -316,7 +316,7 @@ export default function BlogIndex() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-6">
             <h3 className="text-3xl font-extrabold tracking-tight">Stay Updated on Healthcare Guidelines</h3>
             <p className="text-stone-300 max-w-md mx-auto text-xs">
-              Subscribe to the MediGuideHub newsletter to receive latest wellness updates, clinical reports, and health modifications directly in your inbox.
+              Subscribe to the mediguide4u newsletter to receive latest wellness updates, clinical reports, and health modifications directly in your inbox.
             </p>
             <form className="max-w-md mx-auto flex gap-2">
               <input

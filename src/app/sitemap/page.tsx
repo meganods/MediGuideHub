@@ -384,7 +384,7 @@ export default function HTMLSitemap() {
             <span>•</span>
             <a href="/sitemap.xml" className="hover:text-[#C9A15A] hover:underline transition-colors">XML Sitemap</a>
           </div>
-          <span>&copy; {new Date().getFullYear()} MediGuideHub. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} mediguide4u. All rights reserved.</span>
         </div>
       </footer>
     </div>

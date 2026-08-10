@@ -33,7 +33,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide.com";
+const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide4u.com";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -71,14 +71,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Sync session
   useEffect(() => {
     // Fast-track session load from local storage to prevent redirect flash
-    const savedSession = localStorage.getItem("mediguide_current_user");
+    const savedSession = localStorage.getItem("mediguide4u_current_user");
     if (savedSession) {
       try {
         const parsed = JSON.parse(savedSession);
         if (parsed) {
           if (parsed.role === "admin") {
             parsed.role = "user";
-            localStorage.setItem("mediguide_current_user", JSON.stringify(parsed));
+            localStorage.setItem("mediguide4u_current_user", JSON.stringify(parsed));
           }
           setUser(parsed);
         }
@@ -94,15 +94,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (fbUser.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL.toLowerCase()) {
             await signOut(firebaseAuth!);
             setUser(null);
-            localStorage.removeItem("mediguide_current_user");
+            localStorage.removeItem("mediguide4u_current_user");
             setLoading(false);
             return;
           }
           const profile = await ensureProfileForAuthUser(fbUser);
-          localStorage.setItem("mediguide_current_user", JSON.stringify(profile));
+          localStorage.setItem("mediguide4u_current_user", JSON.stringify(profile));
           setUser(profile);
         } else {
-          localStorage.removeItem("mediguide_current_user");
+          localStorage.removeItem("mediguide4u_current_user");
           setUser(null);
         }
         setLoading(false);
@@ -131,7 +131,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return profile;
     } else {
       // Mock Authentication
-      const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
+      const users = JSON.parse(localStorage.getItem("mediguide4u_users") || "[]") as UserProfile[];
       const found = users.find((u) => u.email === cleanEmail);
       if (!found) {
         // Create user on the fly to make local testing extremely smooth!
@@ -144,15 +144,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           createdAt: new Date().toISOString(),
         };
         users.push(newProfile);
-        localStorage.setItem("mediguide_users", JSON.stringify(users));
-        localStorage.setItem("mediguide_current_user", JSON.stringify(newProfile));
+        localStorage.setItem("mediguide4u_users", JSON.stringify(users));
+        localStorage.setItem("mediguide4u_current_user", JSON.stringify(newProfile));
         setUser(newProfile);
         return newProfile;
       }
       if (found.banned) {
         throw new Error("This account has been banned by an administrator.");
       }
-      localStorage.setItem("mediguide_current_user", JSON.stringify(found));
+      localStorage.setItem("mediguide4u_current_user", JSON.stringify(found));
       setUser(found);
       return found;
     }
@@ -184,7 +184,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } else {
       // Mock signup
-      const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
+      const users = JSON.parse(localStorage.getItem("mediguide4u_users") || "[]") as UserProfile[];
       if (users.some((u) => u.email === cleanEmail)) {
         throw new Error("User already exists with this email address.");
       }
@@ -197,7 +197,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         createdAt: new Date().toISOString(),
       };
       users.push(newProfile);
-      localStorage.setItem("mediguide_users", JSON.stringify(users));
+      localStorage.setItem("mediguide4u_users", JSON.stringify(users));
       return newProfile;
     }
   };
@@ -206,7 +206,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (isFirebaseConfigured && firebaseAuth) {
       await signOut(firebaseAuth);
     }
-    localStorage.removeItem("mediguide_current_user");
+    localStorage.removeItem("mediguide4u_current_user");
     setUser(null);
   };
 
@@ -216,7 +216,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await saveUserProfile(updated);
     setUser(updated);
     if (!isFirebaseConfigured) {
-      localStorage.setItem("mediguide_current_user", JSON.stringify(updated));
+      localStorage.setItem("mediguide4u_current_user", JSON.stringify(updated));
     }
   };
 
@@ -253,7 +253,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await saveUserProfile(nextProfile);
     setUser(nextProfile);
     if (typeof window !== "undefined") {
-      localStorage.setItem("mediguide_current_user", JSON.stringify(nextProfile));
+      localStorage.setItem("mediguide4u_current_user", JSON.stringify(nextProfile));
     }
     return nextProfile;
   };
@@ -271,10 +271,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     if (typeof window !== "undefined") {
-      const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
+      const users = JSON.parse(localStorage.getItem("mediguide4u_users") || "[]") as UserProfile[];
       const remaining = users.filter((entry) => entry.uid !== user.uid);
-      localStorage.setItem("mediguide_users", JSON.stringify(remaining));
-      localStorage.removeItem("mediguide_current_user");
+      localStorage.setItem("mediguide4u_users", JSON.stringify(remaining));
+      localStorage.removeItem("mediguide4u_current_user");
     }
 
     setUser(null);
@@ -286,9 +286,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await sendPasswordResetEmail(firebaseAuth, cleanEmail);
     } else {
       // Simulation: verify user exists in local storage
-      const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
+      const users = JSON.parse(localStorage.getItem("mediguide4u_users") || "[]") as UserProfile[];
       const found = users.some((u) => u.email === cleanEmail);
-      if (!found && cleanEmail !== "admin@mediguide.com") {
+      if (!found && cleanEmail !== "admin@mediguide4u.com") {
         throw new Error("No user found with this email address.");
       }
       console.log(`[Simulation] Password reset email sent to ${cleanEmail}`);
@@ -309,7 +309,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } else {
       // Mock Google Login
       const cleanEmail = "googleuser@example.com";
-      const users = JSON.parse(localStorage.getItem("mediguide_users") || "[]") as UserProfile[];
+      const users = JSON.parse(localStorage.getItem("mediguide4u_users") || "[]") as UserProfile[];
       let found = users.find((u) => u.email === cleanEmail);
       if (!found) {
         found = {
@@ -321,9 +321,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           createdAt: new Date().toISOString(),
         };
         users.push(found);
-        localStorage.setItem("mediguide_users", JSON.stringify(users));
+        localStorage.setItem("mediguide4u_users", JSON.stringify(users));
       }
-      localStorage.setItem("mediguide_current_user", JSON.stringify(found));
+      localStorage.setItem("mediguide4u_current_user", JSON.stringify(found));
       setUser(found);
       return found;
     }

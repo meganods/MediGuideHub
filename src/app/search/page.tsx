@@ -58,7 +58,7 @@ function SearchResultsContent() {
     loadData();
 
     // Load search history from localStorage
-    const savedHistory = localStorage.getItem("mediguide_search_history");
+    const savedHistory = localStorage.getItem("mediguide4u_search_history");
     if (savedHistory) {
       setSearchHistory(JSON.parse(savedHistory));
     }
@@ -79,18 +79,18 @@ function SearchResultsContent() {
     history.unshift(keyword);
     history = history.slice(0, 20); // Keep last 20
     setSearchHistory(history);
-    localStorage.setItem("mediguide_search_history", JSON.stringify(history));
+    localStorage.setItem("mediguide4u_search_history", JSON.stringify(history));
   };
 
   const removeHistoryItem = (keyword: string) => {
     const updated = searchHistory.filter(k => k !== keyword);
     setSearchHistory(updated);
-    localStorage.setItem("mediguide_search_history", JSON.stringify(updated));
+    localStorage.setItem("mediguide4u_search_history", JSON.stringify(updated));
   };
 
   const clearHistory = () => {
     setSearchHistory([]);
-    localStorage.removeItem("mediguide_search_history");
+    localStorage.removeItem("mediguide4u_search_history");
   };
 
   // Web Speech API Voice Search

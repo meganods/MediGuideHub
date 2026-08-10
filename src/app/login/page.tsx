@@ -115,7 +115,7 @@ function LoginFormContent() {
             <HeartPulse className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-extrabold tracking-tight">MediGuide Hub</h1>
+            <h1 className="text-xl font-extrabold tracking-tight">mediguide4u</h1>
             <p className="text-[10px] text-[#C9A15A] tracking-widest uppercase font-semibold">Independent Portal</p>
           </div>
         </div>

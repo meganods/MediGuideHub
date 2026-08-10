@@ -68,7 +68,7 @@ export default function BlogPostDetail(props: PageProps) {
             };
             try {
               await saveUserProfile(updatedProfile);
-              localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+              localStorage.setItem("mediguide4u_current_user", JSON.stringify(updatedProfile));
             } catch (err) {
               console.error("Failed to log reading history:", err);
             }
@@ -106,7 +106,7 @@ export default function BlogPostDetail(props: PageProps) {
       const action = isSaved ? "unsave" : "save";
       const updatedProfile = await updateUserSavedPosts(user.uid, params.slug, action);
       if (updatedProfile) {
-        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+        localStorage.setItem("mediguide4u_current_user", JSON.stringify(updatedProfile));
       }
       setIsSaved(!isSaved);
       showToast(action === "save" ? "Article bookmarked successfully!" : "Article removed from bookmarks.");
@@ -206,7 +206,7 @@ export default function BlogPostDetail(props: PageProps) {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "MediGuideHub",
+              "name": "mediguide4u",
               "logo": "https://mediguidehub.com/logo.png"
             },
             "mainEntityOfPage": {
@@ -273,7 +273,7 @@ export default function BlogPostDetail(props: PageProps) {
               <div className="rounded-2xl overflow-hidden border border-stone-200">
                 <img src={post.featuredImage} alt={post.title} className="w-full h-80 object-cover" />
                 <div className="bg-stone-50 px-4 py-2 border-t border-stone-200 text-[10px] text-stone-400 italic">
-                  Image Source: MediGuideHub Editorial Library
+                  Image Source: mediguide4u Editorial Library
                 </div>
               </div>
             )}
@@ -408,7 +408,7 @@ export default function BlogPostDetail(props: PageProps) {
                 M
               </div>
               <div className="space-y-1">
-                <span className="text-xs font-bold text-[#113F48] block">MediGuideHub Editorial</span>
+                <span className="text-xs font-bold text-[#113F48] block">mediguide4u Editorial</span>
                 <span className="text-[10px] text-stone-400 block">E-E-A-T Verified Publisher</span>
               </div>
               <p className="text-[11px] text-stone-500 leading-relaxed">
@@ -435,7 +435,7 @@ export default function BlogPostDetail(props: PageProps) {
             <div className="bg-[#FDF6EC]/40 border border-[#C9A15A]/20 rounded-2xl p-6 space-y-2">
               <span className="text-[10px] font-bold text-[#113F48] uppercase tracking-wider block">Medical Disclaimer</span>
               <p className="text-[10px] text-stone-500 leading-relaxed">
-                All contents published on MediGuideHub are created for educational purposes only. Always consult a physician or licensed coordinator before making changes to your health plan.
+                All contents published on mediguide4u are created for educational purposes only. Always consult a physician or licensed coordinator before making changes to your health plan.
               </p>
             </div>
 

@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MediGuide Hub - Your Trusted Healthcare Resource",
+  title: "mediguide4u - Your Trusted Healthcare Resource",
   description: "Learn about healthcare plans, wellness topics, preventive care, nutrition, and make informed healthcare decisions.",
 };
 

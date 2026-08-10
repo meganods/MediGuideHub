@@ -319,7 +319,7 @@ function DashboardContent() {
         readingHistory: newHistory
       });
       await saveUserProfile(updatedProfile);
-      localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+      localStorage.setItem("mediguide4u_current_user", JSON.stringify(updatedProfile));
     } catch (e) {
       console.error("Failed to save reading history:", e);
     }
@@ -435,7 +435,7 @@ function DashboardContent() {
     const htmlContent = `
       <html>
         <head>
-          <title>MediGuide Hub - User Profile Data Document</title>
+          <title>mediguide4u - User Profile Data Document</title>
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #113f48; padding: 40px; line-height: 1.6; }
             h1 { color: #113f48; border-bottom: 2px solid #C9A15A; padding-bottom: 10px; margin-bottom: 30px; font-size: 28px; }
@@ -449,7 +449,7 @@ function DashboardContent() {
           </style>
         </head>
         <body>
-          <h1>MediGuide Hub — GDPR Profile Data</h1>
+          <h1>mediguide4u — GDPR Profile Data</h1>
           
           <h2>Account Details</h2>
           <table class="meta-table">
@@ -524,7 +524,7 @@ function DashboardContent() {
           </ul>
 
           <div class="footer">
-            Document generated automatically by MediGuide Hub on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
+            Document generated automatically by mediguide4u on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}.
           </div>
 
           <script>
@@ -1011,7 +1011,7 @@ function DashboardContent() {
                   <div className="p-4 border border-red-100 rounded-xl bg-red-50/10 flex justify-between items-center">
                     <div>
                       <span className="font-bold text-xs text-red-600 block">Delete Account</span>
-                      <p className="text-[10px] text-red-400">This action permanently deletes your MediGuideHub account credentials.</p>
+                      <p className="text-[10px] text-red-400">This action permanently deletes your mediguide4u account credentials.</p>
                     </div>
                     <button onClick={() => deleteAccount().then(() => router.push("/"))} className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">Delete Account</button>
                   </div>

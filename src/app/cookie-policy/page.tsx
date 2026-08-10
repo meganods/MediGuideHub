@@ -27,7 +27,7 @@ export default function CookiePolicyPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Cookie Policy</h1>
             <p className="text-stone-600 leading-relaxed text-sm">
-              This Cookie Policy details how cookies are used on MediGuideHub to support site speed, performance metrics, and AdSense advertisements.
+              This Cookie Policy details how cookies are used on mediguide4u to support site speed, performance metrics, and AdSense advertisements.
             </p>
           </div>
         </section>
@@ -68,7 +68,7 @@ export default function CookiePolicyPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">5. Managing and Opting Out</h2>
                 <p>
-                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on MediGuideHub.
+                  You can configure your browser to block all cookies, accept them, or alert you when a cookie is placed. Note that disabling essential cookies may impact certain interface options on mediguide4u.
                 </p>
                 <p>
                   To manage cookies across search engines, you can visit the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> to toggle personalized ads off, or consult your browser&apos;s Help panel for detailed setup parameters.

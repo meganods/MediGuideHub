@@ -77,7 +77,7 @@ function AdminLoginForm() {
         </div>
         <h1 className="text-2xl font-extrabold text-[#113F48]">Admin login</h1>
         <p className="text-stone-400 text-xs font-medium">
-          Restricted access for MediGuide Hub staff
+          Restricted access for mediguide4u staff
         </p>
       </div>
 

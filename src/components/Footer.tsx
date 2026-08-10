@@ -18,7 +18,7 @@ export default function Footer() {
       const isNew = await subscribeNewsletter(email);
       if (isNew) {
         setStatus("success");
-        setMessage("Thank you! You are now subscribed to the MediGuide newsletter.");
+        setMessage("Thank you! You are now subscribed to the mediguide4u newsletter.");
         setEmail("");
       } else {
         setStatus("error");
@@ -73,7 +73,7 @@ export default function Footer() {
                 <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
               </div>
               <span className="font-heading font-bold text-xl tracking-tight text-[#113F48]">
-                MediGuide<span className="text-[#C9A15A]">Hub</span>
+                mediguide4u<span className="text-[#C9A15A]">Hub</span>
               </span>
             </Link>
             <p className="text-sm text-stone-500 leading-relaxed">
@@ -233,7 +233,7 @@ export default function Footer() {
         {/* Bottom copyright & links */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-stone-400 gap-4">
           <div className="space-y-1.5 text-center md:text-left">
-            <p>© {new Date().getFullYear()} MediGuideHub. All Rights Reserved.</p>
+            <p>© {new Date().getFullYear()} mediguide4u. All Rights Reserved.</p>
             <p className="text-[11px] text-stone-400 max-w-xl">
               Educational healthcare information only. Not a substitute for professional medical advice.
             </p>

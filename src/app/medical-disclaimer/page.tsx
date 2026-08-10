@@ -27,7 +27,7 @@ export default function MedicalDisclaimerPage() {
             <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
             <h1 className="text-4xl font-extrabold text-[#113F48]">Medical Disclaimer</h1>
             <p className="text-stone-600 leading-relaxed text-sm">
-              Please read this Medical Disclaimer carefully. It details the informational limits of MediGuideHub and your responsibilities regarding professional medical consultation.
+              Please read this Medical Disclaimer carefully. It details the informational limits of mediguide4u and your responsibilities regarding professional medical consultation.
             </p>
           </div>
         </section>
@@ -42,7 +42,7 @@ export default function MedicalDisclaimerPage() {
               <div className="space-y-1">
                 <h4 className="font-bold text-amber-950 text-sm">Important Notice</h4>
                 <p className="text-amber-900 text-xs leading-relaxed font-semibold">
-                  MediGuideHub is an educational publication. Nothing published here constitutes diagnostic medical opinions, treatment guidance, plan comparison approvals, or insurance claims decisions.
+                  mediguide4u is an educational publication. Nothing published here constitutes diagnostic medical opinions, treatment guidance, plan comparison approvals, or insurance claims decisions.
                 </p>
               </div>
             </div>
@@ -52,14 +52,14 @@ export default function MedicalDisclaimerPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">1. Educational Purposes Only</h2>
                 <p>
-                  All articles,Condition profiles, checklist widgets, data tables, and reference guidelines hosted on MediGuideHub are provided for general educational and health awareness purposes only. The information does not constitute official advice.
+                  All articles,Condition profiles, checklist widgets, data tables, and reference guidelines hosted on mediguide4u are provided for general educational and health awareness purposes only. The information does not constitute official advice.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">2. No Doctor-Patient Relationship</h2>
                 <p>
-                  Reading articles, submitting contact forms, using search features, or joining community updates on MediGuideHub does not establish a doctor-patient, practitioner-client, or professional relationship between you and the writers, editors, or advisory staff of MediGuideHub.
+                  Reading articles, submitting contact forms, using search features, or joining community updates on mediguide4u does not establish a doctor-patient, practitioner-client, or professional relationship between you and the writers, editors, or advisory staff of mediguide4u.
                 </p>
               </div>
 

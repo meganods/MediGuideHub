@@ -40,7 +40,7 @@ if (isFirebaseConfigured) {
 } else {
   if (typeof window !== "undefined") {
     console.warn(
-      "Firebase environment variables are missing. MediGuide Hub will fall back to using LocalStorage for simulation."
+      "Firebase environment variables are missing. mediguide4u will fall back to using LocalStorage for simulation."
     );
   }
 }

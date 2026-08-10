@@ -21,7 +21,7 @@ interface AdminAuthContextType {
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
-const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide.com";
+const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide4u.com";
 const DEFAULT_ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@1234";
 
 const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null => {
@@ -33,7 +33,7 @@ const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null =
     return null;
   }
 
-  const users = JSON.parse(localStorage.getItem("mediguide_admin_users") || "[]") as UserProfile[];
+  const users = JSON.parse(localStorage.getItem("mediguide4u_admin_users") || "[]") as UserProfile[];
   let profile = users.find((u) => u.email === DEFAULT_ADMIN_EMAIL);
 
   if (!profile) {
@@ -46,10 +46,10 @@ const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null =
       createdAt: new Date().toISOString(),
     };
     users.push(profile);
-    localStorage.setItem("mediguide_admin_users", JSON.stringify(users));
+    localStorage.setItem("mediguide4u_admin_users", JSON.stringify(users));
   }
 
-  localStorage.setItem("mediguide_admin_user", JSON.stringify(profile));
+  localStorage.setItem("mediguide4u_admin_user", JSON.stringify(profile));
   return profile;
 };
 
@@ -97,7 +97,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
 
   // Sync session
   useEffect(() => {
-    const savedSession = localStorage.getItem("mediguide_admin_user");
+    const savedSession = localStorage.getItem("mediguide4u_admin_user");
     if (savedSession) {
       try {
         const parsed = JSON.parse(savedSession);
@@ -111,11 +111,11 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
       const unsubscribe = onAuthStateChanged(adminAuth, async (fbUser) => {
         if (fbUser && fbUser.email?.toLowerCase() === DEFAULT_ADMIN_EMAIL) {
           const profile = await ensureAdminProfileForAuthUser(fbUser);
-          localStorage.setItem("mediguide_admin_user", JSON.stringify(profile));
+          localStorage.setItem("mediguide4u_admin_user", JSON.stringify(profile));
           setAdminUser(profile);
         } else {
           // Keep local fallback admin logged in even if Firebase Auth doesn't have an active session
-          const savedSession = localStorage.getItem("mediguide_admin_user");
+          const savedSession = localStorage.getItem("mediguide4u_admin_user");
           let isLocalAdmin = false;
           if (savedSession) {
             try {
@@ -127,7 +127,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
           }
 
           if (!isLocalAdmin) {
-            localStorage.removeItem("mediguide_admin_user");
+            localStorage.removeItem("mediguide4u_admin_user");
             setAdminUser(null);
           }
         }
@@ -173,7 +173,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
     if (isFirebaseConfigured && adminAuth) {
       await signOut(adminAuth);
     }
-    localStorage.removeItem("mediguide_admin_user");
+    localStorage.removeItem("mediguide4u_admin_user");
     setAdminUser(null);
   };
 

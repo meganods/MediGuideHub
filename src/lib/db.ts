@@ -88,14 +88,14 @@ export interface SiteSettings {
 
 // LocalStorage Helper Keys
 const KEYS = {
-  POSTS: "mediguide_posts",
-  FAQS: "mediguide_faqs",
-  TESTIMONIALS: "mediguide_testimonials",
-  CONTACTS: "mediguide_contacts",
-  SUBSCRIBERS: "mediguide_subscribers",
-  USERS: "mediguide_users",
-  SITE_SETTINGS: "mediguide_site_settings",
-  CURRENT_USER: "mediguide_current_user",
+  POSTS: "mediguide4u_posts",
+  FAQS: "mediguide4u_faqs",
+  TESTIMONIALS: "mediguide4u_testimonials",
+  CONTACTS: "mediguide4u_contacts",
+  SUBSCRIBERS: "mediguide4u_subscribers",
+  USERS: "mediguide4u_users",
+  SITE_SETTINGS: "mediguide4u_site_settings",
+  CURRENT_USER: "mediguide4u_current_user",
 };
 
 // Initialize LocalStorage with mock data if not existing
@@ -121,7 +121,7 @@ const initLocalStorage = () => {
     const defaultUsers: UserProfile[] = [
       {
         uid: "mock-admin-id",
-        email: "admin@mediguide.com",
+        email: "admin@mediguide4u.com",
         displayName: "Hub Administrator",
         role: "admin",
         savedPosts: [],
@@ -130,7 +130,7 @@ const initLocalStorage = () => {
       },
       {
         uid: "mock-user-id",
-        email: "user@mediguide.com",
+        email: "user@mediguide4u.com",
         displayName: "John Doe",
         role: "user",
         savedPosts: ["preventive-care-guide"],
@@ -145,7 +145,7 @@ const initLocalStorage = () => {
     const defaultSettings: SiteSettings = {
       heroTitle: "Your trusted healthcare guide",
       heroSubtitle: "Helping you navigate wellness, nutrition, and mental health with confidence.",
-      aboutText: "MediGuide Hub provides clear guidance for everyday health questions, nutrition, and wellness decisions.",
+      aboutText: "mediguide4u provides clear guidance for everyday health questions, nutrition, and wellness decisions.",
       serviceIntro: "We help you understand your health options with practical advice and step-by-step support.",
     };
     localStorage.setItem(KEYS.SITE_SETTINGS, JSON.stringify(defaultSettings));
@@ -464,7 +464,7 @@ export const subscribeNewsletter = async (email: string): Promise<boolean> => {
 
   // Local storage fallback: notify local admin users
   const localUsers = getLocal<UserProfile>(KEYS.USERS);
-  const localAdmins = localUsers.filter((u) => u.role === "admin" || u.email === "admin@mediguide.com");
+  const localAdmins = localUsers.filter((u) => u.role === "admin" || u.email === "admin@mediguide4u.com");
   for (const admin of localAdmins) {
     await addNotificationToUser(
       admin.uid,
@@ -771,7 +771,7 @@ export const getLegalPage = async (slug: string): Promise<LegalPage | null> => {
       console.error("Firebase error getting legal page:", e);
     }
   }
-  const pages = getLocal<LegalPage>("mediguide_legal_pages");
+  const pages = getLocal<LegalPage>("mediguide4u_legal_pages");
   const page = pages.find((p) => p.slug === slug);
   return page || null;
 };
@@ -785,14 +785,14 @@ export const updateLegalPage = async (slug: string, updates: Partial<LegalPage>)
       console.error("Firebase error updating legal page:", e);
     }
   }
-  const pages = getLocal<LegalPage>("mediguide_legal_pages");
+  const pages = getLocal<LegalPage>("mediguide4u_legal_pages");
   const idx = pages.findIndex((p) => p.slug === slug);
   if (idx !== -1) {
     pages[idx] = { ...pages[idx], ...updates } as LegalPage;
   } else {
     pages.push({ slug, ...updates } as LegalPage);
   }
-  setLocal("mediguide_legal_pages", pages);
+  setLocal("mediguide4u_legal_pages", pages);
 };
 
 export interface BlogCategory {
@@ -827,7 +827,7 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
       console.warn("Firebase error getting categories (Permission check failed or missing):", (e as any).message || e);
     }
   }
-  return getLocal<BlogCategory>("mediguide_categories");
+  return getLocal<BlogCategory>("mediguide4u_categories");
 };
 
 export const saveCategory = async (cat: BlogCategory): Promise<void> => {
@@ -840,7 +840,7 @@ export const saveCategory = async (cat: BlogCategory): Promise<void> => {
       console.warn("Firebase error saving category (Permission check failed or missing):", (e as any).message || e);
     }
   }
-  const cats = getLocal<BlogCategory>("mediguide_categories");
+  const cats = getLocal<BlogCategory>("mediguide4u_categories");
   if (cat.id) {
     const idx = cats.findIndex((c) => c.id === cat.id);
     if (idx !== -1) {
@@ -850,7 +850,7 @@ export const saveCategory = async (cat: BlogCategory): Promise<void> => {
     cat.id = `cat-${Date.now()}`;
     cats.push(cat);
   }
-  setLocal("mediguide_categories", cats);
+  setLocal("mediguide4u_categories", cats);
 };
 
 export const deleteCategory = async (id: string): Promise<void> => {
@@ -862,8 +862,8 @@ export const deleteCategory = async (id: string): Promise<void> => {
       console.error("Firebase error deleting category:", e);
     }
   }
-  const cats = getLocal<BlogCategory>("mediguide_categories");
-  setLocal("mediguide_categories", cats.filter((c) => c.id !== id));
+  const cats = getLocal<BlogCategory>("mediguide4u_categories");
+  setLocal("mediguide4u_categories", cats.filter((c) => c.id !== id));
 };
 
 /* ==========================================
@@ -889,13 +889,13 @@ export const getComments = async (): Promise<BlogComment[]> => {
     }
   }
   // Load default comments if empty in local simulation
-  const local = getLocal<BlogComment>("mediguide_comments");
+  const local = getLocal<BlogComment>("mediguide4u_comments");
   if (local.length === 0) {
     const defaultComments = [
       { id: "c1", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Sarah K.", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do.", date: "July 24, 2026", createdAt: "2026-07-24T12:00:00.000Z" },
       { id: "c2", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Robert M.", text: "Very helpful overview. I shared this with my parents who are approaching retirement age.", date: "July 28, 2026", createdAt: "2026-07-28T12:00:00.000Z" }
     ];
-    setLocal("mediguide_comments", defaultComments);
+    setLocal("mediguide4u_comments", defaultComments);
     return defaultComments;
   }
   return local;
@@ -956,10 +956,10 @@ export const addComment = async (comment: BlogComment): Promise<void> => {
       console.error("Firebase addComment error:", e);
     }
   }
-  const local = getLocal<BlogComment>("mediguide_comments");
+  const local = getLocal<BlogComment>("mediguide4u_comments");
   comment.id = `comment-${Date.now()}-${Math.random()}`;
   local.push(comment);
-  setLocal("mediguide_comments", local);
+  setLocal("mediguide4u_comments", local);
 };
 
 export const deleteComment = async (id: string): Promise<void> => {
@@ -971,7 +971,7 @@ export const deleteComment = async (id: string): Promise<void> => {
       console.error("Firebase deleteComment error:", e);
     }
   }
-  const local = getLocal<BlogComment>("mediguide_comments");
+  const local = getLocal<BlogComment>("mediguide4u_comments");
   const filtered = local.filter((c) => c.id !== id);
-  setLocal("mediguide_comments", filtered);
+  setLocal("mediguide4u_comments", filtered);
 };

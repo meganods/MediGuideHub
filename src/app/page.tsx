@@ -79,7 +79,7 @@ export default function Home() {
       const updatedProfile = await updateUserSavedPosts(user.uid, slug, action);
       if (updatedProfile) {
         setSavedSlugs(updatedProfile.savedPosts || []);
-        localStorage.setItem("mediguide_current_user", JSON.stringify(updatedProfile));
+        localStorage.setItem("mediguide4u_current_user", JSON.stringify(updatedProfile));
         showToast(action === "save" ? "Article bookmarked successfully!" : "Article removed from bookmarks.");
       }
     } catch (e) {
@@ -92,11 +92,11 @@ export default function Home() {
     async function loadData() {
       const allFaqs = await getFAQs();
       setFaqs(allFaqs.length > 0 ? allFaqs : [
-        { id: "faq-1", question: "What is MediGuideHub?", answer: "MediGuideHub is an independent, free educational resource platform built to help people understand healthcare policies and medical wellness guidelines.", category: "General" },
-        { id: "faq-2", question: "Is the information free?", answer: "Yes, all guide materials, comparison charts, and editorial reviews on MediGuideHub are 100% free to read without advertisements or registration walls.", category: "General" },
+        { id: "faq-1", question: "What is mediguide4u?", answer: "mediguide4u is an independent, free educational resource platform built to help people understand healthcare policies and medical wellness guidelines.", category: "General" },
+        { id: "faq-2", question: "Is the information free?", answer: "Yes, all guide materials, comparison charts, and editorial reviews on mediguide4u are 100% free to read without advertisements or registration walls.", category: "General" },
         { id: "faq-3", question: "Is this medical advice?", answer: "No, all articles are for educational and information purposes only. They are not a substitute for clinical diagnostics or licensed health coordinator advice.", category: "General" },
         { id: "faq-4", question: "How often is content updated?", answer: "Our research editors review all resources quarterly, updating the guidelines as new health regulations are issued.", category: "General" },
-        { id: "faq-5", question: "How can I contact MediGuideHub?", answer: "You can reach out to our team directly via the contact form on our /contact page. We aim to respond within 24-48 business hours.", category: "General" }
+        { id: "faq-5", question: "How can I contact mediguide4u?", answer: "You can reach out to our team directly via the contact form on our /contact page. We aim to respond within 24-48 business hours.", category: "General" }
       ]);
       const allPosts = await getPosts();
       setPosts(allPosts);
@@ -128,7 +128,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "MediGuideHub",
+            "name": "mediguide4u",
             "url": "https://mediguidehub.com",
             "potentialAction": {
               "@type": "SearchAction",
@@ -346,7 +346,7 @@ export default function Home() {
         <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">E-E-A-T Framework</span>
-            <h2 className="text-2xl font-extrabold text-[#113F48]">Why Readers Trust MediGuideHub</h2>
+            <h2 className="text-2xl font-extrabold text-[#113F48]">Why Readers Trust mediguide4u</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -426,7 +426,7 @@ export default function Home() {
             <div className="space-y-1">
               <span className="text-xs font-bold text-[#113F48] uppercase tracking-wide">Public Medical Disclaimer</span>
               <p className="text-[11px] text-stone-600 leading-relaxed">
-                The content hosted on MediGuideHub is provided for educational and information purposes only. None of the articles constitute clinical advice or endorse any commercial health policy provider. Consult with a licensed physician or policy representative before modifying your personal health coverage plans.
+                The content hosted on mediguide4u is provided for educational and information purposes only. None of the articles constitute clinical advice or endorse any commercial health policy provider. Consult with a licensed physician or policy representative before modifying your personal health coverage plans.
               </p>
             </div>
           </div>
@@ -457,7 +457,7 @@ export default function Home() {
             </button>
           </form>
           {newsletterSuccess && (
-            <p className="text-emerald-400 font-bold text-xs">✓ Thank you for subscribing to MediGuideHub update feeds!</p>
+            <p className="text-emerald-400 font-bold text-xs">✓ Thank you for subscribing to mediguide4u update feeds!</p>
           )}
         </div>
       </section>
@@ -486,7 +486,7 @@ export default function Home() {
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-8">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">Reader Loyalty</span>
-            <h2 className="text-2xl font-extrabold text-[#113F48]">Why Readers Choose MediGuideHub</h2>
+            <h2 className="text-2xl font-extrabold text-[#113F48]">Why Readers Choose mediguide4u</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white border border-stone-200 p-6 rounded-2xl space-y-2">

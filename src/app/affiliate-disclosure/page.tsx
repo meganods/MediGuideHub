@@ -40,7 +40,7 @@ export default function AffiliateDisclosurePage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">1. No Affiliate Commissions</h2>
                 <p>
-                  MediGuideHub does not currently host, include, or promote affiliate links. We do not receive any kickbacks, payments, or commission points when you click recommended links or consult external health organizations mentioned in our guides.
+                  mediguide4u does not currently host, include, or promote affiliate links. We do not receive any kickbacks, payments, or commission points when you click recommended links or consult external health organizations mentioned in our guides.
                 </p>
               </div>
 

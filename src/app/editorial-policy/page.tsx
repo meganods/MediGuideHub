@@ -47,7 +47,7 @@ export default function EditorialPolicyPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">2. Editorial Independence</h2>
                 <p>
-                  MediGuideHub operates with absolute editorial independence. We do not host sponsored articles, nor do we let display ads or advertising agreements dictate our topics, content tone, coverage comparisons, or recommendations.
+                  mediguide4u operates with absolute editorial independence. We do not host sponsored articles, nor do we let display ads or advertising agreements dictate our topics, content tone, coverage comparisons, or recommendations.
                 </p>
               </div>
 

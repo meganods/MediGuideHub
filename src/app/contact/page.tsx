@@ -82,7 +82,7 @@ export default function ContactPage() {
 
   const faqs = [
     {
-      q: "How can I contact MediGuideHub?",
+      q: "How can I contact mediguide4u?",
       a: "You can reach us through our secure contact form on this page or by sending an email directly to support@mediguidehub.com. Our support team is available Monday through Saturday."
     },
     {
@@ -122,7 +122,7 @@ export default function ContactPage() {
                   Support Hub
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight">
-                  Contact MediGuideHub
+                  Contact mediguide4u
                 </h1>
                 <p className="text-lg text-stone-600 leading-relaxed">
                   We&apos;re here to help. Reach out with questions, feedback, partnership inquiries, or support requests.
@@ -260,7 +260,7 @@ export default function ContactPage() {
                       <div className="space-y-2">
                         <h3 className="text-xl font-bold text-emerald-800">Message Sent Successfully!</h3>
                         <p className="text-emerald-700 text-sm leading-relaxed max-w-md mx-auto">
-                          Thank you for contacting MediGuideHub. Our team has received your ticket regarding <strong>{sentSubject}</strong> and will respond within 24–48 business hours.
+                          Thank you for contacting mediguide4u. Our team has received your ticket regarding <strong>{sentSubject}</strong> and will respond within 24–48 business hours.
                         </p>
                       </div>
                       
@@ -268,7 +268,7 @@ export default function ContactPage() {
                       <div className="bg-white border border-emerald-200/50 p-4 rounded-xl text-left max-w-md mx-auto space-y-2">
                         <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">Auto Email Reply Sent to {sentEmail}:</span>
                         <p className="text-xs text-stone-600 leading-relaxed italic">
-                          &ldquo;Thank you for contacting MediGuideHub. Our team has received your inquiry regarding &apos;{sentSubject}&apos; and will respond within 24–48 business hours.&rdquo;
+                          &ldquo;Thank you for contacting mediguide4u. Our team has received your inquiry regarding &apos;{sentSubject}&apos; and will respond within 24–48 business hours.&rdquo;
                         </p>
                       </div>
 
@@ -401,7 +401,7 @@ export default function ContactPage() {
                     <h3 className="font-bold text-sm uppercase tracking-wide">Medical Notice</h3>
                   </div>
                   <p className="text-red-900 text-xs font-semibold leading-relaxed">
-                    MediGuideHub does not provide emergency medical services. If you are experiencing a medical emergency, immediately contact your local emergency services or visit the nearest hospital.
+                    mediguide4u does not provide emergency medical services. If you are experiencing a medical emergency, immediately contact your local emergency services or visit the nearest hospital.
                   </p>
                 </div>
 

@@ -20,7 +20,7 @@ export const uploadImage = async (file: File | string): Promise<string> => {
         "upload_preset",
         process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || ""
       );
-      formData.append("folder", "MediGuide Hub");
+      formData.append("folder", "mediguide4u");
 
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,

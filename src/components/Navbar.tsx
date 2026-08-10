@@ -39,7 +39,7 @@ export default function Navbar() {
                   <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
                 </div>
                 <span className="font-heading font-bold text-xl tracking-tight text-[#113F48] group-hover:text-[#C9A15A] transition-colors">
-                  MediGuide<span className="text-[#C9A15A]">Hub</span>
+                  mediguide4u<span className="text-[#C9A15A]">Hub</span>
                 </span>
               </Link>
             </div>
@@ -122,7 +122,7 @@ export default function Navbar() {
               <ShieldCheck className="h-5 w-5 text-[#C9A15A]" />
             </div>
             <span className="font-bold text-lg text-[#113F48] tracking-tight">
-              MediGuide <span className="text-[#C9A15A]">Hub</span>
+              mediguide4u <span className="text-[#C9A15A]">Hub</span>
             </span>
           </Link>
           <button onClick={() => setMobileMenuOpen(false)} className="text-stone-400 hover:text-[#113F48] transition-colors">

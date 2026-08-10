@@ -117,6 +117,16 @@ export default function Home() {
   const featuredPosts = posts.filter(p => p.featured).slice(0, 3);
   const trendingTopics = posts.slice(0, 8);
 
+  const totalViews = posts.reduce((acc, p) => acc + (p.views || 0), 0);
+  const readersStat = totalViews >= 1000 ? `${(totalViews / 1000).toFixed(1).replace('.0', '')}K+` : `${totalViews}+`;
+
+  const statsList = [
+    { val: posts.length > 0 ? `${posts.length}+` : "0", label: "Articles Published" },
+    { val: categories.length > 0 ? `${categories.length}+` : "0", label: "Healthcare Categories" },
+    { val: totalViews > 0 ? readersStat : "0", label: "Monthly Readers" },
+    { val: `${new Date().getFullYear()}`, label: "Content Updates" }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7]">
       <Navbar />
@@ -466,12 +476,7 @@ export default function Home() {
       <section className="py-12 bg-white border-b border-stone-100">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { val: "30+", label: "Articles Published" },
-              { val: "17+", label: "Healthcare Categories" },
-              { val: "12K+", label: "Monthly Readers" },
-              { val: "2026", label: "Content Updates" }
-            ].map((stat, i) => (
+            {statsList.map((stat, i) => (
               <div key={i} className="space-y-1">
                 <span className="text-3xl font-extrabold text-[#113F48]">{stat.val}</span>
                 <p className="text-[10px] font-bold text-stone-400 uppercase tracking-wider">{stat.label}</p>

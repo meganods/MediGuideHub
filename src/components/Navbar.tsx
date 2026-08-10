@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { ShieldCheck, LogOut, Menu, X, HeartPulse } from "lucide-react";
+import { LogOut, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const { user } = useAuth();
@@ -35,9 +36,7 @@ export default function Navbar() {
             {/* Logo Section */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center gap-2 group">
-                <div className="bg-[#F9FAFB] p-2 rounded-xl border border-stone-200 group-hover:border-[#C9A15A] transition-all">
-                  <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
-                </div>
+                <Image src="/logo.png" alt="Logo" width={40} height={40} className="h-10 w-10 mix-blend-multiply" />
                 <span className="font-heading font-bold text-xl tracking-tight text-[#113F48] group-hover:text-[#C9A15A] transition-colors">
                   mediguide4u
                 </span>
@@ -119,7 +118,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between p-6 border-b border-stone-100">
           <Link href="/" className="flex items-center space-x-2" onClick={() => setMobileMenuOpen(false)}>
             <div className="bg-[#113F48] p-1.5 rounded-lg">
-              <ShieldCheck className="h-5 w-5 text-[#C9A15A]" />
+              <Image src="/logo.png" alt="Logo" width={20} height={20} className="h-5 w-5" />
             </div>
             <span className="font-bold text-lg text-[#113F48] tracking-tight">
               mediguide4u

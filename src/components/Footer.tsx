@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { subscribeNewsletter } from "@/lib/db";
-import { HeartPulse, CheckCircle2, ArrowRight, Mail, Phone, Clock, MapPin, ShieldCheck, Lock, Globe } from "lucide-react";
+import { CheckCircle2, ArrowRight, Mail, Phone, Clock, MapPin, ShieldCheck, Lock, Globe } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -69,9 +70,7 @@ export default function Footer() {
           {/* Column 1 — Brand */}
           <div className="lg:col-span-3 space-y-5">
             <Link href="/" className="flex items-center gap-2 w-fit">
-              <div className="bg-[#F9FAFB] p-2 rounded-xl border border-stone-200">
-                <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
-              </div>
+              <Image src="/logo.png" alt="Logo" width={40} height={40} className="h-10 w-10 mix-blend-multiply" />
               <span className="font-heading font-bold text-xl tracking-tight text-[#113F48]">
                 mediguide4u
               </span>

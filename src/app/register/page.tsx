@@ -3,8 +3,9 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { HeartPulse, Lock, Mail, User as UserIcon, ShieldAlert, CheckCircle2, Eye, EyeOff } from "lucide-react";
+import { Lock, Mail, User as UserIcon, ShieldAlert, CheckCircle2, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 function RegisterFormContent() {
   const router = useRouter();
@@ -74,7 +75,7 @@ function RegisterFormContent() {
         
         <div className="flex items-center gap-3.5 z-10">
           <div className="w-12 h-12 rounded-2xl bg-[#C9A15A] flex items-center justify-center shadow-lg shadow-[#C9A15A]/20">
-            <HeartPulse className="h-6 w-6 text-white" />
+            <Image src="/logo.png" alt="Logo" width={24} height={24} className="h-6 w-6 brightness-0 invert" />
           </div>
           <div>
             <h1 className="text-xl font-extrabold tracking-tight">mediguide4u</h1>

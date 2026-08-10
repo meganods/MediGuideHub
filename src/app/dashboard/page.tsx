@@ -112,20 +112,20 @@ function DashboardContent() {
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
   // Health Interests state
-  const [healthInterests, setHealthInterests] = useState<string[]>(["Nutrition", "Preventive Care"]);
+  const [healthInterests, setHealthInterests] = useState<string[]>([]);
 
   // Newsletter Preferences state
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(true);
   const [newsletterFrequency, setNewsletterFrequency] = useState("Weekly");
-  const [selectedNewsletterCats, setSelectedNewsletterCats] = useState<string[]>(["Health Articles", "Preventive Care"]);
+  const [selectedNewsletterCats, setSelectedNewsletterCats] = useState<string[]>([]);
 
   // Profile editable fields
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
-  const [bio, setBio] = useState("Proactive Health Explorer & wellness enthusiast.");
-  const [country, setCountry] = useState("India");
-  const [language, setLanguage] = useState("English");
-  const [timezone, setTimezone] = useState("IST (Indian Standard Time)");
+  const [bio, setBio] = useState("");
+  const [country, setCountry] = useState("");
+  const [language, setLanguage] = useState("");
+  const [timezone, setTimezone] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("");
   const [uploading, setUploading] = useState(false);
   const [profileSuccess, setProfileSuccess] = useState(false);

@@ -64,8 +64,8 @@ export default function DMCAPolicyPage() {
                 <p>
                   All DMCA claims and counter-notifications must be sent directly to our designated copyright administrator:
                   <br />
-                  <a href="mailto:support@mediguidehub.com" className="text-[#C9A15A] underline font-semibold block mt-1">
-                    support@mediguidehub.com
+                  <a href="mailto:support@mediguide4u.com" className="text-[#C9A15A] underline font-semibold block mt-1">
+                    support@mediguide4u.com
                   </a>
                 </p>
               </div>

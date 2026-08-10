@@ -68,7 +68,7 @@ export default function AccessibilityPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">5. Accessibility Feedback</h2>
                 <p>
-                  Digital accessibility is an ongoing process. If you encounter any barriers on mediguide4u, please let us know by sending a message or emailing support@mediguidehub.com. We make modifications to resolve reports as quickly as possible.
+                  Digital accessibility is an ongoing process. If you encounter any barriers on mediguide4u, please let us know by sending a message or emailing support@mediguide4u.com. We make modifications to resolve reports as quickly as possible.
                 </p>
               </div>
 

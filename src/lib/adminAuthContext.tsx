@@ -40,7 +40,7 @@ const fallbackToLocalAdmin = (email: string, pass: string): UserProfile | null =
     profile = {
       uid: `admin-${Date.now()}`,
       email: DEFAULT_ADMIN_EMAIL,
-      displayName: "Hub Administrator",
+      displayName: "Administrator",
       role: "admin",
       savedPosts: [],
       createdAt: new Date().toISOString(),

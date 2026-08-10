@@ -848,7 +848,7 @@ function AdminContent() {
         focusKeyphrase: seoFocusKeyphrase,
         schemaType: seoSchemaType,
         robotsMeta: seoRobotsMeta,
-        canonicalUrl: seoCanonicalUrl || `https://mediguidehub.com/blog/${postSlug}`,
+        canonicalUrl: seoCanonicalUrl || `https://mediguide4u.com/blog/${postSlug}`,
         
         visibility: postVisibility,
         allowComments: postAllowComments,
@@ -1009,7 +1009,7 @@ function AdminContent() {
         seoTitle: catSeoTitle || `${catName} | mediguide4u`,
         seoDesc: catSeoDesc || catDesc,
         seoFocusKeyword: catSeoKeyword || catName,
-        seoCanonical: catSeoCanonical || `https://mediguidehub.com/categories/${catSlug}`,
+        seoCanonical: catSeoCanonical || `https://mediguide4u.com/categories/${catSlug}`,
         seoSchemaType: catSeoSchema || "MedicalWebPage",
         seoOgImage: catSeoOgImage,
         createdAt: editingCategory?.createdAt || new Date().toISOString().split("T")[0],
@@ -1434,7 +1434,7 @@ function AdminContent() {
               { query: "medicare advantage plans", clicks: Math.round(liveTotalVisitors * 0.12), imps: Math.round(liveTotalVisitors * 0.95), ctr: "12.6%" },
               { query: "senior health coverage", clicks: Math.round(liveTotalVisitors * 0.08), imps: Math.round(liveTotalVisitors * 0.65), ctr: "12.3%" },
               { query: "preventive health checkup guide", clicks: Math.round(liveTotalVisitors * 0.06), imps: Math.round(liveTotalVisitors * 0.48), ctr: "12.5%" },
-              { query: "mediguide hub", clicks: Math.round(liveTotalVisitors * 0.05), imps: Math.round(liveTotalVisitors * 0.15), ctr: "33.3%" }
+              { query: "mediguide4u", clicks: Math.round(liveTotalVisitors * 0.05), imps: Math.round(liveTotalVisitors * 0.15), ctr: "33.3%" }
             ];
 
             const sortedPostsByViews = [...posts].sort((a, b) => (b.views || 0) - (a.views || 0));
@@ -2044,7 +2044,7 @@ function AdminContent() {
                             <input
                               value={seoCanonicalUrl}
                               onChange={(e) => setSeoCanonicalUrl(e.target.value)}
-                              placeholder="https://mediguidehub.com/blog/url"
+                              placeholder="https://mediguide4u.com/blog/url"
                               className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>
@@ -3326,7 +3326,7 @@ function AdminContent() {
                             <input
                               value={catSeoCanonical}
                               onChange={(e) => setCatSeoCanonical(e.target.value)}
-                              placeholder="https://mediguidehub.com/categories/..."
+                              placeholder="https://mediguide4u.com/categories/..."
                               className="w-full bg-[#FDF6EC]/10 border border-stone-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#C9A15A] text-[#113F48]"
                             />
                           </div>

@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         "/settings",
       ],
     },
-    sitemap: "https://medi-guide-hub.vercel.app/sitemap.xml",
+    sitemap: "https://mediguide4u.com/sitemap.xml",
   };
 }

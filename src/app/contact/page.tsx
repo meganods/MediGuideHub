@@ -75,7 +75,7 @@ export default function ContactPage() {
       setConsent(false);
     } catch (err) {
       console.error(err);
-      setFeedbackMessage("An unexpected error occurred. Please try again or email us directly at support@mediguidehub.com.");
+      setFeedbackMessage("An unexpected error occurred. Please try again or email us directly at support@mediguide4u.com.");
       setStatus("error");
     }
   };
@@ -83,7 +83,7 @@ export default function ContactPage() {
   const faqs = [
     {
       q: "How can I contact mediguide4u?",
-      a: "You can reach us through our secure contact form on this page or by sending an email directly to support@mediguidehub.com. Our support team is available Monday through Saturday."
+      a: "You can reach us through our secure contact form on this page or by sending an email directly to support@mediguide4u.com. Our support team is available Monday through Saturday."
     },
     {
       q: "How quickly will I receive a response?",
@@ -190,8 +190,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#113F48] text-sm">Email Support</h3>
-                  <a href="mailto:support@mediguidehub.com" className="text-[#C9A15A] font-semibold text-sm hover:underline block mt-1">
-                    support@mediguidehub.com
+                  <a href="mailto:support@mediguide4u.com" className="text-[#C9A15A] font-semibold text-sm hover:underline block mt-1">
+                    support@mediguide4u.com
                   </a>
                   <p className="text-xs text-stone-400 mt-2">General questions and customer support.</p>
                 </div>

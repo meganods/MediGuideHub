@@ -73,7 +73,7 @@ export default function Footer() {
                 <HeartPulse className="h-6 w-6 text-[#C9A15A]" />
               </div>
               <span className="font-heading font-bold text-xl tracking-tight text-[#113F48]">
-                mediguide4u<span className="text-[#C9A15A]">Hub</span>
+                mediguide4u
               </span>
             </Link>
             <p className="text-sm text-stone-500 leading-relaxed">
@@ -142,8 +142,8 @@ export default function Footer() {
                 <Mail className="h-4 w-4 text-[#C9A15A] mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block text-xs font-bold text-[#113F48] uppercase tracking-wide">Email</span>
-                  <a href="mailto:support@mediguidehub.com" className="hover:text-[#C9A15A] transition-colors">
-                    support@mediguidehub.com
+                  <a href="mailto:support@mediguide4u.com" className="hover:text-[#C9A15A] transition-colors">
+                    support@mediguide4u.com
                   </a>
                 </div>
               </li>

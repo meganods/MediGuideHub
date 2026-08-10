@@ -322,7 +322,7 @@ export default function AboutPage() {
                 <div className="space-y-2.5 text-sm text-stone-600">
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-[#C9A15A] flex-shrink-0" />
-                    <span>support@mediguidehub.com</span>
+                    <span>support@mediguide4u.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-[#C9A15A] flex-shrink-0" />

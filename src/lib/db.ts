@@ -122,7 +122,7 @@ const initLocalStorage = () => {
       {
         uid: "mock-admin-id",
         email: "admin@mediguide4u.com",
-        displayName: "Hub Administrator",
+        displayName: "Administrator",
         role: "admin",
         savedPosts: [],
         avatarUrl: "",

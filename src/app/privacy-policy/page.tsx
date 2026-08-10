@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-3 border-t border-stone-100 pt-6">
                 <h2 className="text-lg font-bold text-[#113F48]">7. Contact Privacy Inquiries</h2>
                 <p>
-                  For privacy concerns, data removal requests, or questions regarding Google AdSense cookies, please email: <a href="mailto:support@mediguidehub.com" className="text-[#C9A15A] underline font-semibold">support@mediguidehub.com</a>.
+                  For privacy concerns, data removal requests, or questions regarding Google AdSense cookies, please email: <a href="mailto:support@mediguide4u.com" className="text-[#C9A15A] underline font-semibold">support@mediguide4u.com</a>.
                 </p>
               </div>
 

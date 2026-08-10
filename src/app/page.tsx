@@ -129,10 +129,10 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "mediguide4u",
-            "url": "https://mediguidehub.com",
+            "url": "https://mediguide4u.com",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://mediguidehub.com/blog?q={search_term_string}",
+              "target": "https://mediguide4u.com/blog?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })
@@ -341,7 +341,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* ── SECTION 6: WHY TRUST MEDIGUIDEHUB ── */}
+      {/* ── SECTION 6: WHY TRUST MEDIGUIDE4U ── */}
       <section className="py-16 bg-[#FDFBF7] border-b border-stone-100">
         <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
           <div className="text-center space-y-2">
@@ -481,7 +481,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 11: WHY READERS CHOOSE MEDIGUIDEHUB ── */}
+      {/* ── SECTION 11: WHY READERS CHOOSE MEDIGUIDE4U ── */}
       <section className="py-16 bg-[#FDFBF7] border-b border-stone-100">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-8">
           <div className="text-center space-y-2">

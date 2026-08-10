@@ -5,4 +5,4 @@ Disallow: /dashboard
 Disallow: /auth
 Disallow: /api
 
-Sitemap: https://mediguidehub.com/sitemap.xml
+Sitemap: https://mediguide4u.com/sitemap.xml

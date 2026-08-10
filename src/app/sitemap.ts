@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getPosts, getCategories } from "@/lib/db";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://medi-guide-hub.vercel.app";
+  const baseUrl = "https://mediguide4u.com";
 
   // Static routes configuration as explicitly requested
   const staticRoutes = [

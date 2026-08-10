@@ -219,7 +219,7 @@ function SearchResultsContent() {
               "@type": "MedicalWebPage",
               "name": post.title,
               "description": post.summary,
-              "url": `https://mediguidehub.com/blog/${post.slug}`
+              "url": `https://mediguide4u.com/blog/${post.slug}`
             }))
           })
         }}

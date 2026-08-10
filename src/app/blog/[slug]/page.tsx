@@ -207,11 +207,11 @@ export default function BlogPostDetail(props: PageProps) {
             "publisher": {
               "@type": "Organization",
               "name": "mediguide4u",
-              "logo": "https://mediguidehub.com/logo.png"
+              "logo": "https://mediguide4u.com/logo.png"
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://mediguidehub.com/blog/${post.slug}`
+              "@id": `https://mediguide4u.com/blog/${post.slug}`
             }
           })
         }}

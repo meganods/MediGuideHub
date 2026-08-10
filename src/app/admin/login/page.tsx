@@ -104,7 +104,7 @@ function AdminLoginForm() {
             <input
               type="email"
               required
-              placeholder="admin@mediguidehub.com"
+              placeholder="admin@mediguide4u.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-stone-50/50 border border-stone-200 rounded-xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A15A] text-[#113F48] transition-all"

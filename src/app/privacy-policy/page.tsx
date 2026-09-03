@@ -66,19 +66,33 @@ export default function PrivacyPolicyPage() {
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">2. Cookies and Advertising Policy</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">2. Google AdSense &amp; Third-Party Advertising Cookies</h2>
                 <p>
-                  mediguide4u is designed to support third-party advertising networks, such as Google AdSense, to fund educational health research and website operations. When advertising networks or analytics tools are active, third-party vendors use cookies to serve ads or measure interactions based on prior visits to this and other websites across the internet.
+                  mediguide4u utilizes third-party advertising services, primarily <strong>Google AdSense</strong>, to serve relevant advertisements to our visitors. Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to our website or other websites on the internet.
                 </p>
                 <p>
-                  Users may opt out of personalized advertising by visiting the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline">Google Ads Settings</a> page.
+                  <strong>Google&apos;s Use of the DART Cookie:</strong> Google&apos;s use of advertising cookies (including the DoubleClick DART cookie) enables it and its partners to serve ads to our users based on their visit to mediguide4u and/or other sites on the Internet.
                 </p>
+                <p>
+                  <strong>How to Opt Out of Personalized Advertising:</strong>
+                </p>
+                <ul className="list-disc pl-5 space-y-1.5">
+                  <li>
+                    Users may opt out of personalized advertising by visiting the official <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline font-semibold">Google Ads Settings</a>.
+                  </li>
+                  <li>
+                    Alternatively, you can opt out of a third-party vendor&apos;s use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline font-semibold">www.aboutads.info</a> or the <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline font-semibold">Network Advertising Initiative Opt-Out Page</a>.
+                  </li>
+                  <li>
+                    Learn more about how Google uses information from sites or apps that use its services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] underline font-semibold">Google&apos;s Privacy &amp; Terms Partner Site</a>.
+                  </li>
+                </ul>
               </div>
 
               <div className="space-y-3">
-                <h2 className="text-xl font-bold text-[#113F48]">3. Analytics</h2>
+                <h2 className="text-xl font-bold text-[#113F48]">3. Log Files &amp; Web Analytics</h2>
                 <p>
-                  We employ analytics tracking to understand traffic patterns and article performance. These services help us measure bounce rates, session durations, and article reach so we can continuously write better health resources. The logs are entirely anonymized.
+                  Like many other websites, mediguide4u makes use of log files. The information inside the log files includes internet protocol (IP) addresses, type of browser, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and number of clicks to analyze trends, administer the site, track user&apos;s movement around the site, and gather demographic information. IP addresses and other such information are not linked to any information that is personally identifiable.
                 </p>
               </div>
 

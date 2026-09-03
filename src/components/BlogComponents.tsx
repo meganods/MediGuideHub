@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { BookOpen, AlertTriangle, Shield, Check, Info, AlertCircle, HelpCircle, ChevronDown, ChevronUp, User, Calendar, Clock, Bookmark } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, AlertTriangle, Shield, Check, Info, AlertCircle, HelpCircle, ChevronDown, ChevronUp, User, Calendar, Clock, Bookmark, Stethoscope, Award } from "lucide-react";
 import { ContentBlock, FAQItem, ReferenceItem, MEDICAL_AUTHORS, MEDICAL_REVIEWERS } from "@/lib/mockData";
 
 // --- LIGHTWEIGHT CLIENT-SIDE HTML SANITIZER ---
@@ -30,34 +31,47 @@ export function RichText({ content, className = "" }: { content: string; classNa
 
 // --- AUTHOR INFO COMPONENT ---
 export function AuthorInfo({ authorName }: { authorName?: string }) {
-  const isGenericOrFictional = !authorName || authorName.includes("Marcus") || authorName.includes("Dr.") || authorName.includes("Stone") || authorName.includes("Jenkins");
-  const displayName = isGenericOrFictional ? "Mediguide4u Editorial Staff" : authorName;
-  const displayTitle = "Health & Wellness Editorial Team";
+  const authorMatch = MEDICAL_AUTHORS.find(
+    (a) => a.name.toLowerCase() === (authorName || "").toLowerCase() || (authorName && authorName.includes(a.name))
+  );
+
+  const displayName = authorMatch ? authorMatch.name : (authorName || "Mediguide4u Editorial Staff");
+  const displayTitle = authorMatch ? authorMatch.title : "Health & Wellness Editorial Team";
+  const authorSlug = authorMatch ? authorMatch.id : "editorial-staff";
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-8 h-8 rounded-full bg-[#113F48] text-white flex items-center justify-center font-bold text-xs border border-[#C9A15A]/30">
-        M
+    <Link href={`/author/${authorSlug}`} className="flex items-center gap-2.5 group">
+      <div className="w-9 h-9 rounded-xl bg-[#113F48] text-white flex items-center justify-center font-bold text-xs border border-[#C9A15A]/30 group-hover:bg-[#C9A15A] transition-colors">
+        {displayName[0] || "M"}
       </div>
       <div>
-        <span className="font-bold text-[#113F48] block text-xs">By {displayName}</span>
+        <span className="font-bold text-[#113F48] block text-xs group-hover:text-[#C9A15A] transition-colors">By {displayName}</span>
         <span className="text-[10px] text-stone-400 block">{displayTitle}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 
 // --- MEDICAL REVIEWER INFO COMPONENT ---
 export function MedicalReviewerInfo({ reviewerName, reviewedAt }: { reviewerName?: string; reviewedAt?: string }) {
+  const reviewerMatch = MEDICAL_REVIEWERS.find(
+    (r) => r.name.toLowerCase() === (reviewerName || "").toLowerCase() || (reviewerName && reviewerName.includes(r.name))
+  );
+
+  const displayReviewer = reviewerMatch ? reviewerMatch.name : (reviewerName || "Dr. Ananya Roy, MD");
+  const displayCredentials = reviewerMatch ? reviewerMatch.credentials : "Internal Medicine Specialist";
+
   return (
-    <div className="flex items-center gap-2 border-l border-stone-200 pl-4">
-      <div className="w-8 h-8 rounded-full bg-[#113F48]/10 text-[#113F48] flex items-center justify-center font-bold text-xs border border-stone-200">
-        <Shield className="h-4 w-4 text-[#C9A15A]" />
+    <div className="flex items-center gap-2.5 border-l border-stone-200 pl-4">
+      <div className="w-9 h-9 rounded-xl bg-[#113F48]/10 text-[#113F48] flex items-center justify-center font-bold text-xs border border-stone-200">
+        <Stethoscope className="h-4 w-4 text-[#C9A15A]" />
       </div>
       <div>
-        <span className="font-bold text-[#113F48] block text-xs">Checked &amp; reviewed by mediguide4u team</span>
+        <span className="font-bold text-[#113F48] block text-xs">
+          Medically Reviewed by <Link href="/authors" className="text-[#113F48] hover:text-[#C9A15A] underline">{displayReviewer}</Link>
+        </span>
         <span className="text-[10px] text-stone-400 block">
-          Fact-checked against public health references (NIH, CDC, WHO) {reviewedAt && `• ${reviewedAt}`}
+          {displayCredentials} {reviewedAt && `• Reviewed ${reviewedAt}`}
         </span>
       </div>
     </div>

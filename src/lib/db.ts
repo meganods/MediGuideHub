@@ -23,10 +23,12 @@ import {
   INITIAL_CATEGORIES,
   INITIAL_FAQS,
   INITIAL_TESTIMONIALS,
+  EDITORIAL_PROFILES,
   BlogPost,
   FAQItem,
+  ProfessionalProfile
 } from "./mockData";
-export type { BlogPost, FAQItem };
+export type { BlogPost, FAQItem, ProfessionalProfile };
 
 // Interfaces
 export interface Notification {
@@ -206,27 +208,35 @@ const setLocal = <T>(key: string, data: T[]): void => {
    1. BLOG POSTS SERVICES
    ========================================== */
 export const getPosts = async (): Promise<BlogPost[]> => {
+  let posts: BlogPost[] = [];
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
       const snapshot = await getDocs(q);
       if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+        posts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
       }
     } catch (e) {
       try {
         const snapshot = await getDocs(collection(getAdminFirestore()!, "posts"));
         if (!snapshot.empty) {
-          const posts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
-          return posts.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+          posts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+          posts.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
         }
       } catch (innerError) {
         console.error("Firebase error getting posts, falling back:", innerError);
       }
     }
   }
-  const local = getLocal<BlogPost>(KEYS.POSTS);
-  const posts = local.length > 0 ? local : INITIAL_BLOG_POSTS;
+  if (posts.length === 0) {
+    const local = getLocal<BlogPost>(KEYS.POSTS);
+    posts = local.length > 0 ? local : INITIAL_BLOG_POSTS;
+  }
+  for (const initPost of INITIAL_BLOG_POSTS) {
+    if (!posts.some(p => p.slug === initPost.slug)) {
+      posts.push(sanitizePost(initPost));
+    }
+  }
   return posts.map(sanitizePost);
 };
 
@@ -972,18 +982,27 @@ export interface BlogCategory {
 }
 
 export const getCategories = async (): Promise<BlogCategory[]> => {
+  let categories: BlogCategory[] = [];
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const snapshot = await getDocs(query(collection(getAdminFirestore()!, "categories"), orderBy("displayOrder", "asc")));
       if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
+        categories = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
       }
     } catch (e) {
       console.warn("Firebase error getting categories (Permission check failed or missing):", (e as any).message || e);
     }
   }
-  const local = getLocal<BlogCategory>(KEYS.CATEGORIES);
-  return local.length > 0 ? local : INITIAL_CATEGORIES;
+  if (categories.length === 0) {
+    const local = getLocal<BlogCategory>(KEYS.CATEGORIES);
+    categories = local.length > 0 ? local : INITIAL_CATEGORIES;
+  }
+  for (const initCat of INITIAL_CATEGORIES) {
+    if (!categories.some(c => c.slug === initCat.slug)) {
+      categories.push(initCat);
+    }
+  }
+  return categories;
 };
 
 export const subscribeToCategories = (callback: (cats: BlogCategory[]) => void): (() => void) => {
@@ -1165,3 +1184,31 @@ export const incrementPostViews = async (id: string) => {
   }
   return false;
 };
+
+export const getAuthors = async (): Promise<ProfessionalProfile[]> => {
+  return EDITORIAL_PROFILES;
+};
+
+export const getAuthorBySlug = async (slug: string): Promise<ProfessionalProfile | null> => {
+  const author = EDITORIAL_PROFILES.find(
+    (a) => a.id === slug || a.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug
+  );
+  return author || null;
+};
+
+export const getPostsByAuthor = async (authorNameOrId: string): Promise<BlogPost[]> => {
+  const allPosts = await getPublishedBlogPosts();
+  const lower = authorNameOrId.toLowerCase();
+  return allPosts.filter((p) => {
+    const postAuthor = (p.author || "").toLowerCase();
+    return (
+      postAuthor.includes(lower) ||
+      lower.includes(postAuthor) ||
+      (lower.includes("editorial") && (postAuthor.includes("editorial") || postAuthor.includes("team") || postAuthor.includes("staff"))) ||
+      (lower.includes("roy") && postAuthor.includes("roy")) ||
+      (lower.includes("chen") && postAuthor.includes("chen")) ||
+      (lower.includes("jenkins") && postAuthor.includes("jenkins"))
+    );
+  });
+};
+

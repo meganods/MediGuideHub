@@ -35,6 +35,7 @@ export default function Footer() {
   const companyLinks = [
     { label: "About Us", href: "/about" },
     { label: "Our Mission", href: "/about#mission" },
+    { label: "Editorial & Medical Board", href: "/authors" },
     { label: "Contact Us", href: "/contact" },
     { label: "FAQ", href: "/faq" },
     { label: "Health Blog", href: "/blog" },
@@ -56,6 +57,7 @@ export default function Footer() {
     { label: "Cookie Policy", href: "/cookie-policy" },
     { label: "Medical Disclaimer", href: "/medical-disclaimer" },
     { label: "Editorial Policy", href: "/editorial-policy" },
+    { label: "Corrections Policy", href: "/corrections-policy" },
     { label: "Advertising Policy", href: "/advertising-policy" },
     { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
     { label: "Accessibility Statement", href: "/accessibility" },

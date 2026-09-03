@@ -42,6 +42,7 @@ export default function SitemapClientView({
   const coreRoutes = [
     { label: "Home Page", href: "/" },
     { label: "About Us", href: "/about" },
+    { label: "Editorial & Medical Board", href: "/authors" },
     { label: "Contact Support", href: "/contact" },
     { label: "Blogs & Guides Catalog", href: "/blog" },
     { label: "FAQ Directory", href: "/faq" },

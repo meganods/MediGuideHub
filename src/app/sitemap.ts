@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getPublishedBlogPosts, getCategories } from "@/lib/db";
+import { getPublishedBlogPosts, getCategories, getAuthors } from "@/lib/db";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://mediguide4u.com";
@@ -9,6 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/blog",
     "/about",
+    "/authors",
     "/contact",
     "/faq",
     "/search",
@@ -33,9 +34,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   try {
-    const [posts, categories] = await Promise.all([
+    const [posts, categories, authors] = await Promise.all([
       getPublishedBlogPosts().catch(() => []),
       getCategories().catch(() => []),
+      getAuthors().catch(() => []),
     ]);
 
     // Dynamic /category/[slug] entries
@@ -44,6 +46,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    }));
+
+    // Dynamic /author/[slug] entries
+    const authorEntries: MetadataRoute.Sitemap = authors.map((author) => ({
+      url: `${baseUrl}/author/${author.id}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     }));
 
     // Dynamic /blog/[slug] entries
@@ -60,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         };
       });
 
-    return [...staticEntries, ...categoryEntries, ...postEntries];
+    return [...staticEntries, ...categoryEntries, ...authorEntries, ...postEntries];
   } catch (error) {
     console.error("Error generating dynamic sitemap entries:", error);
     return staticEntries;

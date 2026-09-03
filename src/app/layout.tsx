@@ -40,8 +40,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
-      <head>
-        {adsenseClientId && (
+      <body className="font-sans antialiased text-[#113F48] bg-white overflow-x-hidden" suppressHydrationWarning>
+        {adsenseClientId ? (
           <Script
             id="google-adsense"
             async
@@ -49,9 +49,7 @@ export default function RootLayout({
             crossOrigin="anonymous"
             strategy="afterInteractive"
           />
-        )}
-      </head>
-      <body className="font-sans antialiased text-[#113F48] bg-white overflow-x-hidden" suppressHydrationWarning>
+        ) : null}
         <AuthProvider>
           <AdminAuthProvider>
             <AnalyticsTracker />

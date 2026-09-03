@@ -1,0 +1,143 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. User Profiles & Settings
+    match /users/{userId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        request.auth.uid == userId || 
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+      allow write: if request.auth != null && (
+        request.auth.uid == userId || 
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+
+      // Nested collections: bookmarks, readingHistory, preferences, notifications
+      match /{document=**} {
+        allow read, write: if request.auth != null && (
+          request.auth.uid == userId || 
+          request.auth.token.email == 'admin@mediguide4u.com' ||
+          (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+           get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+        );
+      }
+    }
+
+    // 2. Blog Posts
+    match /posts/{postId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // 3. Categories
+    match /categories/{catId} {
+      allow read: if true;
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+    }
+
+    // 4. FAQs
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+    }
+
+    // 5. Contact Messages
+    match /contactMessages/{msgId} {
+      allow create: if true;
+      allow read, write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+    }
+
+    // 6. Newsletter Subscribers
+    match /newsletterSubscribers/{subId} {
+      allow create: if true;
+      allow read, write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+    }
+
+    // 7. Site Settings
+    match /siteSettings/{settingsId} {
+      allow read: if true;
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    // 8. Legal Pages
+    match /legalPages/{pageId} {
+      allow read: if true;
+      allow write: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    // 9. Activity Logs
+    match /activityLogs/{logId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+      allow update, delete: if false;
+    }
+
+    // 10. Search Analytics
+    match /searchAnalytics/{id} {
+      allow create: if true;
+      allow read: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'editor'])
+      );
+      allow update, delete: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    // 11. Comments
+    match /comments/{commentId} {
+      allow read, create: if true;
+      allow delete: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+    // 12. Analytics Sessions
+    match /analytics_sessions/{sessionId} {
+      allow create, update: if true;
+      allow read, delete: if request.auth != null && (
+        request.auth.token.email == 'admin@mediguide4u.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+  }
+}

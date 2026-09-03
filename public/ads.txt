@@ -1,0 +1,3 @@
+# Google AdSense ads.txt placeholder
+# Replace the line below with your actual publisher ID once you are approved by Google AdSense
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

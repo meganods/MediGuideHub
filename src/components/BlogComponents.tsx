@@ -216,10 +216,25 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
     case "diagnostic_criteria":
     case "treatment_medications":
     case "self_care_lifestyle":
+    case "standard_rich_text":
       return (
-        <div className="space-y-2">
-          {heading && <h2 className="text-xl font-bold text-[#113F48] pt-4 border-b border-stone-100 pb-2">{heading}</h2>}
-          <RichText content={content} className="text-xs" />
+        <div className="space-y-4">
+          {heading && (
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#113F48] pt-4 border-b border-stone-150 pb-2.5">
+              {heading}
+            </h2>
+          )}
+          {content && <RichText content={content} className="text-sm sm:text-base leading-relaxed text-stone-700" />}
+          {block.items && block.items.length > 0 && (
+            <div className="grid grid-cols-1 gap-2.5 pt-1">
+              {block.items.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-stone-800 bg-stone-50/80 border border-stone-200/80 p-3.5 rounded-xl">
+                  <Check className="h-4.5 w-4.5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="leading-relaxed font-normal">{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       );
     case "symptoms_checklist":
@@ -230,12 +245,25 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
       return <AlertCallout alertType={block.alertType} content={content} />;
     case "when_to_see_doctor":
       return <WhenToSeeDoctor heading={heading} content={content} items={block.items} />;
-    case "standard_rich_text":
     default:
       return (
-        <div className="space-y-2">
-          {heading && <h2 className="text-xl font-bold text-[#113F48] pt-4 border-b border-stone-100 pb-2">{heading}</h2>}
-          <RichText content={content} className="text-xs" />
+        <div className="space-y-4">
+          {heading && (
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#113F48] pt-4 border-b border-stone-150 pb-2.5">
+              {heading}
+            </h2>
+          )}
+          {content && <RichText content={content} className="text-sm sm:text-base leading-relaxed text-stone-700" />}
+          {block.items && block.items.length > 0 && (
+            <div className="grid grid-cols-1 gap-2.5 pt-1">
+              {block.items.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-stone-800 bg-stone-50/80 border border-stone-200/80 p-3.5 rounded-xl">
+                  <Check className="h-4.5 w-4.5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="leading-relaxed font-normal">{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       );
   }
@@ -245,7 +273,7 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
 export function BlogContentRenderer({ blocks }: { blocks?: ContentBlock[] }) {
   if (!blocks || blocks.length === 0) return null;
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {blocks.map((block) => (
         <ContentBlockRenderer key={block.id} block={block} />
       ))}

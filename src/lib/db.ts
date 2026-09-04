@@ -1002,7 +1002,20 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
       categories.push(initCat);
     }
   }
-  return categories;
+
+  // Calculate live published post counts per category
+  const allPosts = await getPublishedBlogPosts();
+  const activeCategories = categories.map(cat => {
+    const postCount = allPosts.filter(
+      p => p.category.toLowerCase() === cat.name.toLowerCase() || p.category.toLowerCase() === cat.slug.toLowerCase()
+    ).length;
+    return {
+      ...cat,
+      articleCount: postCount,
+    };
+  }).filter(cat => (cat.articleCount || 0) > 0);
+
+  return activeCategories;
 };
 
 export const subscribeToCategories = (callback: (cats: BlogCategory[]) => void): (() => void) => {

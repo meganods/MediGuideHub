@@ -369,13 +369,23 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Structured Content Blocks OR Fallback Content */}
+            {/* Structured Content Blocks & In-Depth Clinical Guide */}
             <div className="space-y-8 text-[#113F48] text-sm leading-relaxed">
+              {post.introduction && (
+                <div className="prose max-w-none text-[#113F48] space-y-4">
+                  {post.introduction.split('\n\n').map((paragraph, pIdx) => (
+                    <p key={pIdx} className="text-sm sm:text-base text-stone-700 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              )}
               {post.contentBlocks && post.contentBlocks.length > 0 ? (
                 <BlogContentRenderer blocks={post.contentBlocks} />
-              ) : (
-                <RichText content={post.content} />
-              )}
+              ) : null}
+              {post.content && (!post.contentBlocks || post.contentBlocks.length === 0) ? (
+                <RichText content={post.content} className="text-sm sm:text-base leading-relaxed" />
+              ) : null}
             </div>
 
             {/* FAQs Block */}

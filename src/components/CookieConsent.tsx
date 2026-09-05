@@ -4,6 +4,33 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Cookie, ShieldCheck, X } from "lucide-react";
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+export function updateGoogleConsent(status: "accepted" | "essential_only") {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    if (status === "accepted") {
+      window.gtag("consent", "update", {
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+        analytics_storage: "granted",
+      });
+    } else {
+      window.gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "granted",
+      });
+    }
+  }
+}
+
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
 
@@ -13,16 +40,30 @@ export default function CookieConsent() {
       // Small delay for smooth entry
       const timer = setTimeout(() => setShowBanner(true), 800);
       return () => clearTimeout(timer);
+    } else {
+      updateGoogleConsent(consent as "accepted" | "essential_only");
     }
+
+    // Listen to custom open event from footer
+    const handleOpenSettings = () => {
+      setShowBanner(true);
+    };
+
+    window.addEventListener("open-cookie-settings", handleOpenSettings);
+    return () => {
+      window.removeEventListener("open-cookie-settings", handleOpenSettings);
+    };
   }, []);
 
   const handleAccept = () => {
     localStorage.setItem("mediguide4u_cookie_consent", "accepted");
+    updateGoogleConsent("accepted");
     setShowBanner(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem("mediguide4u_cookie_consent", "essential_only");
+    updateGoogleConsent("essential_only");
     setShowBanner(false);
   };
 
@@ -80,3 +121,4 @@ export default function CookieConsent() {
     </div>
   );
 }
+

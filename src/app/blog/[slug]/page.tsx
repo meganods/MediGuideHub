@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { 
@@ -40,6 +41,7 @@ import {
   ArticleViewTracker 
 } from "@/components/ArticleInteractions";
 import PostCommentsSection from "@/components/PostCommentsSection";
+import AdBanner from "@/components/AdBanner";
 
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 export const dynamicParams = true; // Allow newly published slugs to be rendered on-demand
@@ -164,9 +166,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   const authorSchema = isIndividualAuthor ? {
     "@type": "Person",
     "name": post.author,
-    "url": `https://mediguide4u.com/author/${authorSlug}`
+    "url": `https://mediguide4u.com/author/${authorSlug}`,
+    "worksFor": {
+      "@type": "MedicalOrganization",
+      "name": "mediguide4u",
+      "url": "https://mediguide4u.com"
+    }
   } : {
-    "@type": "Organization",
+    "@type": "MedicalOrganization",
     "name": "Mediguide4u Editorial Staff",
     "url": "https://mediguide4u.com/about"
   };
@@ -177,10 +184,42 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "Person",
     "name": reviewerName,
     "jobTitle": "Board-Certified Clinical Reviewer",
-    "url": `https://mediguide4u.com/author/${reviewerSlug}`
+    "url": `https://mediguide4u.com/author/${reviewerSlug}`,
+    "worksFor": {
+      "@type": "MedicalOrganization",
+      "name": "mediguide4u",
+      "url": "https://mediguide4u.com"
+    }
   };
 
   const reviewDate = post.medicalReviewedAt || post.lastReviewedDate || post.updatedAt || post.publishedAt;
+
+  // Approximate word count for schema
+  const totalText = `${post.title} ${post.summary} ${post.introduction || ""} ${
+    post.contentBlocks?.map((b) => `${b.heading || ""} ${b.content || ""} ${b.items?.join(" ") || ""}`).join(" ") || post.content || ""
+  }`;
+  const estimatedWordCount = totalText.split(/\s+/).filter(Boolean).length;
+
+  const citationsSchema = post.references && post.references.length > 0
+    ? post.references.map((ref) => ({
+        "@type": "CreativeWork",
+        "name": ref.title,
+        ...(ref.author ? { "author": { "@type": "Person", "name": ref.author } } : {}),
+        "url": ref.url || undefined,
+        "citation": ref.citation || undefined,
+      }))
+    : [
+        {
+          "@type": "CreativeWork",
+          "name": "National Institutes of Health (NIH) Clinical Research",
+          "url": "https://www.nih.gov"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Centers for Disease Control and Prevention (CDC) Health Guidelines",
+          "url": "https://www.cdc.gov"
+        }
+      ];
 
   const mainSchema: any = {
     "@context": "https://schema.org",
@@ -188,19 +227,31 @@ export default async function BlogPostPage({ params }: PageProps) {
     "name": post.title,
     "headline": post.title,
     "description": post.summary,
-    "image": post.featuredImage || "https://mediguide4u.com/icon.png",
+    "inLanguage": "en-US",
+    "image": post.featuredImage || "https://mediguide4u.com/logo.png",
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt || post.publishedAt,
     "lastReviewed": reviewDate,
+    "wordCount": estimatedWordCount,
+    "aspect": "Diagnosis, Treatment, Prevention, Symptoms, Clinical Guidelines",
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Patient"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "#article-summary"]
+    },
+    "citation": citationsSchema,
     "author": authorSchema,
     "reviewedBy": reviewerSchema,
     "publisher": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://mediguide4u.com/icon.png"
+        "url": "https://mediguide4u.com/logo.png"
       }
     },
     "mainEntityOfPage": {
@@ -316,7 +367,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.title}
               </h1>
               {post.summary && (
-                <p className="text-stone-600 text-sm italic leading-relaxed">
+                <p id="article-summary" className="text-stone-600 text-sm italic leading-relaxed">
                   {post.summary}
                 </p>
               )}
@@ -374,11 +425,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.featuredImage && (
               <div className="space-y-2">
                 <div className="rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 max-h-96 flex items-center justify-center">
-                  <img
+                  <Image
                     src={post.featuredImage}
                     alt={post.imageAlt || post.title}
+                    width={1200}
+                    height={630}
+                    priority
                     className="w-full h-auto object-cover max-h-96"
-                    loading="eager"
                   />
                 </div>
                 {post.imageCaption && (
@@ -411,10 +464,17 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               )}
               {post.contentBlocks && post.contentBlocks.length > 0 ? (
-                <BlogContentRenderer blocks={post.contentBlocks} />
+                <>
+                  <BlogContentRenderer blocks={post.contentBlocks.slice(0, 3)} />
+                  <AdBanner format="in-article" />
+                  <BlogContentRenderer blocks={post.contentBlocks.slice(3)} />
+                </>
               ) : null}
               {post.content && (!post.contentBlocks || post.contentBlocks.length === 0) ? (
-                <RichText content={post.content} className="text-sm sm:text-base leading-relaxed" />
+                <>
+                  <RichText content={post.content} className="text-sm sm:text-base leading-relaxed" />
+                  <AdBanner format="in-article" />
+                </>
               ) : null}
             </div>
 
@@ -448,6 +508,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             )}
 
+            {/* Bottom In-Article Responsive Ad */}
+            <AdBanner format="responsive" />
+
             {/* Social Share Box */}
             <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-4">
               <span className="text-xs font-bold text-[#113F48]">Share this educational guide:</span>
@@ -473,7 +536,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {nextPost && (
                 <Link 
                   href={`/blog/${nextPost.slug}`} 
-                  className="flex items-start gap-2 text-xs font-semibold text-[#113F48] hover:text-[#C9A15A] transition-colors max-w-xs sm:text-right group ml-auto"
+                  className="flex items-start gap-2 text-xs font-semibold text-[#113F48] hover:text-[#C9A15A] transition-colors max-w-xs text-right group"
                 >
                   <div>
                     <span className="text-[10px] text-stone-400 block uppercase font-bold">Next Guide</span>
@@ -507,12 +570,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <article key={r.slug} className="bg-[#FDFBF7] border border-stone-200 rounded-2xl overflow-hidden hover:shadow-md hover:border-[#C9A15A]/60 transition-all flex flex-col justify-between">
                       <div className="space-y-3">
                         {r.featuredImage && (
-                          <div className="h-32 w-full overflow-hidden bg-stone-100">
-                            <img 
+                          <div className="relative h-32 w-full overflow-hidden bg-stone-100">
+                            <Image 
                               src={r.featuredImage} 
                               alt={r.title} 
-                              className="w-full h-full object-cover"
-                              loading="lazy"
+                              fill
+                              sizes="(max-width: 640px) 100vw, 33vw"
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                           </div>
                         )}
@@ -564,6 +628,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                 ))}
               </ul>
             </div>
+
+            {/* Sidebar Ad Unit */}
+            <AdBanner format="sidebar" />
 
             {/* Author profile box */}
             <div className="bg-white border border-stone-200 rounded-2xl p-6 space-y-4 shadow-sm text-center">

@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EDITORIAL_PROFILES } from "@/lib/mockData";
@@ -84,10 +85,22 @@ export default async function AuthorProfilePage({ params }: PageProps) {
     "jobTitle": author.title,
     "description": author.bio,
     "url": `https://mediguide4u.com/author/${author.id}`,
+    "hasCredential": author.credentials ? [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": author.credentials
+      }
+    ] : undefined,
+    "knowsAbout": author.specialty ? author.specialty.split(",").map((s) => s.trim()) : [
+      "Internal Medicine",
+      "Preventive Healthcare",
+      "Nutrition Science"
+    ],
     "worksFor": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://mediguide4u.com",
+      "logo": "https://mediguide4u.com/logo.png"
     }
   };
 
@@ -186,14 +199,15 @@ export default async function AuthorProfilePage({ params }: PageProps) {
                   >
                     <div className="relative h-44 w-full bg-stone-50 overflow-hidden">
                       {post.featuredImage && (
-                        <img
+                        <Image
                           src={post.featuredImage}
                           alt={post.imageAlt || post.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       )}
-                      <span className="absolute top-3 left-3 bg-[#113F48] text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                      <span className="absolute top-3 left-3 bg-[#113F48] text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">
                         {post.category}
                       </span>
                     </div>

@@ -3,6 +3,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { BlogPost, BlogCategory, updateUserSavedPosts } from "@/lib/db";
 import { useAuth } from "@/lib/authContext";
 import { 
@@ -316,16 +317,23 @@ function SearchClientContent({ initialPosts, initialCategories }: SearchClientVi
               <div>
                 <div className="relative h-44 w-full bg-stone-50 overflow-hidden">
                   {post.featuredImage && (
-                    <img src={post.featuredImage} alt={post.imageAlt || post.title} className="w-full h-auto block" loading="lazy" />
+                    <Image
+                      src={post.featuredImage}
+                      alt={post.imageAlt || post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                   )}
-                  <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                  <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">
                     {post.category}
                   </span>
-                  <div className="absolute top-3 right-3 flex gap-1.5">
+                  <div className="absolute top-3 right-3 flex gap-1.5 z-10">
                     <button
                       onClick={() => handleSavePost(post.slug)}
                       className="p-1.5 bg-white/90 hover:bg-white text-stone-600 rounded-full shadow cursor-pointer transition-colors"
                       title="Bookmark guide"
+                      aria-label={`Bookmark guide: ${post.title}`}
                     >
                       <Bookmark className={`h-3.5 w-3.5 ${user?.savedPosts?.includes(post.slug) ? "fill-[#C9A15A] text-[#C9A15A]" : ""}`} />
                     </button>
@@ -333,6 +341,7 @@ function SearchClientContent({ initialPosts, initialCategories }: SearchClientVi
                       onClick={() => handleCopyLink(post.slug)}
                       className="p-1.5 bg-white/90 hover:bg-white text-stone-600 rounded-full shadow cursor-pointer transition-colors"
                       title="Copy guide link"
+                      aria-label={`Copy link for: ${post.title}`}
                     >
                       {copiedSlug === post.slug ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Share2 className="h-3.5 w-3.5" />}
                     </button>

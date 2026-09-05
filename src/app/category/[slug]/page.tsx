@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AdBanner from "@/components/AdBanner";
 import { getCategories, getPublishedBlogPosts, BlogPost, BlogCategory } from "@/lib/db";
 import { 
   BookOpen, 
@@ -127,10 +129,19 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
     "description": category.description || `Educational guides on ${category.name}`,
     "url": `https://mediguide4u.com/category/${category.slug}`,
     "publisher": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
+      "logo": "https://mediguide4u.com/logo.png"
     },
+    "hasPart": matchingPosts.map((post) => ({
+      "@type": "MedicalWebPage",
+      "name": post.title,
+      "headline": post.title,
+      "url": `https://mediguide4u.com/blog/${post.slug}`,
+      "description": post.summary,
+      "datePublished": post.publishedAt,
+    }))
   };
 
   const breadcrumbSchema = {
@@ -203,6 +214,8 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
         {/* ── MAIN ARTICLES GRID ── */}
         <section className="py-16">
           <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-8">
+            <AdBanner format="leaderboard" />
+
             <div className="flex justify-between items-center border-b border-stone-200 pb-4">
               <h2 className="text-xl font-bold text-[#113F48] flex items-center gap-2">
                 <FileText className="h-5 w-5 text-[#C9A15A]" />
@@ -225,14 +238,15 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                   >
                     <div className="relative h-44 w-full bg-stone-50 overflow-hidden">
                       {post.featuredImage && (
-                        <img 
+                        <Image 
                           src={post.featuredImage} 
                           alt={post.imageAlt || post.title} 
-                          className="w-full h-auto block"
-                          loading="lazy"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       )}
-                      <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                      <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">
                         {post.category}
                       </span>
                     </div>

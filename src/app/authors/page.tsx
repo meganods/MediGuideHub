@@ -47,14 +47,28 @@ export default async function AuthorsPage() {
     "description": "Qualified medical writers and clinical review board behind mediguide4u educational healthcare guides.",
     "url": "https://mediguide4u.com/authors",
     "publisher": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://mediguide4u.com/icon.png",
+        "url": "https://mediguide4u.com/logo.png",
       },
     },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": EDITORIAL_PROFILES.map((p, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+          "@type": "Person",
+          "name": p.name,
+          "jobTitle": p.title,
+          "description": p.bio,
+          "url": `https://mediguide4u.com/author/${p.id}`,
+        }
+      }))
+    }
   };
 
   return (

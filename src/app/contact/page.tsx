@@ -35,9 +35,10 @@ export default function ContactPage() {
     "description": "Contact form, office details, and support inquiries for mediguide4u.",
     "url": "https://mediguide4u.com/contact",
     "mainEntity": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
+      "logo": "https://mediguide4u.com/logo.png",
       "email": "support@mediguide4u.com",
       "contactPoint": {
         "@type": "ContactPoint",
@@ -48,6 +49,25 @@ export default function ContactPage() {
     }
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mediguide4u.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact Us",
+        "item": "https://mediguide4u.com/contact",
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -55,6 +75,10 @@ export default function ContactPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="flex-grow">

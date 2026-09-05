@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 import { updateUserSavedPosts, BlogPost, BlogCategory } from "@/lib/db";
@@ -257,24 +258,26 @@ function BlogListingContent({
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {filteredPosts.map((post, idx) => (
                     <article key={post.id || post.slug + "-" + idx} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-                      <div className="relative h-44 w-full bg-stone-50 overflow-hidden flex items-start">
+                      <div className="relative h-44 w-full bg-stone-50 overflow-hidden">
                         {post.featuredImage && (
-                          <img 
+                          <Image 
                             src={post.featuredImage} 
                             alt={post.imageAlt || post.title} 
-                            className="w-full h-auto block"
-                            loading="lazy"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         )}
-                        <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded">{post.category}</span>
+                        <span className="absolute top-3 left-3 bg-[#113F48]/90 text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">{post.category}</span>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
                             handleToggleSave(post.slug);
                           }}
-                          className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm cursor-pointer"
+                          className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm cursor-pointer z-10"
                           title="Save Article"
+                          aria-label={`Save article: ${post.title}`}
                         >
                           <Bookmark className={`h-4 w-4 ${savedSlugs.includes(post.slug) ? "fill-[#C9A15A] text-[#C9A15A]" : ""}`} />
                         </button>
@@ -292,7 +295,7 @@ function BlogListingContent({
                         </div>
                         <div className="pt-4 border-t border-stone-100 flex justify-between items-center mt-2">
                           <span className="text-stone-500 text-xs font-medium mt-1">
-                            By Mediguide4u Editorial Staff
+                            By {post.author || "Mediguide4u Editorial Staff"}
                           </span>
                           <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                         </div>

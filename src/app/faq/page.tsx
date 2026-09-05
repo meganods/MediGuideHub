@@ -40,6 +40,25 @@ export default async function FAQPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mediguide4u.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Frequently Asked Questions",
+        "item": "https://mediguide4u.com/faq",
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -47,6 +66,10 @@ export default async function FAQPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="flex-grow">

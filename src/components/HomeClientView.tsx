@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
+import AdBanner from "@/components/AdBanner";
 import { updateUserSavedPosts, BlogPost, BlogCategory, FAQItem } from "@/lib/db";
 import {
   ArrowRight,
@@ -265,24 +267,26 @@ export default function HomeClientView({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {displayFeatured.map((post) => (
                 <article key={post.slug} className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full">
-                  <div className="relative h-44 w-full bg-stone-50 overflow-hidden flex items-start">
+                  <div className="relative h-44 w-full bg-stone-50 overflow-hidden">
                     {post.featuredImage && (
-                      <img 
+                      <Image 
                         src={post.featuredImage} 
                         alt={post.imageAlt || post.title} 
-                        className="w-full h-auto block"
-                        loading="lazy"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     )}
-                    <span className="absolute top-3 left-3 bg-[#113F48] text-white text-[9px] font-bold px-2 py-0.5 rounded">{post.category}</span>
+                    <span className="absolute top-3 left-3 bg-[#113F48] text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">{post.category}</span>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         handleToggleSave(post.slug);
                       }}
-                      className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm cursor-pointer"
+                      className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-stone-600 hover:text-[#C9A15A] transition-colors shadow-sm cursor-pointer z-10"
                       title="Save Article"
+                      aria-label={`Save article: ${post.title}`}
                     >
                       <Bookmark className={`h-4 w-4 ${savedSlugs.includes(post.slug) ? "fill-[#C9A15A] text-[#C9A15A]" : ""}`} />
                     </button>
@@ -299,7 +303,7 @@ export default function HomeClientView({
                   </div>
                   <div className="p-5 pt-3 border-t border-stone-100 flex justify-between items-center">
                     <span className="text-stone-500 text-xs mt-1">
-                      By {post.author && !post.author.includes("Marcus") && !post.author.includes("Dr.") ? post.author : "Mediguide4u Editorial Staff"}
+                      By {post.author || "Mediguide4u Editorial Staff"}
                     </span>
                     <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                   </div>
@@ -309,6 +313,11 @@ export default function HomeClientView({
           </div>
         </section>
       )}
+
+      {/* Leaderboard Ad Placement */}
+      <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none bg-[#FDFBF7] py-2">
+        <AdBanner format="leaderboard" />
+      </div>
 
       {/* ── SECTION 5: TRENDING TOPICS ── */}
       {trendingTopics.length > 0 && (

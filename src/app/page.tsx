@@ -44,19 +44,19 @@ export default async function HomePage() {
     "url": "https://mediguide4u.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://mediguide4u.com/blog?q={search_term_string}",
+      "target": "https://mediguide4u.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
 
   const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "MedicalOrganization",
     "name": "mediguide4u",
     "url": "https://mediguide4u.com",
-    "logo": "https://mediguide4u.com/icon.png",
+    "logo": "https://mediguide4u.com/logo.png",
     "sameAs": [],
-    "description": "An independent educational platform providing clear, evidence-based healthcare and wellness guides.",
+    "description": "An independent educational platform providing clear, evidence-based healthcare and wellness guides fact-checked against public health research.",
   };
 
   return (

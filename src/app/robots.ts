@@ -17,17 +17,37 @@ export default function robots(): MetadataRoute.Robots {
           "/register",
           "/forgot-password",
           "/api/*",
+          "/search?*",
         ],
       },
       {
-        userAgent: "Mediapartners-Google",
+        userAgent: [
+          "Googlebot",
+          "Google-InspectionTool",
+          "Bingbot",
+          "Twitterbot",
+          "facebookexternalhit",
+          "Mediapartners-Google",
+          "Google-Display-Ads-Bot",
+        ],
         allow: "/",
+        disallow: [
+          "/admin",
+          "/admin/*",
+          "/admin-login",
+          "/dashboard",
+          "/dashboard/*",
+          "/auth",
+          "/login",
+          "/register",
+          "/forgot-password",
+          "/api/*",
+          "/search?*",
+        ],
       },
-      {
-        userAgent: "Google-Display-Ads-Bot",
-        allow: "/",
-      }
     ],
     sitemap: "https://mediguide4u.com/sitemap.xml",
+    host: "https://mediguide4u.com",
   };
 }
+

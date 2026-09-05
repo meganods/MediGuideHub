@@ -112,12 +112,31 @@ export default function AboutPage() {
     "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and evidence-informed standards.",
     "url": "https://mediguide4u.com/about",
     "mainEntity": {
-      "@type": "Organization",
+      "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/icon.png",
+      "logo": "https://mediguide4u.com/logo.png",
       "description": "An independent educational publication dedicated to improving public healthcare literacy through evidence-informed guides."
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mediguide4u.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://mediguide4u.com/about",
+      },
+    ],
   };
 
   return (
@@ -127,6 +146,10 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="flex-grow">

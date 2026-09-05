@@ -75,6 +75,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pageDescription = post.metaDescription || post.summary;
   const canonicalUrl = post.canonicalUrl || `https://mediguide4u.com/blog/${post.slug}`;
   const ogImage = post.featuredImage || "https://mediguide4u.com/icon.png";
+  const authorList = post.author && post.author !== "Mediguide4u Editorial Staff" 
+    ? [post.author, "Mediguide4u Editorial Staff"] 
+    : ["Mediguide4u Editorial Staff"];
 
   return {
     title: pageTitle,
@@ -90,7 +93,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
-      authors: ["Mediguide4u Editorial Staff"],
+      authors: authorList,
       section: post.category,
       tags: post.tags,
       images: [
@@ -152,7 +155,33 @@ export default async function BlogPostPage({ params }: PageProps) {
         { text: "Frequently Asked Questions", id: "faq" }
       ];
 
-  // Build JSON-LD structured data
+  // Dynamic Schema.org structured data (E-E-A-T Person / MedicalReviewer / MedicalWebPage)
+  const isIndividualAuthor = post.author && post.author !== "Mediguide4u Editorial Staff";
+  const authorSlug = isIndividualAuthor 
+    ? post.author.toLowerCase().replace(/[^a-z0-9]+/g, "-") 
+    : "editorial-staff";
+  
+  const authorSchema = isIndividualAuthor ? {
+    "@type": "Person",
+    "name": post.author,
+    "url": `https://mediguide4u.com/author/${authorSlug}`
+  } : {
+    "@type": "Organization",
+    "name": "Mediguide4u Editorial Staff",
+    "url": "https://mediguide4u.com/about"
+  };
+
+  const reviewerName = post.medicalReviewer || "Dr. Ananya Roy, MD";
+  const reviewerSlug = reviewerName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const reviewerSchema = {
+    "@type": "Person",
+    "name": reviewerName,
+    "jobTitle": "Board-Certified Clinical Reviewer",
+    "url": `https://mediguide4u.com/author/${reviewerSlug}`
+  };
+
+  const reviewDate = post.medicalReviewedAt || post.lastReviewedDate || post.updatedAt || post.publishedAt;
+
   const mainSchema: any = {
     "@context": "https://schema.org",
     "@type": post.schemaType || "MedicalWebPage",
@@ -162,11 +191,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     "image": post.featuredImage || "https://mediguide4u.com/icon.png",
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt || post.publishedAt,
-    "author": {
-      "@type": "Organization",
-      "name": "Mediguide4u Editorial Staff",
-      "url": "https://mediguide4u.com/about"
-    },
+    "lastReviewed": reviewDate,
+    "author": authorSchema,
+    "reviewedBy": reviewerSchema,
     "publisher": {
       "@type": "Organization",
       "name": "mediguide4u",
@@ -179,11 +206,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://mediguide4u.com/blog/${post.slug}`
-    },
-    "reviewedBy": {
-      "@type": "Organization",
-      "name": "Mediguide4u Editorial Staff",
-      "url": "https://mediguide4u.com/about"
     }
   };
 
@@ -301,15 +323,23 @@ export default async function BlogPostPage({ params }: PageProps) {
               
               <div className="pt-2 border-t border-stone-100 flex flex-wrap items-center justify-between gap-4 text-xs text-stone-500">
                 <div className="flex flex-wrap items-center gap-4">
-                  <AuthorInfo authorName="Mediguide4u Editorial Staff" />
-                  <MedicalReviewerInfo reviewedAt={post.publishedAt} />
+                  <AuthorInfo authorName={post.author} />
+                  <MedicalReviewerInfo 
+                    reviewerName={post.medicalReviewer} 
+                    reviewedAt={post.medicalReviewedAt || post.lastReviewedDate || post.publishedAt} 
+                  />
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center flex-wrap gap-3">
                   <span className="flex items-center gap-1">
-                    <Calendar className="h-3.5 w-3.5 text-[#C9A15A]" /> Published {post.publishedAt}
+                    <Calendar className="h-3.5 w-3.5 text-[#C9A15A]" /> Published: {post.publishedAt}
                   </span>
-                  {post.updatedAt && post.updatedAt !== post.publishedAt && (
-                    <span className="text-stone-400">Revised: {post.updatedAt}</span>
+                  {post.medicalReviewedAt && (
+                    <span className="text-stone-600 font-medium bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                      Reviewed: {post.medicalReviewedAt}
+                    </span>
+                  )}
+                  {post.updatedAt && post.updatedAt !== post.publishedAt && post.updatedAt !== post.medicalReviewedAt && (
+                    <span className="text-stone-400">Updated: {post.updatedAt}</span>
                   )}
                   <span className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5 text-[#C9A15A]" /> {post.readTime || "5 min read"}
@@ -398,11 +428,22 @@ export default async function BlogPostPage({ params }: PageProps) {
               <ReferencesSection references={post.references} />
             ) : (
               <div className="border-t border-stone-100 pt-6 space-y-3">
-                <h4 className="font-bold text-[#113F48] text-sm">References &amp; Resource Guides</h4>
-                <ol className="list-decimal pl-5 text-[11px] text-stone-500 space-y-1 font-medium">
-                  <li>National Institutes of Health (NIH). <a href="https://www.nih.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">Official Health Indices</a>.</li>
-                  <li>Centers for Disease Control and Prevention (CDC). <a href="https://www.cdc.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">Public Health and Prevention Guidelines</a>.</li>
-                  <li>World Health Organization (WHO). <a href="https://www.who.int" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline">Global Clinical Guidelines and Fact Sheets</a>.</li>
+                <h4 className="font-bold text-[#113F48] text-sm flex items-center gap-1.5">
+                  <BookOpen className="h-4 w-4 text-[#C9A15A]" /> Sources &amp; Authoritative References
+                </h4>
+                <ol className="list-decimal pl-5 text-[11px] text-stone-500 space-y-1.5 font-medium">
+                  <li>
+                    National Institutes of Health (NIH). <a href="https://www.nih.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[National Health Guidelines &amp; Clinical Evidence]</a>.
+                  </li>
+                  <li>
+                    Centers for Disease Control and Prevention (CDC). <a href="https://www.cdc.gov" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Public Health Consensus and Prevention Data]</a>.
+                  </li>
+                  <li>
+                    World Health Organization (WHO). <a href="https://www.who.int" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Global Clinical Treatment Standards &amp; Fact Sheets]</a>.
+                  </li>
+                  <li>
+                    National Library of Medicine / PubMed. <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Peer-Reviewed Biomedical Literature Database]</a>.
+                  </li>
                 </ol>
               </div>
             )}

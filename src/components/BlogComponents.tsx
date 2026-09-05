@@ -37,15 +37,20 @@ export function AuthorInfo({ authorName }: { authorName?: string }) {
 
   const displayName = authorMatch ? authorMatch.name : (authorName || "Mediguide4u Editorial Staff");
   const displayTitle = authorMatch ? authorMatch.title : "Health & Wellness Editorial Team";
-  const authorSlug = authorMatch ? authorMatch.id : "editorial-staff";
+  const authorSlug = authorMatch ? authorMatch.id : (authorName ? authorName.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "editorial-staff");
+  const profileUrl = authorMatch || (authorName && authorName !== "Mediguide4u Editorial Staff") 
+    ? `/author/${authorSlug}` 
+    : "/about";
 
   return (
-    <Link href={`/author/${authorSlug}`} className="flex items-center gap-2.5 group">
+    <Link href={profileUrl} className="flex items-center gap-2.5 group">
       <div className="w-9 h-9 rounded-xl bg-[#113F48] text-white flex items-center justify-center font-bold text-xs border border-[#C9A15A]/30 group-hover:bg-[#C9A15A] transition-colors">
         {displayName[0] || "M"}
       </div>
       <div>
-        <span className="font-bold text-[#113F48] block text-xs group-hover:text-[#C9A15A] transition-colors">By {displayName}</span>
+        <span className="font-bold text-[#113F48] block text-xs group-hover:text-[#C9A15A] transition-colors">
+          Written by <span className="underline decoration-[#C9A15A]/50">{displayName}</span>
+        </span>
         <span className="text-[10px] text-stone-400 block">{displayTitle}</span>
       </div>
     </Link>
@@ -68,7 +73,7 @@ export function MedicalReviewerInfo({ reviewerName, reviewedAt }: { reviewerName
       </div>
       <div>
         <span className="font-bold text-[#113F48] block text-xs">
-          Medically Reviewed by <Link href="/authors" className="text-[#113F48] hover:text-[#C9A15A] underline">{displayReviewer}</Link>
+          Medically Reviewed by <Link href="/authors" className="text-[#113F48] hover:text-[#C9A15A] underline decoration-[#C9A15A]/50">{displayReviewer}</Link>
         </span>
         <span className="text-[10px] text-stone-400 block">
           {displayCredentials} {reviewedAt && `• Reviewed ${reviewedAt}`}
@@ -79,9 +84,9 @@ export function MedicalReviewerInfo({ reviewerName, reviewedAt }: { reviewerName
 }
 
 // --- SYMPTOMS CHECKLIST COMPONENT ---
-export function SymptomsChecklist({ heading, content, items, multiColumn }: { heading?: string; content?: string; items?: string[]; multiColumn?: boolean }) {
+export function SymptomsChecklist({ id, heading, content, items, multiColumn }: { id?: string; heading?: string; content?: string; items?: string[]; multiColumn?: boolean }) {
   return (
-    <div className="bg-emerald-50/20 border border-emerald-500/10 rounded-2xl p-5 space-y-3">
+    <div id={id} className="bg-emerald-50/20 border border-emerald-500/10 rounded-2xl p-5 space-y-3 scroll-mt-24">
       {heading && <h3 className="text-lg font-bold text-[#113F48]">{heading}</h3>}
       {content && <RichText content={content} className="text-xs" />}
       {items && items.length > 0 && (
@@ -99,9 +104,9 @@ export function SymptomsChecklist({ heading, content, items, multiColumn }: { he
 }
 
 // --- COMPARISON TABLE COMPONENT ---
-export function ComparisonTable({ heading, columns, rows }: { heading?: string; columns?: string[]; rows?: string[][] }) {
+export function ComparisonTable({ id, heading, columns, rows }: { id?: string; heading?: string; columns?: string[]; rows?: string[][] }) {
   return (
-    <div className="space-y-3 overflow-hidden">
+    <div id={id} className="space-y-3 overflow-hidden scroll-mt-24">
       {heading && <h3 className="text-base font-bold text-[#113F48]">{heading}</h3>}
       <div className="overflow-x-auto rounded-xl border border-stone-200">
         <table className="w-full text-left border-collapse bg-white">
@@ -128,7 +133,7 @@ export function ComparisonTable({ heading, columns, rows }: { heading?: string; 
 }
 
 // --- ALERT / CALLOUT COMPONENT ---
-export function AlertCallout({ alertType = "info", content }: { alertType?: "info" | "important" | "warning" | "emergency"; content: string }) {
+export function AlertCallout({ id, alertType = "info", content }: { id?: string; alertType?: "info" | "important" | "warning" | "emergency"; content: string }) {
   const configs = {
     info: {
       bg: "bg-blue-50/55 border-blue-500/25 text-blue-900",
@@ -154,7 +159,7 @@ export function AlertCallout({ alertType = "info", content }: { alertType?: "inf
   const config = configs[alertType];
 
   return (
-    <div className={`border p-4.5 rounded-2xl flex gap-3 ${config.bg}`}>
+    <div id={id} className={`border p-4.5 rounded-2xl flex gap-3 scroll-mt-24 ${config.bg}`}>
       {config.icon}
       <div className="space-y-1">
         <span className="text-xs font-bold uppercase tracking-wider block">{config.label}</span>
@@ -165,9 +170,9 @@ export function AlertCallout({ alertType = "info", content }: { alertType?: "inf
 }
 
 // --- WHEN TO SEE A DOCTOR COMPONENT ---
-export function WhenToSeeDoctor({ heading, content, items }: { heading?: string; content?: string; items?: string[] }) {
+export function WhenToSeeDoctor({ id, heading, content, items }: { id?: string; heading?: string; content?: string; items?: string[] }) {
   return (
-    <div className="bg-red-50/15 border border-red-500/25 p-5 rounded-2xl flex gap-3.5 items-start">
+    <div id={id} className="bg-red-50/15 border border-red-500/25 p-5 rounded-2xl flex gap-3.5 items-start scroll-mt-24">
       <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
       <div className="space-y-2 flex-grow">
         <h4 className="text-xs font-bold text-red-800 uppercase tracking-wide">{heading || "Clinical Warning Indicators"}</h4>
@@ -209,6 +214,7 @@ export function MedicalDisclaimer({ disclaimerType }: { disclaimerType?: "clinic
 export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
   const heading = block.heading;
   const content = block.content || "";
+  const id = block.id;
 
   switch (block.type) {
     case "clinical_overview":
@@ -218,7 +224,7 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
     case "self_care_lifestyle":
     case "standard_rich_text":
       return (
-        <div className="space-y-4">
+        <div id={id} className="space-y-4 scroll-mt-24">
           {heading && (
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#113F48] pt-4 border-b border-stone-150 pb-2.5">
               {heading}
@@ -238,16 +244,16 @@ export function ContentBlockRenderer({ block }: { block: ContentBlock }) {
         </div>
       );
     case "symptoms_checklist":
-      return <SymptomsChecklist heading={heading} content={content} items={block.items} multiColumn={block.multiColumn} />;
+      return <SymptomsChecklist id={id} heading={heading} content={content} items={block.items} multiColumn={block.multiColumn} />;
     case "comparison_table":
-      return <ComparisonTable heading={heading} columns={block.columns} rows={block.rows} />;
+      return <ComparisonTable id={id} heading={heading} columns={block.columns} rows={block.rows} />;
     case "alert_callout":
-      return <AlertCallout alertType={block.alertType} content={content} />;
+      return <AlertCallout id={id} alertType={block.alertType} content={content} />;
     case "when_to_see_doctor":
-      return <WhenToSeeDoctor heading={heading} content={content} items={block.items} />;
+      return <WhenToSeeDoctor id={id} heading={heading} content={content} items={block.items} />;
     default:
       return (
-        <div className="space-y-4">
+        <div id={id} className="space-y-4 scroll-mt-24">
           {heading && (
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#113F48] pt-4 border-b border-stone-150 pb-2.5">
               {heading}

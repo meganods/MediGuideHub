@@ -81,25 +81,38 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
     notFound();
   }
 
-  // Filter posts matching this category
-  const catNameLower = category.name.toLowerCase();
-  const catSlugLower = category.slug.toLowerCase();
+  // Filter posts matching this category cleanly
+  const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const catSlugNorm = normalize(category.slug);
+  const catNameNorm = normalize(category.name);
 
   const matchingPosts = allPosts.filter((post) => {
-    const postCat = (post.category || "").toLowerCase();
+    const postCategoryNorm = normalize(post.category);
+    const postSubcategoryNorm = normalize(post.subcategory || "");
+    
+    // Direct slug/name match
+    if (
+      postCategoryNorm === catSlugNorm ||
+      postCategoryNorm === catNameNorm ||
+      postSubcategoryNorm === catSlugNorm ||
+      postSubcategoryNorm === catNameNorm
+    ) {
+      return true;
+    }
+
+    // Keyword / Substring match fallback
     return (
-      postCat === catNameLower ||
-      postCat.includes(catNameLower) ||
-      catNameLower.includes(postCat) ||
-      (catSlugLower.includes("heart") && postCat.includes("heart")) ||
-      (catSlugLower.includes("fitness") && (postCat.includes("fitness") || postCat.includes("wellness"))) ||
-      (catSlugLower.includes("wellness") && (postCat.includes("wellness") || postCat.includes("fitness"))) ||
-      (catSlugLower.includes("senior") && postCat.includes("senior")) ||
-      (catSlugLower.includes("nutrition") && postCat.includes("nutrition")) ||
-      (catSlugLower.includes("diabetes") && postCat.includes("diabetes")) ||
-      (catSlugLower.includes("women") && postCat.includes("women")) ||
-      (catSlugLower.includes("children") && postCat.includes("child")) ||
-      (catSlugLower.includes("preventive") && (postCat.includes("preventive") || postCat.includes("prevention")))
+      postCategoryNorm.includes(catSlugNorm) ||
+      catSlugNorm.includes(postCategoryNorm) ||
+      (catSlugNorm.includes("heart") && postCategoryNorm.includes("heart")) ||
+      (catSlugNorm.includes("fitness") && (postCategoryNorm.includes("fitness") || postCategoryNorm.includes("exercise"))) ||
+      (catSlugNorm.includes("wellness") && (postCategoryNorm.includes("wellness") || postCategoryNorm.includes("health"))) ||
+      (catSlugNorm.includes("senior") && (postCategoryNorm.includes("senior") || postCategoryNorm.includes("aging"))) ||
+      (catSlugNorm.includes("nutrition") && (postCategoryNorm.includes("nutrition") || postCategoryNorm.includes("diet"))) ||
+      (catSlugNorm.includes("diabetes") && (postCategoryNorm.includes("diabetes") || postCategoryNorm.includes("glucose"))) ||
+      (catSlugNorm.includes("women") && postCategoryNorm.includes("women")) ||
+      (catSlugNorm.includes("child") && (postCategoryNorm.includes("child") || postCategoryNorm.includes("pediatric"))) ||
+      (catSlugNorm.includes("preventive") && (postCategoryNorm.includes("preventive") || postCategoryNorm.includes("prevention")))
     );
   });
 
@@ -241,8 +254,8 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                         </p>
                       </div>
                       <div className="pt-4 border-t border-stone-100 flex justify-between items-center mt-2">
-                        <span className="text-stone-500 text-xs font-medium">
-                          By Mediguide4u Editorial Staff
+                        <span className="text-stone-500 text-xs font-medium truncate max-w-[140px]">
+                          By {post.author || "Mediguide4u Editorial Staff"}
                         </span>
                         <Link 
                           href={`/blog/${post.slug}`} 

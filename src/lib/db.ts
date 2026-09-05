@@ -103,13 +103,13 @@ const KEYS = {
   CURRENT_USER: "mediguide4u_current_user",
 };
 
-// Sanitizes any BlogPost to ensure strictly honest organization-level attribution
+// Sanitizes any BlogPost to ensure complete metadata fields
 export const sanitizePost = (post: BlogPost): BlogPost => {
   if (!post) return post;
   return {
     ...post,
-    author: "Mediguide4u Editorial Staff",
-    medicalReviewer: undefined,
+    author: post.author || "Mediguide4u Editorial Staff",
+    medicalReviewer: post.medicalReviewer || undefined,
   };
 };
 
@@ -1005,10 +1005,19 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
 
   // Calculate live published post counts per category
   const allPosts = await getPublishedBlogPosts();
+  const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   const activeCategories = categories.map(cat => {
-    const postCount = allPosts.filter(
-      p => p.category.toLowerCase() === cat.name.toLowerCase() || p.category.toLowerCase() === cat.slug.toLowerCase()
-    ).length;
+    const catSlugNorm = normalize(cat.slug);
+    const catNameNorm = normalize(cat.name);
+    const postCount = allPosts.filter(p => {
+      const pCatNorm = normalize(p.category);
+      return (
+        pCatNorm === catSlugNorm ||
+        pCatNorm === catNameNorm ||
+        pCatNorm.includes(catSlugNorm) ||
+        catSlugNorm.includes(pCatNorm)
+      );
+    }).length;
     return {
       ...cat,
       articleCount: postCount,

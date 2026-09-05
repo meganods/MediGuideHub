@@ -43,11 +43,12 @@ export default function Footer() {
   ];
 
   const healthcareLinks = [
-    { label: "Health Guides", href: "/blog" },
+    { label: "All Health Guides", href: "/blog" },
     { label: "Preventive Care", href: "/category/preventive-care" },
     { label: "Heart Health", href: "/category/heart-health" },
     { label: "Diabetes Education", href: "/category/diabetes" },
-    { label: "Nutrition Science", href: "/category/fitness" },
+    { label: "Mental Health", href: "/category/mental-health" },
+    { label: "Women's Health", href: "/category/women-s-health" },
     { label: "Senior Healthcare", href: "/category/senior-healthcare" },
   ];
 

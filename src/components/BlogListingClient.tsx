@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 import { updateUserSavedPosts, BlogPost, BlogCategory } from "@/lib/db";
+import { getAuthorProfileUrl } from "@/components/BlogComponents";
 import { 
   Search, 
   BookOpen, 
@@ -153,10 +154,10 @@ function BlogListingContent({
             mediguide4u Knowledge Base
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight max-w-3xl mx-auto">
-            Empowering Health Literacy with Evidence-Based Research
+            Doctor-Reviewed Medical &amp; Wellness Guides
           </h1>
           <p className="text-stone-600 max-w-2xl mx-auto text-sm leading-relaxed">
-            Objective educational health guides, wellness strategies, and preventive care guidelines researched from public health literature.
+            Clear, structured health guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.
           </p>
 
           {/* Direct Search Bar */}
@@ -295,7 +296,13 @@ function BlogListingContent({
                         </div>
                         <div className="pt-4 border-t border-stone-100 flex justify-between items-center mt-2">
                           <span className="text-stone-500 text-xs font-medium mt-1">
-                            By {post.author || "Mediguide4u Editorial Staff"}
+                            By{" "}
+                            <Link 
+                              href={getAuthorProfileUrl(post.author)} 
+                              className="text-[#113F48] hover:text-[#C9A15A] hover:underline font-semibold transition-colors"
+                            >
+                              {post.author || "Mediguide4u Editorial Staff"}
+                            </Link>
                           </span>
                           <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                         </div>

@@ -8,14 +8,14 @@ import { getPublishedBlogPosts, getCategories } from "@/lib/db";
 export const metadata: Metadata = {
   title: "Search Health Guides & Medical Resources | mediguide4u",
   description:
-    "Search evidence-based health guides, preventive wellness advice, nutrition insights, and healthcare resources on mediguide4u.",
+    "Search doctor-reviewed medical guides, symptoms explanations, condition overviews, and clinical nutrition resources on mediguide4u.",
   alternates: {
     canonical: "https://mediguide4u.com/search",
   },
   openGraph: {
     title: "Search Health Guides & Medical Resources | mediguide4u",
     description:
-      "Search evidence-based health guides, preventive wellness advice, nutrition insights, and healthcare resources on mediguide4u.",
+      "Search doctor-reviewed medical guides, symptoms explanations, condition overviews, and clinical nutrition resources on mediguide4u.",
     url: "https://mediguide4u.com/search",
     siteName: "mediguide4u",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Search Health Guides & Medical Resources | mediguide4u",
     description:
-      "Search evidence-based health guides, preventive wellness advice, nutrition insights, and healthcare resources on mediguide4u.",
+      "Search doctor-reviewed medical guides, symptoms explanations, condition overviews, and clinical nutrition resources on mediguide4u.",
   },
 };
 

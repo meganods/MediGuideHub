@@ -10,14 +10,14 @@ export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | mediguide4u",
   description:
-    "Find clear, evidence-based answers to common questions about preventive care, nutrition guidelines, healthcare literacy, and medical editorial integrity.",
+    "Find clear answers to common questions about symptoms, health guidelines, preventive care, clinical nutrition, and editorial review standards.",
   alternates: {
     canonical: "https://mediguide4u.com/faq",
   },
   openGraph: {
     title: "Frequently Asked Questions | mediguide4u",
     description:
-      "Find clear, evidence-based answers to common questions about preventive care, nutrition guidelines, healthcare literacy, and medical editorial integrity.",
+      "Find clear answers to common questions about symptoms, health guidelines, preventive care, clinical nutrition, and editorial review standards.",
     url: "https://mediguide4u.com/faq",
     siteName: "mediguide4u",
     type: "website",

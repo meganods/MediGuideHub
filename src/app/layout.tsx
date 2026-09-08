@@ -34,17 +34,17 @@ const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mediguide4u.com"),
   title: {
-    default: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+    default: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     template: "%s | mediguide4u",
   },
   description:
-    "Explore evidence-based healthcare guides, preventive wellness strategies, clinical condition overviews, and nutrition insights fact-checked by medical professionals.",
+    "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
   applicationName: "mediguide4u",
   authors: [{ name: "mediguide4u Editorial & Medical Board", url: "https://mediguide4u.com/authors" }],
   generator: "Next.js",
   keywords: [
     "healthcare guides",
-    "evidence-based wellness",
+    "doctor-reviewed health",
     "preventive medicine",
     "nutrition science",
     "blood pressure management",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
-      "Explore evidence-based healthcare guides, preventive wellness strategies, clinical condition overviews, and nutrition insights fact-checked by medical professionals.",
+      "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
     url: "https://mediguide4u.com",
     siteName: "mediguide4u",
     locale: "en_US",
@@ -79,15 +79,15 @@ export const metadata: Metadata = {
         url: "https://mediguide4u.com/logo.png",
         width: 1200,
         height: 630,
-        alt: "mediguide4u - Evidence-Based Healthcare Guides",
+        alt: "mediguide4u - Physician-Reviewed Healthcare Guides",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
-      "Explore evidence-based healthcare guides, preventive wellness strategies, and nutrition insights fact-checked by medical professionals.",
+      "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
     site: "@mediguide4u",
     creator: "@mediguide4u",
     images: ["https://mediguide4u.com/logo.png"],
@@ -102,6 +102,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
   },
   other: adsenseClientId
     ? {
@@ -121,7 +124,7 @@ export default function RootLayout({
     "name": "mediguide4u",
     "url": "https://mediguide4u.com",
     "logo": "https://mediguide4u.com/logo.png",
-    "description": "An independent educational platform providing clear, evidence-based healthcare and wellness guides fact-checked against peer-reviewed public health literature.",
+    "description": "An independent educational platform providing clear, physician-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
     "publishingPrinciples": "https://mediguide4u.com/editorial-policy",
     "correctionsPolicy": "https://mediguide4u.com/corrections-policy",
     "knowsAbout": [
@@ -155,6 +158,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ" />
         <link rel="alternate" type="application/rss+xml" title="mediguide4u Health Guides" href="/feed.xml" />
         <script
           dangerouslySetInnerHTML={{

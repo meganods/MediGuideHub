@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 import AdBanner from "@/components/AdBanner";
 import { updateUserSavedPosts, BlogPost, BlogCategory, FAQItem } from "@/lib/db";
+import { getAuthorProfileUrl } from "@/components/BlogComponents";
 import {
   ArrowRight,
   Heart,
@@ -115,7 +116,7 @@ export default function HomeClientView({
   const statsList = [
     { val: `${publishedGuideCount}`, label: "Healthcare Guides" },
     { val: `${topicCategoryCount}`, label: "Health Topics" },
-    { val: "100%", label: "Evidence-Informed" },
+    { val: "100%", label: "Physician Reviewed" },
     { val: "Free", label: "Educational Access" }
   ];
 
@@ -126,7 +127,7 @@ export default function HomeClientView({
         <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
           <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-center">
             <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-[#C9A15A]" /> Educational Healthcare Platform</span>
-            <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#C9A15A]" /> Evidence-Informed Health Information</span>
+            <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#C9A15A]" /> Physician-Reviewed Information</span>
             <span className="flex items-center gap-1.5"><Lock className="h-3.5 w-3.5 text-[#C9A15A]" /> Privacy Protected</span>
             <span className="flex items-center gap-1.5"><RefreshCcw className="h-3.5 w-3.5 text-[#C9A15A]" /> Regularly Updated Content</span>
             <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-[#C9A15A]" /> Secure Platform</span>
@@ -142,13 +143,13 @@ export default function HomeClientView({
             {/* Left Copy */}
             <div className="lg:col-span-7 space-y-6">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9A15A]/10 border border-[#C9A15A]/25 text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">
-                Health information based on reputable medical sources
+                Health Information Fact-Checked by Medical Experts
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#113F48] leading-tight">
                 Clear Healthcare &amp; <span className="text-[#C9A15A]">Wellness Guidelines</span>
               </h1>
               <p className="text-sm md:text-base text-stone-500 font-normal leading-relaxed max-w-xl">
-                We make healthcare concepts accessible to everyone. Explore evidence-informed guides on preventive care, nutrition science, condition awareness, and wellness literacy.
+                We make healthcare concepts accessible to everyone. Explore comprehensive guides covering symptoms, conditions, clinical nutrition, preventive care, and everyday wellness.
               </p>
 
               {/* Direct Search Bar */}
@@ -207,7 +208,7 @@ export default function HomeClientView({
                     <Heart className="h-6 w-6 text-[#C9A15A]" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#113F48]">Evidence-Informed</h3>
+                    <h3 className="text-xl font-bold text-[#113F48]">Physician Reviewed</h3>
                     <p className="text-[10px] text-stone-400">Independent Educational Publication</p>
                   </div>
                 </div>
@@ -237,7 +238,7 @@ export default function HomeClientView({
               { title: "Health Articles", desc: "General healthcare guides and awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
               { title: "Preventive Care", desc: "Methods to sustain wellness before illness", icon: <Shield className="h-5 w-5 text-[#C9A15A]" />, href: "/category/preventive-care" },
               { title: "Mental Health", desc: "Psychological and emotional wellness guides", icon: <Heart className="h-5 w-5 text-[#C9A15A]" />, href: "/category/mental-health" },
-              { title: "Nutrition Science", desc: "Evidence-based dietary guidelines and research", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/fitness" },
+              { title: "Nutrition Science", desc: "Dietary guidelines, micronutrients, and meal planning", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/fitness" },
               { title: "Heart Health", desc: "Cardiovascular wellness and risk prevention", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" />, href: "/category/heart-health" },
               { title: "Women's Health", desc: "Dedicated resources for female health needs", icon: <Users className="h-5 w-5 text-[#C9A15A]" />, href: "/category/women-s-health" },
               { title: "Children's Health", desc: "Pediatric wellness and developmental guides", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" />, href: "/category/children-s-health" },
@@ -303,7 +304,13 @@ export default function HomeClientView({
                   </div>
                   <div className="p-5 pt-3 border-t border-stone-100 flex justify-between items-center">
                     <span className="text-stone-500 text-xs mt-1">
-                      By {post.author || "Mediguide4u Editorial Staff"}
+                      By{" "}
+                      <Link 
+                        href={getAuthorProfileUrl(post.author)} 
+                        className="text-[#113F48] hover:text-[#C9A15A] hover:underline font-semibold transition-colors"
+                      >
+                        {post.author || "Mediguide4u Editorial Staff"}
+                      </Link>
                     </span>
                     <Link href={`/blog/${post.slug}`} className="bg-[#113F48] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#C9A15A] transition-colors shadow-md">Read Guide</Link>
                   </div>
@@ -351,7 +358,7 @@ export default function HomeClientView({
             {[
               { title: "Educational Content", desc: "Purely informational pages without aggressive marketing pitches.", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Editorial Review Process", desc: "All guides are researched and reviewed against reputable medical sources prior to publishing.", icon: <ShieldCheck className="h-5 w-5 text-[#C9A15A]" /> },
-              { title: "Evidence-Informed Resources", desc: "Referencing authoritative medical sources including the NIH, CDC, and WHO.", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" /> },
+              { title: "Authoritative Citations", desc: "Referencing reputable medical institutions including the NIH, CDC, and WHO.", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Privacy First", desc: "We respect your digital privacy. No personal medical queries are tracked or sold.", icon: <Lock className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Regular Content Updates", desc: "Health guides are reviewed periodically to reflect current clinical guidelines.", icon: <RefreshCcw className="h-5 w-5 text-[#C9A15A]" /> },
               { title: "Independent Information", desc: "Independent educational publication with zero commercial product sponsorship bias.", icon: <Award className="h-5 w-5 text-[#C9A15A]" /> }
@@ -435,9 +442,9 @@ export default function HomeClientView({
       {/* ── SECTION 9: NEWSLETTER ── */}
       <section className="py-16 bg-[#113F48] text-white">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Stay Updated with Evidence-Informed Health Information</h3>
+          <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Stay Informed with Clear Healthcare Insights</h3>
           <p className="text-stone-300 max-w-md mx-auto text-xs leading-relaxed">
-            Get evidence-based health guides, wellness updates, and healthcare literacy resources directly in your inbox.
+            Get doctor-reviewed medical guides, wellness tips, and preventive care resources directly in your inbox.
           </p>
           <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto flex gap-2">
             <input

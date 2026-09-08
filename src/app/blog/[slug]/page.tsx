@@ -13,6 +13,7 @@ import {
   BlogPost,
   BlogCategory
 } from "@/lib/db";
+import { MEDICAL_REVIEWERS } from "@/lib/mockData";
 import { 
   Clock, 
   BookOpen, 
@@ -33,6 +34,7 @@ import {
   MedicalDisclaimer, 
   AuthorInfo, 
   MedicalReviewerInfo, 
+  ArticlePhysicianReviewerBox,
   RichText 
 } from "@/components/BlogComponents";
 import { 
@@ -179,12 +181,24 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   const reviewerName = post.medicalReviewer || "Dr. Ananya Roy, MD";
-  const reviewerSlug = reviewerName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const reviewerSchema = {
-    "@type": "Person",
-    "name": reviewerName,
-    "jobTitle": "Board-Certified Clinical Reviewer",
+  const reviewerMatch = MEDICAL_REVIEWERS.find(
+    (r) => r.name.toLowerCase() === reviewerName.toLowerCase() || reviewerName.includes(r.name) || r.name.includes(reviewerName)
+  );
+  const reviewerSlug = reviewerMatch ? reviewerMatch.id : reviewerName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  
+  const reviewerSchema: any = {
+    "@type": "Physician",
+    "name": reviewerMatch?.name || reviewerName,
+    "jobTitle": reviewerMatch?.title || "Board-Certified Clinical Reviewer",
     "url": `https://mediguide4u.com/author/${reviewerSlug}`,
+    "hasCredential": reviewerMatch?.credentials ? [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": reviewerMatch.credentials
+      }
+    ] : undefined,
+    "medicalSpecialty": reviewerMatch?.specialty,
+    "knowsAbout": reviewerMatch?.areasReviewed,
     "worksFor": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
@@ -482,6 +496,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.faqs && post.faqs.length > 0 && (
               <FAQSection faqs={post.faqs} />
             )}
+
+            {/* Medical Reviewer & Clinical Attribution Box */}
+            <ArticlePhysicianReviewerBox 
+              reviewerName={post.medicalReviewer} 
+              reviewedAt={post.medicalReviewedAt || post.lastReviewedDate || post.publishedAt}
+              authorName={post.author}
+            />
 
             {/* References Block */}
             {post.references && post.references.length > 0 ? (

@@ -35,11 +35,13 @@ export default function Footer() {
   const companyLinks = [
     { label: "About Us", href: "/about" },
     { label: "Our Mission", href: "/about#mission" },
-    { label: "Editorial & Medical Board", href: "/authors" },
+    { label: "Medical Review Board", href: "/medical-review-board" },
+    { label: "Editorial Team", href: "/authors" },
     { label: "Contact Us", href: "/contact" },
     { label: "FAQ", href: "/faq" },
     { label: "Health Blog", href: "/blog" },
     { label: "HTML Sitemap", href: "/sitemap" },
+    { label: "XML Sitemap", href: "/sitemap.xml" },
   ];
 
   const healthcareLinks = [
@@ -81,7 +83,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-stone-500 leading-relaxed">
-              Helping people make informed wellness decisions through clear, evidence-based health guides, educational resources, and objective medical literacy content.
+              Helping people make informed wellness decisions through clear, physician-reviewed health guides, educational resources, and objective medical literacy content.
             </p>
           </div>
 

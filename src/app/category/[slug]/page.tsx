@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AdBanner from "@/components/AdBanner";
 import { getCategories, getPublishedBlogPosts, BlogPost, BlogCategory } from "@/lib/db";
+import { getAuthorProfileUrl } from "@/lib/mockData";
 import { 
   BookOpen, 
   ArrowRight, 
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const title = category.seoTitle || `${category.name} Health Guides & Resources | mediguide4u`;
   const description =
     category.seoDesc ||
-    `Explore evidence-based health guides, preventive strategies, and educational resources on ${category.name} at mediguide4u.`;
+    `Explore doctor-reviewed medical guides, symptoms, and clinical wellness resources on ${category.name} at mediguide4u.`;
   const canonicalUrl = `https://mediguide4u.com/category/${category.slug}`;
 
   return {
@@ -205,7 +206,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                 {category.name} Guides &amp; Resources
               </h1>
               <p className="text-stone-600 text-sm md:text-base leading-relaxed">
-                {category.description || `Explore evidence-based educational guides and resources on ${category.name}, fact-checked against public health research.`}
+                {category.description || `Explore doctor-reviewed clinical guides, symptoms overviews, and health resources on ${category.name}.`}
               </p>
             </div>
           </div>
@@ -269,7 +270,13 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                       </div>
                       <div className="pt-4 border-t border-stone-100 flex justify-between items-center mt-2">
                         <span className="text-stone-500 text-xs font-medium truncate max-w-[140px]">
-                          By {post.author || "Mediguide4u Editorial Staff"}
+                          By{" "}
+                          <Link
+                            href={getAuthorProfileUrl(post.author)}
+                            className="text-[#113F48] hover:text-[#C9A15A] hover:underline font-semibold transition-colors"
+                          >
+                            {post.author || "Mediguide4u Editorial Staff"}
+                          </Link>
                         </span>
                         <Link 
                           href={`/blog/${post.slug}`} 
@@ -287,7 +294,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                 <BookOpen className="h-12 w-12 text-stone-300 mx-auto" />
                 <h3 className="text-lg font-bold text-stone-700">Guides Coming Soon</h3>
                 <p className="text-xs text-stone-500 max-w-md mx-auto">
-                  Our editorial team is currently developing evidence-based guides for {category.name}. Check back soon or explore other active topics.
+                  Our editorial team is currently developing comprehensive guides for {category.name}. Check back soon or explore other active topics.
                 </p>
                 <Link 
                   href="/blog" 

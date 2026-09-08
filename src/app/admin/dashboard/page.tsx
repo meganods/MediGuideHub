@@ -1058,7 +1058,7 @@ function AdminContent() {
     setPostSlug(post.slug);
     setPostCategory(post.category);
     setPostSummary(post.summary);
-    setPostContent(post.content);
+    setPostContent(post.content || "");
     setPostAuthor(post.author);
     setPostReadTime(post.readTime);
     setPostImage(post.featuredImage);
@@ -3601,7 +3601,7 @@ function AdminContent() {
                               .filter((post) => {
                                 const matchSearch = 
                                   post.title.toLowerCase().includes(articleSearchQuery.toLowerCase()) ||
-                                  post.content.toLowerCase().includes(articleSearchQuery.toLowerCase());
+                                  (post.content || "").toLowerCase().includes(articleSearchQuery.toLowerCase());
                                 
                                 const matchCat = 
                                   articleFilterCategory === "all" || 

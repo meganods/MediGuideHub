@@ -8,25 +8,25 @@ import { getPublishedBlogPosts, getCategories } from "@/lib/db";
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 
 export const metadata: Metadata = {
-  title: "Evidence-Based Health Guides & Articles | mediguide4u",
+  title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
   description:
-    "Explore objective health guides, preventive medicine topics, nutrition insights, and wellness resources researched from peer-reviewed public health literature.",
+    "Explore comprehensive healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   alternates: {
     canonical: "https://mediguide4u.com/blog",
   },
   openGraph: {
-    title: "Evidence-Based Health Guides & Articles | mediguide4u",
+    title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
     description:
-      "Explore objective health guides, preventive medicine topics, nutrition insights, and wellness resources researched from peer-reviewed public health literature.",
+      "Explore comprehensive healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
     url: "https://mediguide4u.com/blog",
     siteName: "mediguide4u",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evidence-Based Health Guides & Articles | mediguide4u",
+    title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
     description:
-      "Explore objective health guides, preventive medicine topics, nutrition insights, and wellness resources researched from peer-reviewed public health literature.",
+      "Explore comprehensive healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   },
 };
 
@@ -39,7 +39,7 @@ export default async function BlogIndexPage() {
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Evidence-Based Health Guides & Articles",
+    "name": "Doctor-Reviewed Health Guides & Articles",
     "description": "Educational healthcare and wellness guides from mediguide4u.",
     "url": "https://mediguide4u.com/blog",
     "publisher": {

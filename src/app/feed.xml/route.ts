@@ -46,9 +46,9 @@ export async function GET() {
     const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>mediguide4u - Evidence-Based Healthcare Guides &amp; Wellness Resources</title>
+    <title>mediguide4u - Physician-Reviewed Healthcare &amp; Wellness Guides</title>
     <link>${baseUrl}</link>
-    <description>Learn about healthcare plans, wellness topics, preventive care, nutrition, and make informed healthcare decisions.</description>
+    <description>Clear, doctor-reviewed medical guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>

@@ -23,14 +23,14 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Editorial Board & Medical Review Team | mediguide4u",
   description:
-    "Meet the qualified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our strict evidence-based medical review standards.",
+    "Meet the board-certified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our medical review process and editorial guidelines.",
   alternates: {
     canonical: "https://mediguide4u.com/authors",
   },
   openGraph: {
     title: "Editorial Board & Medical Review Team | mediguide4u",
     description:
-      "Meet the qualified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our strict evidence-based medical review standards.",
+      "Meet the board-certified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our medical review process and editorial guidelines.",
     url: "https://mediguide4u.com/authors",
     siteName: "mediguide4u",
     type: "website",
@@ -118,6 +118,27 @@ export default async function AuthorsPage() {
             </div>
           </header>
 
+          {/* Medical Review Board Callout Banner */}
+          <div className="bg-emerald-950 text-white rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-emerald-900">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#C9A15A] bg-[#C9A15A]/20 px-3 py-1 rounded-full inline-flex items-center gap-1.5">
+                <Stethoscope className="h-3.5 w-3.5" /> Clinical Oversight
+              </span>
+              <h2 className="text-2xl font-extrabold text-white">
+                Looking for our Board-Certified Physicians?
+              </h2>
+              <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">
+                Visit our dedicated Medical Review Board page to review full medical licenses, verified clinical credentials, and conflict-of-interest declarations.
+              </p>
+            </div>
+            <Link
+              href="/medical-review-board"
+              className="bg-[#C9A15A] text-white px-6 py-3.5 rounded-xl text-xs font-bold hover:bg-[#B58F4E] transition-colors shadow-md inline-flex items-center gap-2 whitespace-nowrap"
+            >
+              View Medical Review Board <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
           {/* Profiles Section */}
           <section className="space-y-6">
             <h2 className="text-2xl font-extrabold text-[#113F48] flex items-center gap-2">
@@ -132,7 +153,7 @@ export default async function AuthorsPage() {
                   <div className="space-y-3">
                     <div className="flex items-center gap-3.5">
                       <div className="w-14 h-14 rounded-2xl bg-[#113F48] text-white flex items-center justify-center font-bold text-xl border border-[#C9A15A]/30">
-                        {profile.name[0]}
+                        {profile.name.replace("Dr. ", "")[0]}
                       </div>
                       <div>
                         <h3 className="font-extrabold text-lg text-[#113F48]">{profile.name}</h3>
@@ -142,6 +163,13 @@ export default async function AuthorsPage() {
                         )}
                       </div>
                     </div>
+
+                    {profile.licenseNumber && (
+                      <div className="inline-flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md font-semibold border border-emerald-200">
+                        <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" /> License: {profile.licenseNumber}
+                      </div>
+                    )}
+
                     <p className="text-stone-600 text-xs sm:text-sm leading-relaxed line-clamp-4">
                       {profile.bio}
                     </p>

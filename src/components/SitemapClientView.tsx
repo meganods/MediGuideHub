@@ -45,7 +45,8 @@ export default function SitemapClientView({
   const coreRoutes = [
     { label: "Home Page", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Editorial & Medical Board", href: "/authors" },
+    { label: "Medical Review Board", href: "/medical-review-board" },
+    { label: "Editorial Team & Contributors", href: "/authors" },
     { label: "Contact Support & Inquiries", href: "/contact" },
     { label: "Healthcare Guides Catalog", href: "/blog" },
     { label: "Medical FAQ Directory", href: "/faq" },
@@ -139,14 +140,24 @@ export default function SitemapClientView({
         {/* Page Banner Header */}
         <div className="bg-white border border-[#C9A15A]/25 p-8 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9A15A]/10 border border-[#C9A15A]/25 text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">
-              <CheckCircle2 className="h-3.5 w-3.5" /> Comprehensive Platform Index
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9A15A]/10 border border-[#C9A15A]/25 text-[10px] font-bold uppercase tracking-wider text-[#C9A15A]">
+                <CheckCircle2 className="h-3.5 w-3.5" /> Comprehensive Platform Index
+              </span>
+              <a 
+                href="/sitemap.xml" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-200 text-[10px] font-bold uppercase tracking-wider text-stone-700 transition-colors"
+              >
+                XML Sitemap (for Google / Bots) <ExternalLink className="h-3 w-3 ml-0.5" />
+              </a>
+            </div>
             <h1 className="text-3xl font-extrabold text-[#113F48] flex items-center gap-2">
               <Map className="h-7 w-7 text-[#C9A15A]" /> HTML Sitemap &amp; Directory
             </h1>
             <p className="text-xs text-stone-500 max-w-xl">
-              Complete index of all {posts.length} evidence-based healthcare guides, {categories.length} clinical categories, {legalRoutes.length} policy disclosures, and FAQ resources on mediguide4u.
+              Complete index of all {posts.length} physician-verified healthcare guides, {categories.length} clinical categories, {legalRoutes.length} policy disclosures, and FAQ resources on mediguide4u.
             </p>
           </div>
           
@@ -155,7 +166,7 @@ export default function SitemapClientView({
             <Search className="h-4 w-4 text-stone-400 ml-2.5" />
             <input
               type="text"
-              placeholder="Search all 46 guides..."
+              placeholder="Search all guides..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-transparent px-2.5 py-1.5 text-xs text-[#113F48] focus:outline-none"
@@ -266,7 +277,7 @@ export default function SitemapClientView({
                   <BookOpen className="h-5 w-5 text-[#C9A15A]" /> All Healthcare &amp; Medical Guides ({filteredPosts.length} Articles)
                 </h2>
                 <p className="text-xs text-stone-500 mt-1">
-                  Browse our complete directory of peer-reviewed, evidence-based healthcare resources organized by topic area.
+                  Browse our complete directory of peer-reviewed clinical healthcare resources organized by topic area.
                 </p>
               </div>
               <Link 

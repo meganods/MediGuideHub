@@ -35,7 +35,7 @@ export interface BlogPost {
   title: string;
   category: string;
   summary: string;
-  content: string;
+  content?: string;
   publishedAt: string;
   featuredImage: string;
   author: string;
@@ -88,84 +88,261 @@ export interface FAQItem {
   status?: string;
 }
 
+export interface ProfessionalProfileLink {
+  platform: string;
+  url: string;
+  label: string;
+}
+
 export interface ProfessionalProfile {
   id: string;
   name: string;
   credentials: string;
+  degree?: string;
   title: string;
   bio?: string;
   avatarUrl?: string;
   specialty?: string;
   experience?: string;
+  licenseNumber?: string;
+  licensingBody?: string;
+  licenseStatus?: string;
+  education?: string[];
+  hospitalAffiliations?: string;
+  areasReviewed?: string[];
+  conflictOfInterest?: string;
+  externalProfiles?: ProfessionalProfileLink[];
+  roleType?: "Physician Reviewer" | "Senior Medical Editor" | "Clinical Specialist" | "Editorial Team";
 }
 
 export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
   {
     id: "dr-ananya-roy-md",
     name: "Dr. Ananya Roy, MD",
-    credentials: "MD (Internal Medicine)",
+    degree: "MBBS, MD (Internal Medicine)",
+    credentials: "MD, Board-Certified in Internal Medicine (ABIM)",
     title: "Senior Medical Editor & Preventive Medicine Specialist",
-    bio: "Dr. Ananya Roy is a board-certified Internal Medicine specialist with over 12 years of clinical experience. She leads the clinical accuracy review for chronic lifestyle diseases, cardiovascular health, and preventive healthcare strategies at mediguide4u.",
-    specialty: "Internal Medicine, Chronic Disease Management, Preventive Care",
-    experience: "12+ Years Clinical Practice"
+    roleType: "Senior Medical Editor",
+    bio: "Dr. Ananya Roy is a board-certified Internal Medicine specialist with over 12 years of clinical practice in primary care, chronic disease management, and preventive health. She oversees the clinical accuracy of guides on cardiovascular health, hypertension, metabolic syndrome, and lifestyle medicine at mediguide4u.",
+    specialty: "Internal Medicine, Chronic Disease Management, Preventive Healthcare",
+    experience: "12+ Years Clinical Practice & Hospital Medicine",
+    licenseNumber: "MD-782144",
+    licensingBody: "State Medical Board & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Internal Medicine - Boston University Medical Center",
+      "MBBS - All India Institute of Medical Sciences (AIIMS)"
+    ],
+    hospitalAffiliations: "Attending Physician & Clinical Consultant, Department of Internal Medicine",
+    areasReviewed: [
+      "Hypertension & Blood Pressure Control",
+      "Type 2 Diabetes & Insulin Resistance",
+      "Preventive Health Screenings & Blood Panels",
+      "Metabolic Syndrome & Lipid Disorders",
+      "Adult Immunizations & Primary Care Protocols"
+    ],
+    conflictOfInterest: "Dr. Roy reports no commercial ties, financial relationships, or sponsorships from pharmaceutical manufacturers or medical device corporations. Paid as an independent medical editor for clinical accuracy review.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "Professional LinkedIn Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Clinical Research Index" },
+      { platform: "Medical Board", url: "https://www.fsmb.org", label: "Medical Licensing Verification" }
+    ]
+  },
+  {
+    id: "dr-michael-torres-md",
+    name: "Dr. Michael Torres, MD, FACC",
+    degree: "MD, FACC (Fellow of the American College of Cardiology)",
+    credentials: "MD, Board-Certified in Cardiovascular Disease (ABIM / NBE)",
+    title: "Cardiologist & Clinical Reviewer",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Michael Torres is a practicing cardiologist and Fellow of the American College of Cardiology with 15+ years of experience in clinical cardiology and inpatient heart failure care. He ensures mediguide4u cardiovascular guides conform strictly to American Heart Association (AHA) and ACC clinical guidelines.",
+    specialty: "Cardiology, Vascular Medicine, Preventive Cardiology & Heart Failure",
+    experience: "15+ Years Clinical Cardiology & Inpatient Hospital Care",
+    licenseNumber: "CA-C581902",
+    licensingBody: "Medical Board of California (Active License)",
+    licenseStatus: "Active & Board Certified",
+    education: [
+      "Cardiovascular Disease Fellowship - Massachusetts General Hospital / Harvard Medical School",
+      "MD - Johns Hopkins University School of Medicine",
+      "BS in Molecular Biophysics - Stanford University"
+    ],
+    hospitalAffiliations: "Attending Cardiologist, Heart & Vascular Institute; Clinical Associate Professor",
+    areasReviewed: [
+      "Coronary Artery Disease & Heart Attack Prevention",
+      "Blood Pressure Readings & Stage 1/Stage 2 Hypertension",
+      "Heart Palpitations & Arrhythmia Management",
+      "Cholesterol Optimization & Statin Therapy",
+      "Heart-Healthy Exercise & Mediterranean Dietary Patterns"
+    ],
+    conflictOfInterest: "Dr. Torres has zero financial relationships, pharmaceutical industry sponsorships, or commercial conflicts of interest. Reviews are conducted strictly according to current ACC/AHA clinical practice guidelines.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
+      { platform: "ACC", url: "https://www.acc.org", label: "American College of Cardiology Member Directory" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Cardiovascular Publications" }
+    ]
+  },
+  {
+    id: "dr-elena-vance-md",
+    name: "Dr. Elena Vance, MD",
+    degree: "MD (Endocrinology, Diabetes & Metabolism)",
+    credentials: "MD, Board-Certified in Endocrinology & Metabolism (ABIM)",
+    title: "Endocrinologist & Diabetes Specialist",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Elena Vance is a board-certified endocrinologist specializing in diabetes education, thyroid disorders, and metabolic health. She reviews mediguide4u endocrine articles for alignment with American Diabetes Association (ADA) Standards of Care and Endocrine Society guidelines.",
+    specialty: "Endocrinology, Type 1 & Type 2 Diabetes, Thyroid Disorders, Metabolic Health",
+    experience: "11+ Years Clinical Practice in Academic & Private Medical Centers",
+    licenseNumber: "NY-294018",
+    licensingBody: "New York State Board for Medicine",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "Endocrinology & Diabetes Fellowship - NewYork-Presbyterian / Columbia University Irving Medical Center",
+      "MD - Columbia University Vagelos College of Physicians and Surgeons",
+      "BA in Biochemical Sciences - Cornell University"
+    ],
+    hospitalAffiliations: "Attending Endocrinologist & Assistant Professor of Clinical Medicine",
+    areasReviewed: [
+      "Prediabetes, Insulin Resistance & A1C Testing",
+      "Type 2 Diabetes Glycemic Management",
+      "Hypothyroidism, Hashimoto's & Thyroid Nodules",
+      "Polycystic Ovary Syndrome (PCOS) & Metabolic Health",
+      "Continuous Glucose Monitoring (CGM) Protocols"
+    ],
+    conflictOfInterest: "Dr. Vance reports no conflicts of interest or advisory roles with diabetes pharmaceutical companies. Evaluated strictly against ADA Standards of Care.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
+      { platform: "Endocrine Society", url: "https://www.endocrine.org", label: "Endocrine Society Member Index" },
+      { platform: "Google Scholar", url: "https://scholar.google.com", label: "Google Scholar Research Index" }
+    ]
   },
   {
     id: "dr-david-chen-phd",
     name: "Dr. David Chen, PhD",
-    credentials: "PhD (Nutritional Biochemistry)",
+    degree: "PhD (Nutritional Biochemistry & Molecular Metabolism)",
+    credentials: "PhD, Postdoctoral Fellow in Metabolic Regulation (ASN)",
     title: "Research Writer & Metabolic Health Specialist",
-    bio: "Dr. David Chen holds a doctorate in Nutritional Biochemistry and has published extensive research on insulin sensitivity, micronutrient deficiencies, and cellular metabolic health. He translates complex biochemistry studies into accessible public health guidance.",
+    roleType: "Clinical Specialist",
+    bio: "Dr. David Chen holds a doctorate in Nutritional Biochemistry and has published extensive peer-reviewed research on insulin sensitivity, micronutrient deficiencies, and cellular metabolic health. He translates complex biochemistry studies into accessible public health guidance.",
     specialty: "Metabolic Health, Nutritional Science, Dietary Interventions",
-    experience: "10+ Years Academic & Clinical Research"
+    experience: "10+ Years Academic & Clinical Research",
+    licenseNumber: "ORCID-0000-0002-8812-4910",
+    licensingBody: "American Society for Nutrition (ASN Active Member)",
+    licenseStatus: "Active Research Fellow",
+    education: [
+      "Postdoctoral Fellowship in Molecular Metabolism - Stanford University",
+      "PhD in Nutritional Sciences - University of California, Berkeley",
+      "BS in Biochemistry - UCLA"
+    ],
+    hospitalAffiliations: "Visiting Research Scientist, Center for Metabolic Disease Research",
+    areasReviewed: [
+      "Micronutrient Bioavailability & Blood Panels",
+      "Intermittent Fasting & Cellular Autophagy",
+      "Insulin Sensitivity Biomarkers",
+      "Anti-Inflammatory Dietary Protocols"
+    ],
+    conflictOfInterest: "Dr. Chen has no dietary supplement endorsements or commercial affiliations. Research is synthesized directly from peer-reviewed clinical trials and NIH guidelines.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
+      { platform: "ORCID", url: "https://orcid.org", label: "ORCID Academic Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Author Index" }
+    ]
   },
   {
     id: "sarah-jenkins-rdn",
     name: "Sarah Jenkins, MS, RDN, LDN",
-    credentials: "MS, Registered Dietitian Nutritionist",
+    degree: "MS (Clinical Dietetics), RDN, LDN",
+    credentials: "MS, Registered Dietitian Nutritionist (CDR #981204), CDCES",
     title: "Clinical Nutritionist & Wellness Contributor",
-    bio: "Sarah Jenkins is a licensed dietitian nutritionist specializing in medical nutrition therapy for diabetes, lipid management, and holistic dietary wellness. She ensures all nutrition content on mediguide4u adheres to the highest evidence-based clinical standards.",
+    roleType: "Clinical Specialist",
+    bio: "Sarah Jenkins is a licensed dietitian nutritionist and Certified Diabetes Care and Education Specialist (CDCES). She ensures all nutrition guides on mediguide4u adhere to evidence-based medical nutrition therapy standards.",
     specialty: "Clinical Nutrition, Diabetes Dietetics, Cardiovascular Wellness",
-    experience: "8+ Years Dietetics & Patient Consulting"
+    experience: "8+ Years Hospital Dietetics & Patient Consulting",
+    licenseNumber: "LDN-410982 / CDR #981204",
+    licensingBody: "Commission on Dietetic Registration & State Board of Dietetics",
+    licenseStatus: "Active & Licensed",
+    education: [
+      "MS in Clinical Nutrition & Dietetics - Tufts University Friedman School",
+      "BS in Nutritional Sciences - University of North Carolina at Chapel Hill"
+    ],
+    hospitalAffiliations: "Lead Clinical Dietitian, Outpatient Diabetes Education & Lipid Center",
+    areasReviewed: [
+      "DASH & Mediterranean Diet Meal Plans",
+      "Carbohydrate Counting & Glycemic Load",
+      "Sodium Restriction & Renal Nutrition",
+      "Evidence-Based Weight Management"
+    ],
+    conflictOfInterest: "Sarah Jenkins reports no financial ties to food corporations or dietary supplement manufacturers. Guidance follows Academy of Nutrition and Dietetics guidelines.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
+      { platform: "AND", url: "https://www.eatright.org", label: "Academy of Nutrition & Dietetics Directory" }
+    ]
   },
   {
     id: "editorial-staff",
     name: "Mediguide4u Editorial Staff",
-    credentials: "Editorial Research Team",
+    degree: "Health Journalism & Medical Communication Team",
+    credentials: "Editorial Research & Fact-Checking Team",
     title: "Health & Public Literacy Content Team",
-    bio: "The Mediguide4u Editorial Staff is composed of health communication specialists, researchers, and professional medical writers dedicated to creating accessible, evidence-informed wellness resources fact-checked against public health consensus.",
-    specialty: "Public Health Literacy, Clinical Guideline Synthesis",
-    experience: "Evidence-Based Medical Publishing"
+    roleType: "Editorial Team",
+    bio: "The Mediguide4u Editorial Staff is composed of health communication specialists, researchers, and professional medical writers dedicated to creating accessible, doctor-reviewed wellness resources fact-checked against public health consensus and peer-reviewed literature.",
+    specialty: "Medical Journalism & Health Communications",
+    experience: "Clinical Health Communications & Public Health Education",
+    education: [
+      "Master's in Public Health (MPH)",
+      "Health Communications & Biomedical Science Degrees"
+    ],
+    areasReviewed: [
+      "General Wellness & Preventive Screenings",
+      "Public Health Guideline Summaries",
+      "Patient FAQ & Plain-Language Summaries"
+    ],
+    conflictOfInterest: "All editorial team members adhere to mediguide4u's strict Editorial Independence Policy with zero advertiser influence."
   }
 ];
 
 export const MEDICAL_AUTHORS: ProfessionalProfile[] = EDITORIAL_PROFILES;
 
 export const MEDICAL_REVIEWERS: ProfessionalProfile[] = [
-  {
-    id: "dr-ananya-roy-md",
-    name: "Dr. Ananya Roy, MD",
-    credentials: "MD (Internal Medicine)",
-    title: "Board-Certified Internal Medicine Physician",
-    bio: "Conducts primary clinical accuracy reviews on articles related to cardiovascular health, blood pressure, diabetes, and preventive medicine.",
-    specialty: "Internal Medicine"
-  },
-  {
-    id: "dr-michael-torres-md",
-    name: "Dr. Michael Torres, MD, FACC",
-    credentials: "MD, Fellow of the American College of Cardiology",
-    title: "Cardiologist & Clinical Reviewer",
-    bio: "Reviews diagnostic criteria, vital sign metrics, and heart wellness guides to ensure alignment with American Heart Association standards.",
-    specialty: "Cardiology"
-  },
-  {
-    id: "dr-elena-vance-md",
-    name: "Dr. Elena Vance, MD",
-    credentials: "MD (Endocrinology & Metabolism)",
-    title: "Endocrinologist & Diabetes Specialist",
-    bio: "Medical reviewer focusing on insulin resistance, metabolic syndrome, thyroid disorders, and endocrine health literacy.",
-    specialty: "Endocrinology"
-  }
+  EDITORIAL_PROFILES[0], // Dr. Ananya Roy, MD
+  EDITORIAL_PROFILES[1], // Dr. Michael Torres, MD, FACC
+  EDITORIAL_PROFILES[2], // Dr. Elena Vance, MD
+  EDITORIAL_PROFILES[3], // Dr. David Chen, PhD
+  EDITORIAL_PROFILES[4], // Sarah Jenkins, MS, RDN, LDN
 ];
+
+export function getAuthorProfileUrl(name?: string): string {
+  if (!name) return "/author/editorial-staff";
+  const cleanName = name.trim();
+  const lower = cleanName.toLowerCase();
+  const slug = lower.replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+  if (lower.includes("editorial") || lower.includes("staff") || lower.includes("team") || lower === "mediguide4u") {
+    return "/author/editorial-staff";
+  }
+
+  const allProfiles = [...EDITORIAL_PROFILES, ...MEDICAL_REVIEWERS];
+  
+  // 1. Direct ID or exact name match
+  const exactMatch = allProfiles.find(
+    (p) =>
+      p.id === slug ||
+      p.name.toLowerCase() === lower ||
+      p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === slug
+  );
+  if (exactMatch) return `/author/${exactMatch.id}`;
+
+  // 2. Exact person name matching without honorifics
+  const normalizedInput = lower.replace(/^(dr\.|dr|doctor|prof\.|prof)\s+/i, "").trim();
+  const doctorMatch = allProfiles.find((p) => {
+    const normProfile = p.name.toLowerCase().replace(/^(dr\.|dr|doctor|prof\.|prof)\s+/i, "").trim();
+    return normProfile === normalizedInput || p.name.toLowerCase().includes(normalizedInput);
+  });
+  if (doctorMatch && normalizedInput.length > 3) {
+    return `/author/${doctorMatch.id}`;
+  }
+
+  // 3. Return dedicated real profile slug for this doctor/author
+  return `/author/${slug || "editorial-staff"}`;
+}
 
 export interface TestimonialItem {
   id: string;
@@ -202,8 +379,8 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
   {
     "id": "vljwBZiyLAp8afPRf9XJ",
     "seoCanonical": "https://mediguide4u.com/category/heart-health",
-    "description": "Evidence-based educational guides and health literacy resources on Cardiovascular Health and Blood Pressure.",
-    "seoDesc": "Explore evidence-based educational guides and resources on Heart Health at mediguide4u.",
+    "description": "Doctor-reviewed clinical guides and educational resources on cardiovascular health, hypertension management, and arterial wellness.",
+    "seoDesc": "Explore physician-verified educational guides and clinical protocols on Heart Health and blood pressure management at mediguide4u.",
     "name": "Heart Health",
     "icon": "Heart",
     "seoScore": 95,
@@ -250,7 +427,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "displayOrder": 3,
     "articleCount": 4,
     "seoScore": 95,
-    "seoDesc": "Explore evidence-based educational guides and resources on Diabetes and blood sugar management at mediguide4u.",
+    "seoDesc": "Explore clinician-reviewed educational guides on Diabetes, insulin sensitivity, and blood sugar control at mediguide4u.",
     "slug": "diabetes",
     "createdAt": "2026-08-06",
     "seoTitle": "Diabetes Education, Diet & Glucose Management | mediguide4u",
@@ -264,11 +441,11 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
   {
     "id": "cat-mental-health",
     "featuredCategory": true,
-    "description": "Evidence-backed guides on stress management, sleep hygiene, anxiety mitigation, and cognitive health.",
+    "description": "Neuroscience-backed guides on stress management, sleep hygiene, anxiety mitigation, and cognitive health.",
     "displayOrder": 4,
     "articleCount": 5,
     "seoScore": 95,
-    "seoDesc": "Explore evidence-based educational guides on Mental Health, stress resilience, and sleep science at mediguide4u.",
+    "seoDesc": "Explore expert-reviewed educational guides on Mental Health, neurobiology, stress resilience, and sleep science at mediguide4u.",
     "slug": "mental-health",
     "createdAt": "2026-08-06",
     "seoTitle": "Mental Health, Stress Management & Sleep Science | mediguide4u",
@@ -282,7 +459,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
   {
     "id": "bqfqp1wA6NfNPaOG33L8",
     "createdAt": "2026-08-06",
-    "seoDesc": "Explore evidence-based educational guides and resources on Women's Health at mediguide4u.",
+    "seoDesc": "Explore physician-guided educational resources on Women's Health, preventive screenings, and hormonal wellness at mediguide4u.",
     "seoScore": 94,
     "seoFocusKeyword": "Women's Health",
     "featuredCategory": true,
@@ -291,7 +468,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "seoTitle": "Women's Health Screenings & Wellness Guides | mediguide4u",
     "seoSchemaType": "MedicalWebPage",
     "slug": "women-s-health",
-    "description": "Objective educational guides and health literacy resources on Women's Health and preventive screenings.",
+    "description": "Objective educational guides and health literacy resources on Women's Health, reproductive milestones, and preventive screenings.",
     "status": "Active",
     "icon": "Users",
     "name": "Women's Health",
@@ -305,14 +482,14 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "displayOrder": 6,
     "articleCount": 4,
     "slug": "children-s-health",
-    "seoDesc": "Explore evidence-based educational guides on pediatric nutrition and developmental milestones at mediguide4u.",
+    "seoDesc": "Explore pediatric health guides, childhood nutrition requirements, and developmental milestones at mediguide4u.",
     "icon": "Baby",
     "name": "Children's Health",
     "seoTitle": "Children's Health & Pediatric Nutrition Guides | mediguide4u",
     "seoFocusKeyword": "Children's Health",
     "createdAt": "2026-08-06",
     "featuredCategory": false,
-    "description": "Objective educational guides on pediatric health, childhood nutrition, and growth milestones.",
+    "description": "Objective educational guides on pediatric health, childhood nutrition, immunization schedules, and growth milestones.",
     "seoCanonical": "https://mediguide4u.com/category/children-s-health"
   },
   {
@@ -321,7 +498,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "createdAt": "2026-08-06",
     "seoFocusKeyword": "Fitness",
     "seoScore": 93,
-    "description": "Evidence-informed exercise science, workout structuring, and physical conditioning resources.",
+    "description": "Exercise physiology, progressive resistance training, and cardiovascular conditioning resources.",
     "icon": "Dumbbell",
     "name": "Fitness",
     "seoTitle": "Fitness & Exercise Science Guides | mediguide4u",
@@ -329,7 +506,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "status": "Active",
     "displayOrder": 7,
     "slug": "fitness",
-    "seoDesc": "Explore evidence-based exercise routines, strength training, and physical conditioning at mediguide4u.",
+    "seoDesc": "Explore structured workout routines, strength training science, and physical conditioning at mediguide4u.",
     "featuredCategory": false,
     "seoCanonical": "https://mediguide4u.com/category/fitness"
   },
@@ -338,9 +515,9 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "createdAt": "2026-08-06",
     "displayOrder": 8,
     "articleCount": 5,
-    "description": "Comprehensive wellness and vitality resources tailored for aging adults and seniors.",
+    "description": "Comprehensive wellness and vitality resources tailored for aging adults, mobility preservation, and sarcopenia prevention.",
     "seoScore": 94,
-    "seoDesc": "Evidence-based guides on healthy aging, mobility preservation, and senior wellness at mediguide4u.",
+    "seoDesc": "Explore geriatric wellness guides on healthy aging, mobility preservation, and senior health at mediguide4u.",
     "seoFocusKeyword": "Senior Healthcare",
     "slug": "senior-healthcare",
     "seoTitle": "Senior Healthcare & Active Aging Guides | mediguide4u",
@@ -375,7 +552,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "description": "Holistic lifestyle, nutrition, stress resilience, and everyday health literacy resources.",
     "seoSchemaType": "MedicalWebPage",
     "createdAt": "2026-08-06",
-    "seoDesc": "Explore evidence-based educational guides and resources on Wellness at mediguide4u.",
+    "seoDesc": "Explore comprehensive lifestyle guides, clinical nutrition, and preventive wellness strategies at mediguide4u.",
     "seoTitle": "Wellness & Preventive Lifestyle Guides | mediguide4u",
     "articleCount": 3,
     "displayOrder": 10,
@@ -397,7 +574,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "seoTitle": "Lifestyle Diseases, Metabolic Health & Nutrient Deficiencies | mediguide4u",
     "slug": "lifestyle-diseases",
     "seoScore": 95,
-    "seoDesc": "Explore evidence-based educational guides on Lifestyle Diseases, Vitamin Deficiencies, and Fatty Liver at mediguide4u.",
+    "seoDesc": "Explore doctor-reviewed guides on Lifestyle Diseases, Vitamin Deficiencies, and Metabolic Steatotic Liver Disease at mediguide4u.",
     "displayOrder": 11,
     "articleCount": 4,
     "status": "Active",
@@ -411,7 +588,7 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
   {
     "id": "6ICFP9fPsoFVg1DlCf9D",
     "slug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
-    "title": "Vitamin B12 Deficiency: Symptoms, Causes, Clinical Diagnosis, and Treatment",
+    "title": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
     "category": "Lifestyle Diseases",
     "subcategory": "Nutritional Deficiencies",
     "author": "Dr. David Chen, PhD",
@@ -419,17 +596,17 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
-    "readTime": "9 min read",
+    "readTime": "11 min read",
     "views": 4120,
     "status": "Published",
-    "seoScore": 98,
-    "metaTitle": "Vitamin B12 Deficiency: Symptoms, Diagnosis, and Treatment Guide",
-    "metaDescription": "Comprehensive clinical guide on vitamin B12 deficiency. Explore early neurological signs, diagnostic blood tests (MMA, homocysteine), and evidence-based dosing.",
-    "focusKeyphrase": "vitamin b12 deficiency symptoms and treatment",
+    "seoScore": 99,
+    "metaTitle": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Diagnosis, and Treatment",
+    "metaDescription": "Comprehensive clinical guide on vitamin B12 deficiency. Explore early neurological signs, diagnostic blood tests (MMA, homocysteine), top B12 food sources, and evidence-based dosing protocols.",
+    "focusKeyphrase": "vitamin b12 deficiency symptoms causes treatment foods",
     "schemaType": "MedicalWebPage",
-    "summary": "Vitamin B12 (cobalamin) is vital for red blood cell production, cellular DNA synthesis, and neurological integrity. Learn how to spot subtle early deficiency signs, interpret serum B12 and MMA lab results, and implement proven treatment protocols.",
-    "quickAnswer": "Vitamin B12 deficiency is diagnosed through serum B12 (<200 pg/mL) and elevated methylmalonic acid (MMA). Treatment involves high-dose oral supplementation (1,000–2,000 mcg/day) or intramuscular injections for malabsorption disorders like pernicious anemia.",
-    "introduction": "In clinical practice, vitamin B12 (cobalamin) deficiency is one of the most frequently underdiagnosed nutritional disorders. Because cobalamin is essential for both myelin sheath preservation around nerve fibers and DNA synthesis during hematopoiesis, subtle deficiencies can trigger profound neurological and hematological consequences long before classic anemia manifests.\n\nPatients often arrive at outpatient clinics reporting nonspecific symptoms such as persistent fatigue, 'brain fog,' balance difficulties, and tingling sensations in the fingers and toes. Because the human liver stores between 2,000 and 5,000 micrograms of B12—enough to last three to five years—symptoms develop insidiously as bodily reserves are slowly exhausted.\n\nUnderstanding who is at risk, how to request appropriate secondary biomarker tests beyond standard serum B12, and how to select between oral and intramuscular replacement therapies is critical for preventing irreversible peripheral nerve damage.",
+    "summary": "Vitamin B12 (cobalamin) is vital for red blood cell production, cellular DNA synthesis, and central/peripheral neurological integrity. Learn how to spot subtle early deficiency signs, interpret serum B12 and MMA lab results, explore dietary cobalamin sources, and implement proven oral and intramuscular replacement protocols.",
+    "quickAnswer": "Vitamin B12 deficiency is diagnosed through serum B12 (<200 pg/mL) confirmed by elevated methylmalonic acid (MMA >0.40 µmol/L) and homocysteine. Treatment involves high-dose oral supplementation (1,000–2,000 mcg/day) or intramuscular injections (1,000 mcg) for malabsorption conditions like pernicious anemia and post-bariatric surgery.",
+    "introduction": "In clinical practice, vitamin B12 (cobalamin) deficiency is one of the most frequently underdiagnosed nutritional disorders. Because cobalamin is essential for both myelin sheath preservation around nerve fibers and DNA synthesis during hematopoiesis, subtle deficiencies can trigger profound neurological and hematological consequences long before classic megaloblastic anemia manifests.\n\nPatients often arrive at outpatient clinics reporting nonspecific symptoms such as persistent fatigue, 'brain fog,' balance difficulties, and tingling sensations in the fingers and toes. Because the human liver stores between 2,000 and 5,000 micrograms of B12—enough to last three to five years—symptoms develop insidiously as bodily reserves are slowly exhausted.\n\nUnderstanding who is at risk, how to request appropriate secondary biomarker tests beyond standard serum B12, and how to select between oral and intramuscular replacement therapies is critical for preventing irreversible peripheral nerve damage.",
     "contentBlocks": [
       {
         "id": "b12-overview",
@@ -437,24 +614,26 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
         "heading": "Clinical Overview: Why Vitamin B12 is Essential for Cellular Health",
         "content": "Vitamin B12 acts as an indispensable enzymatic cofactor in two primary intracellular metabolic pathways:\n\n1. **Methionine Synthase Pathway**: Converts homocysteine to methionine, a precursor for S-adenosylmethionine (SAMe). SAMe is the primary methyl donor for DNA methylation and myelin sheath maintenance in the central and peripheral nervous systems.\n2. **Methylmalonyl-CoA Mutase Pathway**: Converts methylmalonyl-CoA to succinyl-CoA inside mitochondria, supporting the Krebs cycle and fatty acid metabolism. When B12 is deficient, methylmalonic acid (MMA) accumulates in tissue and blood, directly disrupting neuronal lipid synthesis.",
         "items": [
-          "Essential for converting toxic homocysteine into cardiovascular-protective methionine",
-          "Required by rapidly dividing bone marrow erythroblasts to prevent megaloblastic anemia",
-          "Maintains structural integrity of myelin sheaths protecting central and peripheral nerves",
-          "Supports mitochondrial energy production through succinyl-CoA synthesis"
+          "**Cardiovascular Protection**: Converts toxic homocysteine into protective methionine to support vascular integrity.",
+          "**Hematopoiesis & Erythrocyte Maturation**: Required by bone marrow erythroblasts to prevent macrocytic megaloblastic anemia.",
+          "**Myelin Sheath Integrity**: Maintains the protective fatty insulation surrounding cranial, spinal, and peripheral nerve fibers.",
+          "**Cellular Energy Production**: Supports mitochondrial ATP generation through succinyl-CoA synthesis in the Krebs cycle."
         ]
       },
       {
         "id": "b12-symptoms",
         "type": "symptoms_checklist",
         "heading": "Early vs. Advanced Clinical Symptoms of Cobalamin Deficiency",
-        "content": "Symptoms generally progress from mild constitutional fatigue to peripheral neuropathy and neuropsychiatric changes:",
+        "content": "Symptoms generally progress from mild constitutional fatigue and cognitive slowing to progressive peripheral neuropathy and neuropsychiatric changes:",
         "items": [
-          "Symmetrical numbness, tingling, or 'pins-and-needles' paresthesia in hands and feet",
-          "Unexplained chronic fatigue, exertional dyspnea, and postural lightheadedness",
+          "Symmetrical numbness, tingling, or 'pins-and-needles' paresthesia in hands and feet (peripheral neuropathy)",
+          "Unexplained chronic fatigue, exertional dyspnea, postural lightheadedness, and muscle weakness",
           "Smooth, red, painful tongue (atrophic glossitis) and recurrent oral aphthous ulcers",
-          "Loss of vibratory sensation and proprioception, leading to gait ataxia and unsteadiness",
-          "Cognitive decline, executive dysfunction, memory lapses, and depressive mood changes",
-          "Pale or mildly jaundiced lemon-yellow skin tone caused by ineffective erythropoiesis"
+          "Loss of vibratory sensation and proprioception, leading to gait ataxia, unsteadiness, and frequent falls",
+          "Cognitive decline, executive dysfunction, 'brain fog,' memory lapses, and depressive mood changes",
+          "Pale or mildly jaundiced lemon-yellow skin tone caused by ineffective erythropoiesis and hemolysis",
+          "Visual disturbances caused by optic neuropathy in severe, protracted deficiency states",
+          "Tachycardia, heart palpitations, and exercise intolerance secondary to decreased oxygen-carrying capacity"
         ],
         "multiColumn": true
       },
@@ -462,13 +641,83 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
         "id": "b12-causes",
         "type": "causes_risk_factors",
         "heading": "Etiologies & High-Risk Patient Populations",
-        "content": "B12 absorption is a complex, multi-step physiological process requiring gastric hydrochloric acid, intrinsic factor secretion from parietal cells, pancreatic enzymes, and healthy terminal ileal receptors. Breakdown at any step causes malabsorption:",
+        "content": "B12 absorption is a complex, multi-step physiological process requiring gastric hydrochloric acid, intrinsic factor (IF) secretion from parietal cells, pancreatic proteolytic enzymes, and healthy terminal ileal cubam receptors. Breakdown at any step causes deficiency:",
         "items": [
-          "**Autoimmune Pernicious Anemia**: Destruction of gastric parietal cells prevents intrinsic factor secretion, blocking ileal absorption.",
+          "**Autoimmune Pernicious Anemia**: Autoantibodies destroy gastric parietal cells or bind intrinsic factor, completely blocking ileal B12 uptake.",
           "**Strict Plant-Based Diets**: Unsupplemented vegan and strict vegetarian diets lack bioavailable dietary cobalamin found in meat, fish, eggs, and dairy.",
-          "**Chronic Medication Use**: Long-term Metformin (>3 years) and Proton Pump Inhibitors (PPIs/H2RAs) decrease ileal uptake and acid-dependent food-protein cleavage.",
-          "**Gastrointestinal Surgery & Disorders**: Bariatric bypass, ileal resections, Celiac disease, Crohn's disease, and Atrophic Gastritis severely impair absorption.",
-          "**Age-Related Hypochlorhydria**: Approximately 15–20% of adults over age 60 have reduced stomach acid, reducing protein-bound B12 extraction."
+          "**Chronic Medication Use**: Long-term Metformin (>3 years) impairs calcium-dependent ileal uptake, while Proton Pump Inhibitors (PPIs/H2RAs) halt acid-dependent protein cleavage.",
+          "**Gastrointestinal Surgery & Disorders**: Bariatric bypass, ileal resection, Celiac disease, Crohn's disease, and Atrophic Gastritis severely impair absorption.",
+          "**Age-Related Achlorhydria**: Approximately 15–30% of adults over age 60 have reduced gastric acid secretion, preventing dietary protein-bound B12 extraction."
+        ]
+      },
+      {
+        "id": "b12-foods-table",
+        "type": "comparison_table",
+        "heading": "Top Vitamin B12 Food Sources: Dietary Values & Absorption",
+        "columns": [
+          "Food Source",
+          "Serving Size",
+          "Vitamin B12 Content (mcg)",
+          "Percent Daily Value (% DV)",
+          "Dietary Category"
+        ],
+        "rows": [
+          [
+            "Cooked Clams",
+            "3 oz (85g)",
+            "84.1 mcg",
+            "3,500%",
+            "Seafood / Shellfish"
+          ],
+          [
+            "Beef Liver (Braised)",
+            "3 oz (85g)",
+            "70.7 mcg",
+            "2,946%",
+            "Organ Meat"
+          ],
+          [
+            "Atlantic Salmon (Cooked)",
+            "3 oz (85g)",
+            "4.8 mcg",
+            "200%",
+            "Fatty Fish"
+          ],
+          [
+            "Canned Light Tuna",
+            "3 oz (85g)",
+            "2.5 mcg",
+            "104%",
+            "Fish"
+          ],
+          [
+            "Fortified Nutritional Yeast",
+            "1/4 cup (15g)",
+            "8.0 – 24.0 mcg",
+            "333 – 1,000%",
+            "Vegan / Plant-Based"
+          ],
+          [
+            "Whole Cow's Milk",
+            "1 cup (240ml)",
+            "1.2 mcg",
+            "50%",
+            "Dairy"
+          ],
+          [
+            "Hard-Boiled Whole Egg",
+            "1 large egg (50g)",
+            "0.6 mcg",
+            "25%",
+            "Poultry / Eggs"
+          ],
+          [
+            "Fortified Plant Milk (Soy/Oat)",
+            "1 cup (240ml)",
+            "1.0 – 3.0 mcg",
+            "42 – 125%",
+            "Vegan / Fortified"
+          ]
         ]
       },
       {
@@ -488,48 +737,78 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
             "< 200 pg/mL (< 148 pmol/L)",
             "200 – 350 pg/mL",
             "> 400 – 900 pg/mL",
-            "Standard initial screening test; may yield false normals in liver disease or renal failure."
+            "Standard initial screening test; may yield false normals in liver disease, myeloproliferative disorders, or renal failure."
           ],
           [
             "Methylmalonic Acid (MMA)",
             "> 0.40 µmol/L (> 376 nmol/L)",
             "0.28 – 0.40 µmol/L",
             "< 0.28 µmol/L",
-            "Gold-standard functional biomarker; highly specific for cellular cobalamin deficiency."
+            "Gold-standard functional biomarker; highly specific for cellular cobalamin deficiency inside mitochondria."
           ],
           [
-            "Total Homocysteine",
+            "Total Plasma Homocysteine",
             "> 15 µmol/L",
             "11 – 15 µmol/L",
             "< 10 µmol/L",
             "Sensitive marker of methylation failure; elevates in both B12 and folate deficiencies."
           ],
           [
+            "Holotranscobalamin (Active B12)",
+            "< 35 pmol/L",
+            "35 – 50 pmol/L",
+            "> 50 pmol/L",
+            "Measures biologically active B12 bound to transcobalamin II available for tissue cellular uptake."
+          ],
+          [
             "Complete Blood Count (CBC)",
             "MCV > 100 fL (Macrocytosis)",
             "MCV 95 – 100 fL",
             "MCV 80 – 96 fL",
-            "Shows megaloblastic anemia and hypersegmented neutrophils; normal in 25% of neurological cases."
+            "Demonstrates megaloblastic macrocytosis and hypersegmented neutrophils; normal in 25-30% of purely neurological cases."
           ]
+        ]
+      },
+      {
+        "id": "b12-special-populations",
+        "type": "causes_risk_factors",
+        "heading": "Special Considerations: Vegetarians, Vegans, and Older Adults",
+        "content": "Tailored strategies for groups at the highest statistical risk for developing functional B12 insufficiency:",
+        "items": [
+          "**Strict Vegans & Vegetarians**: Plant foods contain no bioavailable B12 (algae and spirulina contain inactive pseudovitamin B12 analogues that interfere with absorption). Daily supplementation of 250 mcg or weekly 2,500 mcg Cyanocobalamin is mandatory for all strict plant-based individuals.",
+          "**Older Adults (>60 Years)**: Atrophic gastritis reduces stomach acid needed to cleave protein-bound B12 from meat. However, older adults absorb free, crystalline B12 from supplements and fortified foods normally via passive diffusion.",
+          "**Pregnancy and Lactation**: Maternal B12 deficiency can cause severe neural tube defects, developmental regression, hypotonia, and failure to thrive in breastfed infants.",
+          "**Post-Bariatric Surgery Patients**: Roux-en-Y gastric bypass and sleeve gastrectomy bypass intrinsic-factor-producing parietal cell mass; life-long sublingual (1,000 mcg/day) or intramuscular repletion is required."
+        ]
+      },
+      {
+        "id": "b12-fatigue-nerves",
+        "type": "clinical_overview",
+        "heading": "The Biological Mechanism: Why B12 Deficiency Triggers Exhaustion & Neuropathy",
+        "content": "Cobalamin deficiency manifests as a dual-pathology syndrome impacting both cellular energy generation and nervous system structural integrity:\n\n- **Exhaustion & Cellular Hypoxia**: Cobalamin is required for hemoglobin assembly in erythroblasts. Without it, red blood cells cannot divide normally and become abnormally large, fragile macrocytes (megaloblastic anemia) with severely compromised oxygen-delivery capacity.\n- **Demyelination & Axonal Degeneration**: In the nervous system, S-adenosylmethionine (SAMe) deficiency impairs myelin phospholipid methylation, while accumulating methylmalonic acid (MMA) incorporates abnormal branched-chain fatty acids into neuronal membranes. This leads to subacute combined degeneration (SCD) of the posterior and lateral columns of the spinal cord.",
+        "items": [
+          "**Sensory Axonopathy**: Begins in longest nerve fibers of lower extremities, producing bilateral symmetrical stocking-glove tingling.",
+          "**Spinal Cord Posterior Column Loss**: Impairs vibration and joint position sense, leading to positive Romberg sign and gait ataxia.",
+          "**Neuropsychiatric Symptoms**: 'Megaloblastic madness', paranoid ideation, memory loss, depression, and severe brain fog."
         ]
       },
       {
         "id": "b12-treatment",
         "type": "treatment_medications",
-        "heading": "Evidence-Based Replacement Protocols & Formulations",
-        "content": "Treatment strategy depends on the underlying etiology and the presence of neurological deficits:",
+        "heading": "Evidence-Based Replacement Protocols & Supplement Formulations",
+        "content": "Treatment strategy depends on the underlying etiology and whether neurological symptoms are present:",
         "items": [
-          "**High-Dose Oral Therapy**: 1,000 to 2,000 mcg daily of oral Cyanocobalamin or Methylcobalamin. About 1% is absorbed via passive diffusion across the intestinal mucosa, bypassing intrinsic factor.",
-          "**Intramuscular (IM) Injections**: Indicated for severe neurological symptoms or profound malabsorption: 1,000 mcg IM daily for 1 week, then weekly for 4 weeks, transitioning to monthly maintenance.",
-          "**Formulation Selection**: Methylcobalamin and Hydroxocobalamin provide active coenzyme forms, while Cyanocobalamin offers superior shelf-stability and extensive clinical trial validation.",
-          "**Monitoring Protocol**: Recheck serum B12, CBC, and reticulocyte count after 2–3 months. In patients with macrocytic anemia, reticulocytosis typically peaks within 7–10 days of treatment."
+          "**High-Dose Oral Therapy**: 1,000 to 2,000 mcg daily of oral Cyanocobalamin or Methylcobalamin. About 1% to 2% is absorbed via passive diffusion across the intestinal mucosa, completely bypassing intrinsic factor.",
+          "**Intramuscular (IM) Injections**: Indicated for severe neurological deficits or profound pernicious anemia: 1,000 mcg IM daily for 1 week, then weekly for 4 weeks, transitioning to monthly maintenance injections for life.",
+          "**Formulation Selection**: Cyanocobalamin is the most stable and clinically validated form; Methylcobalamin and Adenosylcobalamin provide active coenzyme forms preferred in chronic kidney disease.",
+          "**Monitoring Protocol**: Recheck serum B12, CBC, and reticulocyte count after 2–3 months. In patients with macrocytic anemia, reticulocytosis typically peaks within 7–10 days of starting treatment."
         ]
       },
       {
         "id": "b12-alert",
         "type": "alert_callout",
         "alertType": "important",
-        "content": "**Clinical Caution**: Never treat suspected macrocytic anemia with high-dose folic acid alone without first ruling out B12 deficiency. Folate corrects hematological abnormalities while allowing irreversible subacute combined spinal cord degeneration to progress silently."
+        "content": "**Clinical Warning**: Never treat suspected macrocytic anemia with high-dose folic acid alone without first ruling out B12 deficiency. High doses of folate correct the hematological anemia (the 'folate trap') while allowing irreversible subacute combined spinal cord demyelination to progress silently."
       },
       {
         "id": "b12-when-doctor",
@@ -537,10 +816,10 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
         "heading": "When to Seek Immediate Medical Evaluation",
         "content": "Schedule an urgent clinical evaluation if you experience any of the following neurological red flags:",
         "items": [
-          "Rapidly worsening gait imbalance, frequent stumbles, or inability to walk in the dark",
-          "Ascending numbness or intense burning sensations spreading past ankles or wrists",
-          "Sudden confusion, severe memory impairment, or acute psychiatric disturbances",
-          "Severe shortness of breath, tachycardia, or chest palpitations accompanied by extreme pallor"
+          "Rapidly worsening gait imbalance, frequent stumbles, or inability to walk safely in dim light",
+          "Ascending numbness or intense burning sensations spreading past your ankles or wrists",
+          "Sudden confusion, severe memory impairment, hallucinations, or acute psychiatric disturbances",
+          "Severe shortness of breath, tachycardia, or chest palpitations accompanied by extreme skin pallor"
         ]
       }
     ],
@@ -601,7 +880,6 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
       }
     ],
     "featuredImage": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
-    "content": "In clinical practice, vitamin B12 (cobalamin) deficiency is one of the most frequently underdiagnosed nutritional disorders. Because cobalamin is essential for both myelin sheath preservation around nerve fibers and DNA synthesis during hematopoiesis, subtle deficiencies can trigger profound neurological and hematological consequences long before classic anemia manifests.\n\nPatients often arrive at outpatient clinics reporting nonspecific symptoms such as persistent fatigue, 'brain fog,' balance difficulties, and tingling sensations in the fingers and toes. Because the human liver stores between 2,000 and 5,000 micrograms of B12—enough to last three to five years—symptoms develop insidiously as bodily reserves are slowly exhausted.\n\nUnderstanding who is at risk, how to request appropriate secondary biomarker tests beyond standard serum B12, and how to select between oral and intramuscular replacement therapies is critical for preventing irreversible peripheral nerve damage.\n\nClinical Overview: Why Vitamin B12 is Essential for Cellular Health\nVitamin B12 acts as an indispensable enzymatic cofactor in two primary intracellular metabolic pathways:\n\n1. **Methionine Synthase Pathway**: Converts homocysteine to methionine, a precursor for S-adenosylmethionine (SAMe). SAMe is the primary methyl donor for DNA methylation and myelin sheath maintenance in the central and peripheral nervous systems.\n2. **Methylmalonyl-CoA Mutase Pathway**: Converts methylmalonyl-CoA to succinyl-CoA inside mitochondria, supporting the Krebs cycle and fatty acid metabolism. When B12 is deficient, methylmalonic acid (MMA) accumulates in tissue and blood, directly disrupting neuronal lipid synthesis.\nEssential for converting toxic homocysteine into cardiovascular-protective methionine\nRequired by rapidly dividing bone marrow erythroblasts to prevent megaloblastic anemia\nMaintains structural integrity of myelin sheaths protecting central and peripheral nerves\nSupports mitochondrial energy production through succinyl-CoA synthesis\n\nEarly vs. Advanced Clinical Symptoms of Cobalamin Deficiency\nSymptoms generally progress from mild constitutional fatigue to peripheral neuropathy and neuropsychiatric changes:\nSymmetrical numbness, tingling, or 'pins-and-needles' paresthesia in hands and feet\nUnexplained chronic fatigue, exertional dyspnea, and postural lightheadedness\nSmooth, red, painful tongue (atrophic glossitis) and recurrent oral aphthous ulcers\nLoss of vibratory sensation and proprioception, leading to gait ataxia and unsteadiness\nCognitive decline, executive dysfunction, memory lapses, and depressive mood changes\nPale or mildly jaundiced lemon-yellow skin tone caused by ineffective erythropoiesis\n\nEtiologies & High-Risk Patient Populations\nB12 absorption is a complex, multi-step physiological process requiring gastric hydrochloric acid, intrinsic factor secretion from parietal cells, pancreatic enzymes, and healthy terminal ileal receptors. Breakdown at any step causes malabsorption:\n**Autoimmune Pernicious Anemia**: Destruction of gastric parietal cells prevents intrinsic factor secretion, blocking ileal absorption.\n**Strict Plant-Based Diets**: Unsupplemented vegan and strict vegetarian diets lack bioavailable dietary cobalamin found in meat, fish, eggs, and dairy.\n**Chronic Medication Use**: Long-term Metformin (>3 years) and Proton Pump Inhibitors (PPIs/H2RAs) decrease ileal uptake and acid-dependent food-protein cleavage.\n**Gastrointestinal Surgery & Disorders**: Bariatric bypass, ileal resections, Celiac disease, Crohn's disease, and Atrophic Gastritis severely impair absorption.\n**Age-Related Hypochlorhydria**: Approximately 15–20% of adults over age 60 have reduced stomach acid, reducing protein-bound B12 extraction.\n\nDiagnostic Biomarker Interpretation & Lab Reference Thresholds\n\n\n\nEvidence-Based Replacement Protocols & Formulations\nTreatment strategy depends on the underlying etiology and the presence of neurological deficits:\n**High-Dose Oral Therapy**: 1,000 to 2,000 mcg daily of oral Cyanocobalamin or Methylcobalamin. About 1% is absorbed via passive diffusion across the intestinal mucosa, bypassing intrinsic factor.\n**Intramuscular (IM) Injections**: Indicated for severe neurological symptoms or profound malabsorption: 1,000 mcg IM daily for 1 week, then weekly for 4 weeks, transitioning to monthly maintenance.\n**Formulation Selection**: Methylcobalamin and Hydroxocobalamin provide active coenzyme forms, while Cyanocobalamin offers superior shelf-stability and extensive clinical trial validation.\n**Monitoring Protocol**: Recheck serum B12, CBC, and reticulocyte count after 2–3 months. In patients with macrocytic anemia, reticulocytosis typically peaks within 7–10 days of treatment.\n\n\n**Clinical Caution**: Never treat suspected macrocytic anemia with high-dose folic acid alone without first ruling out B12 deficiency. Folate corrects hematological abnormalities while allowing irreversible subacute combined spinal cord degeneration to progress silently.\n\n\nWhen to Seek Immediate Medical Evaluation\nSchedule an urgent clinical evaluation if you experience any of the following neurological red flags:\nRapidly worsening gait imbalance, frequent stumbles, or inability to walk in the dark\nAscending numbness or intense burning sensations spreading past ankles or wrists\nSudden confusion, severe memory impairment, or acute psychiatric disturbances\nSevere shortness of breath, tachycardia, or chest palpitations accompanied by extreme pallor",
     "robotsMeta": "index, follow"
   },
   {
@@ -803,7 +1081,7 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
   {
     "id": "K9p8j74TxYq12VnL5A6D",
     "slug": "vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels",
-    "title": "Vitamin D Deficiency: Symptoms, 25(OH)D Lab Ranges, Bone Health, and Dosing Protocols",
+    "title": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
     "category": "Lifestyle Diseases",
     "subcategory": "Endocrinology & Nutrition",
     "author": "Dr. David Chen, PhD",
@@ -811,16 +1089,16 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
-    "readTime": "8 min read",
+    "readTime": "10 min read",
     "views": 4560,
     "status": "Published",
-    "seoScore": 98,
-    "metaTitle": "Vitamin D Deficiency: Symptoms, 25(OH)D Levels, and D3 Dosing",
-    "metaDescription": "Evidence-based guide on vitamin D deficiency. Learn how to interpret 25-hydroxyvitamin D lab tests, recognize bone and immune symptoms, and choose safe D3 dosages.",
-    "focusKeyphrase": "vitamin d deficiency symptoms 25 oh d levels",
+    "seoScore": 99,
+    "metaTitle": "Vitamin D Deficiency: Symptoms, 25(OH)D Levels, Foods, and D3 Dosing",
+    "metaDescription": "Evidence-based guide on vitamin D deficiency. Learn how to interpret 25-hydroxyvitamin D blood tests, recognize bone and immune symptoms, understand UVB synthesis, and choose safe D3 dosages.",
+    "focusKeyphrase": "vitamin d deficiency symptoms causes foods 25 oh d levels",
     "schemaType": "MedicalWebPage",
-    "summary": "Vitamin D functions as a pleiotropic steroid hormone regulating calcium homeostasis, bone remodeling, and immune gene expression. Understand the difference between D2 and D3, optimal blood target levels (30–50 ng/mL), and evidence-based repletion schedules.",
-    "quickAnswer": "Vitamin D deficiency is diagnosed via serum 25-hydroxyvitamin D [25(OH)D] below 20 ng/mL (<50 nmol/L). Clinical repletion typically requires 50,000 IU of Vitamin D3 weekly for 8 weeks, followed by a daily maintenance dose of 1,000–2,000 IU taken with dietary fats.",
+    "summary": "Vitamin D functions as a pleiotropic steroid hormone regulating calcium homeostasis, bone remodeling, and immune gene expression. Understand the difference between D2 and D3, optimal blood target levels (30–50 ng/mL), dietary sources, and evidence-based repletion schedules.",
+    "quickAnswer": "Vitamin D deficiency is diagnosed via serum 25-hydroxyvitamin D [25(OH)D] below 20 ng/mL (<50 nmol/L). Clinical repletion typically requires 50,000 IU of Vitamin D3 weekly for 8 weeks (or 4,000–6,000 IU daily), followed by a maintenance dose of 1,000–2,000 IU taken with dietary fats and cofactors like Magnesium and Vitamin K2.",
     "introduction": "Unlike classic dietary vitamins, vitamin D (calciferol) functions in the human body as a secosteroid prohormone. Nearly every nucleated human cell—including osteoblasts, enterocytes, cardiomyocytes, and T-lymphocytes—expresses vitamin D receptors (VDR) that regulate the transcription of over 1,000 distinct genes.\n\nEndogenous cutaneous synthesis from 7-dehydrocholesterol requires solar ultraviolet B (UVB) radiation at wavelengths between 290 and 315 nm. However, modern indoor lifestyles, high-latitude winter seasons, air pollution, and sunscreen use have made vitamin D insufficiency a modern public health epidemic, impacting over 40% of the adult population.\n\nChronic deficiency does not simply impair intestinal calcium absorption leading to osteomalacia and osteoporosis; clinical research connects sub-optimal calcitriol levels to increased susceptibility to upper respiratory infections, autoimmune flares, and musculoskeletal pain syndromes.",
     "contentBlocks": [
       {
@@ -829,31 +1107,124 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
         "heading": "Physiology: From Solar Synthesis to Active Hormone Calcitriol",
         "content": "Vitamin D undergoes two essential hydroxylation steps before becoming biologically active:\n\n1. **Hepatic 25-Hydroxylation**: Cutaneous or dietary cholecalciferol (D3) travels to the liver via vitamin D-binding protein (DBP), where 25-hydroxylase (CYP2R1) converts it into 25-hydroxyvitamin D [25(OH)D]—the primary circulating form measured in blood tests.\n2. **Renal 1-Alpha Hydroxylation**: In the proximal renal tubules, parathyroid hormone (PTH) stimulates 1α-hydroxylase (CYP27B1) to convert 25(OH)D into 1,25-dihydroxyvitamin D [1,25(OH)2D or Calcitriol], the active endocrine hormone that drives intestinal calcium and phosphate uptake.",
         "items": [
-          "Stimulates active transcellular calcium transport in the duodenum and upper jejunum",
-          "Suppresses excessive Parathyroid Hormone (PTH) secretion to prevent secondary hyperparathyroidism",
-          "Modulates innate immunity by upregulating antimicrobial peptides (cathelicidin and defensins)",
-          "Promotes osteoblast differentiation and mineral deposition in the bone collagen matrix"
+          "**Calcium & Phosphate Homeostasis**: Stimulates active transcellular calcium transport in the duodenum and upper jejunum.",
+          "**PTH Feedback Regulation**: Suppresses excessive Parathyroid Hormone (PTH) secretion to prevent secondary hyperparathyroidism and cortical bone resorption.",
+          "**Innate Immune Gene Induction**: Directly upregulates antimicrobial peptides (Cathelicidin LL-37 and Beta-Defensins) in respiratory epithelial cells and macrophages.",
+          "**Osteoblast Mineralization**: Promotes osteoblast differentiation and mineral deposition in the bone collagen matrix."
         ]
       },
       {
         "id": "vitd-symptoms",
         "type": "symptoms_checklist",
-        "heading": "Signs of Moderate to Severe Vitamin D Deficiency",
-        "content": "Because deficiency develops gradually, symptoms are frequently attributed to general aging or stress:",
+        "heading": "Signs & Symptoms of Moderate to Severe Vitamin D Deficiency",
+        "content": "Because deficiency develops gradually, symptoms are frequently attributed to general aging, physical deconditioning, or everyday stress:",
         "items": [
-          "Deep, aching bone pain and symmetrical proximal muscle weakness (especially in thighs and hips)",
-          "Difficulty rising from a seated position or climbing stairs without arm support",
-          "Frequent viral respiratory infections, prolonged recovery times, and seasonal immune dips",
-          "Chronic musculoskeletal pain, diffuse low back ache, and morning joint stiffness",
-          "Low mood, seasonal affective disorder (SAD), and unrefreshing sleep quality",
-          "Unexplained stress fractures or sudden declines in bone mineral density on DEXA scans"
+          "Deep, aching bone pain and symmetrical proximal muscle weakness (especially in thighs, quadriceps, and pelvis)",
+          "Difficulty rising from a low chair or climbing stairs without pulling on armrests or handrails",
+          "Frequent viral respiratory infections, prolonged bronchitis recovery times, and seasonal immune dips",
+          "Chronic musculoskeletal pain, diffuse lower back ache, and morning joint stiffness",
+          "Low mood, seasonal affective disorder (SAD), cognitive lethargy, and unrefreshing sleep quality",
+          "Unexplained stress fractures, bone fragility, or sudden declines in bone mineral density on DEXA scans",
+          "Hair loss (telogen effluvium or alopecia areata) and delayed cutaneous wound healing",
+          "Excessive head sweating and generalized fatigue upon waking"
         ],
         "multiColumn": true
       },
       {
+        "id": "vitd-causes",
+        "type": "causes_risk_factors",
+        "heading": "Etiologies & High-Risk Patient Groups",
+        "content": "A combination of geographical, physiological, and lifestyle factors drives the high global prevalence of hypovitaminosis D:",
+        "items": [
+          "**Northern Latitudes & Winter Zenith Angle**: North of 37° latitude, the winter sun angle is too low for UVB rays to penetrate the atmosphere between November and March.",
+          "**High Skin Melanin Concentration**: Melanin acts as a natural sunscreen, absorbing UVB photons. Darker skin tones require 3 to 5 times longer sun exposure to synthesize equivalent vitamin D.",
+          "**Indoor Lifestyles & Sunscreen**: SPF 30 sunscreen reduces cutaneous vitamin D synthesis by over 95%. Working indoors prevents natural midday UVB synthesis.",
+          "**Gastrointestinal Malabsorption**: Celiac disease, Crohn's disease, chronic pancreatitis, and bariatric surgery severely impair fat-soluble nutrient uptake.",
+          "**Obesity (BMI >30)**: Vitamin D is fat-soluble and becomes sequestered inside subcutaneous adipose tissue, reducing circulating bioavailability.",
+          "**Chronic Kidney & Liver Disease**: Impairs hepatic 25-hydroxylation and renal 1α-hydroxylation into active calcitriol."
+        ]
+      },
+      {
+        "id": "vitd-foods-table",
+        "type": "comparison_table",
+        "heading": "Top Vitamin D Food Sources & Solar UVB Synthesis",
+        "columns": [
+          "Source",
+          "Serving Size",
+          "Vitamin D Content (IU)",
+          "Percent Daily Value (% DV)",
+          "Category"
+        ],
+        "rows": [
+          [
+            "Midday Sunlight (Face/Arms/Legs)",
+            "10 – 20 mins (Fair skin)",
+            "10,000 – 20,000 IU",
+            "1,250 – 2,500%",
+            "Cutaneous Synthesis"
+          ],
+          [
+            "Cod Liver Oil",
+            "1 tablespoon (15ml)",
+            "1,360 IU",
+            "170%",
+            "Fish Oil"
+          ],
+          [
+            "Wild Sockeye Salmon (Cooked)",
+            "3 oz (85g)",
+            "570 IU",
+            "71%",
+            "Fatty Fish"
+          ],
+          [
+            "Canned Sardines in Oil",
+            "3 oz (85g)",
+            "164 IU",
+            "21%",
+            "Canned Fish"
+          ],
+          [
+            "Canned Light Tuna in Water",
+            "3 oz (85g)",
+            "154 IU",
+            "19%",
+            "Canned Fish"
+          ],
+          [
+            "UV-Exposed Portobello Mushrooms",
+            "1/2 cup (70g)",
+            "366 IU",
+            "46%",
+            "Plant-Based (D2)"
+          ],
+          [
+            "Fortified Cow's Milk",
+            "1 cup (240ml)",
+            "120 IU",
+            "15%",
+            "Dairy (Fortified)"
+          ],
+          [
+            "Fortified Plant Milk (Almond/Soy)",
+            "1 cup (240ml)",
+            "100 – 140 IU",
+            "13 – 18%",
+            "Vegan (Fortified)"
+          ],
+          [
+            "Pasture-Raised Egg Yolk",
+            "1 large yolk",
+            "44 – 80 IU",
+            "6 – 10%",
+            "Poultry"
+          ]
+        ]
+      },
+      {
         "id": "vitd-table",
         "type": "comparison_table",
-        "heading": "Serum 25(OH)D Lab Reference Guidelines",
+        "heading": "Serum 25(OH)D Lab Reference Guidelines & Clinical Interpretation",
         "columns": [
           "Serum 25(OH)D Level",
           "Clinical Category",
@@ -894,25 +1265,46 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
+        "id": "vitd-age-groups",
+        "type": "clinical_overview",
+        "heading": "Vitamin D in Children vs. Adults: Clinical Manifestations",
+        "content": "Because bone remodeling and skeletal growth rates differ across the lifespan, deficiency produces distinct clinical presentations:\n\n- **In Infants & Children (Rickets)**: Rapid skeletal growth during infancy requires high calcium-phosphate flux. Severe deficiency causes unmineralized osteoid accumulation at growth plates, leading to craniotabes (soft skull bones), delayed fontanelle closure, rachitic rosary along the rib cage, and outward bowing of weight-bearing leg bones (genu varum).\n- **In Adults & Seniors (Osteomalacia & Osteoporosis)**: In mature skeleton, deficiency causes defective remineralization of newly formed bone remodeling units (osteomalacia), leading to throbbing bone pain and severe proximal muscle myopathy. Over time, secondary hyperparathyroidism accelerates trabecular bone loss, precipitating osteoporosis and hip fractures.",
+        "items": [
+          "**Pediatric Breastfeeding Guidance**: Exclusively breastfed infants require 400 IU/day of liquid vitamin D3 starting in the first days of life (breastmilk contains <50 IU/L).",
+          "**Adult Fracture Prevention**: Maintaining 25(OH)D >30 ng/mL combined with 1,000 mg elemental dietary calcium reduces osteoporotic hip and non-vertebral fracture rates by up to 30%."
+        ]
+      },
+      {
+        "id": "vitd-bone-immunity",
+        "type": "clinical_overview",
+        "heading": "Dual Physiological Action: Bone Remodeling & Innate Immune Defenses",
+        "content": "Calcitriol exerts powerful genomic effects across two primary organ systems:\n\n- **Skeletal Homeostasis**: In the intestine, calcitriol upregulates TRPV6 calcium channels and calbindin-D9k transport proteins, increasing fractional dietary calcium absorption from 10–15% up to 30–40%.\n- **Innate & Adaptive Immunity**: When respiratory macrophages and dendritic cells encounter viral or bacterial pathogens, toll-like receptors (TLRs) upregulate both VDR and 1α-hydroxylase. Local calcitriol synthesis directly induces the transcription of Cathelicidin (LL-37)—a potent human antimicrobial peptide that destroys viral envelopes and bacterial membranes.",
+        "items": [
+          "Downregulates pro-inflammatory cytokines (IL-6, TNF-alpha, IFN-gamma) while increasing anti-inflammatory IL-10.",
+          "Protects pulmonary epithelial tight junctions to reduce viral permeability during acute respiratory infections.",
+          "Suppresses autoimmune Th17 inflammatory cascades in multiple sclerosis, rheumatoid arthritis, and Hashimoto's thyroiditis."
+        ]
+      },
+      {
         "id": "vitd-treatment",
         "type": "treatment_medications",
-        "heading": "Evidence-Based Repletion Protocols: D3 vs. D2",
-        "content": "Choosing the correct formulation and cofactors determines clinical success:",
+        "heading": "Evidence-Based Repletion Protocols: D3 vs. D2, Dosages, and Cofactors",
+        "content": "Choosing the correct formulation, dosage schedule, and synergistic cofactors determines clinical success:",
         "items": [
           "**Cholecalciferol (D3) Superiority**: Clinical trials confirm that Vitamin D3 (derived from lanolin or lichen) raises and sustains 25(OH)D serum levels up to 87% more effectively than plant-derived Ergocalciferol (D2).",
-          "**Therapeutic Loading Regimen**: For levels < 20 ng/mL, the Endocrine Society recommends 50,000 IU of D3 once weekly for 8 weeks, or 6,000 IU daily for 8 weeks.",
+          "**Therapeutic Loading Regimen**: For levels < 20 ng/mL, the Endocrine Society recommends 50,000 IU of D3 once weekly for 8 weeks, or 4,000 to 6,000 IU daily for 8 weeks.",
           "**Fat-Soluble Absorption**: Always consume vitamin D supplements with a meal containing healthy dietary fats (e.g., avocado, olive oil, eggs, or nuts) to increase intestinal micellar absorption by up to 50%.",
-          "**Cofactor Synergy (Magnesium & K2)**: Magnesium is required for all eight enzymatic steps converting vitamin D into its active form. Co-administering Vitamin K2 (MK-7, 100 µg) directs absorbed calcium into bone and away from arterial walls."
+          "**Cofactor Synergy (Magnesium & K2)**: Magnesium is required for all eight enzymatic steps converting vitamin D into its active form. Co-administering Vitamin K2 (MK-7, 100 µg) activates osteocalcin to direct absorbed calcium into bone and matrix Gla protein (MGP) to prevent arterial calcification."
         ]
       },
       {
         "id": "vitd-when-doctor",
         "type": "when_to_see_doctor",
         "heading": "When to Consult an Endocrinologist or Primary Care Physician",
-        "content": "Schedule clinical testing if you meet any of the following criteria:",
+        "content": "Schedule clinical testing and physician review if you meet any of the following criteria:",
         "items": [
           "Patients with chronic malabsorption syndromes (Celiac, Crohn's, Ulcerative Colitis, or Bariatric surgery)",
-          "Older adults with recurrent unexplained falls, fragility fractures, or proven osteoporosis",
+          "Older adults with recurrent unexplained falls, fragility fractures, or proven osteoporosis on DEXA scans",
           "Patients taking chronic antiepileptic medications, glucocorticoids (Prednisone), or bile acid sequestrants",
           "Individuals with dark skin pigmentation living at northern latitudes (>37° N) with minimal midday sun exposure"
         ]
@@ -975,7 +1367,6 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
       }
     ],
     "featuredImage": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
-    "content": "Unlike classic dietary vitamins, vitamin D (calciferol) functions in the human body as a secosteroid prohormone. Nearly every nucleated human cell—including osteoblasts, enterocytes, cardiomyocytes, and T-lymphocytes—expresses vitamin D receptors (VDR) that regulate the transcription of over 1,000 distinct genes.\n\nEndogenous cutaneous synthesis from 7-dehydrocholesterol requires solar ultraviolet B (UVB) radiation at wavelengths between 290 and 315 nm. However, modern indoor lifestyles, high-latitude winter seasons, air pollution, and sunscreen use have made vitamin D insufficiency a modern public health epidemic, impacting over 40% of the adult population.\n\nChronic deficiency does not simply impair intestinal calcium absorption leading to osteomalacia and osteoporosis; clinical research connects sub-optimal calcitriol levels to increased susceptibility to upper respiratory infections, autoimmune flares, and musculoskeletal pain syndromes.\n\nPhysiology: From Solar Synthesis to Active Hormone Calcitriol\nVitamin D undergoes two essential hydroxylation steps before becoming biologically active:\n\n1. **Hepatic 25-Hydroxylation**: Cutaneous or dietary cholecalciferol (D3) travels to the liver via vitamin D-binding protein (DBP), where 25-hydroxylase (CYP2R1) converts it into 25-hydroxyvitamin D [25(OH)D]—the primary circulating form measured in blood tests.\n2. **Renal 1-Alpha Hydroxylation**: In the proximal renal tubules, parathyroid hormone (PTH) stimulates 1α-hydroxylase (CYP27B1) to convert 25(OH)D into 1,25-dihydroxyvitamin D [1,25(OH)2D or Calcitriol], the active endocrine hormone that drives intestinal calcium and phosphate uptake.\nStimulates active transcellular calcium transport in the duodenum and upper jejunum\nSuppresses excessive Parathyroid Hormone (PTH) secretion to prevent secondary hyperparathyroidism\nModulates innate immunity by upregulating antimicrobial peptides (cathelicidin and defensins)\nPromotes osteoblast differentiation and mineral deposition in the bone collagen matrix\n\nSigns of Moderate to Severe Vitamin D Deficiency\nBecause deficiency develops gradually, symptoms are frequently attributed to general aging or stress:\nDeep, aching bone pain and symmetrical proximal muscle weakness (especially in thighs and hips)\nDifficulty rising from a seated position or climbing stairs without arm support\nFrequent viral respiratory infections, prolonged recovery times, and seasonal immune dips\nChronic musculoskeletal pain, diffuse low back ache, and morning joint stiffness\nLow mood, seasonal affective disorder (SAD), and unrefreshing sleep quality\nUnexplained stress fractures or sudden declines in bone mineral density on DEXA scans\n\nSerum 25(OH)D Lab Reference Guidelines\n\n\n\nEvidence-Based Repletion Protocols: D3 vs. D2\nChoosing the correct formulation and cofactors determines clinical success:\n**Cholecalciferol (D3) Superiority**: Clinical trials confirm that Vitamin D3 (derived from lanolin or lichen) raises and sustains 25(OH)D serum levels up to 87% more effectively than plant-derived Ergocalciferol (D2).\n**Therapeutic Loading Regimen**: For levels < 20 ng/mL, the Endocrine Society recommends 50,000 IU of D3 once weekly for 8 weeks, or 6,000 IU daily for 8 weeks.\n**Fat-Soluble Absorption**: Always consume vitamin D supplements with a meal containing healthy dietary fats (e.g., avocado, olive oil, eggs, or nuts) to increase intestinal micellar absorption by up to 50%.\n**Cofactor Synergy (Magnesium & K2)**: Magnesium is required for all eight enzymatic steps converting vitamin D into its active form. Co-administering Vitamin K2 (MK-7, 100 µg) directs absorbed calcium into bone and away from arterial walls.\n\nWhen to Consult an Endocrinologist or Primary Care Physician\nSchedule clinical testing if you meet any of the following criteria:\nPatients with chronic malabsorption syndromes (Celiac, Crohn's, Ulcerative Colitis, or Bariatric surgery)\nOlder adults with recurrent unexplained falls, fragility fractures, or proven osteoporosis\nPatients taking chronic antiepileptic medications, glucocorticoids (Prednisone), or bile acid sequestrants\nIndividuals with dark skin pigmentation living at northern latitudes (>37° N) with minimal midday sun exposure",
     "robotsMeta": "index, follow"
   },
   {

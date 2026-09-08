@@ -183,7 +183,7 @@ function SearchClientContent({ initialPosts, initialCategories }: SearchClientVi
       {/* ── SEARCH HEADER ── */}
       <div className="space-y-4">
         <h1 className="text-3xl font-extrabold text-[#113F48]">Search Healthcare Knowledge Base</h1>
-        <p className="text-stone-500 text-xs">Search evidence-based articles, clinical guides, and healthcare topics.</p>
+        <p className="text-stone-500 text-xs">Search doctor-reviewed articles, clinical guides, and healthcare topics.</p>
         
         {/* Search Input Box */}
         <div className="relative flex items-center bg-white border border-stone-200 rounded-2xl p-2 shadow-sm focus-within:ring-2 focus-within:ring-[#C9A15A] transition-all">

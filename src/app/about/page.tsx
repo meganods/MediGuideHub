@@ -26,14 +26,14 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About mediguide4u | Evidence-Informed Health Education & Standards",
+  title: "About mediguide4u | Medical Literacy & Editorial Standards",
   description:
     "Learn about mediguide4u, our mission, vision, story, editorial research methodology, source selection standards, and commitment to accessible health literacy.",
   alternates: {
     canonical: "https://mediguide4u.com/about",
   },
   openGraph: {
-    title: "About mediguide4u | Evidence-Informed Health Education & Standards",
+    title: "About mediguide4u | Medical Literacy & Editorial Standards",
     description:
       "Learn about mediguide4u, our mission, vision, story, editorial research methodology, source selection standards, and commitment to accessible health literacy.",
     url: "https://mediguide4u.com/about",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About mediguide4u | Evidence-Informed Health Education & Standards",
+    title: "About mediguide4u | Medical Literacy & Editorial Standards",
     description:
       "Learn about mediguide4u, our mission, vision, story, editorial research methodology, source selection standards, and commitment to accessible health literacy.",
   },
@@ -52,7 +52,7 @@ export default function AboutPage() {
   const values = [
     {
       icon: <CheckCircle2 className="h-6 w-6 text-[#C9A15A]" />,
-      title: "Evidence-Informed",
+      title: "Clinically Researched",
       desc: "We build our guides on reputable public health research, synthesizing information from institutions like the NIH, CDC, and WHO.",
     },
     {
@@ -85,7 +85,7 @@ export default function AboutPage() {
   const whatWeOffer = [
     {
       icon: <FileText className="h-5 w-5 text-[#113F48]" />,
-      title: "Evidence-Based Health Guides",
+      title: "Doctor-Reviewed Health Guides",
       desc: "In-depth educational articles covering vital signs, symptoms, nutrition science, and common health conditions.",
     },
     {
@@ -109,14 +109,14 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About mediguide4u",
-    "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and evidence-informed standards.",
+    "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and peer-reviewed standards.",
     "url": "https://mediguide4u.com/about",
     "mainEntity": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
       "url": "https://mediguide4u.com",
       "logo": "https://mediguide4u.com/logo.png",
-      "description": "An independent educational publication dedicated to improving public healthcare literacy through evidence-informed guides."
+      "description": "An independent educational publication dedicated to improving public healthcare literacy through doctor-reviewed clinical guides."
     }
   };
 
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 About mediguide4u
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight">
-                Empowering Health Literacy Through Clear, Evidence-Informed Guidance
+                Empowering Health Literacy Through Clear, Physician-Reviewed Guidance
               </h1>
               <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
                 mediguide4u is an independent educational platform dedicated to making health, nutrition, and preventive wellness information understandable, transparent, and freely accessible to everyone.
@@ -198,7 +198,7 @@ export default function AboutPage() {
                   mediguide4u was founded by health communication advocates who observed a persistent challenge: the general public is constantly overwhelmed by dense clinical terminology, conflicting online claims, and aggressive commercial marketing. Finding objective, plain-language health information was becoming increasingly difficult.
                 </p>
                 <p>
-                  We created this platform to bridge the gap between complex health science and everyday individuals seeking clear answers. Our focus is grounded in transparency, evidence-informed research, and universal accessibility.
+                  We created this platform to bridge the gap between complex health science and everyday individuals seeking clear answers. Our focus is grounded in transparency, clinical rigor, and universal accessibility.
                 </p>
                 <p>
                   By structuring topics into clear, digestible guides, we aim to reduce the confusion surrounding preventive care, nutrient deficiencies, and wellness strategies, empowering individuals and families to take proactive control of their well-being.

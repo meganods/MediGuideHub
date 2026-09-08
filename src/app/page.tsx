@@ -8,25 +8,28 @@ import { getPublishedBlogPosts, getCategories, getPublishedFAQs } from "@/lib/db
 export const revalidate = 60; // Revalidate every 60 seconds (ISR)
 
 export const metadata: Metadata = {
-  title: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+  title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
   description:
-    "Explore evidence-based health guides, preventive wellness strategies, nutrition insights, and healthcare resources from reputable public health research.",
+    "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   alternates: {
     canonical: "https://mediguide4u.com",
   },
   openGraph: {
-    title: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
-      "Explore evidence-based health guides, preventive wellness strategies, nutrition insights, and healthcare resources from reputable public health research.",
+      "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
     url: "https://mediguide4u.com",
     siteName: "mediguide4u",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "mediguide4u - Evidence-Based Healthcare Guides & Wellness Resources",
+    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
-      "Explore evidence-based health guides, preventive wellness strategies, nutrition insights, and healthcare resources from reputable public health research.",
+      "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
+  },
+  verification: {
+    google: "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
   },
 };
 
@@ -56,7 +59,7 @@ export default async function HomePage() {
     "url": "https://mediguide4u.com",
     "logo": "https://mediguide4u.com/logo.png",
     "sameAs": [],
-    "description": "An independent educational platform providing clear, evidence-based healthcare and wellness guides fact-checked against public health research.",
+    "description": "An independent educational platform providing clear, physician-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
   };
 
   return (

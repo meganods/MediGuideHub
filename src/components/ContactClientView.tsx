@@ -470,7 +470,7 @@ export default function ContactClientView() {
             Need More Healthcare Information?
           </h2>
           <p className="text-stone-300 max-w-md mx-auto text-sm">
-            We update our educational guides regularly with evidence-based wellness resources.
+            We update our educational guides regularly with physician-verified wellness resources.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
             <Link 

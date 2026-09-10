@@ -5,14 +5,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/authors", "/author/*"],
         disallow: [
           "/admin",
           "/admin/*",
           "/admin-login",
           "/dashboard",
           "/dashboard/*",
-          "/auth",
+          "/auth$",
+          "/auth/*",
           "/login",
           "/register",
           "/forgot-password",
@@ -30,14 +31,15 @@ export default function robots(): MetadataRoute.Robots {
           "Mediapartners-Google",
           "Google-Display-Ads-Bot",
         ],
-        allow: "/",
+        allow: ["/", "/authors", "/author/*"],
         disallow: [
           "/admin",
           "/admin/*",
           "/admin-login",
           "/dashboard",
           "/dashboard/*",
-          "/auth",
+          "/auth$",
+          "/auth/*",
           "/login",
           "/register",
           "/forgot-password",
@@ -46,8 +48,8 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: "https://mediguide4u.com/sitemap.xml",
-    host: "https://mediguide4u.com",
+    sitemap: "https://www.mediguide4u.com/sitemap.xml",
+    host: "https://www.mediguide4u.com",
   };
 }
 

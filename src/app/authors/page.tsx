@@ -25,13 +25,13 @@ export const metadata: Metadata = {
   description:
     "Meet the board-certified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our medical review process and editorial guidelines.",
   alternates: {
-    canonical: "https://mediguide4u.com/authors",
+    canonical: "https://www.mediguide4u.com/authors",
   },
   openGraph: {
     title: "Editorial Board & Medical Review Team | mediguide4u",
     description:
       "Meet the board-certified physicians, clinical researchers, and health writers behind mediguide4u. Learn about our medical review process and editorial guidelines.",
-    url: "https://mediguide4u.com/authors",
+    url: "https://www.mediguide4u.com/authors",
     siteName: "mediguide4u",
     type: "website",
   },

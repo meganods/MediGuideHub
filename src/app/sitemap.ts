@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getPublishedBlogPosts, getCategories, getAuthors } from "@/lib/db";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://mediguide4u.com";
+  const baseUrl = "https://www.mediguide4u.com";
 
   // Static routes configuration
   const staticRoutes = [

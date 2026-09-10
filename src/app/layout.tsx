@@ -29,7 +29,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "";
+const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-5266755800049907";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mediguide4u.com"),
@@ -158,6 +158,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        {/* Google AdSense Script for Site Verification & Ad Units */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+          crossOrigin="anonymous"
+        />
+        <meta name="google-adsense-account" content={adsenseClientId} />
         <meta name="google-site-verification" content="4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ" />
         <link rel="alternate" type="application/rss+xml" title="mediguide4u Health Guides" href="/feed.xml" />
         <script
@@ -206,15 +213,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased text-[#113F48] bg-white overflow-x-hidden" suppressHydrationWarning>
-        {adsenseClientId ? (
-          <Script
-            id="google-adsense"
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        ) : null}
         <AuthProvider>
           <AdminAuthProvider>
             <AnalyticsTracker />

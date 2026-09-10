@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${author.name} (${author.degree || author.credentials || "Medical Reviewer"}) - Credentials, Bio & Guides | mediguide4u`;
   const description = author.bio || `Explore verified clinical credentials, medical licensing, and peer-reviewed health guides authored or medically reviewed by ${author.name}.`;
-  const canonicalUrl = `https://mediguide4u.com/author/${author.id}`;
+  const canonicalUrl = `https://www.mediguide4u.com/author/${author.id}`;
 
   return {
     title,

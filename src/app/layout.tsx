@@ -105,8 +105,8 @@ export const metadata: Metadata = {
   },
   verification: {
     google: [
-      "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
       "dQLbGcUPVRmr8pbyXY_tb6_LgcMBf5JuK4djQpKVquI",
+      "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
     ],
   },
   other: adsenseClientId
@@ -168,8 +168,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <meta name="google-adsense-account" content={adsenseClientId} />
-        <meta name="google-site-verification" content="4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ" />
-        <meta name="google-site-verification" content="dQLbGcUPVRmr8pbyXY_tb6_LgcMBf5JuK4djQpKVquI" />
         <link rel="alternate" type="application/rss+xml" title="mediguide4u Health Guides" href="/feed.xml" />
         <script
           dangerouslySetInnerHTML={{

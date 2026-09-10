@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   },
   verification: {
-    google: "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
+    google: "dQLbGcUPVRmr8pbyXY_tb6_LgcMBf5JuK4djQpKVquI",
   },
 };
 

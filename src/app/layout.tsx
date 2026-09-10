@@ -104,10 +104,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: [
-      "dQLbGcUPVRmr8pbyXY_tb6_LgcMBf5JuK4djQpKVquI",
-      "4uSsYNx4lFoHeHJDVyhJPnEwwgBpIFvFJDvq26mtsmQ",
-    ],
+    google: "dQLbGcUPVRmr8pbyXY_tb6_LgcMBf5JuK4djQpKVquI",
   },
   other: adsenseClientId
     ? {

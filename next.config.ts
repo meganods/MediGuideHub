@@ -53,6 +53,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/editorial-team",
+        destination: "/authors",
+        permanent: true,
+      },
+      {
+        source: "/editorial-board",
+        destination: "/authors",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -18,7 +18,7 @@ import {
   Sparkles
 } from "lucide-react";
 
-export const revalidate = 60;
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "Editorial Board & Medical Review Team | mediguide4u",

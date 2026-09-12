@@ -45,7 +45,7 @@ import {
 import PostCommentsSection from "@/components/PostCommentsSection";
 import AdBanner from "@/components/AdBanner";
 
-export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 export const dynamicParams = true; // Allow newly published slugs to be rendered on-demand
 
 interface PageProps {
@@ -70,14 +70,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: "Article Not Found | mediguide4u",
-      description: "The requested medical guide could not be found.",
+      title: "Health Guide Not Found | mediguide4u",
+      description: "The requested medical guide or article could not be found.",
     };
   }
 
   const pageTitle = post.metaTitle || `${post.title} | mediguide4u`;
   const pageDescription = post.metaDescription || post.summary;
-  const canonicalUrl = post.canonicalUrl || `https://mediguide4u.com/blog/${post.slug}`;
+  const canonicalUrl = post.canonicalUrl || `https://www.mediguide4u.com/blog/${post.slug}`;
   const ogImage = post.featuredImage || "https://mediguide4u.com/icon.png";
   const authorList = post.author && post.author !== "Mediguide4u Editorial Staff" 
     ? [post.author, "Mediguide4u Editorial Staff"] 

@@ -19,7 +19,7 @@ import {
   FileText 
 } from "lucide-react";
 
-export const revalidate = 60; // ISR revalidation
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const description =
     category.seoDesc ||
     `Explore doctor-reviewed medical guides, symptoms, and clinical wellness resources on ${category.name} at mediguide4u.`;
-  const canonicalUrl = `https://mediguide4u.com/category/${category.slug}`;
+  const canonicalUrl = `https://www.mediguide4u.com/category/${category.slug}`;
 
   return {
     title,

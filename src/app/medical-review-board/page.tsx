@@ -23,20 +23,20 @@ import {
   AlertCircle
 } from "lucide-react";
 
-export const revalidate = 60;
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "Medical Review Board & Clinical Advisors | mediguide4u",
   description:
     "Meet the board-certified physicians, cardiologists, endocrinologists, and healthcare professionals who medically review every guide on mediguide4u for clinical accuracy and E-E-A-T integrity.",
   alternates: {
-    canonical: "https://mediguide4u.com/medical-review-board",
+    canonical: "https://www.mediguide4u.com/medical-review-board",
   },
   openGraph: {
     title: "Medical Review Board & Clinical Advisors | mediguide4u",
     description:
       "Meet the board-certified physicians and clinical specialists who verify every health guide on mediguide4u against peer-reviewed medical standards.",
-    url: "https://mediguide4u.com/medical-review-board",
+    url: "https://www.mediguide4u.com/medical-review-board",
     siteName: "mediguide4u",
     type: "website",
   },

@@ -5,20 +5,20 @@ import Footer from "@/components/Footer";
 import BlogListingClient from "@/components/BlogListingClient";
 import { getPublishedBlogPosts, getCategories } from "@/lib/db";
 
-export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
   description:
     "Explore comprehensive healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   alternates: {
-    canonical: "https://mediguide4u.com/blog",
+    canonical: "https://www.mediguide4u.com/blog",
   },
   openGraph: {
     title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
     description:
       "Explore comprehensive healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
-    url: "https://mediguide4u.com/blog",
+    url: "https://www.mediguide4u.com/blog",
     siteName: "mediguide4u",
     type: "website",
   },

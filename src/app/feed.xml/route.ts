@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPublishedBlogPosts } from "@/lib/db";
 
-export const revalidate = 3600; // Cache for 1 hour
+export const revalidate = 86400; // Cache for 24 hours to minimize origin compute
 
 function escapeXml(unsafe: string): string {
   return (unsafe || "")
@@ -13,7 +13,7 @@ function escapeXml(unsafe: string): string {
 }
 
 export async function GET() {
-  const baseUrl = "https://mediguide4u.com";
+  const baseUrl = "https://www.mediguide4u.com";
   
   try {
     const posts = await getPublishedBlogPosts();

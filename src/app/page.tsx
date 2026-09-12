@@ -5,14 +5,14 @@ import Footer from "@/components/Footer";
 import HomeClientView from "@/components/HomeClientView";
 import { getPublishedBlogPosts, getCategories, getPublishedFAQs } from "@/lib/db";
 
-export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
   description:
     "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
   alternates: {
-    canonical: "https://mediguide4u.com",
+    canonical: "https://www.mediguide4u.com",
   },
   openGraph: {
     title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",

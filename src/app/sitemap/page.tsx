@@ -5,20 +5,20 @@ import Footer from "@/components/Footer";
 import SitemapClientView from "@/components/SitemapClientView";
 import { getPublishedBlogPosts, getCategories, getPublishedFAQs } from "@/lib/db";
 
-export const revalidate = 60; // ISR revalidation
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "HTML Sitemap & Navigation Directory | mediguide4u",
   description:
     "Comprehensive directory of all medical guides, clinical reports, healthcare policy comparisons, and educational pages on mediguide4u.",
   alternates: {
-    canonical: "https://mediguide4u.com/sitemap",
+    canonical: "https://www.mediguide4u.com/sitemap",
   },
   openGraph: {
     title: "HTML Sitemap & Navigation Directory | mediguide4u",
     description:
       "Comprehensive directory of all medical guides, clinical reports, healthcare policy comparisons, and educational pages on mediguide4u.",
-    url: "https://mediguide4u.com/sitemap",
+    url: "https://www.mediguide4u.com/sitemap",
     siteName: "mediguide4u",
     type: "website",
   },

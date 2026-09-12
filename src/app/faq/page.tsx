@@ -5,20 +5,20 @@ import Footer from "@/components/Footer";
 import FAQClientView from "@/components/FAQClientView";
 import { getPublishedFAQs } from "@/lib/db";
 
-export const revalidate = 60; // Revalidate every 60 seconds (ISR)
+export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | mediguide4u",
   description:
     "Find clear answers to common questions about symptoms, health guidelines, preventive care, clinical nutrition, and editorial review standards.",
   alternates: {
-    canonical: "https://mediguide4u.com/faq",
+    canonical: "https://www.mediguide4u.com/faq",
   },
   openGraph: {
     title: "Frequently Asked Questions | mediguide4u",
     description:
       "Find clear answers to common questions about symptoms, health guidelines, preventive care, clinical nutrition, and editorial review standards.",
-    url: "https://mediguide4u.com/faq",
+    url: "https://www.mediguide4u.com/faq",
     siteName: "mediguide4u",
     type: "website",
   },

@@ -56,10 +56,46 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "MedicalOrganization",
     "name": "mediguide4u",
-    "url": "https://mediguide4u.com",
-    "logo": "https://mediguide4u.com/logo.png",
+    "url": "https://www.mediguide4u.com",
+    "logo": "https://www.mediguide4u.com/logo.png",
     "sameAs": [],
     "description": "An independent educational platform providing clear, physician-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
+  };
+
+  const sitelinksSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured Health Sitelinks",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "Health Guides",
+        "description": "Doctor-reviewed comprehensive healthcare guides covering symptoms, clinical nutrition, and preventive wellness strategies.",
+        "url": "https://www.mediguide4u.com/blog",
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "Heart Health",
+        "description": "Evidence-based guides on cardiovascular wellness, blood pressure management, and heart disease prevention.",
+        "url": "https://www.mediguide4u.com/category/heart-health",
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "Women's Health",
+        "description": "Doctor-reviewed medical insights on hormonal health, preventive screenings, reproductive wellness, and nutrition.",
+        "url": "https://www.mediguide4u.com/category/women-s-health",
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "Senior Healthcare",
+        "description": "Clinical longevity strategies, healthy aging guides, mobility wellness, and preventive geriatric healthcare.",
+        "url": "https://www.mediguide4u.com/category/senior-healthcare",
+      },
+    ],
   };
 
   return (
@@ -74,6 +110,10 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksSchema) }}
       />
 
       <main className="flex-grow">

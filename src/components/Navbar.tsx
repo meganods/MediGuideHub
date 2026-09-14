@@ -18,7 +18,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
     { name: "Medical Review Board", href: "/medical-review-board" },
     { name: "Editorial Team", href: "/authors" },
-    { name: "Blog", href: "/blog" },
+    { name: "Health Guides", href: "/blog" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact Us", href: "/contact" },
   ];

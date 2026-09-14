@@ -235,7 +235,7 @@ export default function HomeClientView({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { title: "Health Articles", desc: "General healthcare guides and awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
+              { title: "Health Guides", desc: "Comprehensive healthcare guides and clinical awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
               { title: "Preventive Care", desc: "Methods to sustain wellness before illness", icon: <Shield className="h-5 w-5 text-[#C9A15A]" />, href: "/category/preventive-care" },
               { title: "Mental Health", desc: "Psychological and emotional wellness guides", icon: <Heart className="h-5 w-5 text-[#C9A15A]" />, href: "/category/mental-health" },
               { title: "Nutrition Science", desc: "Dietary guidelines, micronutrients, and meal planning", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/fitness" },

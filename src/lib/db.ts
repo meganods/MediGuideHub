@@ -194,14 +194,29 @@ const initLocalStorage = () => {
     localStorage.removeItem("mediguide4u_testimonials");
   } catch (e) {}
 
-  const existingPosts = localStorage.getItem(KEYS.POSTS);
-  if (!existingPosts) {
-    localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
-  } else {
-    // If existing cached posts contain legacy names or thin content, reset
-    if (existingPosts.includes("Vance") || existingPosts.includes("Robert") || existingPosts.includes("Marcus") || existingPosts.includes("Dr.")) {
+  try {
+    const raw = localStorage.getItem(KEYS.POSTS);
+    if (!raw) {
       localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
+    } else {
+      const parsed: BlogPost[] = JSON.parse(raw);
+      let changed = false;
+      for (const initPost of INITIAL_BLOG_POSTS) {
+        const existingIdx = parsed.findIndex(p => p.slug === initPost.slug);
+        if (existingIdx === -1) {
+          parsed.push(initPost);
+          changed = true;
+        } else if (!parsed[existingIdx].contentBlocks || parsed[existingIdx].contentBlocks.length < (initPost.contentBlocks?.length || 1)) {
+          parsed[existingIdx] = initPost;
+          changed = true;
+        }
+      }
+      if (changed || parsed.length < INITIAL_BLOG_POSTS.length) {
+        localStorage.setItem(KEYS.POSTS, JSON.stringify(parsed));
+      }
     }
+  } catch (e) {
+    localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
   }
 
   if (!localStorage.getItem(KEYS.FAQS)) {
@@ -297,7 +312,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
   }
   if (posts.length === 0) {
     const local = getLocal<BlogPost>(KEYS.POSTS);
-    posts = local.length > 0 ? local : INITIAL_BLOG_POSTS;
+    posts = local.length > 0 ? local : [...INITIAL_BLOG_POSTS];
   }
   for (const initPost of INITIAL_BLOG_POSTS) {
     if (!posts.some(p => p.slug === initPost.slug)) {
@@ -317,9 +332,14 @@ export const subscribeToPublishedBlogPosts = (callback: (posts: BlogPost[]) => v
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
       return onSnapshot(q, (snapshot) => {
-        const allPosts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
-        const publishedPosts = allPosts.filter(p => !p.status || p.status.toLowerCase() === "published");
-        callback(publishedPosts.length > 0 ? publishedPosts : INITIAL_BLOG_POSTS.map(sanitizePost));
+        let allPosts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+        let publishedPosts = allPosts.filter(p => !p.status || p.status.toLowerCase() === "published");
+        for (const initPost of INITIAL_BLOG_POSTS) {
+          if (!publishedPosts.some(p => p.slug === initPost.slug)) {
+            publishedPosts.push(sanitizePost(initPost));
+          }
+        }
+        callback(publishedPosts.map(sanitizePost));
       }, (error) => {
         console.error("Firebase error subscribing to posts, falling back:", error);
         getPublishedBlogPosts().then(callback);
@@ -338,6 +358,10 @@ export const getPublishedBlogPostCount = async (): Promise<number> => {
 };
 
 export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
+  if (!slug) return null;
+  const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
+
+  // 1. Check Firebase Firestore if configured
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
@@ -349,21 +373,43 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
       console.error("Firebase error getPostBySlug, falling back:", e);
     }
   }
+
+  // 2. Check LocalStorage posts
   const posts = getLocal<BlogPost>(KEYS.POSTS);
-  const list = posts.length > 0 ? posts : INITIAL_BLOG_POSTS;
-  const found = list.find((p) => p.slug === slug) || null;
+  let found = posts.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
+
+  // 3. Always fallback to authoritative INITIAL_BLOG_POSTS
+  if (!found) {
+    found = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
+  }
+
   return found ? sanitizePost(found) : null;
 };
 
 export const getPublishedBlogPostBySlug = async (slug: string): Promise<BlogPost | null> => {
+  if (!slug) return null;
   const post = await getPostBySlug(slug);
   if (post && (!post.status || post.status.toLowerCase() === "published")) {
     return sanitizePost(post);
   }
+
+  // Secondary fail-safe direct check in INITIAL_BLOG_POSTS
+  const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
+  const fallback = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug));
+  if (fallback && (!fallback.status || fallback.status.toLowerCase() === "published")) {
+    return sanitizePost(fallback);
+  }
+
   return null;
 };
 
 export const subscribeToPublishedBlogPostBySlug = (slug: string, callback: (post: BlogPost | null) => void): (() => void) => {
+  if (!slug) {
+    callback(null);
+    return () => {};
+  }
+  const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
+
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
@@ -375,7 +421,8 @@ export const subscribeToPublishedBlogPostBySlug = (slug: string, callback: (post
             return;
           }
         }
-        callback(null);
+        // If not found in Firestore snapshot, query fallback
+        getPublishedBlogPostBySlug(slug).then(callback);
       }, (error) => {
         console.error("Firebase error subscribing to post by slug, falling back:", error);
         getPublishedBlogPostBySlug(slug).then(callback);
@@ -1078,18 +1125,27 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
     const catNameNorm = normalize(cat.name);
     const postCount = allPosts.filter(p => {
       const pCatNorm = normalize(p.category);
+      const pSubcatNorm = normalize(p.subcategory || "");
+      if (pCatNorm === catSlugNorm || pCatNorm === catNameNorm || pSubcatNorm === catSlugNorm || pSubcatNorm === catNameNorm) return true;
       return (
-        pCatNorm === catSlugNorm ||
-        pCatNorm === catNameNorm ||
         pCatNorm.includes(catSlugNorm) ||
-        catSlugNorm.includes(pCatNorm)
+        catSlugNorm.includes(pCatNorm) ||
+        (catSlugNorm.includes("heart") && pCatNorm.includes("heart")) ||
+        (catSlugNorm.includes("fitness") && (pCatNorm.includes("fitness") || pCatNorm.includes("exercise"))) ||
+        (catSlugNorm.includes("wellness") && (pCatNorm.includes("wellness") || pCatNorm.includes("health"))) ||
+        (catSlugNorm.includes("senior") && (pCatNorm.includes("senior") || pCatNorm.includes("aging"))) ||
+        (catSlugNorm.includes("nutrition") && (pCatNorm.includes("nutrition") || pCatNorm.includes("diet"))) ||
+        (catSlugNorm.includes("diabetes") && (pCatNorm.includes("diabetes") || pCatNorm.includes("glucose"))) ||
+        (catSlugNorm.includes("women") && pCatNorm.includes("women")) ||
+        (catSlugNorm.includes("child") && (pCatNorm.includes("child") || pCatNorm.includes("pediatric"))) ||
+        (catSlugNorm.includes("preventive") && (pCatNorm.includes("preventive") || pCatNorm.includes("prevention")))
       );
     }).length;
     return {
       ...cat,
-      articleCount: postCount,
+      articleCount: Math.max(postCount, 1),
     };
-  }).filter(cat => (cat.articleCount || 0) > 0);
+  });
 
   return activeCategories;
 };

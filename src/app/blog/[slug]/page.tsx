@@ -13,7 +13,7 @@ import {
   BlogPost,
   BlogCategory
 } from "@/lib/db";
-import { MEDICAL_REVIEWERS } from "@/lib/mockData";
+import { INITIAL_BLOG_POSTS, MEDICAL_REVIEWERS } from "@/lib/mockData";
 import { 
   Clock, 
   BookOpen, 
@@ -55,18 +55,25 @@ interface PageProps {
 export async function generateStaticParams() {
   try {
     const posts = await getPublishedBlogPosts();
-    return posts.filter(p => p.slug).map((post) => ({
-      slug: post.slug,
+    const staticSlugs = new Set<string>();
+    posts.forEach(p => { if (p.slug) staticSlugs.add(p.slug); });
+    INITIAL_BLOG_POSTS.forEach(p => { if (p.slug) staticSlugs.add(p.slug); });
+    return Array.from(staticSlugs).map((slug) => ({
+      slug,
     }));
   } catch (e) {
     console.error("Error generating static params for blog posts:", e);
-    return [];
+    return INITIAL_BLOG_POSTS.map((p) => ({ slug: p.slug }));
   }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPublishedBlogPostBySlug(slug);
+  let post = await getPublishedBlogPostBySlug(slug);
+  if (!post) {
+    const decodedSlug = decodeURIComponent(slug || "").trim().toLowerCase();
+    post = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
+  }
 
   if (!post) {
     return {
@@ -122,12 +129,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const [post, allPosts, categories, initialComments] = await Promise.all([
+  const decodedSlug = decodeURIComponent(slug || "").trim().toLowerCase();
+
+  const [fetchedPost, allPosts, categories, initialComments] = await Promise.all([
     getPublishedBlogPostBySlug(slug),
     getPublishedBlogPosts().catch(() => [] as BlogPost[]),
     getCategories().catch(() => [] as BlogCategory[]),
     getCommentsForPost(slug).catch(() => []),
   ]);
+
+  let post = fetchedPost;
+  if (!post) {
+    post = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
+  }
 
   if (!post || (post.status && post.status.toLowerCase() !== "published")) {
     notFound();

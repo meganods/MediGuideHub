@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AdBanner from "@/components/AdBanner";
 import { getCategories, getPublishedBlogPosts, BlogPost, BlogCategory } from "@/lib/db";
-import { getAuthorProfileUrl } from "@/lib/mockData";
+import { getAuthorProfileUrl, INITIAL_CATEGORIES } from "@/lib/mockData";
 import { 
   BookOpen, 
   ArrowRight, 
@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
+export const dynamicParams = true;
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -27,15 +28,25 @@ interface CategoryPageProps {
 
 export async function generateStaticParams() {
   const categories = await getCategories().catch(() => []);
-  return categories.map((cat) => ({
-    slug: cat.slug,
+  const staticSlugs = new Set<string>();
+  categories.forEach((cat) => { if (cat.slug) staticSlugs.add(cat.slug); });
+  INITIAL_CATEGORIES.forEach((cat) => { if (cat.slug) staticSlugs.add(cat.slug); });
+  return Array.from(staticSlugs).map((slug) => ({
+    slug,
   }));
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug || "").trim().toLowerCase();
+  const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const targetNorm = normalize(decodedSlug);
+
   const categories = await getCategories().catch(() => []);
-  const category = categories.find((c) => c.slug === slug);
+  let category = categories.find((c) => c.slug === slug || c.slug.toLowerCase() === decodedSlug || normalize(c.slug) === targetNorm);
+  if (!category) {
+    category = INITIAL_CATEGORIES.find((c) => c.slug === slug || c.slug.toLowerCase() === decodedSlug || normalize(c.slug) === targetNorm);
+  }
 
   if (!category) {
     return {
@@ -73,19 +84,25 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 export default async function CategoryDetailPage({ params }: CategoryPageProps) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug || "").trim().toLowerCase();
+  const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const targetNorm = normalize(decodedSlug);
+
   const [categories, allPosts] = await Promise.all([
     getCategories().catch(() => []),
     getPublishedBlogPosts().catch(() => []),
   ]);
 
-  const category = categories.find((c) => c.slug === slug);
+  let category = categories.find((c) => c.slug === slug || c.slug.toLowerCase() === decodedSlug || normalize(c.slug) === targetNorm);
+  if (!category) {
+    category = INITIAL_CATEGORIES.find((c) => c.slug === slug || c.slug.toLowerCase() === decodedSlug || normalize(c.slug) === targetNorm);
+  }
 
   if (!category) {
     notFound();
   }
 
   // Filter posts matching this category cleanly
-  const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   const catSlugNorm = normalize(category.slug);
   const catNameNorm = normalize(category.name);
 

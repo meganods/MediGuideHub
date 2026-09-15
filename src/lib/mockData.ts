@@ -11913,3 +11913,2730 @@ export const INITIAL_TESTIMONIALS: TestimonialItem[] = [
     rating: 5
   }
 ];
+
+export interface BlogCommentReply {
+  author: string;
+  role?: string;
+  text: string;
+  date: string;
+  createdAt?: string;
+}
+
+export interface BlogComment {
+  id?: string;
+  postSlug: string;
+  postTitle: string;
+  name: string;
+  userRole?: string;
+  rating?: number;
+  text: string;
+  date: string;
+  createdAt: string;
+  reply?: BlogCommentReply;
+}
+
+export const INITIAL_COMMENTS: BlogComment[] = [
+  {
+    "id": "rev-vitamin-b12-deficiency-symptoms-causes-and-treatment-1",
+    "postSlug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
+    "postTitle": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-vitamin-b12-deficiency-symptoms-causes-and-treatment-2",
+    "postSlug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
+    "postTitle": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-iron-deficiency-anemia-symptoms-causes-and-treatment-1",
+    "postSlug": "iron-deficiency-anemia-symptoms-causes-and-treatment",
+    "postTitle": "Iron Deficiency Anemia: Symptoms, Ferritin Testing, Causes, and Clinical Management",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-iron-deficiency-anemia-symptoms-causes-and-treatment-2",
+    "postSlug": "iron-deficiency-anemia-symptoms-causes-and-treatment",
+    "postTitle": "Iron Deficiency Anemia: Symptoms, Ferritin Testing, Causes, and Clinical Management",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels-1",
+    "postSlug": "vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels",
+    "postTitle": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels-2",
+    "postSlug": "vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels",
+    "postTitle": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management-1",
+    "postSlug": "fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management",
+    "postTitle": "Fatty Liver Disease (MASLD/MASH): Symptoms, Staging, FIB-4 Score, and Reversal Strategies",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management-2",
+    "postSlug": "fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management",
+    "postTitle": "Fatty Liver Disease (MASLD/MASH): Symptoms, Staging, FIB-4 Score, and Reversal Strategies",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-womens-health-checks-preventive-care-1",
+    "postSlug": "womens-health-checks-preventive-care",
+    "postTitle": "Women's Health: Essential Preventive Screenings, Age Guidelines, and Clinical Checklists",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-womens-health-checks-preventive-care-2",
+    "postSlug": "womens-health-checks-preventive-care",
+    "postTitle": "Women's Health: Essential Preventive Screenings, Age Guidelines, and Clinical Checklists",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-managing-blood-pressure-naturally-1",
+    "postSlug": "managing-blood-pressure-naturally",
+    "postTitle": "Managing Blood Pressure Naturally: Evidence-Based Clinical Strategies & DASH Protocols",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-managing-blood-pressure-naturally-2",
+    "postSlug": "managing-blood-pressure-naturally",
+    "postTitle": "Managing Blood Pressure Naturally: Evidence-Based Clinical Strategies & DASH Protocols",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-science-of-stress-management-1",
+    "postSlug": "science-of-stress-management",
+    "postTitle": "The Science of Stress Management: Neurobiology, Cortisol Regulation, and Clinical Techniques",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-science-of-stress-management-2",
+    "postSlug": "science-of-stress-management",
+    "postTitle": "The Science of Stress Management: Neurobiology, Cortisol Regulation, and Clinical Techniques",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-designing-weekly-workout-routine-1",
+    "postSlug": "designing-weekly-workout-routine",
+    "postTitle": "Designing a Weekly Workout Routine: Evidence-Based Hypertrophy, Cardio, and Longevity Programming",
+    "name": "Ryan B., Endurance Athlete",
+    "userRole": "Athlete / Coach",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
+    }
+  },
+  {
+    "id": "rev-designing-weekly-workout-routine-2",
+    "postSlug": "designing-weekly-workout-routine",
+    "postTitle": "Designing a Weekly Workout Routine: Evidence-Based Hypertrophy, Cardio, and Longevity Programming",
+    "name": "Samantha V., Certified Strength Coach",
+    "userRole": "Fitness Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
+    }
+  },
+  {
+    "id": "rev-active-aging-seniors-guide-1",
+    "postSlug": "active-aging-seniors-guide",
+    "postTitle": "Active Aging: Complete Mobility, Sarcopenia Prevention, and Bone Health Guide for Seniors",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-active-aging-seniors-guide-2",
+    "postSlug": "active-aging-seniors-guide",
+    "postTitle": "Active Aging: Complete Mobility, Sarcopenia Prevention, and Bone Health Guide for Seniors",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-truth-about-superfoods-micronutrients-1",
+    "postSlug": "truth-about-superfoods-micronutrients",
+    "postTitle": "The Truth About Superfoods and Micronutrients: Nutritional Biochemistry vs. Marketing Myths",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-truth-about-superfoods-micronutrients-2",
+    "postSlug": "truth-about-superfoods-micronutrients",
+    "postTitle": "The Truth About Superfoods and Micronutrients: Nutritional Biochemistry vs. Marketing Myths",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-type-2-diabetes-management-symptoms-diet-and-prevention-1",
+    "postSlug": "type-2-diabetes-management-symptoms-diet-and-prevention",
+    "postTitle": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-type-2-diabetes-management-symptoms-diet-and-prevention-2",
+    "postSlug": "type-2-diabetes-management-symptoms-diet-and-prevention",
+    "postTitle": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-type-2-diabetes-management-symptoms-diet-and-prevention-3",
+    "postSlug": "type-2-diabetes-management-symptoms-diet-and-prevention",
+    "postTitle": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
+    "name": "Dr. Brenda M., Certified Diabetes Educator",
+    "userRole": "Clinical Specialist",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "September 09, 2026",
+      "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
+    }
+  },
+  {
+    "id": "rev-essential-preventive-health-screenings-by-age-1",
+    "postSlug": "essential-preventive-health-screenings-by-age",
+    "postTitle": "Essential Preventive Health Screenings by Age: The Clinical Evidence-Based Checklist",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-essential-preventive-health-screenings-by-age-2",
+    "postSlug": "essential-preventive-health-screenings-by-age",
+    "postTitle": "Essential Preventive Health Screenings by Age: The Clinical Evidence-Based Checklist",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-anxiety-and-sleep-hygiene-evidence-based-strategies-1",
+    "postSlug": "anxiety-and-sleep-hygiene-evidence-based-strategies",
+    "postTitle": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-anxiety-and-sleep-hygiene-evidence-based-strategies-2",
+    "postSlug": "anxiety-and-sleep-hygiene-evidence-based-strategies",
+    "postTitle": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-childhood-nutrition-developmental-milestones-1",
+    "postSlug": "childhood-nutrition-developmental-milestones",
+    "postTitle": "Pediatric Nutrition and Growth: Evidence-Based Dietary Guidelines for Children",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-childhood-nutrition-developmental-milestones-2",
+    "postSlug": "childhood-nutrition-developmental-milestones",
+    "postTitle": "Pediatric Nutrition and Growth: Evidence-Based Dietary Guidelines for Children",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-adult-vaccination-schedule-preventive-guide-1",
+    "postSlug": "adult-vaccination-schedule-preventive-guide",
+    "postTitle": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-adult-vaccination-schedule-preventive-guide-2",
+    "postSlug": "adult-vaccination-schedule-preventive-guide",
+    "postTitle": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-coronary-artery-disease-symptoms-causes-treatment-1",
+    "postSlug": "coronary-artery-disease-symptoms-causes-treatment",
+    "postTitle": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-coronary-artery-disease-symptoms-causes-treatment-2",
+    "postSlug": "coronary-artery-disease-symptoms-causes-treatment",
+    "postTitle": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-atrial-fibrillation-afib-symptoms-risks-treatment-1",
+    "postSlug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "postTitle": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-atrial-fibrillation-afib-symptoms-risks-treatment-2",
+    "postSlug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "postTitle": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-atrial-fibrillation-afib-symptoms-risks-treatment-3",
+    "postSlug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "postTitle": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "name": "David K.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
+    "reply": {
+      "author": "mediguide4u Editorial Board",
+      "role": "Clinical Editorial Team",
+      "date": "September 09, 2026",
+      "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
+    }
+  },
+  {
+    "id": "rev-high-cholesterol-lipid-panel-diet-statin-guide-1",
+    "postSlug": "high-cholesterol-lipid-panel-diet-statin-guide",
+    "postTitle": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-high-cholesterol-lipid-panel-diet-statin-guide-2",
+    "postSlug": "high-cholesterol-lipid-panel-diet-statin-guide",
+    "postTitle": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-prediabetes-insulin-resistance-reversal-guide-1",
+    "postSlug": "prediabetes-insulin-resistance-reversal-guide",
+    "postTitle": "Pre-Diabetes and Insulin Resistance: How to Lower Blood Glucose Before Type 2 Diabetes",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-prediabetes-insulin-resistance-reversal-guide-2",
+    "postSlug": "prediabetes-insulin-resistance-reversal-guide",
+    "postTitle": "Pre-Diabetes and Insulin Resistance: How to Lower Blood Glucose Before Type 2 Diabetes",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-prediabetes-insulin-resistance-reversal-guide-3",
+    "postSlug": "prediabetes-insulin-resistance-reversal-guide",
+    "postTitle": "Pre-Diabetes and Insulin Resistance: How to Lower Blood Glucose Before Type 2 Diabetes",
+    "name": "Dr. Brenda M., Certified Diabetes Educator",
+    "userRole": "Clinical Specialist",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "September 09, 2026",
+      "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
+    }
+  },
+  {
+    "id": "rev-diabetic-neuropathy-symptoms-nerve-pain-management-1",
+    "postSlug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "postTitle": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-diabetic-neuropathy-symptoms-nerve-pain-management-2",
+    "postSlug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "postTitle": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-hypoglycemia-low-blood-sugar-symptoms-emergency-treatment-1",
+    "postSlug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
+    "postTitle": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-hypoglycemia-low-blood-sugar-symptoms-emergency-treatment-2",
+    "postSlug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
+    "postTitle": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-hypoglycemia-low-blood-sugar-symptoms-emergency-treatment-3",
+    "postSlug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
+    "postTitle": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
+    "name": "Dr. Brenda M., Certified Diabetes Educator",
+    "userRole": "Clinical Specialist",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "September 09, 2026",
+      "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
+    }
+  },
+  {
+    "id": "rev-gerd-acid-reflux-symptoms-causes-lifestyle-treatment-1",
+    "postSlug": "gerd-acid-reflux-symptoms-causes-lifestyle-treatment",
+    "postTitle": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-gerd-acid-reflux-symptoms-causes-lifestyle-treatment-2",
+    "postSlug": "gerd-acid-reflux-symptoms-causes-lifestyle-treatment",
+    "postTitle": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-gout-hyperuricemia-causes-uric-acid-diet-treatment-1",
+    "postSlug": "gout-hyperuricemia-causes-uric-acid-diet-treatment",
+    "postTitle": "Gout and Hyperuricemia: Uric Acid Causes, Flare-Up Relief, and Low-Purine Diet",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-gout-hyperuricemia-causes-uric-acid-diet-treatment-2",
+    "postSlug": "gout-hyperuricemia-causes-uric-acid-diet-treatment",
+    "postTitle": "Gout and Hyperuricemia: Uric Acid Causes, Flare-Up Relief, and Low-Purine Diet",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-metabolic-syndrome-criteria-risks-reversal-plan-1",
+    "postSlug": "metabolic-syndrome-criteria-risks-reversal-plan",
+    "postTitle": "Metabolic Syndrome: Clinical Diagnostic Criteria, Heart Risks, and Lifestyle Reversal",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-metabolic-syndrome-criteria-risks-reversal-plan-2",
+    "postSlug": "metabolic-syndrome-criteria-risks-reversal-plan",
+    "postTitle": "Metabolic Syndrome: Clinical Diagnostic Criteria, Heart Risks, and Lifestyle Reversal",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-pcos-symptoms-hormone-balance-treatment-guide-1",
+    "postSlug": "pcos-symptoms-hormone-balance-treatment-guide",
+    "postTitle": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-pcos-symptoms-hormone-balance-treatment-guide-2",
+    "postSlug": "pcos-symptoms-hormone-balance-treatment-guide",
+    "postTitle": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-endometriosis-symptoms-diagnosis-pelvic-pain-treatment-1",
+    "postSlug": "endometriosis-symptoms-diagnosis-pelvic-pain-treatment",
+    "postTitle": "Endometriosis: Chronic Pelvic Pain, Laparoscopy Diagnosis, and Medical Therapies",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-endometriosis-symptoms-diagnosis-pelvic-pain-treatment-2",
+    "postSlug": "endometriosis-symptoms-diagnosis-pelvic-pain-treatment",
+    "postTitle": "Endometriosis: Chronic Pelvic Pain, Laparoscopy Diagnosis, and Medical Therapies",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-perimenopause-menopause-symptoms-hrt-management-1",
+    "postSlug": "perimenopause-menopause-symptoms-hrt-management",
+    "postTitle": "Perimenopause and Menopause: Vasomotor Symptoms, Mood Changes, and HRT Evidence",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-perimenopause-menopause-symptoms-hrt-management-2",
+    "postSlug": "perimenopause-menopause-symptoms-hrt-management",
+    "postTitle": "Perimenopause and Menopause: Vasomotor Symptoms, Mood Changes, and HRT Evidence",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-clinical-depression-symptoms-causes-therapy-treatment-1",
+    "postSlug": "clinical-depression-symptoms-causes-therapy-treatment",
+    "postTitle": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-clinical-depression-symptoms-causes-therapy-treatment-2",
+    "postSlug": "clinical-depression-symptoms-causes-therapy-treatment",
+    "postTitle": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-adult-adhd-signs-executive-dysfunction-management-1",
+    "postSlug": "adult-adhd-signs-executive-dysfunction-management",
+    "postTitle": "Adult ADHD: Diagnostic Symptoms, Executive Dysfunction, and Daily Coping Strategies",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-adult-adhd-signs-executive-dysfunction-management-2",
+    "postSlug": "adult-adhd-signs-executive-dysfunction-management",
+    "postTitle": "Adult ADHD: Diagnostic Symptoms, Executive Dysfunction, and Daily Coping Strategies",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-panic-attack-vs-anxiety-attack-symptoms-grounding-techniques-1",
+    "postSlug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
+    "postTitle": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-panic-attack-vs-anxiety-attack-symptoms-grounding-techniques-2",
+    "postSlug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
+    "postTitle": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-childhood-asthma-triggers-inhaler-guide-action-plan-1",
+    "postSlug": "childhood-asthma-triggers-inhaler-guide-action-plan",
+    "postTitle": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-childhood-asthma-triggers-inhaler-guide-action-plan-2",
+    "postSlug": "childhood-asthma-triggers-inhaler-guide-action-plan",
+    "postTitle": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-pediatric-fever-management-temperature-guide-when-to-see-doctor-1",
+    "postSlug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "postTitle": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-pediatric-fever-management-temperature-guide-when-to-see-doctor-2",
+    "postSlug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "postTitle": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-childhood-rashes-eczema-hand-foot-mouth-identification-1",
+    "postSlug": "childhood-rashes-eczema-hand-foot-mouth-identification",
+    "postTitle": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-childhood-rashes-eczema-hand-foot-mouth-identification-2",
+    "postSlug": "childhood-rashes-eczema-hand-foot-mouth-identification",
+    "postTitle": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-osteoporosis-bone-density-dexa-scan-prevention-1",
+    "postSlug": "osteoporosis-bone-density-dexa-scan-prevention",
+    "postTitle": "Osteoporosis and Bone Mineral Density: DEXA Scans, Calcium, and Fall Prevention",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-osteoporosis-bone-density-dexa-scan-prevention-2",
+    "postSlug": "osteoporosis-bone-density-dexa-scan-prevention",
+    "postTitle": "Osteoporosis and Bone Mineral Density: DEXA Scans, Calcium, and Fall Prevention",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-early-signs-dementia-alzheimers-vs-normal-aging-1",
+    "postSlug": "early-signs-dementia-alzheimers-vs-normal-aging",
+    "postTitle": "Early Signs of Dementia and Alzheimer's vs. Normal Age-Related Memory Changes",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-early-signs-dementia-alzheimers-vs-normal-aging-2",
+    "postSlug": "early-signs-dementia-alzheimers-vs-normal-aging",
+    "postTitle": "Early Signs of Dementia and Alzheimer's vs. Normal Age-Related Memory Changes",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-osteoarthritis-joint-pain-cartilage-care-treatment-1",
+    "postSlug": "osteoarthritis-joint-pain-cartilage-care-treatment",
+    "postTitle": "Osteoarthritis: Joint Cartilage Wear, Mobility Preservation, and Pain Management",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-osteoarthritis-joint-pain-cartilage-care-treatment-2",
+    "postSlug": "osteoarthritis-joint-pain-cartilage-care-treatment",
+    "postTitle": "Osteoarthritis: Joint Cartilage Wear, Mobility Preservation, and Pain Management",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-colon-cancer-screening-colonoscopy-cologuard-guide-1",
+    "postSlug": "colon-cancer-screening-colonoscopy-cologuard-guide",
+    "postTitle": "Colorectal Cancer Screening: Colonoscopy, Cologuard, and Stool DNA Test Guidelines",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-colon-cancer-screening-colonoscopy-cologuard-guide-2",
+    "postSlug": "colon-cancer-screening-colonoscopy-cologuard-guide",
+    "postTitle": "Colorectal Cancer Screening: Colonoscopy, Cologuard, and Stool DNA Test Guidelines",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-routine-blood-test-results-explained-cbc-cmp-kidney-liver-1",
+    "postSlug": "routine-blood-test-results-explained-cbc-cmp-kidney-liver",
+    "postTitle": "Routine Blood Tests Explained: Understanding CBC, CMP, Lipid, and Liver Panels",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-routine-blood-test-results-explained-cbc-cmp-kidney-liver-2",
+    "postSlug": "routine-blood-test-results-explained-cbc-cmp-kidney-liver",
+    "postTitle": "Routine Blood Tests Explained: Understanding CBC, CMP, Lipid, and Liver Panels",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-skin-cancer-screening-abcde-melanoma-mole-check-1",
+    "postSlug": "skin-cancer-screening-abcde-melanoma-mole-check",
+    "postTitle": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-skin-cancer-screening-abcde-melanoma-mole-check-2",
+    "postSlug": "skin-cancer-screening-abcde-melanoma-mole-check",
+    "postTitle": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-shingles-vaccine-shingrix-side-effects-eligibility-1",
+    "postSlug": "shingles-vaccine-shingrix-side-effects-eligibility",
+    "postTitle": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-shingles-vaccine-shingrix-side-effects-eligibility-2",
+    "postSlug": "shingles-vaccine-shingrix-side-effects-eligibility",
+    "postTitle": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-hpv-vaccine-cancer-prevention-age-safety-guide-1",
+    "postSlug": "hpv-vaccine-cancer-prevention-age-safety-guide",
+    "postTitle": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-hpv-vaccine-cancer-prevention-age-safety-guide-2",
+    "postSlug": "hpv-vaccine-cancer-prevention-age-safety-guide",
+    "postTitle": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-pneumococcal-vaccine-pcv20-ppsv23-pneumonia-guide-1",
+    "postSlug": "pneumococcal-vaccine-pcv20-ppsv23-pneumonia-guide",
+    "postTitle": "Pneumococcal Vaccines for Older Adults: Understanding PCV15, PCV20, and PPSV23",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-pneumococcal-vaccine-pcv20-ppsv23-pneumonia-guide-2",
+    "postSlug": "pneumococcal-vaccine-pcv20-ppsv23-pneumonia-guide",
+    "postTitle": "Pneumococcal Vaccines for Older Adults: Understanding PCV15, PCV20, and PPSV23",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-cardio-vs-strength-training-muscle-fat-loss-longevity-1",
+    "postSlug": "cardio-vs-strength-training-muscle-fat-loss-longevity",
+    "postTitle": "Cardio vs Strength Training: Optimizing Muscle Mass, Fat Loss, and Metabolic Health",
+    "name": "Ryan B., Endurance Athlete",
+    "userRole": "Athlete / Coach",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
+    }
+  },
+  {
+    "id": "rev-cardio-vs-strength-training-muscle-fat-loss-longevity-2",
+    "postSlug": "cardio-vs-strength-training-muscle-fat-loss-longevity",
+    "postTitle": "Cardio vs Strength Training: Optimizing Muscle Mass, Fat Loss, and Metabolic Health",
+    "name": "Samantha V., Certified Strength Coach",
+    "userRole": "Fitness Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
+    }
+  },
+  {
+    "id": "rev-vo2-max-heart-rate-zones-cardio-longevity-1",
+    "postSlug": "vo2-max-heart-rate-zones-cardio-longevity",
+    "postTitle": "VO2 Max and Heart Rate Zones: How Aerobic Capacity Predicts Long-Term Health",
+    "name": "Ryan B., Endurance Athlete",
+    "userRole": "Athlete / Coach",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
+    }
+  },
+  {
+    "id": "rev-vo2-max-heart-rate-zones-cardio-longevity-2",
+    "postSlug": "vo2-max-heart-rate-zones-cardio-longevity",
+    "postTitle": "VO2 Max and Heart Rate Zones: How Aerobic Capacity Predicts Long-Term Health",
+    "name": "Samantha V., Certified Strength Coach",
+    "userRole": "Fitness Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
+    }
+  },
+  {
+    "id": "rev-circadian-rhythm-sleep-architecture-rem-deep-sleep-guide-1",
+    "postSlug": "circadian-rhythm-sleep-architecture-rem-deep-sleep-guide",
+    "postTitle": "Circadian Rhythms and Sleep Architecture: Optimizing REM and Deep Sleep Cycles",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-circadian-rhythm-sleep-architecture-rem-deep-sleep-guide-2",
+    "postSlug": "circadian-rhythm-sleep-architecture-rem-deep-sleep-guide",
+    "postTitle": "Circadian Rhythms and Sleep Architecture: Optimizing REM and Deep Sleep Cycles",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-gut-microbiome-probiotics-prebiotics-gut-brain-axis-1",
+    "postSlug": "gut-microbiome-probiotics-prebiotics-gut-brain-axis",
+    "postTitle": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-gut-microbiome-probiotics-prebiotics-gut-brain-axis-2",
+    "postSlug": "gut-microbiome-probiotics-prebiotics-gut-brain-axis",
+    "postTitle": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-heart-failure-hfpef-symptoms-diagnosis-management-1",
+    "postSlug": "heart-failure-hfpef-symptoms-diagnosis-management",
+    "postTitle": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-heart-failure-hfpef-symptoms-diagnosis-management-2",
+    "postSlug": "heart-failure-hfpef-symptoms-diagnosis-management",
+    "postTitle": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-heart-failure-hfpef-symptoms-diagnosis-management-3",
+    "postSlug": "heart-failure-hfpef-symptoms-diagnosis-management",
+    "postTitle": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
+    "name": "David K.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
+    "reply": {
+      "author": "mediguide4u Editorial Board",
+      "role": "Clinical Editorial Team",
+      "date": "September 09, 2026",
+      "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
+    }
+  },
+  {
+    "id": "rev-peripheral-artery-disease-pad-symptoms-abi-treatment-1",
+    "postSlug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
+    "postTitle": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-peripheral-artery-disease-pad-symptoms-abi-treatment-2",
+    "postSlug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
+    "postTitle": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-heart-palpitations-pvcs-pacs-causes-when-to-worry-1",
+    "postSlug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
+    "postTitle": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
+    "name": "Marcus T., Cardiology Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
+    }
+  },
+  {
+    "id": "rev-heart-palpitations-pvcs-pacs-causes-when-to-worry-2",
+    "postSlug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
+    "postTitle": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
+    "name": "Patricia L., Nurse Practitioner",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
+    }
+  },
+  {
+    "id": "rev-heart-palpitations-pvcs-pacs-causes-when-to-worry-3",
+    "postSlug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
+    "postTitle": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
+    "name": "David K.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
+    "reply": {
+      "author": "mediguide4u Editorial Board",
+      "role": "Clinical Editorial Team",
+      "date": "September 09, 2026",
+      "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
+    }
+  },
+  {
+    "id": "rev-continuous-glucose-monitors-cgm-time-in-range-guide-1",
+    "postSlug": "continuous-glucose-monitors-cgm-time-in-range-guide",
+    "postTitle": "Continuous Glucose Monitors (CGM): Time in Range (TIR), Interstitial Lag, and Glucose Spikes",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-continuous-glucose-monitors-cgm-time-in-range-guide-2",
+    "postSlug": "continuous-glucose-monitors-cgm-time-in-range-guide",
+    "postTitle": "Continuous Glucose Monitors (CGM): Time in Range (TIR), Interstitial Lag, and Glucose Spikes",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-diabetic-retinopathy-stages-eye-exam-prevention-1",
+    "postSlug": "diabetic-retinopathy-stages-eye-exam-prevention",
+    "postTitle": "Diabetic Retinopathy: Stages, Dilated Eye Exams, Microaneurysms, and Vision Protection",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-diabetic-retinopathy-stages-eye-exam-prevention-2",
+    "postSlug": "diabetic-retinopathy-stages-eye-exam-prevention",
+    "postTitle": "Diabetic Retinopathy: Stages, Dilated Eye Exams, Microaneurysms, and Vision Protection",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-diabetic-retinopathy-stages-eye-exam-prevention-3",
+    "postSlug": "diabetic-retinopathy-stages-eye-exam-prevention",
+    "postTitle": "Diabetic Retinopathy: Stages, Dilated Eye Exams, Microaneurysms, and Vision Protection",
+    "name": "Dr. Brenda M., Certified Diabetes Educator",
+    "userRole": "Clinical Specialist",
+    "rating": 5,
+    "date": "September 08, 2026",
+    "createdAt": "2026-09-08T16:10:00.000Z",
+    "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "September 09, 2026",
+      "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
+    }
+  },
+  {
+    "id": "rev-diabetic-kidney-disease-uacr-egfr-management-1",
+    "postSlug": "diabetic-kidney-disease-uacr-egfr-management",
+    "postTitle": "Diabetic Kidney Disease (Nephropathy): eGFR, Urine Albumin (uACR), and Renal Protection",
+    "name": "Arthur W., T2D Advocate",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
+    }
+  },
+  {
+    "id": "rev-diabetic-kidney-disease-uacr-egfr-management-2",
+    "postSlug": "diabetic-kidney-disease-uacr-egfr-management",
+    "postTitle": "Diabetic Kidney Disease (Nephropathy): eGFR, Urine Albumin (uACR), and Renal Protection",
+    "name": "Evelyn R., Caregiver",
+    "userRole": "Caregiver",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
+    }
+  },
+  {
+    "id": "rev-hypothyroidism-hashimotos-tsh-levels-treatment-1",
+    "postSlug": "hypothyroidism-hashimotos-tsh-levels-treatment",
+    "postTitle": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-hypothyroidism-hashimotos-tsh-levels-treatment-2",
+    "postSlug": "hypothyroidism-hashimotos-tsh-levels-treatment",
+    "postTitle": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-iron-deficiency-without-anemia-ferritin-fatigue-1",
+    "postSlug": "iron-deficiency-without-anemia-ferritin-fatigue",
+    "postTitle": "Iron Deficiency Without Anemia (IDWA): Serum Ferritin, Fatigue, and Replenishment Protocols",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-iron-deficiency-without-anemia-ferritin-fatigue-2",
+    "postSlug": "iron-deficiency-without-anemia-ferritin-fatigue",
+    "postTitle": "Iron Deficiency Without Anemia (IDWA): Serum Ferritin, Fatigue, and Replenishment Protocols",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-pelvic-floor-dysfunction-prolapse-incontinence-therapy-1",
+    "postSlug": "pelvic-floor-dysfunction-prolapse-incontinence-therapy",
+    "postTitle": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
+    "name": "Claire M., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
+    }
+  },
+  {
+    "id": "rev-pelvic-floor-dysfunction-prolapse-incontinence-therapy-2",
+    "postSlug": "pelvic-floor-dysfunction-prolapse-incontinence-therapy",
+    "postTitle": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
+    "name": "Hannah S., Women's Health Physical Therapist",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
+    }
+  },
+  {
+    "id": "rev-sarcopenia-muscle-loss-seniors-protein-exercise-1",
+    "postSlug": "sarcopenia-muscle-loss-seniors-protein-exercise",
+    "postTitle": "Sarcopenia in Older Adults: Muscle Loss, Protein Distribution, and Resistance Training",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-sarcopenia-muscle-loss-seniors-protein-exercise-2",
+    "postSlug": "sarcopenia-muscle-loss-seniors-protein-exercise",
+    "postTitle": "Sarcopenia in Older Adults: Muscle Loss, Protein Distribution, and Resistance Training",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. David Chen, PhD",
+      "role": "Nutritional Biochemistry Specialist",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-bph-enlarged-prostate-symptoms-medications-psa-1",
+    "postSlug": "bph-enlarged-prostate-symptoms-medications-psa",
+    "postTitle": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-bph-enlarged-prostate-symptoms-medications-psa-2",
+    "postSlug": "bph-enlarged-prostate-symptoms-medications-psa",
+    "postTitle": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-polypharmacy-in-seniors-deprescribing-beers-criteria-1",
+    "postSlug": "polypharmacy-in-seniors-deprescribing-beers-criteria",
+    "postTitle": "Polypharmacy in Older Adults: Drug Interactions, the Beers Criteria, and Deprescribing",
+    "name": "Gerald B., Age 72",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
+    }
+  },
+  {
+    "id": "rev-polypharmacy-in-seniors-deprescribing-beers-criteria-2",
+    "postSlug": "polypharmacy-in-seniors-deprescribing-beers-criteria",
+    "postTitle": "Polypharmacy in Older Adults: Drug Interactions, the Beers Criteria, and Deprescribing",
+    "name": "Dr. Steven P., Geriatrician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
+    }
+  },
+  {
+    "id": "rev-burnout-vs-depression-differences-recovery-plan-1",
+    "postSlug": "burnout-vs-depression-differences-recovery-plan",
+    "postTitle": "Burnout vs. Clinical Depression: Biological Differences, Allostatic Load, and Recovery",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-burnout-vs-depression-differences-recovery-plan-2",
+    "postSlug": "burnout-vs-depression-differences-recovery-plan",
+    "postTitle": "Burnout vs. Clinical Depression: Biological Differences, Allostatic Load, and Recovery",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-social-anxiety-disorder-symptoms-cbt-exposure-1",
+    "postSlug": "social-anxiety-disorder-symptoms-cbt-exposure",
+    "postTitle": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-social-anxiety-disorder-symptoms-cbt-exposure-2",
+    "postSlug": "social-anxiety-disorder-symptoms-cbt-exposure",
+    "postTitle": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-migraine-vs-tension-headache-aura-cgrp-treatment-1",
+    "postSlug": "migraine-vs-tension-headache-aura-cgrp-treatment",
+    "postTitle": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
+    "name": "Jonathan F., Software Engineer",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
+    }
+  },
+  {
+    "id": "rev-migraine-vs-tension-headache-aura-cgrp-treatment-2",
+    "postSlug": "migraine-vs-tension-headache-aura-cgrp-treatment",
+    "postTitle": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
+    "name": "Megan K., Licensed Professional Counselor",
+    "userRole": "Mental Health Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
+    }
+  },
+  {
+    "id": "rev-hs-crp-blood-test-systemic-inflammation-heart-risk-1",
+    "postSlug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
+    "postTitle": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-hs-crp-blood-test-systemic-inflammation-heart-risk-2",
+    "postSlug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
+    "postTitle": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-coronary-calcium-scan-cac-score-interpretation-1",
+    "postSlug": "coronary-calcium-scan-cac-score-interpretation",
+    "postTitle": "Coronary Calcium Scan (CAC): Agatston Score Meaning, Plaque Detection, and Statin Decisions",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-coronary-calcium-scan-cac-score-interpretation-2",
+    "postSlug": "coronary-calcium-scan-cac-score-interpretation",
+    "postTitle": "Coronary Calcium Scan (CAC): Agatston Score Meaning, Plaque Detection, and Statin Decisions",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-vitamin-d3-k2-synergy-calcium-artery-health-1",
+    "postSlug": "vitamin-d3-k2-synergy-calcium-artery-health",
+    "postTitle": "Vitamin D3 and K2 Synergy: Calcium Absorption, Osteocalcin, and Arterial Calcification",
+    "name": "Kenneth G., Age 54",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
+    }
+  },
+  {
+    "id": "rev-vitamin-d3-k2-synergy-calcium-artery-health-2",
+    "postSlug": "vitamin-d3-k2-synergy-calcium-artery-health",
+    "postTitle": "Vitamin D3 and K2 Synergy: Calcium Absorption, Osteocalcin, and Arterial Calcification",
+    "name": "Dr. Laura H., Family Medicine Physician",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
+    }
+  },
+  {
+    "id": "rev-childhood-ear-infections-otitis-media-antibiotics-tubes-1",
+    "postSlug": "childhood-ear-infections-otitis-media-antibiotics-tubes",
+    "postTitle": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-childhood-ear-infections-otitis-media-antibiotics-tubes-2",
+    "postSlug": "childhood-ear-infections-otitis-media-antibiotics-tubes",
+    "postTitle": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-pediatric-dehydration-infants-ors-warning-signs-1",
+    "postSlug": "pediatric-dehydration-infants-ors-warning-signs",
+    "postTitle": "Pediatric Dehydration: Signs of Fluid Loss in Infants, Oral Rehydration (ORS), and Red Flags",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-pediatric-dehydration-infants-ors-warning-signs-2",
+    "postSlug": "pediatric-dehydration-infants-ors-warning-signs",
+    "postTitle": "Pediatric Dehydration: Signs of Fluid Loss in Infants, Oral Rehydration (ORS), and Red Flags",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-childhood-food-allergies-ige-testing-epipen-plan-1",
+    "postSlug": "childhood-food-allergies-ige-testing-epipen-plan",
+    "postTitle": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
+    "name": "Jessica D., Mother of 2",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
+    }
+  },
+  {
+    "id": "rev-childhood-food-allergies-ige-testing-epipen-plan-2",
+    "postSlug": "childhood-food-allergies-ige-testing-epipen-plan",
+    "postTitle": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
+    "name": "Dr. Raymond T., Pediatrician",
+    "userRole": "Pediatric Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
+    }
+  },
+  {
+    "id": "rev-meningococcal-vaccine-menacwy-menb-teens-college-1",
+    "postSlug": "meningococcal-vaccine-menacwy-menb-teens-college",
+    "postTitle": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-meningococcal-vaccine-menacwy-menb-teens-college-2",
+    "postSlug": "meningococcal-vaccine-menacwy-menb-teens-college",
+    "postTitle": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-tdap-booster-vaccine-tetanus-pertussis-schedule-1",
+    "postSlug": "tdap-booster-vaccine-tetanus-pertussis-schedule",
+    "postTitle": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
+    "name": "Theresa N., College Freshman Parent",
+    "userRole": "Verified Parent",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
+    }
+  },
+  {
+    "id": "rev-tdap-booster-vaccine-tetanus-pertussis-schedule-2",
+    "postSlug": "tdap-booster-vaccine-tetanus-pertussis-schedule",
+    "postTitle": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
+    "name": "Anthony C., Public Health Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
+    }
+  },
+  {
+    "id": "rev-zone-2-cardio-mitochondrial-health-fat-burning-1",
+    "postSlug": "zone-2-cardio-mitochondrial-health-fat-burning",
+    "postTitle": "Zone 2 Cardio Training: Mitochondrial Density, Fat Oxidation, and Metabolic Health",
+    "name": "Ryan B., Endurance Athlete",
+    "userRole": "Athlete / Coach",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
+    }
+  },
+  {
+    "id": "rev-zone-2-cardio-mitochondrial-health-fat-burning-2",
+    "postSlug": "zone-2-cardio-mitochondrial-health-fat-burning",
+    "postTitle": "Zone 2 Cardio Training: Mitochondrial Density, Fat Oxidation, and Metabolic Health",
+    "name": "Samantha V., Certified Strength Coach",
+    "userRole": "Fitness Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
+    }
+  },
+  {
+    "id": "rev-doms-muscle-soreness-exercise-recovery-science-1",
+    "postSlug": "doms-muscle-soreness-exercise-recovery-science",
+    "postTitle": "Delayed Onset Muscle Soreness (DOMS): Microtrauma, Cold Plunges, and Recovery Science",
+    "name": "Ryan B., Endurance Athlete",
+    "userRole": "Athlete / Coach",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
+    }
+  },
+  {
+    "id": "rev-doms-muscle-soreness-exercise-recovery-science-2",
+    "postSlug": "doms-muscle-soreness-exercise-recovery-science",
+    "postTitle": "Delayed Onset Muscle Soreness (DOMS): Microtrauma, Cold Plunges, and Recovery Science",
+    "name": "Samantha V., Certified Strength Coach",
+    "userRole": "Fitness Specialist",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
+    }
+  },
+  {
+    "id": "rev-obstructive-sleep-apnea-osa-cpap-heart-risks-1",
+    "postSlug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
+    "postTitle": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-obstructive-sleep-apnea-osa-cpap-heart-risks-2",
+    "postSlug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
+    "postTitle": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-chronic-systemic-inflammation-causes-diet-lifestyle-1",
+    "postSlug": "chronic-systemic-inflammation-causes-diet-lifestyle",
+    "postTitle": "Chronic Systemic Inflammation: Root Causes, Cytokine Biomarkers, and Anti-Inflammatory Protocols",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-chronic-systemic-inflammation-causes-diet-lifestyle-2",
+    "postSlug": "chronic-systemic-inflammation-causes-diet-lifestyle",
+    "postTitle": "Chronic Systemic Inflammation: Root Causes, Cytokine Biomarkers, and Anti-Inflammatory Protocols",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-intermittent-fasting-autophagy-insulin-sensitivity-1",
+    "postSlug": "intermittent-fasting-autophagy-insulin-sensitivity",
+    "postTitle": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
+    "name": "Deborah S.",
+    "userRole": "Verified Reader",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 19, 2026",
+      "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
+    }
+  },
+  {
+    "id": "rev-intermittent-fasting-autophagy-insulin-sensitivity-2",
+    "postSlug": "intermittent-fasting-autophagy-insulin-sensitivity",
+    "postTitle": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
+    "name": "Gregory T., Certified Health Coach",
+    "userRole": "Wellness Practitioner",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
+    "reply": {
+      "author": "Dr. Michael Torres, MD, FACC",
+      "role": "Cardiologist & Physician Reviewer",
+      "date": "August 30, 2026",
+      "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
+    }
+  },
+  {
+    "id": "rev-chronic-kidney-disease-ckd-stages-egfr-diet-1",
+    "postSlug": "chronic-kidney-disease-ckd-stages-egfr-diet",
+    "postTitle": "Chronic Kidney Disease (CKD): Stages, eGFR Decline, Potassium, and Renal Nutrition",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-chronic-kidney-disease-ckd-stages-egfr-diet-2",
+    "postSlug": "chronic-kidney-disease-ckd-stages-egfr-diet",
+    "postTitle": "Chronic Kidney Disease (CKD): Stages, eGFR Decline, Potassium, and Renal Nutrition",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Ananya Roy, MD",
+      "role": "Internal Medicine & Medical Editor",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  },
+  {
+    "id": "rev-ibs-low-fodmap-diet-symptoms-management-1",
+    "postSlug": "ibs-low-fodmap-diet-symptoms-management",
+    "postTitle": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
+    "name": "Carl W., Patient",
+    "userRole": "Verified Patient",
+    "rating": 5,
+    "date": "August 18, 2026",
+    "createdAt": "2026-08-18T14:22:00.000Z",
+    "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 19, 2026",
+      "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
+    }
+  },
+  {
+    "id": "rev-ibs-low-fodmap-diet-symptoms-management-2",
+    "postSlug": "ibs-low-fodmap-diet-symptoms-management",
+    "postTitle": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
+    "name": "Nurse Brenda K., Clinical Coordinator",
+    "userRole": "Healthcare Professional",
+    "rating": 5,
+    "date": "August 29, 2026",
+    "createdAt": "2026-08-29T09:45:00.000Z",
+    "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
+    "reply": {
+      "author": "Dr. Elena Vance, MD",
+      "role": "Endocrinologist & Clinical Specialist",
+      "date": "August 30, 2026",
+      "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
+    }
+  }
+];

@@ -23,13 +23,16 @@ import {
   INITIAL_CATEGORIES,
   INITIAL_FAQS,
   INITIAL_TESTIMONIALS,
+  INITIAL_COMMENTS,
   EDITORIAL_PROFILES,
   MEDICAL_REVIEWERS,
   BlogPost,
   FAQItem,
-  ProfessionalProfile
+  ProfessionalProfile,
+  BlogComment,
+  BlogCommentReply
 } from "./mockData";
-export type { BlogPost, FAQItem, ProfessionalProfile };
+export type { BlogPost, FAQItem, ProfessionalProfile, BlogComment, BlogCommentReply };
 
 // Interfaces
 export interface Notification {
@@ -1205,23 +1208,16 @@ export const deleteCategory = async (id: string): Promise<void> => {
 };
 
 /* ==========================================
-   10. COMMENTS SERVICES
+   10. COMMENTS & REVIEWS SERVICES
    ========================================== */
-export interface BlogComment {
-  id?: string;
-  postSlug: string;
-  postTitle: string;
-  name: string;
-  text: string;
-  date: string;
-  createdAt: string;
-}
 
 export const getComments = async (): Promise<BlogComment[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const snapshot = await getDocs(collection(getAdminFirestore()!, "comments"));
-      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+      if (!snapshot.empty) {
+        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+      }
     } catch (e) {
       console.warn("Firebase error getting comments:", e);
     }
@@ -1229,12 +1225,8 @@ export const getComments = async (): Promise<BlogComment[]> => {
   // Load default comments if empty in local simulation
   const local = getLocal<BlogComment>("mediguide4u_comments");
   if (local.length === 0) {
-    const defaultComments = [
-      { id: "c1", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Sarah K.", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do.", date: "July 24, 2026", createdAt: "2026-07-24T12:00:00.000Z" },
-      { id: "c2", postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Robert M.", text: "Very helpful overview. I shared this with my parents who are approaching retirement age.", date: "July 28, 2026", createdAt: "2026-07-28T12:00:00.000Z" }
-    ];
-    setLocal("mediguide4u_comments", defaultComments);
-    return defaultComments;
+    setLocal("mediguide4u_comments", INITIAL_COMMENTS);
+    return INITIAL_COMMENTS;
   }
   return local;
 };
@@ -1258,31 +1250,23 @@ export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[
           });
       };
 
-      // Seed if live db is empty for this post slug to keep standard demo comment list
-      if (snapshot.empty && postSlug === "medicare-advantage-plans-overview") {
-        const defaultComments = [
-          { postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Sarah K.", text: "This guide on Preventive Care is extremely detailed. The tips helped me understand what to do.", date: "July 24, 2026", createdAt: "2026-07-24T12:00:00.000Z" },
-          { postSlug: "medicare-advantage-plans-overview", postTitle: "Medicare Advantage Plans: Overview", name: "Robert M.", text: "Very helpful overview. I shared this with my parents who are approaching retirement age.", date: "July 28, 2026", createdAt: "2026-07-28T12:00:00.000Z" }
-        ];
-        for (const c of defaultComments) {
-          await addDoc(collection(firestore, "comments"), c);
-        }
-        const refetched = await getDocs(q);
-        return mapAndSort(refetched.docs);
+      if (!snapshot.empty) {
+        return mapAndSort(snapshot.docs);
       }
-      return mapAndSort(snapshot.docs);
     } catch (e) {
       console.warn("Firebase error getting comments for post:", e);
     }
   }
   const allComments = await getComments();
-  return allComments
-    .filter((c) => c.postSlug === postSlug)
-    .sort((a, b) => {
+  const matched = allComments.filter((c) => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === postSlug.toLowerCase()));
+  if (matched.length > 0) {
+    return matched.sort((a, b) => {
       const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
       const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
       return dateA - dateB;
     });
+  }
+  return INITIAL_COMMENTS.filter(c => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === postSlug.toLowerCase()));
 };
 
 export const addComment = async (comment: BlogComment): Promise<void> => {

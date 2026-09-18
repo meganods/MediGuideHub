@@ -294,20 +294,19 @@ export const getPosts = async (): Promise<BlogPost[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
-      const snapshot = await getDocs(q);
-      if (!snapshot.empty) {
-        posts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const fetchPromise = getDocs(q).then(snapshot => {
+        if (!snapshot.empty) {
+          return snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+        }
+        return null;
+      });
+      const res = await Promise.race([fetchPromise, timeoutPromise]);
+      if (res && res.length > 0) {
+        posts = res;
       }
     } catch (e) {
-      try {
-        const snapshot = await getDocs(collection(getAdminFirestore()!, "posts"));
-        if (!snapshot.empty) {
-          posts = snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
-          posts.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
-        }
-      } catch (innerError) {
-        console.error("Firebase error getting posts, falling back:", innerError);
-      }
+      console.warn("Firebase error getting posts, falling back:", e);
     }
   }
   if (posts.length === 0) {
@@ -361,29 +360,38 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   if (!slug) return null;
   const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
 
-  // 1. Check Firebase Firestore if configured
-  if (isFirebaseConfigured && getAdminFirestore()!) {
-    try {
-      const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
-      const snapshot = await getDocs(q);
-      if (!snapshot.empty) {
-        return sanitizePost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as BlogPost);
-      }
-    } catch (e) {
-      console.error("Firebase error getPostBySlug, falling back:", e);
-    }
+  // 1. Instant check in authoritative in-memory INITIAL_BLOG_POSTS (0ms latency)
+  const initialMatch = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug));
+  if (initialMatch) {
+    return sanitizePost(initialMatch);
   }
 
   // 2. Check LocalStorage posts
   const posts = getLocal<BlogPost>(KEYS.POSTS);
   let found = posts.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
-
-  // 3. Always fallback to authoritative INITIAL_BLOG_POSTS
-  if (!found) {
-    found = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
+  if (found) {
+    return sanitizePost(found);
   }
 
-  return found ? sanitizePost(found) : null;
+  // 3. Check Firebase Firestore if dynamic post created via admin dashboard
+  if (isFirebaseConfigured && getAdminFirestore()!) {
+    try {
+      const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1200));
+      const fetchPromise = getDocs(q).then(snapshot => {
+        if (!snapshot.empty) {
+          return sanitizePost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as BlogPost);
+        }
+        return null;
+      });
+      const result = await Promise.race([fetchPromise, timeoutPromise]);
+      if (result) return result;
+    } catch (e) {
+      console.warn("Firebase error getPostBySlug, falling back:", e);
+    }
+  }
+
+  return null;
 };
 
 export const getPublishedBlogPostBySlug = async (slug: string): Promise<BlogPost | null> => {
@@ -392,14 +400,6 @@ export const getPublishedBlogPostBySlug = async (slug: string): Promise<BlogPost
   if (post && (!post.status || post.status.toLowerCase() === "published")) {
     return sanitizePost(post);
   }
-
-  // Secondary fail-safe direct check in INITIAL_BLOG_POSTS
-  const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
-  const fallback = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug));
-  if (fallback && (!fallback.status || fallback.status.toLowerCase() === "published")) {
-    return sanitizePost(fallback);
-  }
-
   return null;
 };
 
@@ -494,9 +494,15 @@ export const getFAQs = async (): Promise<FAQItem[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "faqs"));
-      const snapshot = await getDocs(q);
-      const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as FAQItem));
-      if (docs.length > 0) return docs;
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const fetchPromise = getDocs(q).then(snapshot => {
+        if (!snapshot.empty) {
+          return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as FAQItem));
+        }
+        return null;
+      });
+      const res = await Promise.race([fetchPromise, timeoutPromise]);
+      if (res && res.length > 0) return res;
     } catch (e) {
       console.error("Firebase getFAQs error:", e);
     }
@@ -1099,9 +1105,17 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
   let categories: BlogCategory[] = [];
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(query(collection(getAdminFirestore()!, "categories"), orderBy("displayOrder", "asc")));
-      if (!snapshot.empty) {
-        categories = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
+      const q = query(collection(getAdminFirestore()!, "categories"), orderBy("displayOrder", "asc"));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const fetchPromise = getDocs(q).then(snapshot => {
+        if (!snapshot.empty) {
+          return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
+        }
+        return null;
+      });
+      const res = await Promise.race([fetchPromise, timeoutPromise]);
+      if (res && res.length > 0) {
+        categories = res;
       }
     } catch (e) {
       console.warn("Firebase error getting categories (Permission check failed or missing):", (e as any).message || e);
@@ -1117,8 +1131,8 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
     }
   }
 
-  // Calculate live published post counts per category
-  const allPosts = await getPublishedBlogPosts();
+  // Calculate live published post counts per category using in-memory INITIAL_BLOG_POSTS for speed
+  const allPosts = INITIAL_BLOG_POSTS;
   const normalize = (str: string) => (str || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   const activeCategories = categories.map(cat => {
     const catSlugNorm = normalize(cat.slug);
@@ -1211,9 +1225,16 @@ export const deleteCategory = async (id: string): Promise<void> => {
 export const getComments = async (): Promise<BlogComment[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const snapshot = await getDocs(collection(getAdminFirestore()!, "comments"));
-      if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const fetchPromise = getDocs(collection(getAdminFirestore()!, "comments")).then(snapshot => {
+        if (!snapshot.empty) {
+          return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));
+        }
+        return null;
+      });
+      const res = await Promise.race([fetchPromise, timeoutPromise]);
+      if (res && res.length > 0) {
+        return res;
       }
     } catch (e) {
       console.warn("Firebase error getting comments:", e);
@@ -1229,33 +1250,50 @@ export const getComments = async (): Promise<BlogComment[]> => {
 };
 
 export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[]> => {
+  if (!postSlug) return [];
+  const normalizedSlug = postSlug.toLowerCase().trim();
+
+  // Instant in-memory check first for zero latency
+  const initialMatches = INITIAL_COMMENTS.filter(
+    (c) => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === normalizedSlug)
+  );
+
   if (isFirebaseConfigured && firestore) {
     try {
       const q = query(
         collection(firestore, "comments"),
         where("postSlug", "==", postSlug)
       );
-      const snapshot = await getDocs(q);
-      
-      const mapAndSort = (docs: any[]) => {
-        return docs
-          .map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment))
-          .sort((a, b) => {
-            const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-            const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-            return dateA - dateB;
-          });
-      };
-
-      if (!snapshot.empty) {
-        return mapAndSort(snapshot.docs);
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 800));
+      const fetchPromise = getDocs(q).then(snapshot => {
+        if (!snapshot.empty) {
+          return snapshot.docs
+            .map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment))
+            .sort((a, b) => {
+              const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+              const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+              return dateA - dateB;
+            });
+        }
+        return null;
+      });
+      const res = await Promise.race([fetchPromise, timeoutPromise]);
+      if (res && res.length > 0) {
+        return res;
       }
     } catch (e) {
       console.warn("Firebase error getting comments for post:", e);
     }
   }
+
+  if (initialMatches.length > 0) {
+    return initialMatches;
+  }
+
   const allComments = await getComments();
-  const matched = allComments.filter((c) => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === postSlug.toLowerCase()));
+  const matched = allComments.filter(
+    (c) => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === normalizedSlug)
+  );
   if (matched.length > 0) {
     return matched.sort((a, b) => {
       const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
@@ -1263,7 +1301,7 @@ export const getCommentsForPost = async (postSlug: string): Promise<BlogComment[
       return dateA - dateB;
     });
   }
-  return INITIAL_COMMENTS.filter(c => c.postSlug === postSlug || (c.postSlug && c.postSlug.toLowerCase() === postSlug.toLowerCase()));
+  return [];
 };
 
 export const addComment = async (comment: BlogComment): Promise<void> => {

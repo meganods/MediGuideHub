@@ -14,8 +14,7 @@ export default function AdBanner({
   className = "",
 }: AdBannerProps) {
   const adRef = useRef<HTMLModElement | null>(null);
-  const pushedRef = useRef(false);
-  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "";
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-5266755800049907";
 
   useEffect(() => {
     if (!clientId) return;

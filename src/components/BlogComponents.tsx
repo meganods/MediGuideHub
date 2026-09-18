@@ -83,7 +83,7 @@ export function MedicalReviewerInfo({ reviewerName, reviewedAt }: { reviewerName
     (r) => r.name.toLowerCase() === (reviewerName || "").toLowerCase() || (reviewerName && reviewerName.includes(r.name))
   );
 
-  const displayReviewer = reviewerMatch ? reviewerMatch.name : (reviewerName || "Dr. Ananya Roy, MD");
+  const displayReviewer = reviewerMatch ? reviewerMatch.name : (reviewerName || "Dr. Rommel Tickoo, MBBS, MD");
   const displayCredentials = reviewerMatch ? (reviewerMatch.degree || reviewerMatch.credentials) : "Internal Medicine Specialist";
   const profileUrl = getAuthorProfileUrl(displayReviewer);
 

@@ -134,16 +134,13 @@ export const sanitizePost = (post: BlogPost): BlogPost => {
     const subcategory = post.subcategory || initial.subcategory;
     
     // Ensure author is a valid doctor or specialist
-    let author = post.author || initial.author || "Dr. David Chen, PhD";
+    let author = initial.author || post.author || "Dr. Randeep Guleria, MBBS, MD, DM";
     if (author === "Mediguide4u Editorial Staff" && initial.author) {
       author = initial.author;
     }
     
     // Ensure medical reviewer is a verified physician
-    let medicalReviewer = post.medicalReviewer || initial.medicalReviewer || "Dr. Ananya Roy, MD";
-    if (medicalReviewer.includes("Marcus Vance")) {
-      medicalReviewer = "Dr. Michael Torres, MD, FACC";
-    }
+    let medicalReviewer = initial.medicalReviewer || post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD";
 
     const medicalReviewedAt = post.medicalReviewedAt || post.lastReviewedDate || initial.medicalReviewedAt || "August 2026";
     const title = (post.title && post.title.length >= initial.title.length) ? post.title : initial.title;
@@ -176,7 +173,7 @@ export const sanitizePost = (post: BlogPost): BlogPost => {
   return {
     ...post,
     author: post.author || "Mediguide4u Editorial Staff",
-    medicalReviewer: post.medicalReviewer || "Dr. Ananya Roy, MD",
+    medicalReviewer: post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD",
     medicalReviewedAt: post.medicalReviewedAt || "August 2026",
     status: post.status || "Published",
     readTime: post.readTime || "5 min read",

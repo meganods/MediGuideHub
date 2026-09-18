@@ -194,7 +194,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "url": "https://mediguide4u.com/about"
   };
 
-  const reviewerName = post.medicalReviewer || "Dr. Ananya Roy, MD";
+  const reviewerName = post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD";
   const reviewerMatch = MEDICAL_REVIEWERS.find(
     (r) => r.name.toLowerCase() === reviewerName.toLowerCase() || reviewerName.includes(r.name) || r.name.includes(reviewerName)
   );

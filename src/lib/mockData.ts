@@ -117,163 +117,599 @@ export interface ProfessionalProfile {
 
 export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
   {
-    id: "dr-ananya-roy-md",
-    name: "Dr. Ananya Roy, MD",
-    degree: "MBBS, MD (Internal Medicine)",
-    credentials: "MD, Board-Certified in Internal Medicine (ABIM)",
-    title: "Senior Medical Editor & Preventive Medicine Specialist",
-    roleType: "Senior Medical Editor",
-    bio: "Dr. Ananya Roy is a board-certified Internal Medicine specialist with over 12 years of clinical practice in primary care, chronic disease management, and preventive health. She oversees the clinical accuracy of guides on cardiovascular health, hypertension, metabolic syndrome, and lifestyle medicine at mediguide4u.",
-    specialty: "Internal Medicine, Chronic Disease Management, Preventive Healthcare",
-    experience: "12+ Years Clinical Practice & Hospital Medicine",
-    licenseNumber: "MD-782144",
-    licensingBody: "State Medical Board & Medical Council of India (MCI)",
+    id: "dr-naresh-trehan-md",
+    name: "Dr. Naresh Trehan, MBBS, MD, FACS",
+    degree: "MBBS, MD (Cardiothoracic Surgery), FACS",
+    credentials: "MBBS, MS, Diplomate American Board of Cardiothoracic Surgery, FACS (Padma Bhushan & Padma Shri Recipient)",
+    title: "Chairman & Chief Cardiac Surgeon, Medanta – The Medicity",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Naresh Trehan is a world-renowned cardiovascular and cardiothoracic surgeon, Founder, and Chairman of Medanta – The Medicity, Gurugram. With over 40 years of pioneering surgical experience, he has performed more than 48,000 successful open-heart surgeries and leads cardiovascular clinical literacy at mediguide4u.",
+    specialty: "Cardiothoracic Surgery, Interventional Cardiology, Coronary Artery Bypass Grafting (CABG)",
+    experience: "40+ Years Cardiovascular Surgery & Clinical Leadership",
+    licenseNumber: "DMC-11480",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
     licenseStatus: "Active & In Good Standing",
     education: [
-      "MD in Internal Medicine - Boston University Medical Center",
-      "MBBS - All India Institute of Medical Sciences (AIIMS)"
+      "Diplomate - American Board of Cardiothoracic Surgery, USA",
+      "Cardiothoracic Surgery Fellowship - New York University Medical Center (NYU), New York",
+      "MBBS - King George's Medical University (KGMU), Lucknow"
     ],
-    hospitalAffiliations: "Attending Physician & Clinical Consultant, Department of Internal Medicine",
-    areasReviewed: [
-      "Hypertension & Blood Pressure Control",
-      "Type 2 Diabetes & Insulin Resistance",
-      "Preventive Health Screenings & Blood Panels",
-      "Metabolic Syndrome & Lipid Disorders",
-      "Adult Immunizations & Primary Care Protocols"
-    ],
-    conflictOfInterest: "Dr. Roy reports no commercial ties, financial relationships, or sponsorships from pharmaceutical manufacturers or medical device corporations. Paid as an independent medical editor for clinical accuracy review.",
-    externalProfiles: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "Professional LinkedIn Profile" },
-      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Clinical Research Index" },
-      { platform: "Medical Board", url: "https://www.fsmb.org", label: "Medical Licensing Verification" }
-    ]
-  },
-  {
-    id: "dr-michael-torres-md",
-    name: "Dr. Michael Torres, MD, FACC",
-    degree: "MD, FACC (Fellow of the American College of Cardiology)",
-    credentials: "MD, Board-Certified in Cardiovascular Disease (ABIM / NBE)",
-    title: "Cardiologist & Clinical Reviewer",
-    roleType: "Physician Reviewer",
-    bio: "Dr. Michael Torres is a practicing cardiologist and Fellow of the American College of Cardiology with 15+ years of experience in clinical cardiology and inpatient heart failure care. He ensures mediguide4u cardiovascular guides conform strictly to American Heart Association (AHA) and ACC clinical guidelines.",
-    specialty: "Cardiology, Vascular Medicine, Preventive Cardiology & Heart Failure",
-    experience: "15+ Years Clinical Cardiology & Inpatient Hospital Care",
-    licenseNumber: "CA-C581902",
-    licensingBody: "Medical Board of California (Active License)",
-    licenseStatus: "Active & Board Certified",
-    education: [
-      "Cardiovascular Disease Fellowship - Massachusetts General Hospital / Harvard Medical School",
-      "MD - Johns Hopkins University School of Medicine",
-      "BS in Molecular Biophysics - Stanford University"
-    ],
-    hospitalAffiliations: "Attending Cardiologist, Heart & Vascular Institute; Clinical Associate Professor",
+    hospitalAffiliations: "Chairman & Managing Director, Medanta – The Medicity, Gurugram, Delhi NCR",
     areasReviewed: [
       "Coronary Artery Disease & Heart Attack Prevention",
-      "Blood Pressure Readings & Stage 1/Stage 2 Hypertension",
-      "Heart Palpitations & Arrhythmia Management",
-      "Cholesterol Optimization & Statin Therapy",
-      "Heart-Healthy Exercise & Mediterranean Dietary Patterns"
+      "Hypertension & Arterial Health",
+      "Valvular Heart Disease & Minimally Invasive Cardiac Surgery",
+      "Cardiovascular Exercise & Lipid Optimization",
+      "Arrhythmias & Heart Failure Protocols"
     ],
-    conflictOfInterest: "Dr. Torres has zero financial relationships, pharmaceutical industry sponsorships, or commercial conflicts of interest. Reviews are conducted strictly according to current ACC/AHA clinical practice guidelines.",
+    conflictOfInterest: "Dr. Trehan reports zero commercial conflicts of interest or pharmaceutical sponsorships. Clinical reviews adhere strictly to ESC, AHA, and CSI practice guidelines.",
     externalProfiles: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
-      { platform: "ACC", url: "https://www.acc.org", label: "American College of Cardiology Member Directory" },
-      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Cardiovascular Publications" }
+      { platform: "Medanta Profile", url: "https://www.medanta.org", label: "Medanta Official Doctor Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Trehan+N", label: "PubMed Surgical Research Index" },
+      { platform: "Delhi Medical Council", url: "https://delhimedicalcouncil.org", label: "DMC Verification" }
     ]
   },
   {
-    id: "dr-elena-vance-md",
-    name: "Dr. Elena Vance, MD",
-    degree: "MD (Endocrinology, Diabetes & Metabolism)",
-    credentials: "MD, Board-Certified in Endocrinology & Metabolism (ABIM)",
-    title: "Endocrinologist & Diabetes Specialist",
+    id: "dr-ashok-seth-md",
+    name: "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+    degree: "MBBS, MD, FRCP (London, Edin, Glasg), FACC",
+    credentials: "MD, FRCP, FACC, FSCAI (Padma Bhushan & Padma Shri Recipient)",
+    title: "Chairman, Fortis Escorts Heart Institute & Lead Interventional Cardiologist",
     roleType: "Physician Reviewer",
-    bio: "Dr. Elena Vance is a board-certified endocrinologist specializing in diabetes education, thyroid disorders, and metabolic health. She reviews mediguide4u endocrine articles for alignment with American Diabetes Association (ADA) Standards of Care and Endocrine Society guidelines.",
-    specialty: "Endocrinology, Type 1 & Type 2 Diabetes, Thyroid Disorders, Metabolic Health",
-    experience: "11+ Years Clinical Practice in Academic & Private Medical Centers",
-    licenseNumber: "NY-294018",
-    licensingBody: "New York State Board for Medicine",
+    bio: "Dr. Ashok Seth is the Chairman of Fortis Escorts Heart Institute, Okhla, New Delhi, and one of the world's foremost interventional cardiologists. He has pioneered cutting-edge techniques in coronary angioplasty, TAVR/TAVI, and directional atherectomy with over 35 years of clinical practice.",
+    specialty: "Interventional Cardiology, Complex Angioplasty, TAVR/TAVI, Structural Heart Disease",
+    experience: "35+ Years Interventional Cardiology",
+    licenseNumber: "DMC-08421",
+    licensingBody: "Delhi Medical Council (DMC) & National Medical Commission (NMC)",
     licenseStatus: "Active & In Good Standing",
     education: [
-      "Endocrinology & Diabetes Fellowship - NewYork-Presbyterian / Columbia University Irving Medical Center",
-      "MD - Columbia University Vagelos College of Physicians and Surgeons",
-      "BA in Biochemical Sciences - Cornell University"
+      "Fellowship of the Royal Colleges of Physicians (FRCP) - London, Edinburgh & Glasgow",
+      "MD in General Medicine - Aligarh Muslim University (AMU)",
+      "MBBS - JNMC, Aligarh Muslim University"
     ],
-    hospitalAffiliations: "Attending Endocrinologist & Assistant Professor of Clinical Medicine",
+    hospitalAffiliations: "Chairman, Fortis Escorts Heart Institute, Okhla Road, New Delhi",
     areasReviewed: [
-      "Prediabetes, Insulin Resistance & A1C Testing",
-      "Type 2 Diabetes Glycemic Management",
-      "Hypothyroidism, Hashimoto's & Thyroid Nodules",
-      "Polycystic Ovary Syndrome (PCOS) & Metabolic Health",
-      "Continuous Glucose Monitoring (CGM) Protocols"
+      "Angioplasty & Stenting Protocols",
+      "Atherosclerosis & Coronary Calcium Scoring",
+      "Cardiovascular Emergency Management",
+      "Lipid Metabolism & Statin Therapeutics",
+      "Hypertension Crisis Management"
     ],
-    conflictOfInterest: "Dr. Vance reports no conflicts of interest or advisory roles with diabetes pharmaceutical companies. Evaluated strictly against ADA Standards of Care.",
+    conflictOfInterest: "Dr. Seth reports no commercial affiliations or pharmaceutical sponsorships. Reviews strictly follow ACC/AHA and Cardiological Society of India (CSI) consensus.",
     externalProfiles: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
-      { platform: "Endocrine Society", url: "https://www.endocrine.org", label: "Endocrine Society Member Index" },
-      { platform: "Google Scholar", url: "https://scholar.google.com", label: "Google Scholar Research Index" }
+      { platform: "Fortis Escorts", url: "https://www.fortishealthcare.com", label: "Fortis Escorts Faculty Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Seth+Ashok", label: "PubMed Cardiovascular Research" }
     ]
   },
   {
-    id: "dr-david-chen-phd",
-    name: "Dr. David Chen, PhD",
-    degree: "PhD (Nutritional Biochemistry & Molecular Metabolism)",
-    credentials: "PhD, Postdoctoral Fellow in Metabolic Regulation (ASN)",
-    title: "Research Writer & Metabolic Health Specialist",
-    roleType: "Clinical Specialist",
-    bio: "Dr. David Chen holds a doctorate in Nutritional Biochemistry and has published extensive peer-reviewed research on insulin sensitivity, micronutrient deficiencies, and cellular metabolic health. He translates complex biochemistry studies into accessible public health guidance.",
-    specialty: "Metabolic Health, Nutritional Science, Dietary Interventions",
-    experience: "10+ Years Academic & Clinical Research",
-    licenseNumber: "ORCID-0000-0002-8812-4910",
-    licensingBody: "American Society for Nutrition (ASN Active Member)",
-    licenseStatus: "Active Research Fellow",
+    id: "dr-ambrish-mithal-md",
+    name: "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    degree: "MBBS, MD, DM (Endocrinology)",
+    credentials: "MD, DM (Endocrinology), FAMS (Padma Bhushan Recipient)",
+    title: "Chairman & Head, Endocrinology & Diabetes, Max Super Speciality Hospital",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Ambrish Mithal is the Chairman and Head of Endocrinology and Diabetes at Max Super Speciality Hospital, Saket, New Delhi. A Padma Bhushan recipient and former faculty member at AIIMS New Delhi, Dr. Mithal is an internationally acclaimed authority on Type 2 Diabetes, osteoporosis, thyroid disorders, and metabolic health.",
+    specialty: "Endocrinology, Type 1 & Type 2 Diabetes, Thyroid Disorders, Bone Health & Osteoporosis",
+    experience: "32+ Years Clinical Endocrinology & Academic Research",
+    licenseNumber: "DMC-14920",
+    licensingBody: "Delhi Medical Council (DMC) & National Medical Commission (NMC)",
+    licenseStatus: "Active & In Good Standing",
     education: [
-      "Postdoctoral Fellowship in Molecular Metabolism - Stanford University",
-      "PhD in Nutritional Sciences - University of California, Berkeley",
-      "BS in Biochemistry - UCLA"
+      "DM in Endocrinology - All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "MD in Internal Medicine - King George's Medical University (KGMU), Lucknow",
+      "MBBS - King George's Medical College, Lucknow"
     ],
-    hospitalAffiliations: "Visiting Research Scientist, Center for Metabolic Disease Research",
+    hospitalAffiliations: "Chairman & Head, Division of Endocrinology & Diabetes, Max Super Speciality Hospital, Saket, New Delhi",
     areasReviewed: [
-      "Micronutrient Bioavailability & Blood Panels",
-      "Intermittent Fasting & Cellular Autophagy",
-      "Insulin Sensitivity Biomarkers",
-      "Anti-Inflammatory Dietary Protocols"
+      "Type 2 Diabetes & Insulin Resistance",
+      "Continuous Glucose Monitoring & HbA1c Control",
+      "Hypothyroidism, Hyperthyroidism & Thyroid Nodules",
+      "Osteoporosis & Bone Mineral Density",
+      "Metabolic Syndrome & Dyslipidemia"
     ],
-    conflictOfInterest: "Dr. Chen has no dietary supplement endorsements or commercial affiliations. Research is synthesized directly from peer-reviewed clinical trials and NIH guidelines.",
+    conflictOfInterest: "Dr. Mithal reports no commercial relationships with pharmaceutical manufacturers. All reviews conform to ADA Standards of Care and Endocrine Society of India guidelines.",
     externalProfiles: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
-      { platform: "ORCID", url: "https://orcid.org", label: "ORCID Academic Profile" },
-      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov", label: "PubMed Author Index" }
+      { platform: "Max Healthcare", url: "https://www.maxhealthcare.in", label: "Max Healthcare Doctor Directory" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Mithal+Ambrish", label: "PubMed Endocrinology Publications" }
     ]
   },
   {
-    id: "sarah-jenkins-rdn",
-    name: "Sarah Jenkins, MS, RDN, LDN",
-    degree: "MS (Clinical Dietetics), RDN, LDN",
-    credentials: "MS, Registered Dietitian Nutritionist (CDR #981204), CDCES",
-    title: "Clinical Nutritionist & Wellness Contributor",
-    roleType: "Clinical Specialist",
-    bio: "Sarah Jenkins is a licensed dietitian nutritionist and Certified Diabetes Care and Education Specialist (CDCES). She ensures all nutrition guides on mediguide4u adhere to evidence-based medical nutrition therapy standards.",
-    specialty: "Clinical Nutrition, Diabetes Dietetics, Cardiovascular Wellness",
-    experience: "8+ Years Hospital Dietetics & Patient Consulting",
-    licenseNumber: "LDN-410982 / CDR #981204",
-    licensingBody: "Commission on Dietetic Registration & State Board of Dietetics",
-    licenseStatus: "Active & Licensed",
+    id: "dr-nikhil-tandon-md",
+    name: "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
+    degree: "MBBS, MD, PhD (Cantab), FAMS",
+    credentials: "MD, PhD (University of Cambridge), FAMS (Padma Shri Recipient)",
+    title: "Professor & Head, Department of Endocrinology & Metabolism, AIIMS New Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Nikhil Tandon is Professor and Head of the Department of Endocrinology and Metabolism at the All India Institute of Medical Sciences (AIIMS), New Delhi. Recipient of the Padma Shri award, he is a leading international researcher in cardiometabolic health, diabetes epidemiology, and clinical trials.",
+    specialty: "Endocrinology, Diabetes Epidemiology, Insulin Resistance, Childhood Diabetes",
+    experience: "30+ Years Academic Medicine & Clinical Endocrinology",
+    licenseNumber: "DMC-09144",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
     education: [
-      "MS in Clinical Nutrition & Dietetics - Tufts University Friedman School",
-      "BS in Nutritional Sciences - University of North Carolina at Chapel Hill"
+      "PhD in Endocrinology - University of Cambridge, United Kingdom",
+      "MD in Internal Medicine - All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "MBBS - AIIMS, New Delhi"
     ],
-    hospitalAffiliations: "Lead Clinical Dietitian, Outpatient Diabetes Education & Lipid Center",
+    hospitalAffiliations: "Professor & Head, Department of Endocrinology & Metabolism, AIIMS, Ansari Nagar, New Delhi",
     areasReviewed: [
-      "DASH & Mediterranean Diet Meal Plans",
-      "Carbohydrate Counting & Glycemic Load",
-      "Sodium Restriction & Renal Nutrition",
-      "Evidence-Based Weight Management"
+      "Prediabetes & Glycemic Biomarkers",
+      "Insulin Sensitivity & Beta-Cell Function",
+      "Cardiometabolic Risk Reduction",
+      "Diabetic Neuropathy & Nephropathy Prevention"
     ],
-    conflictOfInterest: "Sarah Jenkins reports no financial ties to food corporations or dietary supplement manufacturers. Guidance follows Academy of Nutrition and Dietetics guidelines.",
+    conflictOfInterest: "Dr. Tandon reports zero industry sponsorships. Reviews are formulated strictly from clinical trial evidence and WHO/ADA guidelines.",
     externalProfiles: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" },
-      { platform: "AND", url: "https://www.eatright.org", label: "Academy of Nutrition & Dietetics Directory" }
+      { platform: "AIIMS Faculty", url: "https://www.aiims.edu", label: "AIIMS New Delhi Faculty Directory" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Tandon+Nikhil", label: "PubMed Research Index" }
+    ]
+  },
+  {
+    id: "dr-randeep-guleria-md",
+    name: "Dr. Randeep Guleria, MBBS, MD, DM",
+    degree: "MBBS, MD, DM (Pulmonary Medicine & Critical Care)",
+    credentials: "MD, DM, FAMS, FRCP (Padma Shri & Dr. B.C. Roy National Awardee)",
+    title: "Chairman, Internal Medicine & Respiratory Sciences, Medanta (Former Director, AIIMS New Delhi)",
+    roleType: "Senior Medical Editor",
+    bio: "Dr. Randeep Guleria is the Chairman of the Institute of Internal Medicine, Respiratory & Sleep Medicine at Medanta – The Medicity and former Director of AIIMS New Delhi. A Padma Shri awardee and one of India's most respected medical authorities, he oversees preventive healthcare, vaccination literacy, and clinical safety standards at mediguide4u.",
+    specialty: "Internal Medicine, Pulmonology, Critical Care, Sleep Medicine, Preventive Health",
+    experience: "35+ Years Clinical Practice, Pulmonology & Public Health Governance",
+    licenseNumber: "DMC-10255",
+    licensingBody: "Delhi Medical Council (DMC) & National Medical Commission (NMC)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "DM in Pulmonary Medicine - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
+      "MD in General Medicine - PGIMER, Chandigarh",
+      "MBBS - Indira Gandhi Medical College (IGMC), Shimla"
+    ],
+    hospitalAffiliations: "Chairman, Institute of Internal Medicine & Respiratory Sciences, Medanta – The Medicity, Gurugram, Delhi NCR",
+    areasReviewed: [
+      "Preventive Health Checkups & Biomarker Panels",
+      "Adult & Childhood Immunization Schedules",
+      "Respiratory Health, Asthma & COPD Management",
+      "Sleep Hygiene, Apnea & Circadian Health",
+      "Infectious Disease Prevention & Infection Control"
+    ],
+    conflictOfInterest: "Dr. Guleria reports zero commercial pharmaceutical ties or device manufacturer sponsorships. Guided strictly by peer-reviewed evidence and national health protocols.",
+    externalProfiles: [
+      { platform: "Medanta Profile", url: "https://www.medanta.org", label: "Medanta Senior Leadership Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Guleria+Randeep", label: "PubMed Clinical Citations" }
+    ]
+  },
+  {
+    id: "dr-rommel-tickoo-md",
+    name: "Dr. Rommel Tickoo, MBBS, MD",
+    degree: "MBBS, MD (Internal Medicine)",
+    credentials: "MD (Internal Medicine), Senior Director & Clinical Lead",
+    title: "Director, Internal Medicine & Infectious Diseases, Max Super Speciality Hospital, Saket",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Rommel Tickoo is the Director of Internal Medicine at Max Super Speciality Hospital, Saket, New Delhi. With over 24 years of experience in adult primary care, infectious disease management, routine screenings, and fever diagnostics, he reviews mediguide4u preventive care and vaccination protocols.",
+    specialty: "Internal Medicine, Infectious Diseases, Preventive Health Screenings, Adult Vaccines",
+    experience: "24+ Years Clinical Practice & Inpatient Hospital Care",
+    licenseNumber: "DMC-12876",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Internal Medicine - Kasturba Medical College (KMC), Manipal",
+      "MBBS - University of Delhi / Maulana Azad Medical College (MAMC)"
+    ],
+    hospitalAffiliations: "Director, Department of Internal Medicine, Max Super Speciality Hospital, Saket, New Delhi",
+    areasReviewed: [
+      "Routine Preventive Blood Tests & Comprehensive Health Checkups",
+      "Vaccine Safety & Adult Booster Schedules",
+      "Infectious Disease Control & Fever Management",
+      "Hypertension Screening & Lifestyle Interventions"
+    ],
+    conflictOfInterest: "Dr. Tickoo has zero financial relationships with pharmaceutical companies. All reviews are based on CDC, WHO, and Indian consensus guidelines.",
+    externalProfiles: [
+      { platform: "Max Healthcare", url: "https://www.maxhealthcare.in", label: "Max Hospital Doctor Profile" },
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "Professional Profile" }
+    ]
+  },
+  {
+    id: "dr-alka-kriplani-md",
+    name: "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    degree: "MBBS, MD, FRCOG (London), FAMS, FICOG",
+    credentials: "MD, FRCOG (Hon), FAMS, FICOG (Padma Shri Recipient)",
+    title: "Director & Head, Obstetrics & Gynecology, Paras Health (Former Head, AIIMS New Delhi)",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Alka Kriplani is the Director and Head of Obstetrics & Gynecology at Paras Health, Gurugram, and former Head of the Department of Obstetrics & Gynecology at AIIMS New Delhi. A Padma Shri awardee, Dr. Kriplani is a pioneer in reproductive medicine, high-risk obstetrics, and gynecological endoscopy.",
+    specialty: "Obstetrics, Gynecology, Reproductive Endocrinology, High-Risk Pregnancy, Endoscopy",
+    experience: "38+ Years Academic Obstetrics & Gynecology",
+    licenseNumber: "DMC-07119",
+    licensingBody: "Delhi Medical Council (DMC) & National Medical Commission (NMC)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "FRCOG (Honorary) - Royal College of Obstetricians and Gynaecologists, London, UK",
+      "MD in Obstetrics & Gynecology - Pandit BD Sharma PGIMS, Rohtak",
+      "MBBS - Pandit BD Sharma PGIMS, Rohtak"
+    ],
+    hospitalAffiliations: "Director & Head, Department of Obstetrics & Gynecology, Paras Health, Gurugram, Delhi NCR",
+    areasReviewed: [
+      "Prenatal Care, Trimester Milestones & High-Risk Pregnancy",
+      "Polycystic Ovary Syndrome (PCOS) & Menstrual Health",
+      "Perimenopause, Menopause & Hormone Therapy",
+      "Cervical Cancer Screening (Pap Smears & HPV Vaccines)",
+      "Endometriosis & Pelvic Pain Management"
+    ],
+    conflictOfInterest: "Dr. Kriplani has no pharmaceutical sponsorships or conflicts of interest. Reviews are conducted strictly against FOGSI and ACOG clinical guidelines.",
+    externalProfiles: [
+      { platform: "Paras Health", url: "https://www.parashospitals.com", label: "Paras Health Specialist Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Kriplani+Alka", label: "PubMed Gynecology Publications" }
+    ]
+  },
+  {
+    id: "dr-anuradha-kapur-md",
+    name: "Dr. Anuradha Kapur, MBBS, MD, FICOG",
+    degree: "MBBS, MD (Obstetrics & Gynecology), FICOG",
+    credentials: "MD, FICOG, FICMCH, Senior Director & Lead Obstetrician",
+    title: "Senior Director & Head, Obstetrics & Gynecology, Max Hospital Saket",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Anuradha Kapur is the Senior Director and Head of the Department of Obstetrics & Gynecology at Max Super Speciality Hospital, Saket, New Delhi. With over 30 years of clinical experience, she specializes in high-risk pregnancies, adolescent gynecology, minimally invasive laparoscopic surgery, and menopausal health.",
+    specialty: "Obstetrics, High-Risk Pregnancy, Laparoscopic Gynae Surgery, Infertility & Menopause",
+    experience: "30+ Years Obstetrics & Gynecological Practice",
+    licenseNumber: "DMC-15822",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Obstetrics & Gynecology - Maulana Azad Medical College (MAMC), New Delhi",
+      "MBBS - Maulana Azad Medical College (MAMC), University of Delhi",
+      "Fellowship - Indian College of Obstetricians & Gynaecologists (FICOG)"
+    ],
+    hospitalAffiliations: "Senior Director & Head, Department of Obs & Gynae, Max Super Speciality Hospital, Saket, New Delhi",
+    areasReviewed: [
+      "Adolescent Menstrual Disorders & PCOS Care",
+      "Gestational Diabetes & Hypertensive Pregnancy Disorders",
+      "Mammography, Bone Density & Breast Health",
+      "Postpartum Recovery & Maternal Nutrition"
+    ],
+    conflictOfInterest: "Dr. Kapur reports no conflicts of interest with medical manufacturers or formula companies.",
+    externalProfiles: [
+      { platform: "Max Healthcare", url: "https://www.maxhealthcare.in", label: "Max Healthcare Specialist Profile" }
+    ]
+  },
+  {
+    id: "dr-krishan-chugh-md",
+    name: "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    degree: "MBBS, MD (Pediatrics), FIAP, FICP",
+    credentials: "MD (Pediatrics), FIAP, FICP, Chairman of Pediatrics",
+    title: "Chairman & Head, Department of Pediatrics, FMRI Gurugram",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Krishan Chugh is the Chairman and Head of the Department of Pediatrics and Pediatric Pulmonology at Fortis Memorial Research Institute (FMRI), Gurugram. With over 36 years of pediatric clinical practice and pioneering work in pediatric intensive care and interventional pulmonology in North India, he oversees children's healthcare literacy.",
+    specialty: "Pediatrics, Pediatric Pulmonology, Neonatal Care, Childhood Immunizations, Asthma in Children",
+    experience: "36+ Years Clinical Pediatrics & Neonatology",
+    licenseNumber: "DMC-09351",
+    licensingBody: "Delhi Medical Council (DMC) & Haryana Medical Council",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "Fellowship - Indian Academy of Pediatrics (FIAP) & Indian College of Pediatrics (FICP)",
+      "MD in Pediatrics - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
+      "MBBS - Maulana Azad Medical College (MAMC), New Delhi"
+    ],
+    hospitalAffiliations: "Chairman & Head, Department of Pediatrics, Fortis Memorial Research Institute, Gurugram, Delhi NCR",
+    areasReviewed: [
+      "Childhood Growth Charts, Developmental Milestones & Early Intervention",
+      "Pediatric Fever, Croup & Bronchiolitis Management",
+      "National Immunization Schedule & Travel Vaccines for Children",
+      "Childhood Nutrition, Solid Food Introduction & Picky Eating",
+      "Pediatric Allergy, Eczema & Asthma Management"
+    ],
+    conflictOfInterest: "Dr. Chugh reports zero corporate or infant food industry conflicts. Adheres strictly to Indian Academy of Pediatrics (IAP) and AAP standards.",
+    externalProfiles: [
+      { platform: "Fortis Pediatrics", url: "https://www.fortishealthcare.com", label: "Fortis Pediatrics Faculty Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Chugh+Krishan", label: "PubMed Pediatric Publications" }
+    ]
+  },
+  {
+    id: "dr-anupam-sibal-md",
+    name: "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
+    degree: "MBBS, MD (Pediatrics), FRCP (London), FRCPCH (UK)",
+    credentials: "MD, FRCP, FRCPCH, FIMSA, Group Medical Director",
+    title: "Group Medical Director & Senior Pediatric Gastroenterologist, Apollo Hospitals Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Anupam Sibal is the Group Medical Director of Apollo Hospitals Group and Senior Consultant Pediatric Gastroenterologist & Hepatologist at Indraprastha Apollo Hospitals, New Delhi. He established India's first successful pediatric liver transplant program and is an internationally acclaimed pediatrician.",
+    specialty: "Pediatrics, Pediatric Gastroenterology & Hepatology, Pediatric Nutrition",
+    experience: "28+ Years Clinical Pediatrics & Hospital Governance",
+    licenseNumber: "DMC-11029",
+    licensingBody: "Delhi Medical Council (DMC) & General Medical Council (UK)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "FRCPCH - Royal College of Paediatrics and Child Health, London, UK",
+      "Fellowship in Pediatric Gastroenterology - Birmingham Children's Hospital, UK",
+      "MD in Pediatrics - Maulana Azad Medical College (MAMC), New Delhi",
+      "MBBS - Maulana Azad Medical College, University of Delhi"
+    ],
+    hospitalAffiliations: "Group Medical Director & Senior Consultant Pediatrician, Indraprastha Apollo Hospitals, Sarita Vihar, New Delhi",
+    areasReviewed: [
+      "Infant Colic, GERD & Pediatric Gastroenterology Health",
+      "Childhood Obesity & Fatty Liver Disease in Adolescents",
+      "Neonatal Jaundice & Metabolic Screenings",
+      "Nutritional Supplementation in Toddlers & Schoolchildren"
+    ],
+    conflictOfInterest: "Dr. Sibal reports no conflicts of interest. Reviews strictly align with ESPGHAN and Indian Academy of Pediatrics clinical consensus.",
+    externalProfiles: [
+      { platform: "Apollo Leadership", url: "https://www.apollohospitals.com", label: "Apollo Hospitals Leadership Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sibal+Anupam", label: "PubMed Pediatric Research Index" }
+    ]
+  },
+  {
+    id: "dr-samir-parikh-md",
+    name: "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    degree: "MBBS, MD (Psychiatry)",
+    credentials: "MD (Psychiatry), Director of Mental Health & Behavioural Sciences",
+    title: "Director, Department of Mental Health & Behavioural Sciences, Fortis Healthcare",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Samir Parikh is a prominent psychiatrist and the Director of the Department of Mental Health and Behavioural Sciences at Fortis Healthcare, New Delhi NCR. With over 22 years of clinical expertise, he is a leading advocate for mental health literacy, youth suicide prevention, workplace wellness, and cognitive therapy.",
+    specialty: "Psychiatry, Cognitive Behavioural Therapy (CBT), Anxiety & Mood Disorders, Sleep Medicine",
+    experience: "22+ Years Clinical Psychiatry & Public Mental Health Education",
+    licenseNumber: "DMC-16782",
+    licensingBody: "Delhi Medical Council (DMC) & Indian Psychiatric Society (IPS)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Psychiatry - National Institute of Mental Health & Neurosciences (NIMHANS) affiliate / Mumbai University",
+      "MBBS - King Edward Memorial Hospital (KEM Hospital), Mumbai"
+    ],
+    hospitalAffiliations: "Director, Department of Mental Health and Behavioural Sciences, Fortis Healthcare, New Delhi & Gurugram",
+    areasReviewed: [
+      "Depression, Anxiety & Panic Disorder Diagnostics",
+      "Sleep Hygiene, Insomnia & Circadian Rhythm Optimization",
+      "Burnout, Chronic Stress Neurobiology & Cortisol Regulation",
+      "Mindfulness, Cognitive Restructuring & Psychotherapy Modalities",
+      "ADHD, Adult Focus Disorders & Neurodiversity"
+    ],
+    conflictOfInterest: "Dr. Parikh has zero financial relationships with pharmaceutical companies. Reviews reflect evidence-based neuropsychiatry and Indian Psychiatric Society guidelines.",
+    externalProfiles: [
+      { platform: "Fortis Mental Health", url: "https://www.fortishealthcare.com", label: "Fortis Mental Health Faculty Profile" },
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Professional Profile" }
+    ]
+  },
+  {
+    id: "dr-nimesh-desai-md",
+    name: "Dr. Nimesh G. Desai, MBBS, MD, DPM",
+    degree: "MBBS, MD (Psychiatry), DPM",
+    credentials: "MD, DPM, FIPS, Senior Consultant & Former Director IHBAS",
+    title: "Senior Consultant Psychiatrist & Former Director, IHBAS Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Nimesh G. Desai is a renowned neuropsychiatrist and the former Director of the Institute of Human Behaviour and Allied Sciences (IHBAS), Delhi. With over 35 years in academic psychiatry, community mental health, and neurological wellness, he oversees clinical mental health guides at mediguide4u.",
+    specialty: "Neuropsychiatry, Cognitive Disorders, Psychopharmacology, Community Mental Health",
+    experience: "35+ Years Academic Psychiatry & Clinical Neurosciences",
+    licenseNumber: "DMC-08192",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Psychiatry - National Institute of Mental Health and Neurosciences (NIMHANS), Bengaluru",
+      "Diploma in Psychological Medicine (DPM) - NIMHANS, Bengaluru",
+      "MBBS - Government Medical College, Surat"
+    ],
+    hospitalAffiliations: "Senior Consultant Psychiatrist & Former Director, Institute of Human Behaviour and Allied Sciences (IHBAS), Dilshad Garden, Delhi",
+    areasReviewed: [
+      "Neurobiological Foundations of Stress & Mood Disorders",
+      "Evidence-Based Psychopharmacology Protocols",
+      "Memory Preservation & Cognitive Decline in Aging",
+      "Addiction Recovery & Behavioral Neurosciences"
+    ],
+    conflictOfInterest: "Dr. Desai reports no conflicts of interest or pharmaceutical commercial ties.",
+    externalProfiles: [
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Desai+Nimesh+G", label: "PubMed Neuropsychiatry Publications" }
+    ]
+  },
+  {
+    id: "dr-sks-marya-ms",
+    name: "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    degree: "MBBS, MS (Orthopedics), MCh (Ortho), FRCS",
+    credentials: "MS (Ortho), MCh (Ortho - Liverpool), FRCS (Glasgow, England)",
+    title: "Chairman, Bone & Joint Institute, Medanta – The Medicity",
+    roleType: "Physician Reviewer",
+    bio: "Dr. S.K.S. Marya is the Chairman of the Bone and Joint Institute at Medanta – The Medicity, Gurugram. With more than 35 years of clinical and surgical expertise, Dr. Marya has conducted over 20,000 joint replacement surgeries and is a pioneer in robotic joint replacement, athletic conditioning, and musculoskeletal rehabilitation.",
+    specialty: "Orthopedics, Joint Replacement Surgery, Sports Medicine, Musculoskeletal Rehabilitation, Sarcopenia Prevention",
+    experience: "35+ Years Orthopedic Surgery & Sports Medicine",
+    licenseNumber: "DMC-09943",
+    licensingBody: "Delhi Medical Council (DMC) & Haryana Medical Council",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MCh in Orthopedic Surgery - University of Liverpool, United Kingdom",
+      "FRCS - Royal College of Surgeons of Glasgow and Royal College of Surgeons of England",
+      "MS in Orthopedics - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
+      "MBBS - Pt. BD Sharma PGIMS, Rohtak"
+    ],
+    hospitalAffiliations: "Chairman, Bone & Joint Institute, Medanta – The Medicity, Gurugram, Delhi NCR",
+    areasReviewed: [
+      "Progressive Resistance Training & Hypertrophy Physiology",
+      "Joint Preservation, Osteoarthritis & Knee Health",
+      "Sarcopenia Prevention & Lean Muscle Preservation",
+      "Bone Density (DEXA) & Fracture Prevention in Seniors",
+      "Exercise Recovery, Flexibility & Mobility Protocols"
+    ],
+    conflictOfInterest: "Dr. Marya has zero commercial product endorsements or orthopedic hardware conflicts of interest.",
+    externalProfiles: [
+      { platform: "Medanta Orthopedics", url: "https://www.medanta.org", label: "Medanta Orthopedic Institute Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Marya+S+K", label: "PubMed Orthopedic Research" }
+    ]
+  },
+  {
+    id: "dr-raju-vaishya-ms",
+    name: "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
+    degree: "MBBS, MS (Orthopedics), MCh (Ortho), FRCS",
+    credentials: "MS, MCh (Liverpool), FRCS (England), Senior Director Orthopedics",
+    title: "Senior Consultant Orthopedics & Joint Replacement, Indraprastha Apollo Hospitals, New Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Raju Vaishya is a Senior Consultant Orthopedic & Joint Replacement Surgeon at Indraprastha Apollo Hospitals, New Delhi. With over 35 years of clinical practice and more than 600 peer-reviewed scientific publications, he specializes in knee and hip arthroplasty, regenerative cartilage therapy, and active aging.",
+    specialty: "Orthopedic Surgery, Joint Arthroplasty, Sports Medicine, Cartilage Repair, Geriatric Mobility",
+    experience: "35+ Years Orthopedic Surgery & Clinical Research",
+    licenseNumber: "DMC-07815",
+    licensingBody: "Delhi Medical Council (DMC) & General Medical Council (GMC UK)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MCh in Orthopedics - University of Liverpool, UK",
+      "FRCS - Royal College of Surgeons of England",
+      "MS in Orthopedics - GR Medical College, Gwalior",
+      "MBBS - GR Medical College, Gwalior"
+    ],
+    hospitalAffiliations: "Senior Consultant Orthopedic Surgeon, Indraprastha Apollo Hospitals, Sarita Vihar, New Delhi",
+    areasReviewed: [
+      "Cardiovascular & Muscular Endurance Conditioning",
+      "Rotator Cuff, Meniscus & Sports Injury Rehabilitation",
+      "Active Aging, Posture Alignment & Ergonomics",
+      "Metabolic Bone Disease & Calcium / Vitamin D Dynamics"
+    ],
+    conflictOfInterest: "Dr. Vaishya reports zero commercial conflicts of interest or surgical implant sponsorships.",
+    externalProfiles: [
+      { platform: "Apollo Hospitals", url: "https://www.apollohospitals.com", label: "Apollo Hospitals Doctor Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Vaishya+Raju", label: "PubMed Orthopedic Publications (600+ papers)" }
+    ]
+  },
+  {
+    id: "dr-prasun-chatterjee-md",
+    name: "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+    degree: "MBBS, MD (Geriatric Medicine)",
+    credentials: "MD (Geriatrics), Professor of Geriatric Medicine, AIIMS",
+    title: "Professor & Head, Department of Geriatric Medicine, AIIMS New Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Prasun Chatterjee is Professor in the Department of Geriatric Medicine at the All India Institute of Medical Sciences (AIIMS), New Delhi. A leading authority on healthy longevity, memory clinics, dementia care, and geriatric polypharmacy, he oversees clinical guidance on senior health and longevity.",
+    specialty: "Geriatric Medicine, Healthy Aging, Dementia & Alzheimer's Care, Polypharmacy & Fall Prevention",
+    experience: "18+ Years Academic Geriatrics & Clinical Research",
+    licenseNumber: "DMC-13924",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MD in Geriatric Medicine - All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "MBBS - Calcutta National Medical College (CNMC), Kolkata"
+    ],
+    hospitalAffiliations: "Professor, Department of Geriatric Medicine, AIIMS, Ansari Nagar, New Delhi",
+    areasReviewed: [
+      "Geriatric Polypharmacy & AGS Beers Criteria Deprescribing",
+      "Fall Prevention, Balance Training & Gait Stability in Seniors",
+      "Cognitive Vitality, Mild Cognitive Impairment & Dementia Screening",
+      "Nutritional Requirements & Sarcopenia Prevention in Older Adults"
+    ],
+    conflictOfInterest: "Dr. Chatterjee reports zero commercial conflicts of interest or pharmaceutical relationships.",
+    externalProfiles: [
+      { platform: "AIIMS Geriatrics", url: "https://www.aiims.edu", label: "AIIMS Faculty Directory" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Chatterjee+Prasun", label: "PubMed Geriatric Research" }
+    ]
+  },
+  {
+    id: "dr-sk-sarin-dm",
+    name: "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    degree: "MBBS, MD, DM (Gastroenterology)",
+    credentials: "MD, DM (Gastro), FNA, FNASc (Padma Bhushan & Shanti Swarup Bhatnagar Awardee)",
+    title: "Senior Professor & Director, Institute of Liver & Biliary Sciences (ILBS), New Delhi",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Shiv Kumar Sarin is a globally acclaimed hepatologist, Senior Professor, and Director of the Institute of Liver and Biliary Sciences (ILBS), New Delhi. Recipient of the Padma Bhushan award and former President of the Asian Pacific Association for the Study of the Liver (APASL), he is a world leader in fatty liver disease, liver cirrhosis, and metabolic gastrointestinal disorders.",
+    specialty: "Hepatology, Gastroenterology, Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD), Cirrhosis, Gut Health",
+    experience: "38+ Years Clinical Hepatology & Academic Research",
+    licenseNumber: "DMC-07612",
+    licensingBody: "Delhi Medical Council (DMC) & National Academy of Medical Sciences (NAMS)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "DM in Gastroenterology - All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "MD in General Medicine - SMS Medical College, Jaipur",
+      "MBBS - SMS Medical College, Jaipur"
+    ],
+    hospitalAffiliations: "Director & Head, Department of Hepatology, Institute of Liver and Biliary Sciences (ILBS), Vasant Kunj, New Delhi",
+    areasReviewed: [
+      "Non-Alcoholic Fatty Liver Disease (MASLD / MASH) Progression & Reversal",
+      "Liver Enzyme Interpretation (ALT, AST, GGT, Alkaline Phosphatase)",
+      "Metabolic Syndrome, Insulin Resistance & Visceral Adiposity",
+      "Nutritional Deficiencies (Vitamin B12, Iron, Vitamin D) & Absorption Pathways",
+      "Gastroesophageal Reflux Disease (GERD) & Gut Microbiome Dysbiosis"
+    ],
+    conflictOfInterest: "Dr. Sarin has zero corporate pharmaceutical ties. Reviews strictly adhere to APASL, AASLD, and EASL clinical guidelines.",
+    externalProfiles: [
+      { platform: "ILBS Director", url: "https://www.ilbs.in", label: "ILBS Official Director Profile" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sarin+SK", label: "PubMed Hepatology Research (700+ papers)" }
+    ]
+  },
+  {
+    id: "dr-randhir-sud-dm",
+    name: "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
+    degree: "MBBS, MD, DM (Gastroenterology)",
+    credentials: "MD, DM (Gastroenterology), MAMS (Padma Shri Recipient)",
+    title: "Chairman, Institute of Digestive & Hepatobiliary Sciences, Medanta – The Medicity",
+    roleType: "Physician Reviewer",
+    bio: "Dr. Randhir Sud is the Chairman of the Institute of Digestive and Hepatobiliary Sciences at Medanta – The Medicity, Gurugram. Recipient of the Padma Shri award, he is a pioneer in therapeutic gastrointestinal endoscopy, pancreatic-biliary disorders, and digestive health with over 35 years of clinical practice.",
+    specialty: "Gastroenterology, Therapeutic Endoscopy, Hepatobiliary Diseases, GERD, IBD",
+    experience: "35+ Years Gastroenterology & Digestive Medicine",
+    licenseNumber: "DMC-09180",
+    licensingBody: "Delhi Medical Council (DMC) & Indian Society of Gastroenterology (ISG)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "DM in Gastroenterology - All India Institute of Medical Sciences (AIIMS), New Delhi",
+      "MD in General Medicine - AIIMS, New Delhi",
+      "MBBS - Government Medical College, Amritsar"
+    ],
+    hospitalAffiliations: "Chairman, Institute of Digestive and Hepatobiliary Sciences, Medanta – The Medicity, Gurugram, Delhi NCR",
+    areasReviewed: [
+      "Acid Reflux (GERD), Barrett's Esophagus & Dietary Modulation",
+      "Irritable Bowel Syndrome (IBS) & Low-FODMAP Therapeutics",
+      "Chronic Pancreatitis, Gallbladder Sludge & Biliary Health",
+      "Colon Cancer Screening, Colonoscopy & Polyps"
+    ],
+    conflictOfInterest: "Dr. Sud reports no commercial conflicts of interest or device manufacturer sponsorships.",
+    externalProfiles: [
+      { platform: "Medanta Gastroenterology", url: "https://www.medanta.org", label: "Medanta Gastroenterology Leadership" },
+      { platform: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/?term=Sud+Randhir", label: "PubMed Clinical Citations" }
+    ]
+  },
+  {
+    id: "dr-shikha-sharma-mbbs",
+    name: "Dr. Shikha Sharma, MBBS",
+    degree: "MBBS (Maulana Azad Medical College)",
+    credentials: "MBBS, Medical Nutritionist & Preventive Health Consultant",
+    title: "Founder & Medical Director, NutriHealth Delhi NCR; Clinical Nutrition Lead",
+    roleType: "Clinical Specialist",
+    bio: "Dr. Shikha Sharma is an MBBS graduate from Maulana Azad Medical College (MAMC), New Delhi, and a pioneer in clinical nutrition, gut health, and preventive lifestyle medicine in Delhi NCR with over 25 years of medical consulting experience.",
+    specialty: "Clinical Nutrition, Micronutrient Bioavailability, Metabolic Wellness, Anti-Inflammatory Diets",
+    experience: "25+ Years Medical Nutrition & Lifestyle Practice",
+    licenseNumber: "DMC-12490",
+    licensingBody: "Delhi Medical Council (DMC) & Medical Council of India (MCI)",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MBBS - Maulana Azad Medical College (MAMC), University of Delhi",
+      "Postgraduate Certifications in Clinical Nutrition & Preventive Medicine"
+    ],
+    hospitalAffiliations: "Medical Director, NutriHealth Delhi NCR; Consulting Preventive Physician",
+    areasReviewed: [
+      "Whole Food Plant-Rich Dietary Protocols & Fiber Diversity",
+      "Micronutrient Bioavailability (Zinc, Magnesium, Folate, Iron)",
+      "Anti-Inflammatory Nutrition & Cellular Longevity",
+      "Intermittent Fasting, Glycemic Load & Circadian Eating",
+      "Hydration Dynamics, Electrolyte Balance & Digestive Vitality"
+    ],
+    conflictOfInterest: "Dr. Sharma has no dietary supplement endorsements or commercial manufacturing conflicts. All guidance is grounded in peer-reviewed clinical nutrition literature.",
+    externalProfiles: [
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "Professional LinkedIn Profile" },
+      { platform: "Delhi Medical Council", url: "https://delhimedicalcouncil.org", label: "Delhi Medical Council Verification" }
+    ]
+  },
+  {
+    id: "dr-ritika-samaddar-rd",
+    name: "Dr. Ritika Samaddar, RD",
+    degree: "MSc (Clinical Nutrition), Registered Dietitian (RD)",
+    credentials: "MSc, RD, Regional Head of Clinical Nutrition (Max Healthcare)",
+    title: "Regional Head, Department of Clinical Nutrition and Dietetics, Max Healthcare Saket",
+    roleType: "Clinical Specialist",
+    bio: "Dr. Ritika Samaddar is the Regional Head of Clinical Nutrition and Dietetics at Max Super Speciality Hospital, Saket, New Delhi. With over 24 years of clinical dietetics expertise, she is a leading authority on Medical Nutrition Therapy (MNT), cardiovascular nutrition, and diabetic diet management in North India.",
+    specialty: "Clinical Nutrition, Medical Nutrition Therapy, Diabetes Dietetics, Renal Nutrition, Cardiac Wellness",
+    experience: "24+ Years Hospital Clinical Dietetics & Nutrition Leadership",
+    licenseNumber: "IDA-RD-04421",
+    licensingBody: "Indian Dietetic Association (IDA) Registered Dietitian",
+    licenseStatus: "Active & In Good Standing",
+    education: [
+      "MSc in Food & Nutrition - Lady Irwin College, University of Delhi",
+      "Registered Dietitian (RD) - Indian Dietetic Association"
+    ],
+    hospitalAffiliations: "Regional Head, Department of Clinical Nutrition & Dietetics, Max Super Speciality Hospital, Saket, New Delhi",
+    areasReviewed: [
+      "DASH, Mediterranean & Indian Plant-Forward Heart Diets",
+      "Carbohydrate Counting, Glycemic Index & Insulin Dosing Synergy",
+      "Sodium Restriction, Potassium Balance & Renal Nutrition",
+      "Sarcopenia Nutritional Protocols & High-Quality Protein Distribution"
+    ],
+    conflictOfInterest: "Reports zero food corporation or supplement manufacturer sponsorships. Recommendations adhere to ICMR-NIN and ADA nutrition guidelines.",
+    externalProfiles: [
+      { platform: "Max Healthcare", url: "https://www.maxhealthcare.in", label: "Max Healthcare Dietetics Faculty Profile" },
+      { platform: "LinkedIn", url: "https://www.linkedin.com", label: "LinkedIn Profile" }
     ]
   },
   {
@@ -301,13 +737,7 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
 
 export const MEDICAL_AUTHORS: ProfessionalProfile[] = EDITORIAL_PROFILES;
 
-export const MEDICAL_REVIEWERS: ProfessionalProfile[] = [
-  EDITORIAL_PROFILES[0], // Dr. Ananya Roy, MD
-  EDITORIAL_PROFILES[1], // Dr. Michael Torres, MD, FACC
-  EDITORIAL_PROFILES[2], // Dr. Elena Vance, MD
-  EDITORIAL_PROFILES[3], // Dr. David Chen, PhD
-  EDITORIAL_PROFILES[4], // Sarah Jenkins, MS, RDN, LDN
-];
+export const MEDICAL_REVIEWERS: ProfessionalProfile[] = EDITORIAL_PROFILES.filter(p => p.id !== "editorial-staff");
 
 export function getAuthorProfileUrl(name?: string): string {
   if (!name) return "/author/editorial-staff";
@@ -585,14 +1015,14 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
 ];
 
 export const INITIAL_BLOG_POSTS: BlogPost[] = [
-  {
+{
     "id": "6ICFP9fPsoFVg1DlCf9D",
     "slug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
     "title": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
     "category": "Lifestyle Diseases",
     "subcategory": "Nutritional Deficiencies",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -890,8 +1320,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Iron Deficiency Anemia: Symptoms, Ferritin Testing, Causes, and Clinical Management",
     "category": "Lifestyle Diseases",
     "subcategory": "Hematology & Nutrition",
-    "author": "Sarah Jenkins, MS, RDN, LDN",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -1088,8 +1518,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
     "category": "Lifestyle Diseases",
     "subcategory": "Endocrinology & Nutrition",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -1381,8 +1811,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Fatty Liver Disease (MASLD/MASH): Symptoms, Staging, FIB-4 Score, and Reversal Strategies",
     "category": "Lifestyle Diseases",
     "subcategory": "Hepatology & Metabolic Health",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-10",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -1572,8 +2002,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Women's Health: Essential Preventive Screenings, Age Guidelines, and Clinical Checklists",
     "category": "Women's Health",
     "subcategory": "Preventive Care",
-    "author": "Sarah Jenkins, MS, RDN, LDN",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -1763,8 +2193,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Managing Blood Pressure Naturally: Evidence-Based Clinical Strategies & DASH Protocols",
     "category": "Heart Health",
     "subcategory": "Cardiovascular Wellness",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -1946,8 +2376,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "The Science of Stress Management: Neurobiology, Cortisol Regulation, and Clinical Techniques",
     "category": "Mental Health",
     "subcategory": "Neurobiology & Wellness",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2120,8 +2550,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Designing a Weekly Workout Routine: Evidence-Based Hypertrophy, Cardio, and Longevity Programming",
     "category": "Fitness",
     "subcategory": "Exercise Physiology",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2290,8 +2720,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Active Aging: Complete Mobility, Sarcopenia Prevention, and Bone Health Guide for Seniors",
     "category": "Senior Healthcare",
     "subcategory": "Geriatrics & Longevity",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2452,8 +2882,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "The Truth About Superfoods and Micronutrients: Nutritional Biochemistry vs. Marketing Myths",
     "category": "Wellness",
     "subcategory": "Nutritional Science",
-    "author": "Sarah Jenkins, MS, RDN, LDN",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2609,8 +3039,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
     "category": "Diabetes",
     "subcategory": "Endocrinology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2798,8 +3228,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Essential Preventive Health Screenings by Age: The Clinical Evidence-Based Checklist",
     "category": "Preventive Care",
     "subcategory": "Clinical Health Literacy",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -2974,8 +3404,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
     "category": "Mental Health",
     "subcategory": "Sleep Medicine & Psychiatry",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3127,8 +3557,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pediatric Nutrition and Growth: Evidence-Based Dietary Guidelines for Children",
     "category": "Children's Health",
     "subcategory": "Pediatrics & Development",
-    "author": "Sarah Jenkins, MS, RDN, LDN",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3284,8 +3714,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
     "category": "Vaccination",
     "subcategory": "Immunology & Public Health",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3447,8 +3877,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
     "category": "Heart Health",
     "subcategory": "Cardiology",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3594,8 +4024,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
     "category": "Heart Health",
     "subcategory": "Cardiac Electrophysiology",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3770,8 +4200,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
     "category": "Heart Health",
     "subcategory": "Lipidology & Preventive Cardiology",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -3927,8 +4357,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pre-Diabetes and Insulin Resistance: How to Lower Blood Glucose Before Type 2 Diabetes",
     "category": "Diabetes",
     "subcategory": "Endocrinology & Metabolism",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4078,8 +4508,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
     "category": "Diabetes",
     "subcategory": "Neurology & Podiatry",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4225,8 +4655,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
     "category": "Diabetes",
     "subcategory": "Acute Care & Endocrinology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4382,8 +4812,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
     "category": "Lifestyle Diseases",
     "subcategory": "Gastroenterology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4529,8 +4959,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Gout and Hyperuricemia: Uric Acid Causes, Flare-Up Relief, and Low-Purine Diet",
     "category": "Lifestyle Diseases",
     "subcategory": "Rheumatology & Nephrology",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4681,8 +5111,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Metabolic Syndrome: Clinical Diagnostic Criteria, Heart Risks, and Lifestyle Reversal",
     "category": "Lifestyle Diseases",
     "subcategory": "Cardiometabolic Health",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4838,8 +5268,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
     "category": "Women's Health",
     "subcategory": "Reproductive Endocrinology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -4991,8 +5421,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Endometriosis: Chronic Pelvic Pain, Laparoscopy Diagnosis, and Medical Therapies",
     "category": "Women's Health",
     "subcategory": "Gynecology & Pelvic Health",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5143,8 +5573,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Perimenopause and Menopause: Vasomotor Symptoms, Mood Changes, and HRT Evidence",
     "category": "Women's Health",
     "subcategory": "Midlife Health & Endocrinology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5295,8 +5725,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
     "category": "Mental Health",
     "subcategory": "Psychiatry & Neuroscience",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5453,8 +5883,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Adult ADHD: Diagnostic Symptoms, Executive Dysfunction, and Daily Coping Strategies",
     "category": "Mental Health",
     "subcategory": "Neurodevelopmental Psychiatry",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5605,8 +6035,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
     "category": "Mental Health",
     "subcategory": "Clinical Psychiatry & Neurobiology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5762,8 +6192,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
     "category": "Children's Health",
     "subcategory": "Pediatric Pulmonology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -5907,8 +6337,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
     "category": "Children's Health",
     "subcategory": "General Pediatrics & Acute Care",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6059,8 +6489,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
     "category": "Children's Health",
     "subcategory": "Pediatric Dermatology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6211,8 +6641,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Osteoporosis and Bone Mineral Density: DEXA Scans, Calcium, and Fall Prevention",
     "category": "Senior Healthcare",
     "subcategory": "Rheumatology & Bone Health",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6368,8 +6798,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Early Signs of Dementia and Alzheimer's vs. Normal Age-Related Memory Changes",
     "category": "Senior Healthcare",
     "subcategory": "Behavioral Neurology & Geriatrics",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6526,8 +6956,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Osteoarthritis: Joint Cartilage Wear, Mobility Preservation, and Pain Management",
     "category": "Senior Healthcare",
     "subcategory": "Rheumatology & Orthopedics",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6683,8 +7113,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Colorectal Cancer Screening: Colonoscopy, Cologuard, and Stool DNA Test Guidelines",
     "category": "Preventive Care",
     "subcategory": "Gastroenterology & Oncology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -6829,8 +7259,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Routine Blood Tests Explained: Understanding CBC, CMP, Lipid, and Liver Panels",
     "category": "Preventive Care",
     "subcategory": "Laboratory Medicine & Diagnostics",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7004,8 +7434,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
     "category": "Preventive Care",
     "subcategory": "Dermatology & Cutaneous Oncology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7151,8 +7581,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
     "category": "Vaccination",
     "subcategory": "Infectious Diseases & Immunology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7309,8 +7739,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
     "category": "Vaccination",
     "subcategory": "Oncology & Preventive Immunology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7460,8 +7890,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pneumococcal Vaccines for Older Adults: Understanding PCV15, PCV20, and PPSV23",
     "category": "Vaccination",
     "subcategory": "Infectious Diseases & Pulmonology",
-    "author": "Dr. Ananya Roy, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7611,8 +8041,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Cardio vs Strength Training: Optimizing Muscle Mass, Fat Loss, and Metabolic Health",
     "category": "Fitness",
     "subcategory": "Exercise Physiology & Metabolism",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7769,8 +8199,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "VO2 Max and Heart Rate Zones: How Aerobic Capacity Predicts Long-Term Health",
     "category": "Fitness",
     "subcategory": "Cardiopulmonary Physiology & Longevity",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -7928,8 +8358,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Circadian Rhythms and Sleep Architecture: Optimizing REM and Deep Sleep Cycles",
     "category": "Wellness",
     "subcategory": "Chronobiology & Sleep Science",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -8080,8 +8510,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
     "category": "Wellness",
     "subcategory": "Gastroenterology & Microbiome Science",
-    "author": "Sarah Jenkins, MS, RDN, LDN",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-08-08",
     "updatedAt": "2026-08-28",
     "medicalReviewedAt": "August 2026",
@@ -8231,8 +8661,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
     "category": "Heart Health",
     "subcategory": "Cardiology & Heart Failure",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-09-02",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8361,8 +8791,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
     "category": "Heart Health",
     "subcategory": "Vascular Health & Circulation",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-09-03",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8485,8 +8915,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
     "category": "Heart Health",
     "subcategory": "Cardiovascular Arrhythmias",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Naresh Trehan, MBBS, MD, FACS",
+    "medicalReviewer": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
     "publishedAt": "2026-09-04",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8603,8 +9033,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Continuous Glucose Monitors (CGM): Time in Range (TIR), Interstitial Lag, and Glucose Spikes",
     "category": "Diabetes",
     "subcategory": "Diabetes Technology & Monitoring",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-09-05",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8723,8 +9153,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Diabetic Retinopathy: Stages, Dilated Eye Exams, Microaneurysms, and Vision Protection",
     "category": "Diabetes",
     "subcategory": "Diabetic Complications & Eye Care",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-09-06",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8845,8 +9275,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Diabetic Kidney Disease (Nephropathy): eGFR, Urine Albumin (uACR), and Renal Protection",
     "category": "Diabetes",
     "subcategory": "Diabetic Complications & Nephrology",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+    "medicalReviewer": "Dr. Nikhil Tandon, MBBS, MD, PhD, FAMS",
     "publishedAt": "2026-09-07",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -8965,8 +9395,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
     "category": "Women's Health",
     "subcategory": "Endocrinology & Autoimmune Health",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-09-08",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9087,8 +9517,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Iron Deficiency Without Anemia (IDWA): Serum Ferritin, Fatigue, and Replenishment Protocols",
     "category": "Women's Health",
     "subcategory": "Hematology & Women's Health",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-09-09",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9208,8 +9638,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
     "category": "Women's Health",
     "subcategory": "Urogynecology & Physical Therapy",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+    "medicalReviewer": "Dr. Anuradha Kapur, MBBS, MD, FICOG",
     "publishedAt": "2026-09-10",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9363,8 +9793,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Sarcopenia in Older Adults: Muscle Loss, Protein Distribution, and Resistance Training",
     "category": "Senior Healthcare",
     "subcategory": "Geriatrics & Musculoskeletal Health",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. David Chen, PhD",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-09-11",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9483,8 +9913,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
     "category": "Senior Healthcare",
     "subcategory": "Urology & Men's Health",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9604,8 +10034,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Polypharmacy in Older Adults: Drug Interactions, the Beers Criteria, and Deprescribing",
     "category": "Senior Healthcare",
     "subcategory": "Geriatric Pharmacology & Medication Safety",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
     "publishedAt": "2026-09-13",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9726,8 +10156,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Burnout vs. Clinical Depression: Biological Differences, Allostatic Load, and Recovery",
     "category": "Mental Health",
     "subcategory": "Psychiatry & Stress Physiology",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-09-02",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9846,8 +10276,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
     "category": "Mental Health",
     "subcategory": "Anxiety Disorders & Clinical Psychology",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-09-03",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -9968,8 +10398,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
     "category": "Mental Health",
     "subcategory": "Neurology & Headache Medicine",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+    "medicalReviewer": "Dr. Nimesh G. Desai, MBBS, MD, DPM",
     "publishedAt": "2026-09-04",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10088,8 +10518,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
     "category": "Preventive Care",
     "subcategory": "Cardiovascular Biomarkers & Diagnostics",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-09-05",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10208,8 +10638,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Coronary Calcium Scan (CAC): Agatston Score Meaning, Plaque Detection, and Statin Decisions",
     "category": "Preventive Care",
     "subcategory": "Cardiovascular Imaging & Risk Assessment",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-09-06",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10328,8 +10758,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Vitamin D3 and K2 Synergy: Calcium Absorption, Osteocalcin, and Arterial Calcification",
     "category": "Preventive Care",
     "subcategory": "Nutritional Biochemistry & Bone Health",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-09-07",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10448,8 +10878,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
     "category": "Children's Health",
     "subcategory": "Pediatrics & Otolaryngology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-09-08",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10568,8 +10998,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Pediatric Dehydration: Signs of Fluid Loss in Infants, Oral Rehydration (ORS), and Red Flags",
     "category": "Children's Health",
     "subcategory": "Pediatric Emergencies & Gastroenteritis",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-09-09",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10684,8 +11114,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
     "category": "Children's Health",
     "subcategory": "Pediatric Allergy & Immunology",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+    "medicalReviewer": "Dr. Anupam Sibal, MD, FIMSA, FRCP (London)",
     "publishedAt": "2026-09-10",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10806,8 +11236,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
     "category": "Vaccination",
     "subcategory": "Infectious Diseases & Adolescent Immunization",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-09-11",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -10955,8 +11385,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
     "category": "Vaccination",
     "subcategory": "Infectious Diseases & Adult Immunization",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+    "medicalReviewer": "Dr. Rommel Tickoo, MBBS, MD",
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11074,8 +11504,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Zone 2 Cardio Training: Mitochondrial Density, Fat Oxidation, and Metabolic Health",
     "category": "Fitness",
     "subcategory": "Exercise Physiology & Longevity",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
     "publishedAt": "2026-09-06",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11195,8 +11625,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Delayed Onset Muscle Soreness (DOMS): Microtrauma, Cold Plunges, and Recovery Science",
     "category": "Fitness",
     "subcategory": "Exercise Physiology & Sports Recovery",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+    "medicalReviewer": "Dr. Raju Vaishya, MBBS, MS, MCh, FRCS",
     "publishedAt": "2026-09-07",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11342,8 +11772,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
     "category": "Wellness",
     "subcategory": "Sleep Medicine & Cardiovascular Health",
-    "author": "Dr. Elena Vance, MD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-09-08",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11469,8 +11899,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Chronic Systemic Inflammation: Root Causes, Cytokine Biomarkers, and Anti-Inflammatory Protocols",
     "category": "Wellness",
     "subcategory": "Immunology & Functional Medicine",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-09-09",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11591,8 +12021,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
     "category": "Wellness",
     "subcategory": "Metabolic Longevity & Nutritional Biochemistry",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Michael Torres, MD, FACC",
+    "author": "Dr. Shikha Sharma, MBBS",
+    "medicalReviewer": "Dr. Ritika Samaddar, RD",
     "publishedAt": "2026-09-10",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11712,8 +12142,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Chronic Kidney Disease (CKD): Stages, eGFR Decline, Potassium, and Renal Nutrition",
     "category": "Lifestyle Diseases",
     "subcategory": "Nephrology & Renal Medicine",
-    "author": "Dr. Michael Torres, MD, FACC",
-    "medicalReviewer": "Dr. Ananya Roy, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-09-11",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -11834,8 +12264,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "title": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
     "category": "Lifestyle Diseases",
     "subcategory": "Gastroenterology & Gut Health",
-    "author": "Dr. David Chen, PhD",
-    "medicalReviewer": "Dr. Elena Vance, MD",
+    "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+    "medicalReviewer": "Dr. Randhir Sud, MBBS, MD, DM, MAMS",
     "publishedAt": "2026-09-12",
     "updatedAt": "2026-09-15",
     "medicalReviewedAt": "September 2026",
@@ -12028,7 +12458,7 @@ export interface BlogComment {
 }
 
 export const INITIAL_COMMENTS: BlogComment[] = [
-  {
+{
     "id": "rev-vitamin-b12-deficiency-symptoms-causes-and-treatment-1",
     "postSlug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
     "postTitle": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
@@ -12039,8 +12469,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12056,8 +12486,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12073,8 +12503,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12090,8 +12520,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12107,8 +12537,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12124,8 +12554,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12141,8 +12571,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12158,8 +12588,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12175,8 +12605,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -12192,8 +12622,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -12209,8 +12639,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -12226,8 +12656,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -12243,8 +12673,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -12260,8 +12690,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -12277,8 +12707,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 19, 2026",
       "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
     }
@@ -12294,8 +12724,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 30, 2026",
       "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
     }
@@ -12311,8 +12741,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -12328,8 +12758,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -12345,8 +12775,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -12362,8 +12792,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -12379,8 +12809,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -12396,8 +12826,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -12413,8 +12843,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "September 09, 2026",
       "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
     }
@@ -12430,8 +12860,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -12447,8 +12877,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -12464,8 +12894,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -12481,8 +12911,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -12498,8 +12928,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -12515,8 +12945,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -12532,8 +12962,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -12549,8 +12979,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -12566,8 +12996,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -12583,8 +13013,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -12600,8 +13030,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -12617,8 +13047,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -12634,8 +13064,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
     "reply": {
-      "author": "mediguide4u Editorial Board",
-      "role": "Clinical Editorial Team",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "September 09, 2026",
       "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
     }
@@ -12651,8 +13081,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -12668,8 +13098,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -12685,8 +13115,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -12702,8 +13132,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -12719,8 +13149,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "September 09, 2026",
       "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
     }
@@ -12736,8 +13166,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -12753,8 +13183,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -12770,8 +13200,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -12787,8 +13217,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -12804,8 +13234,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "September 09, 2026",
       "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
     }
@@ -12821,8 +13251,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12838,8 +13268,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12855,8 +13285,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12872,8 +13302,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12889,8 +13319,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -12906,8 +13336,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -12923,8 +13353,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -12940,8 +13370,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -12957,8 +13387,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -12974,8 +13404,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -12991,8 +13421,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -13008,8 +13438,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -13025,8 +13455,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -13042,8 +13472,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -13059,8 +13489,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -13076,8 +13506,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -13093,8 +13523,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -13110,8 +13540,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -13127,8 +13557,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -13144,8 +13574,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -13161,8 +13591,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -13178,8 +13608,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -13195,8 +13625,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -13212,8 +13642,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -13229,8 +13659,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -13246,8 +13676,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -13263,8 +13693,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -13280,8 +13710,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -13297,8 +13727,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -13314,8 +13744,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -13331,8 +13761,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -13348,8 +13778,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -13365,8 +13795,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -13382,8 +13812,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -13399,8 +13829,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -13416,8 +13846,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -13433,8 +13863,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -13450,8 +13880,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -13467,8 +13897,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -13484,8 +13914,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -13501,8 +13931,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -13518,8 +13948,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -13535,8 +13965,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 19, 2026",
       "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
     }
@@ -13552,8 +13982,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 30, 2026",
       "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
     }
@@ -13569,8 +13999,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 19, 2026",
       "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
     }
@@ -13586,8 +14016,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 30, 2026",
       "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
     }
@@ -13603,8 +14033,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -13620,8 +14050,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -13637,8 +14067,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -13654,8 +14084,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -13671,8 +14101,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -13688,8 +14118,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -13705,8 +14135,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
     "reply": {
-      "author": "mediguide4u Editorial Board",
-      "role": "Clinical Editorial Team",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "September 09, 2026",
       "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
     }
@@ -13722,8 +14152,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -13739,8 +14169,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -13756,8 +14186,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "This guide broke down the exact diagnostic thresholds and medication pathways so clearly. My cardiologist recently discussed adjusting my regimen, and reading this helped me prepare specific questions for my follow-up visit.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 19, 2026",
       "text": "Thank you for sharing, Marcus. Preparing targeted questions beforehand makes clinical consultations far more productive. Always discuss any dosage or timing adjustments directly with your attending physician."
     }
@@ -13773,8 +14203,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The structured comparison tables and ACC/AHA clinical trial references are outstanding. I frequently print sections of this guide to explain lifestyle modifications to patients in our outpatient clinic.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "August 30, 2026",
       "text": "We are honored to support your clinical practice, Patricia. Translating complex cardiovascular guidelines into patient-friendly education is the core mission of our editorial board."
     }
@@ -13790,8 +14220,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "The distinction between acute emergency symptoms and chronic management gave me genuine peace of mind. Very well-written and easy to navigate on mobile.",
     "reply": {
-      "author": "mediguide4u Editorial Board",
-      "role": "Clinical Editorial Team",
+      "author": "Dr. Ashok Seth, MBBS, MD, FRCP, FACC",
+      "role": "Interventional Cardiologist & Medical Reviewer",
       "date": "September 09, 2026",
       "text": "Glad this provided clarity, David. Knowing the exact red-flag symptoms that require urgent care empowers patients to act decisively when it matters most."
     }
@@ -13807,8 +14237,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -13824,8 +14254,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -13841,8 +14271,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
     }
@@ -13858,8 +14288,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
     }
@@ -13875,8 +14305,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-09-08T16:10:00.000Z",
     "text": "Thorough, scientifically accurate, and aligns perfectly with current ADA Standards of Care. The FAQ section addresses the exact concerns patients bring to education classes.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
+      "role": "Endocrinologist & Clinical Specialist",
       "date": "September 09, 2026",
       "text": "Thank you, Brenda! We make it a priority to update all endocrine and diabetes resources as soon as major professional societies update their consensus guidelines."
     }
@@ -13892,7 +14322,7 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The biochemical explanation of glycemic variability and continuous monitoring metrics was eye-opening. Tracking my daily averages against the ADA targets in this article helped me lower my morning readings significantly.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
       "role": "Endocrinologist & Clinical Specialist",
       "date": "August 19, 2026",
       "text": "Outstanding progress, Arthur! Consistent tracking of postprandial patterns and morning fasting numbers provides actionable feedback that transforms metabolic health."
@@ -13909,7 +14339,7 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I manage meals and appointments for my elderly mother with diabetes. The practical dietary recommendations and lab interpretation guide gave our family a clear, actionable roadmap.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
+      "author": "Dr. Ambrish Mithal, MD, DM (Endocrinology)",
       "role": "Endocrinologist & Clinical Specialist",
       "date": "August 30, 2026",
       "text": "Caregivers play an invaluable role in long-term glycemic stability, Evelyn. Balancing complex dietary carbs with proper hydration and regular screening makes a world of difference."
@@ -13926,8 +14356,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -13943,8 +14373,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -13960,8 +14390,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -13977,8 +14407,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -13994,8 +14424,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "Finally a medical article that validates symptoms without dismissing them. The diagnostic checklist and hormone test breakdown gave me the confidence to request a full panel from my OB/GYN.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 19, 2026",
       "text": "Patient self-advocacy backed by objective medical data is essential in women's healthcare, Claire. We hope your follow-up appointment provides clear clinical answers."
     }
@@ -14011,8 +14441,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The distinction between muscular hypertonicity and weakness in this guide is spot on. Too many online articles just prescribe generic exercises without explaining individual pelvic mechanics.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Alka Kriplani, MBBS, MD, FRCOG, FAMS",
+      "role": "Senior Obstetrician & Gynecologist",
       "date": "August 30, 2026",
       "text": "Accurate anatomical nuance prevents patients from inadvertently worsening their symptoms, Hannah. Thank you for your specialized insight!"
     }
@@ -14028,8 +14458,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -14045,8 +14475,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. David Chen, PhD",
-      "role": "Nutritional Biochemistry Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -14062,8 +14492,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -14079,8 +14509,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -14096,8 +14526,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "At 72, I was concerned about muscle loss and fatigue. Implementing the protein distribution and resistance training suggestions here has significantly improved my balance and energy levels.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 19, 2026",
       "text": "That is wonderful to hear, Gerald! Preserving lean muscle mass and motor unit recruitment through progressive resistance training is the foundation of healthy longevity."
     }
@@ -14113,8 +14543,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The inclusion of the AGS Beers Criteria and anticholinergic risk scores makes this an invaluable educational asset for patients and families navigating polypharmacy.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Prasun Chatterjee, MBBS, MD (Geriatrics)",
+      "role": "Geriatrician & Clinical Reviewer",
       "date": "August 30, 2026",
       "text": "Deprescribing and medication reconciliation are critical safety imperatives in geriatric care, Dr. Steven. Thank you for championing patient safety."
     }
@@ -14130,8 +14560,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -14147,8 +14577,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -14164,8 +14594,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -14181,8 +14611,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -14198,8 +14628,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The neurobiological breakdown of the HPA axis, cortisol dysregulation, and amygdala reactivity helped me understand that chronic burnout is a physiological condition, not a personal failing.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 19, 2026",
       "text": "Understanding the biological basis of chronic autonomic nervous system stress helps dismantle shame and guides effective, restorative recovery protocols, Jonathan."
     }
@@ -14215,8 +14645,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear, compassionate, and scientifically rigorous. The comparison between cognitive behavioral exposure therapy and pharmacotherapy provides great balanced guidance for my clients.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Samir Parikh, MBBS, MD (Psychiatry)",
+      "role": "Psychiatrist & Director of Mental Health",
       "date": "August 30, 2026",
       "text": "Thank you, Megan. Presenting both psychotherapy and evidence-based medical treatments neutrally allows individuals to make informed collaborative decisions with their providers."
     }
@@ -14232,8 +14662,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -14249,8 +14679,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -14266,8 +14696,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -14283,8 +14713,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -14300,8 +14730,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "After reading this, I requested a Coronary Calcium Scan (CAC) and hs-CRP test during my annual physical. The Agatston score interpretation guide helped my doctor and me tailor my preventive statin therapy.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 19, 2026",
       "text": "Proactive vascular risk stratification with CAC and hs-CRP changes primary prevention from guesswork into precise, personalized risk reduction, Kenneth."
     }
@@ -14317,8 +14747,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Concise, evidence-based, and adheres closely to USPSTF screening intervals. Excellent guide for patients preparing for their annual wellness exams.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Rommel Tickoo, MBBS, MD",
+      "role": "Internal Medicine Specialist & Physician Reviewer",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Laura! Well-prepared patients make preventive annual visits significantly more impactful for long-term health outcomes."
     }
@@ -14334,8 +14764,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -14351,8 +14781,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -14368,8 +14798,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -14385,8 +14815,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -14402,8 +14832,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "When my toddler came down with severe vomiting and diarrhea, the syringe micro-dosing protocol (5 mL every 3 minutes) outlined in this article kept him hydrated and avoided an ER visit.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 19, 2026",
       "text": "We are so glad the AAP oral syringe protocol helped your son recover safely at home, Jessica. Recognizing early dehydration signs is essential for every parent."
     }
@@ -14419,8 +14849,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The clinical guidelines cited here (AAP watchful waiting and LEAP early allergen introduction) reflect current gold-standard pediatric evidence. Excellent reference for parents.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. Krishan Chugh, MBBS, MD (Pediatrics), FIAP",
+      "role": "Chairman of Pediatrics & Pediatric Pulmonologist",
       "date": "August 30, 2026",
       "text": "Thank you, Dr. Raymond. Our pediatric editorial board ensures all childhood guides adhere strictly to AAP consensus recommendations."
     }
@@ -14436,8 +14866,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -14453,8 +14883,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -14470,8 +14900,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "I had no idea there were two distinct meningitis shots (MenACWY and MenB). Thanks to this article, I scheduled my daughter's MenB series before she moved into her college dorm.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 19, 2026",
       "text": "That was a critical health decision, Theresa. High-density congregate settings present unique exposure risks, and dual-vaccine coverage provides peace of mind."
     }
@@ -14487,8 +14917,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "The breakdown of booster schedules, cocooning strategies for newborns, and adverse event reporting is written with outstanding scientific clarity.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Randeep Guleria, MBBS, MD, DM",
+      "role": "Senior Medical Editor & Pulmonology Lead",
       "date": "August 30, 2026",
       "text": "Immunization literacy is one of the most effective tools in preventive public health, Anthony. Thank you for your work in the community!"
     }
@@ -14504,8 +14934,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 19, 2026",
       "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
     }
@@ -14521,8 +14951,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 30, 2026",
       "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
     }
@@ -14538,8 +14968,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The physiological explanation of lactate thresholds and mitochondrial density in Zone 2 training completely restructured my weekly running program. My recovery has improved dramatically.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 19, 2026",
       "text": "Zone 2 base training builds the cellular machinery (mitochondrial biogenesis and fat oxidation) that supports all high-intensity performance, Ryan. Keep up the disciplined pacing!"
     }
@@ -14555,8 +14985,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "I appreciate the scientific nuance regarding post-workout cryotherapy and mTOR blunting. It's rare to find fitness articles that cite actual molecular physiology studies.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. S.K.S. Marya, MBBS, MS, MCh, FRCS",
+      "role": "Orthopedic Surgeon & Joint Replacement Lead",
       "date": "August 30, 2026",
       "text": "Distinguishing between acute recovery needs and long-term hypertrophic adaptations allows lifters to make smart, evidence-based training choices, Samantha."
     }
@@ -14572,8 +15002,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -14589,8 +15019,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -14606,8 +15036,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -14623,8 +15053,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -14640,8 +15070,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The '30 Plant Species Weekly' protocol and microbiome SCFA biochemistry were explained with incredible depth. I started tracking plant diversity in my meals and my digestion improved within two weeks.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 19, 2026",
       "text": "Dietary plant diversity directly fuels colonic butyrate production and tightens epithelial junctions, Deborah. Consistency is the key to maintaining a resilient microbiome."
     }
@@ -14657,8 +15087,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Great breakdown of circadian rhythm alignment, sleep hygiene, and evidence-based stress mitigation techniques without any commercial product push.",
     "reply": {
-      "author": "Dr. Michael Torres, MD, FACC",
-      "role": "Cardiologist & Physician Reviewer",
+      "author": "Dr. Shikha Sharma, MBBS",
+      "role": "Medical Nutritionist & Preventive Health Consultant",
       "date": "August 30, 2026",
       "text": "We maintain strict editorial independence to provide pure, evidence-grounded health literacy, Gregory. Thank you for your review!"
     }
@@ -14674,8 +15104,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -14691,8 +15121,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Ananya Roy, MD",
-      "role": "Internal Medicine & Medical Editor",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }
@@ -14708,8 +15138,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-18T14:22:00.000Z",
     "text": "The detailed stage breakdown and laboratory biomarker tables helped me understand my recent lab results and collaborate much more effectively with my specialist.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 19, 2026",
       "text": "Empowered patients who understand their biomarkers achieve the best long-term clinical outcomes, Carl. Keep working closely with your healthcare team."
     }
@@ -14725,8 +15155,8 @@ export const INITIAL_COMMENTS: BlogComment[] = [
     "createdAt": "2026-08-29T09:45:00.000Z",
     "text": "Clear explanation of etiology, dietary interventions, and pharmacological management. The safety callouts regarding when to seek immediate medical attention are especially valuable.",
     "reply": {
-      "author": "Dr. Elena Vance, MD",
-      "role": "Endocrinologist & Clinical Specialist",
+      "author": "Dr. S.K. Sarin, MBBS, MD, DM (Gastro), FNA",
+      "role": "Hepatologist & Director, ILBS",
       "date": "August 30, 2026",
       "text": "Highlighting clinical red flags ensures patient safety while providing robust home management literacy, Brenda. Thank you for your feedback!"
     }

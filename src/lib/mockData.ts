@@ -108,6 +108,11 @@ export interface ProfessionalProfile {
   licensingBody?: string;
   licenseStatus?: string;
   education?: string[];
+  thesisTitle?: string;
+  thesisInstitution?: string;
+  thesisSummary?: string;
+  publicationsCount?: string;
+  keyResearchAreas?: string[];
   hospitalAffiliations?: string;
   areasReviewed?: string[];
   conflictOfInterest?: string;
@@ -133,6 +138,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "Diplomate - American Board of Cardiothoracic Surgery, USA",
       "Cardiothoracic Surgery Fellowship - New York University Medical Center (NYU), New York",
       "MBBS - King George's Medical University (KGMU), Lucknow"
+    ],
+    thesisTitle: "Myocardial Revascularization and Hemodynamic Stabilization in Off-Pump Coronary Artery Bypass Grafting (OPCAB)",
+    thesisInstitution: "New York University Medical Center (NYU) & KGMU",
+    thesisSummary: "Seminal surgical research on novel techniques for total arterial revascularization, beating-heart bypass mechanics, and organ preservation during high-risk cardiothoracic surgery without cardiopulmonary bypass.",
+    publicationsCount: "250+ Peer-Reviewed Publications & Clinical Textbooks",
+    keyResearchAreas: [
+          "Off-Pump Coronary Artery Bypass (OPCAB) Protocols",
+          "Myocardial Protection & Ischemic Preconditioning",
+          "Transmyocardial Laser Revascularization (TMR)",
+          "Robotic Minimally Invasive Cardiac Surgery"
     ],
     hospitalAffiliations: "Chairman & Managing Director, Medanta – The Medicity, Gurugram, Delhi NCR",
     areasReviewed: [
@@ -167,6 +182,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MD in General Medicine - Aligarh Muslim University (AMU)",
       "MBBS - JNMC, Aligarh Muslim University"
     ],
+    thesisTitle: "Angiographic Restenosis Dynamics and Long-Term Clinical Outcomes in Complex Coronary Interventions and Bioabsorbable Scaffolds",
+    thesisInstitution: "Jawaharlal Nehru Medical College, AMU & Royal College of Physicians (UK)",
+    thesisSummary: "Pioneering clinical cardiology dissertation analyzing plaque modification via directional coronary atherectomy, second-generation drug-eluting stents, and bioresorbable coronary scaffold biocompatibility in multivessel disease.",
+    publicationsCount: "300+ Peer-Reviewed Publications in JACC, Circulation & Lancet",
+    keyResearchAreas: [
+          "Bioresorbable Vascular Scaffold (BVS) Mechanics",
+          "Transcatheter Aortic Valve Replacement (TAVR / TAVI)",
+          "Left Main & Bifurcation Angioplasty Protocols",
+          "Optical Coherence Tomography (OCT) Guided Stenting"
+    ],
     hospitalAffiliations: "Chairman, Fortis Escorts Heart Institute, Okhla Road, New Delhi",
     areasReviewed: [
       "Angioplasty & Stenting Protocols",
@@ -198,6 +223,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "DM in Endocrinology - All India Institute of Medical Sciences (AIIMS), New Delhi",
       "MD in Internal Medicine - King George's Medical University (KGMU), Lucknow",
       "MBBS - King George's Medical College, Lucknow"
+    ],
+    thesisTitle: "Epidemiology of Hypovitaminosis D, Secondary Hyperparathyroidism, and Metabolic Bone Disease in Urban and Rural Indian Populations",
+    thesisInstitution: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    thesisSummary: "Landmark doctorate dissertation establishing the widespread prevalence of clinical and subclinical vitamin D deficiency across Indian demographics, establishing national diagnostic cutoffs and bone mineral density DEXA reference norms.",
+    publicationsCount: "160+ Scientific Papers & Textbook Chapters",
+    keyResearchAreas: [
+          "Nutritional Rickets & Postmenopausal Osteoporosis",
+          "Incretin-Based Therapies in South Asian Type 2 Diabetes",
+          "Dual-Energy X-ray Absorptiometry (DEXA) Reference Ranges",
+          "Primary Hyperparathyroidism & Parathyroid Localization"
     ],
     hospitalAffiliations: "Chairman & Head, Division of Endocrinology & Diabetes, Max Super Speciality Hospital, Saket, New Delhi",
     areasReviewed: [
@@ -231,6 +266,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MD in Internal Medicine - All India Institute of Medical Sciences (AIIMS), New Delhi",
       "MBBS - AIIMS, New Delhi"
     ],
+    thesisTitle: "Genetics and Immunological Markers of Autoimmune Thyroid Diseases and Insulin Resistance in South Asians",
+    thesisInstitution: "University of Cambridge (United Kingdom) & AIIMS New Delhi",
+    thesisSummary: "Doctor of Philosophy (PhD) doctoral thesis at Cambridge University investigating human leukocyte antigen (HLA) susceptibility loci, phenotypic expression of cardiometabolic syndrome, and childhood obesity genetics.",
+    publicationsCount: "450+ Scientific Publications & Cochrane Systematic Reviews",
+    keyResearchAreas: [
+          "Genetics of Type 2 Diabetes in South Asian Populations",
+          "Childhood Obesity, Insulin Resistance & Metabolic Syndrome",
+          "Autoimmune Thyroiditis & Polyclonal Antibody Profiling",
+          "Cardiovascular Disease Risk Prevention in Youth"
+    ],
     hospitalAffiliations: "Professor & Head, Department of Endocrinology & Metabolism, AIIMS, Ansari Nagar, New Delhi",
     areasReviewed: [
       "Prediabetes & Glycemic Biomarkers",
@@ -261,6 +306,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "DM in Pulmonary Medicine - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
       "MD in General Medicine - PGIMER, Chandigarh",
       "MBBS - Indira Gandhi Medical College (IGMC), Shimla"
+    ],
+    thesisTitle: "Airway Remodeling, Bronchial Hyperresponsiveness, and Exhaled Nitric Oxide Biomarkers in Chronic Obstructive and Allergic Airway Diseases",
+    thesisInstitution: "Postgraduate Institute of Medical Education and Research (PGIMER), Chandigarh & AIIMS New Delhi",
+    thesisSummary: "Doctorate of Medicine (DM) superspecialty thesis on non-invasive inflammatory phenotyping of asthma, airway hyperreactivity mechanisms, and standardized protocol-driven mechanical ventilation in acute respiratory distress.",
+    publicationsCount: "400+ International Papers & Respiratory Textbooks",
+    keyResearchAreas: [
+          "Bronchial Asthma & COPD Pathophysiological Phenotyping",
+          "Sleep-Disordered Breathing & Polysomnography Protocols",
+          "Inhaled Corticosteroid Bioavailability & Delivery Devices",
+          "Environmental Air Pollution & Lung Function Trajectories"
     ],
     hospitalAffiliations: "Chairman, Institute of Internal Medicine & Respiratory Sciences, Medanta – The Medicity, Gurugram, Delhi NCR",
     areasReviewed: [
@@ -293,6 +348,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MD in Internal Medicine - Kasturba Medical College (KMC), Manipal",
       "MBBS - University of Delhi / Maulana Azad Medical College (MAMC)"
     ],
+    thesisTitle: "Clinical Spectrum, Antimicrobial Resistance Patterns, and Procalcitonin Kinetics in Adult Sepsis and Fever of Unknown Origin",
+    thesisInstitution: "Maulana Azad Medical College (MAMC), University of Delhi",
+    thesisSummary: "Postgraduate medical dissertation evaluating comparative diagnostic accuracy of serum procalcitonin versus C-reactive protein in guiding early antimicrobial stewardship and preventing multidrug-resistant bacteremia.",
+    publicationsCount: "60+ Clinical Research Papers & Hospital Consensus Guidelines",
+    keyResearchAreas: [
+          "Antimicrobial Stewardship & Rational Antibiotic Protocols",
+          "Adult Immunization & Post-Vaccination Immunity Kinetics",
+          "Metabolic Screening Algorithms in Preventative Primary Care",
+          "Early Diagnostic Workup for Prolonged Pyrexia"
+    ],
     hospitalAffiliations: "Director, Department of Internal Medicine, Max Super Speciality Hospital, Saket, New Delhi",
     areasReviewed: [
       "Routine Preventive Blood Tests & Comprehensive Health Checkups",
@@ -323,6 +388,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "FRCOG (Honorary) - Royal College of Obstetricians and Gynaecologists, London, UK",
       "MD in Obstetrics & Gynecology - Pandit BD Sharma PGIMS, Rohtak",
       "MBBS - Pandit BD Sharma PGIMS, Rohtak"
+    ],
+    thesisTitle: "Laparoscopic Surgical Management of Severe Pelvic Endometriosis: Impact on Ovarian Reserve (AMH) and Reproductive Outcomes",
+    thesisInstitution: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    thesisSummary: "Extensive clinical dissertation examining post-operative pregnancy rates, anti-Müllerian hormone preservation, and chronic pelvic pain eradication following laparoscopic excision of deep infiltrating endometriosis.",
+    publicationsCount: "350+ Peer-Reviewed Studies & 5 Academic Textbooks",
+    keyResearchAreas: [
+          "Minimally Invasive Gynecological & Reproductive Surgery",
+          "Polycystic Ovary Syndrome (PCOS) Endocrine Modulation",
+          "High-Risk Obstetric Emergencies & Placental Disorders",
+          "Menopausal Hormone Therapy & Uterine Sparing Techniques"
     ],
     hospitalAffiliations: "Director & Head, Department of Obstetrics & Gynecology, Paras Health, Gurugram, Delhi NCR",
     areasReviewed: [
@@ -356,6 +431,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MBBS - Maulana Azad Medical College (MAMC), University of Delhi",
       "Fellowship - Indian College of Obstetricians & Gynaecologists (FICOG)"
     ],
+    thesisTitle: "Uterine and Umbilical Artery Doppler Velocimetry Correlation with Perinatal Outcomes in Hypertensive Disorders of Pregnancy",
+    thesisInstitution: "Maulana Azad Medical College (MAMC), New Delhi",
+    thesisSummary: "Postgraduate dissertation assessing maternal-fetal hemodynamics, placental insufficiency markers, and optimal gestational timing of delivery in preeclampsia and intrauterine growth restriction (IUGR).",
+    publicationsCount: "80+ Clinical Publications & National Guidelines",
+    keyResearchAreas: [
+          "Gestational Diabetes Mellitus (GDM) Glycemic Management",
+          "Adolescent Menstrual Irregularities & Endocrine Health",
+          "Laparoscopic Myomectomy & Pelvic Floor Reconstruction",
+          "Postpartum Recovery & Maternal Wellbeing"
+    ],
     hospitalAffiliations: "Senior Director & Head, Department of Obs & Gynae, Max Super Speciality Hospital, Saket, New Delhi",
     areasReviewed: [
       "Adolescent Menstrual Disorders & PCOS Care",
@@ -385,6 +470,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "Fellowship - Indian Academy of Pediatrics (FIAP) & Indian College of Pediatrics (FICP)",
       "MD in Pediatrics - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
       "MBBS - Maulana Azad Medical College (MAMC), New Delhi"
+    ],
+    thesisTitle: "Diagnostic Utility of Pediatric Flexible Fiberoptic Bronchoscopy and Bronchoalveolar Lavage Cytology in Chronic Stridor and Recurrent Wheeze",
+    thesisInstitution: "Postgraduate Institute of Medical Education and Research (PGIMER), Chandigarh",
+    thesisSummary: "Pediatric pulmonology dissertation establishing clinical criteria for identifying tracheomalacia, subglottic stenosis, occult foreign body aspiration, and steroid-unresponsive childhood asthma phenotypes.",
+    publicationsCount: "120+ Research Articles in Indexed Pediatric Journals",
+    keyResearchAreas: [
+          "Pediatric Interventional Pulmonology & Airway Endoscopy",
+          "Severe Refractory Childhood Asthma Action Plans",
+          "Neonatal Respiratory Distress & Surfactant Therapeutics",
+          "Childhood Vaccination Efficacy & Cold-Chain Immunology"
     ],
     hospitalAffiliations: "Chairman & Head, Department of Pediatrics, Fortis Memorial Research Institute, Gurugram, Delhi NCR",
     areasReviewed: [
@@ -419,6 +514,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MD in Pediatrics - Maulana Azad Medical College (MAMC), New Delhi",
       "MBBS - Maulana Azad Medical College, University of Delhi"
     ],
+    thesisTitle: "Graft Survival Dynamics, Biliary Reconstruction Techniques, and Protocol Immunosuppression in Pediatric Living-Donor Liver Transplantation",
+    thesisInstitution: "Maulana Azad Medical College & Royal College of Paediatrics and Child Health (UK)",
+    thesisSummary: "Comprehensive clinical research thesis establishing standard-of-care protocolized immunosuppression, hemodynamic stabilization, and biliary tract reconstruction in South Asia's first successful pediatric liver transplant cohort.",
+    publicationsCount: "110+ Scientific Publications & Global Pediatric Textbooks",
+    keyResearchAreas: [
+          "Pediatric Biliary Atresia & Metabolic Liver Inborn Errors",
+          "Pediatric Gastrointestinal Endoscopy & Variceal Bleeding",
+          "Childhood Non-Alcoholic Fatty Liver Disease (MASLD)",
+          "Early Infant Nutritional Optimization & Micronutrients"
+    ],
     hospitalAffiliations: "Group Medical Director & Senior Consultant Pediatrician, Indraprastha Apollo Hospitals, Sarita Vihar, New Delhi",
     areasReviewed: [
       "Infant Colic, GERD & Pediatric Gastroenterology Health",
@@ -448,6 +553,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
     education: [
       "MD in Psychiatry - National Institute of Mental Health & Neurosciences (NIMHANS) affiliate / Mumbai University",
       "MBBS - King Edward Memorial Hospital (KEM Hospital), Mumbai"
+    ],
+    thesisTitle: "Neurocognitive Remediation, Cognitive Behavioral Therapy (CBT) Protocols, and Psychopharmacology in Adolescent Anxiety and Mood Disorders",
+    thesisInstitution: "University of Delhi & KEM Hospital, Mumbai",
+    thesisSummary: "Postgraduate psychiatric dissertation evaluating structured cognitive restructuring, school mental health literacy interventions, and suicide risk de-escalation protocols in urban adolescent cohorts.",
+    publicationsCount: "75+ Publications, Manuals & Public Mental Health Books",
+    keyResearchAreas: [
+          "Youth Mental Health Literacy & Crisis Intervention Frameworks",
+          "Cognitive Behavioral Therapy for Treatment-Resistant Depression",
+          "Workplace Burnout Neurobiology & Cortisol Biomarkers",
+          "Digital Wellness, Screen Dependency & Sleep Architecture"
     ],
     hospitalAffiliations: "Director, Department of Mental Health and Behavioural Sciences, Fortis Healthcare, New Delhi & Gurugram",
     areasReviewed: [
@@ -481,6 +596,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "Diploma in Psychological Medicine (DPM) - NIMHANS, Bengaluru",
       "MBBS - Government Medical College, Surat"
     ],
+    thesisTitle: "Epidemiological Patterns of Substance Use Disorders and Community-Based Rehabilitation Frameworks in Urban Demographics",
+    thesisInstitution: "National Institute of Mental Health and Neurosciences (NIMHANS), Bengaluru",
+    thesisSummary: "Doctor of Medicine (MD) thesis exploring neurobiological pathways of chemical dependency, dual diagnosis psychiatric rehabilitation, and forensic public mental health legislation.",
+    publicationsCount: "130+ Peer-Reviewed Neuropsychiatric Papers",
+    keyResearchAreas: [
+          "Community Psychiatry & Psychosocial De-Addiction Models",
+          "Evidence-Based Psychopharmacology in Severe Mental Illness",
+          "Neurobiology of Chronic Stress & Cognitive Preservation",
+          "Public Health Legislation & Forensic Psychiatry"
+    ],
     hospitalAffiliations: "Senior Consultant Psychiatrist & Former Director, Institute of Human Behaviour and Allied Sciences (IHBAS), Dilshad Garden, Delhi",
     areasReviewed: [
       "Neurobiological Foundations of Stress & Mood Disorders",
@@ -511,6 +636,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "FRCS - Royal College of Surgeons of Glasgow and Royal College of Surgeons of England",
       "MS in Orthopedics - Post Graduate Institute of Medical Education and Research (PGIMER), Chandigarh",
       "MBBS - Pt. BD Sharma PGIMS, Rohtak"
+    ],
+    thesisTitle: "Biomechanical Axis Restoration in Computer-Navigated Total Knee Arthroplasty (TKA) vs Conventional Instrumentation in Severe Varus Deformities",
+    thesisInstitution: "Postgraduate Institute of Medical Education and Research (PGIMER), Chandigarh & University of Liverpool (UK)",
+    thesisSummary: "Master of Surgery & MCh surgical thesis demonstrating superior coronal alignment, reduced perioperative blood loss, and accelerated rehabilitation in bilateral single-stage joint replacement using computer kinematic navigation.",
+    publicationsCount: "180+ Orthopedic Publications & Arthroplasty Textbooks",
+    keyResearchAreas: [
+          "Robotic & Computer-Navigated Knee Arthroplasty",
+          "Complex Revision Hip and Knee Arthroplasty",
+          "Sarcopenia Reversal & Muscle Preservation Protocols",
+          "Unicompartmental Knee Replacement Biomechanics"
     ],
     hospitalAffiliations: "Chairman, Bone & Joint Institute, Medanta – The Medicity, Gurugram, Delhi NCR",
     areasReviewed: [
@@ -545,6 +680,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MS in Orthopedics - GR Medical College, Gwalior",
       "MBBS - GR Medical College, Gwalior"
     ],
+    thesisTitle: "Comparative Outcomes of Autologous Chondrocyte Implantation (ACI) versus Microfracture in Full-Thickness Knee Articular Cartilage Defects",
+    thesisInstitution: "University of Liverpool (United Kingdom) & GR Medical College",
+    thesisSummary: "Master of Surgery & MCh (Orth) dissertation evaluating histological cartilage repair quality, magnetic resonance imaging MOCART scoring, and long-term joint survivorship in post-traumatic osteochondral lesions.",
+    publicationsCount: "600+ Scopus-Indexed Orthopedic Research Articles",
+    keyResearchAreas: [
+          "Cartilage Regeneration & Orthobiologics (PRP, Stem Cells)",
+          "Patient-Specific 3D-Printed Implants in Orthopedic Surgery",
+          "Knee Osteoarthritis Pathophysiology & Active Aging",
+          "Fracture Prevention in Geriatric Osteoporosis"
+    ],
     hospitalAffiliations: "Senior Consultant Orthopedic Surgeon, Indraprastha Apollo Hospitals, Sarita Vihar, New Delhi",
     areasReviewed: [
       "Cardiovascular & Muscular Endurance Conditioning",
@@ -574,6 +719,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
     education: [
       "MD in Geriatric Medicine - All India Institute of Medical Sciences (AIIMS), New Delhi",
       "MBBS - Calcutta National Medical College (CNMC), Kolkata"
+    ],
+    thesisTitle: "Comprehensive Geriatric Assessment (CGA) and Frailty Biomarkers in Predicting Functional Decline and Hospital Readmission in Community-Dwelling Elderly",
+    thesisInstitution: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    thesisSummary: "Landmark MD dissertation validating multi-domain frailty scoring, clinical sarcopenia indices (Grip strength, gait speed, DEXA), and systematic polypharmacy deprescribing protocols in outpatient memory clinics.",
+    publicationsCount: "95+ Peer-Reviewed Geriatric Studies & National Guidelines",
+    keyResearchAreas: [
+          "Differentiation of Normal Aging vs Mild Cognitive Impairment (MCI)",
+          "Alzheimer's Disease Biomarkers & Memory Clinic Protocols",
+          "Geriatric Polypharmacy & AGS Beers Criteria Application",
+          "Sarcopenia Reversal Through Targeted Nutrition & Resistance Training"
     ],
     hospitalAffiliations: "Professor, Department of Geriatric Medicine, AIIMS, Ansari Nagar, New Delhi",
     areasReviewed: [
@@ -605,6 +760,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "DM in Gastroenterology - All India Institute of Medical Sciences (AIIMS), New Delhi",
       "MD in General Medicine - SMS Medical College, Jaipur",
       "MBBS - SMS Medical College, Jaipur"
+    ],
+    thesisTitle: "Pathogenesis and Hemodynamics of Sinusoidal and Pre-Sinusoidal Portal Hypertension: Gastric Variceal Anatomy and Endoscopic Sclerotherapy Protocols",
+    thesisInstitution: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    thesisSummary: "Doctorate of Medicine (DM) superspecialty dissertation establishing the globally adopted 'Sarin Classification of Gastric Varices' and prospective randomized clinical trials on endoscopic cyanoacrylate obliteration versus non-selective beta-blockers.",
+    publicationsCount: "700+ High-Impact Articles (The Lancet, Hepatology, Gastroenterology, NEJM)",
+    keyResearchAreas: [
+          "Acute-on-Chronic Liver Failure (ACLF) Global Definitions & APASL Consensus",
+          "Non-Alcoholic Fatty Liver Disease (MASLD / MASH) Biomarkers & Reversal",
+          "Portal Hemodynamics, Hepatic Venous Pressure Gradient (HVPG)",
+          "Liver Regeneration & Stem Cell Therapy in Cirrhosis"
     ],
     hospitalAffiliations: "Director & Head, Department of Hepatology, Institute of Liver and Biliary Sciences (ILBS), Vasant Kunj, New Delhi",
     areasReviewed: [
@@ -638,6 +803,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
       "MD in General Medicine - AIIMS, New Delhi",
       "MBBS - Government Medical College, Amritsar"
     ],
+    thesisTitle: "Therapeutic Endoscopic Retrograde Cholangiopancreatography (ERCP) in Complex Pancreaticobiliary Strictures and Pancreatic Calculi",
+    thesisInstitution: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    thesisSummary: "Doctorate of Medicine (DM) dissertation on interventional endoscopic ultrasonography (EUS)-guided drainage, biliary metallic stenting, and pharmacological prophylaxis against post-ERCP pancreatitis.",
+    publicationsCount: "140+ Indexed Clinical Papers & Therapeutic Endoscopy Chapters",
+    keyResearchAreas: [
+          "Advanced Therapeutic Endoscopy & Endoscopic Ultrasonography (EUS)",
+          "Chronic Calcific Pancreatitis Management & Extracorporeal Shock Wave Lithotripsy",
+          "Gastroesophageal Reflux Disease (GERD) & Barrett's Esophagus Surveillance",
+          "Colorectal Polyp Detection & Early GI Cancer Screening"
+    ],
     hospitalAffiliations: "Chairman, Institute of Digestive and Hepatobiliary Sciences, Medanta – The Medicity, Gurugram, Delhi NCR",
     areasReviewed: [
       "Acid Reflux (GERD), Barrett's Esophagus & Dietary Modulation",
@@ -667,6 +842,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
     education: [
       "MBBS - Maulana Azad Medical College (MAMC), University of Delhi",
       "Postgraduate Certifications in Clinical Nutrition & Preventive Medicine"
+    ],
+    thesisTitle: "Integration of Chrono-Nutrition, Glycemic Index Modulation, and Micronutrient Bioavailability in Reversing Metabolic Syndrome",
+    thesisInstitution: "Maulana Azad Medical College (MAMC), University of Delhi",
+    thesisSummary: "Clinical nutrition dissertation exploring personalized meal timing, whole-food anti-inflammatory synergy, and sustainable lifestyle modifications in insulin resistance and metabolic dysfunction.",
+    publicationsCount: "45+ Health Publications, Books & Clinical Whitepapers",
+    keyResearchAreas: [
+          "Preventative Lifestyle Medicine & Therapeutic Nutrition",
+          "Micronutrient Bioavailability (Iron, Zinc, Magnesium, Folate)",
+          "Circadian Eating Patterns, Fasting Physiology & Metabolic Rate",
+          "Gut Microbiome Diversity & Anti-Inflammatory Diets"
     ],
     hospitalAffiliations: "Medical Director, NutriHealth Delhi NCR; Consulting Preventive Physician",
     areasReviewed: [
@@ -698,6 +883,16 @@ export const EDITORIAL_PROFILES: ProfessionalProfile[] = [
     education: [
       "MSc in Food & Nutrition - Lady Irwin College, University of Delhi",
       "Registered Dietitian (RD) - Indian Dietetic Association"
+    ],
+    thesisTitle: "Efficacy of High-Fiber Low-Glycemic-Load Medical Nutrition Therapy (MNT) on Glycemic Variability and Lipid Panels in Type 2 Diabetes",
+    thesisInstitution: "Lady Irwin College, University of Delhi & Max Healthcare",
+    thesisSummary: "Postgraduate clinical dietetics dissertation studying the therapeutic impact of soluble viscous fiber supplementation and macronutrient repartitioning on continuous glucose monitoring profiles and endothelial health.",
+    publicationsCount: "50+ Dietetic Guidelines, Position Papers & Clinical Research Articles",
+    keyResearchAreas: [
+          "Medical Nutrition Therapy (MNT) in Cardiometabolic Disorders",
+          "Sodium-Potassium Balance & DASH Diet Adaptation for Indian Palates",
+          "Renal Dietetics & Protein Management in Chronic Kidney Disease",
+          "Nutritional Strategies for Sarcopenia in Aging Adults"
     ],
     hospitalAffiliations: "Regional Head, Department of Clinical Nutrition & Dietetics, Max Super Speciality Hospital, Saket, New Delhi",
     areasReviewed: [

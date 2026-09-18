@@ -290,6 +290,66 @@ export default async function AuthorProfilePage({ params }: PageProps) {
               )}
             </div>
 
+            {/* Academic Thesis & Research Publications */}
+            {(author.thesisTitle || author.thesisSummary || author.publicationsCount) && (
+              <div className="bg-[#113F48]/[0.03] border-2 border-[#C9A15A]/30 rounded-2xl p-6 sm:p-7 space-y-4 shadow-sm">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#C9A15A]/20 pb-3">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5 text-[#C9A15A]" />
+                    <h3 className="font-extrabold text-sm sm:text-base text-[#113F48]">
+                      Academic Thesis &amp; Medical Research
+                    </h3>
+                  </div>
+                  {author.publicationsCount && (
+                    <span className="text-[11px] font-bold text-[#113F48] bg-[#C9A15A]/15 border border-[#C9A15A]/40 px-3 py-1 rounded-full">
+                      {author.publicationsCount}
+                    </span>
+                  )}
+                </div>
+
+                {author.thesisTitle && (
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold text-[#C9A15A] uppercase tracking-wider block">
+                      Postgraduate Thesis / Dissertation Title:
+                    </span>
+                    <p className="font-bold text-xs sm:text-sm text-[#113F48] italic leading-snug">
+                      &ldquo;{author.thesisTitle}&rdquo;
+                    </p>
+                    {author.thesisInstitution && (
+                      <p className="text-[11px] font-medium text-stone-500 flex items-center gap-1.5 pt-0.5">
+                        <Building2 className="h-3.5 w-3.5 text-[#C9A15A]" />
+                        <span>Institution: {author.thesisInstitution}</span>
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {author.thesisSummary && (
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed bg-white/80 p-4 rounded-xl border border-stone-200/80">
+                    {author.thesisSummary}
+                  </p>
+                )}
+
+                {author.keyResearchAreas && author.keyResearchAreas.length > 0 && (
+                  <div className="space-y-2 pt-1">
+                    <span className="text-[10px] font-bold text-[#113F48] uppercase tracking-wider block">
+                      Key Investigative &amp; Clinical Research Domains:
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {author.keyResearchAreas.map((area, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[11px] font-semibold bg-white text-[#113F48] px-3 py-1 rounded-lg border border-stone-200 shadow-2xs"
+                        >
+                          • {area}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Areas Reviewed */}
             {author.areasReviewed && author.areasReviewed.length > 0 && (
               <div className="pt-4 border-t border-stone-100 space-y-2">

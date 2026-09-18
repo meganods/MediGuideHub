@@ -170,7 +170,16 @@ export default async function AuthorsPage() {
                       </div>
                     )}
 
-                    <p className="text-stone-600 text-xs sm:text-sm leading-relaxed line-clamp-4">
+                    {profile.thesisTitle && (
+                      <div className="bg-[#113F48]/[0.03] p-2.5 rounded-xl border border-[#C9A15A]/20 text-[11px] space-y-0.5">
+                        <span className="font-bold text-[#113F48] flex items-center gap-1">
+                          <BookOpen className="h-3.5 w-3.5 text-[#C9A15A]" /> Thesis / Research:
+                        </span>
+                        <p className="text-stone-600 italic line-clamp-1">&ldquo;{profile.thesisTitle}&rdquo;</p>
+                      </div>
+                    )}
+
+                    <p className="text-stone-600 text-xs sm:text-sm leading-relaxed line-clamp-3">
                       {profile.bio}
                     </p>
                   </div>

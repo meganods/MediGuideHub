@@ -244,6 +244,21 @@ export default async function MedicalReviewBoardPage() {
                           </div>
                         </div>
                       )}
+
+                      {doc.thesisTitle && (
+                        <div className="flex items-start gap-2 bg-[#113F48]/[0.03] p-2.5 rounded-xl border border-[#C9A15A]/20 text-[11px]">
+                          <BookOpen className="h-4 w-4 text-[#C9A15A] flex-shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-[#113F48] block font-bold">Academic Thesis:</strong>
+                            <span className="text-stone-600 italic line-clamp-2">&ldquo;{doc.thesisTitle}&rdquo;</span>
+                            {doc.publicationsCount && (
+                              <span className="text-[10px] font-bold text-[#C9A15A] block mt-1">
+                                {doc.publicationsCount}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Areas Reviewed */}

@@ -44,6 +44,8 @@ export default function SitemapClientView({
 
   const coreRoutes = [
     { label: "Home Page", href: "/" },
+    { label: "Health Calculators & Tools", href: "/tools" },
+    { label: "Health & Lifestyle Quizzes", href: "/quizzes" },
     { label: "About Us", href: "/about" },
     { label: "Medical Review Board", href: "/medical-review-board" },
     { label: "Editorial Team & Contributors", href: "/authors" },

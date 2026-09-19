@@ -34,24 +34,26 @@ export default function Footer() {
 
   const companyLinks = [
     { label: "About Us", href: "/about" },
-    { label: "Our Mission", href: "/about#mission" },
     { label: "Medical Review Board", href: "/medical-review-board" },
     { label: "Editorial Team", href: "/authors" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Health Calculators", href: "/tools" },
+    { label: "Wellness Quizzes", href: "/quizzes" },
     { label: "FAQ", href: "/faq" },
-    { label: "Health Blog", href: "/blog" },
+    { label: "Contact Us", href: "/contact" },
     { label: "HTML Sitemap", href: "/sitemap" },
-    { label: "XML Sitemap", href: "/sitemap.xml" },
   ];
 
   const healthcareLinks = [
     { label: "All Health Guides", href: "/blog" },
-    { label: "Preventive Care", href: "/category/preventive-care" },
-    { label: "Heart Health", href: "/category/heart-health" },
-    { label: "Diabetes Education", href: "/category/diabetes" },
-    { label: "Mental Health", href: "/category/mental-health" },
-    { label: "Women's Health", href: "/category/women-s-health" },
-    { label: "Senior Healthcare", href: "/category/senior-healthcare" },
+    { label: "BMI & Ideal Weight Tool", href: "/tools?tab=bmi" },
+    { label: "Daily Calorie & TDEE", href: "/tools?tab=tdee" },
+    { label: "Blood Pressure Checker", href: "/tools?tab=bp" },
+    { label: "Hydration Calculator", href: "/tools?tab=water" },
+    { label: "Target Heart Rate Zones", href: "/tools?tab=heart" },
+    { label: "Pregnancy Due Date", href: "/tools?tab=pregnancy" },
+    { label: "Sleep Quality Quiz", href: "/quizzes?tab=sleep" },
+    { label: "Stress & Burnout Check", href: "/quizzes?tab=stress" },
+    { label: "Heart Health Habit Score", href: "/quizzes?tab=cardio" },
   ];
 
   const legalLinks = [

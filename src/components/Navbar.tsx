@@ -16,11 +16,12 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Medical Review Board", href: "/medical-review-board" },
-    { name: "Editorial Team", href: "/authors" },
     { name: "Health Guides", href: "/blog" },
+    { name: "Health Tools", href: "/tools" },
+    { name: "Quizzes", href: "/quizzes" },
+    { name: "Medical Board", href: "/medical-review-board" },
     { name: "FAQ", href: "/faq" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href: string) => {
@@ -46,12 +47,27 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden xl:flex items-center space-x-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-medium transition-colors hover:text-[#C9A15A] ${
+                  className={`text-sm font-medium transition-colors hover:text-[#C9A15A] ${
+                    isActive(link.href) ? "text-[#C9A15A] font-semibold" : "text-[#113F48]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Medium to Large desktop (compact spacing) */}
+            <div className="hidden md:flex xl:hidden items-center space-x-3.5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-xs font-medium transition-colors hover:text-[#C9A15A] ${
                     isActive(link.href) ? "text-[#C9A15A] font-semibold" : "text-[#113F48]"
                   }`}
                 >

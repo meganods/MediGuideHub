@@ -40,8 +40,10 @@ import {
 import { 
   ArticleBookmarkButton, 
   ArticleShareButton, 
+  ArticlePrintButton,
   ArticleViewTracker 
 } from "@/components/ArticleInteractions";
+import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
 import PostCommentsSection from "@/components/PostCommentsSection";
 import AdBanner from "@/components/AdBanner";
 
@@ -429,6 +431,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <ArticleBookmarkButton slug={post.slug} />
                 </div>
               </div>
+
+              {/* Text-to-Speech Audio Player */}
+              <ArticleAudioPlayer 
+                title={post.title} 
+                content={`${post.summary || ""} ${post.introduction || ""} ${post.contentBlocks?.map(b => `${b.heading || ""} ${b.content || ""}`).join(" ") || post.content || ""}`}
+                authorName={post.author}
+              />
             </header>
 
             {/* Medical Disclaimer Alert Banner */}
@@ -546,10 +555,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             {/* Bottom In-Article Responsive Ad */}
             <AdBanner format="responsive" />
 
-            {/* Social Share Box */}
-            <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-4">
-              <span className="text-xs font-bold text-[#113F48]">Share this educational guide:</span>
-              <div className="flex gap-2">
+            {/* Social Share & Doctor Print Box */}
+            <div className="pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-4">
+              <span className="text-xs font-bold text-[#113F48]">Article Tools &amp; Sharing:</span>
+              <div className="flex items-center gap-2">
+                <ArticlePrintButton />
                 <ArticleShareButton />
               </div>
             </div>

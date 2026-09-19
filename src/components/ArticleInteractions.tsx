@@ -82,9 +82,31 @@ export function ArticleShareButton() {
     <button 
       onClick={handleShareCopy} 
       className="p-2 border border-stone-200 text-stone-600 hover:text-[#C9A15A] rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer"
+      title="Copy article link to clipboard"
     >
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5 text-stone-500" />}
       {copied ? "Copied" : "Copy Link"}
+    </button>
+  );
+}
+
+export function ArticlePrintButton() {
+  const handlePrint = () => {
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  };
+
+  return (
+    <button
+      onClick={handlePrint}
+      className="p-2 border border-stone-200 text-stone-600 hover:text-[#113F48] hover:border-[#113F48] rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer bg-white"
+      title="Print or Save PDF for your doctor's appointment"
+    >
+      <svg className="h-3.5 w-3.5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+      </svg>
+      Print for Doctor
     </button>
   );
 }

@@ -65,6 +65,11 @@ const nextConfig: NextConfig = {
         destination: "/authors",
         permanent: true,
       },
+      {
+        source: "/blog/high-blood-pressure-symptoms-causes-risk-factors-and-prevention",
+        destination: "/blog/managing-blood-pressure-naturally",
+        permanent: true,
+      },
     ];
   },
   async headers() {

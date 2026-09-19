@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Learn how mediguide4u protects reader data, manages cookies, adheres to privacy regulations, and handles third-party advertising policies.",
   alternates: {
-    canonical: "https://mediguide4u.com/privacy-policy",
+    canonical: "https://www.mediguide4u.com/privacy-policy",
   },
   openGraph: {
     title: "Privacy Policy | mediguide4u",
     description:
       "Learn how mediguide4u protects reader data, manages cookies, adheres to privacy regulations, and handles third-party advertising policies.",
-    url: "https://mediguide4u.com/privacy-policy",
+    url: "https://www.mediguide4u.com/privacy-policy",
     siteName: "mediguide4u",
     type: "website",
   },

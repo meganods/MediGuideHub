@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-5266755800049907";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mediguide4u.com"),
+  metadataBase: new URL("https://www.mediguide4u.com"),
   title: {
     default: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     template: "%s | mediguide4u",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   description:
     "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
   applicationName: "mediguide4u",
-  authors: [{ name: "mediguide4u Editorial & Medical Board", url: "https://mediguide4u.com/authors" }],
+  authors: [{ name: "mediguide4u Editorial & Medical Board", url: "https://www.mediguide4u.com/authors" }],
   generator: "Next.js",
   keywords: [
     "healthcare guides",
@@ -63,20 +63,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "./",
     types: {
-      "application/rss+xml": "https://mediguide4u.com/feed.xml",
+      "application/rss+xml": "https://www.mediguide4u.com/feed.xml",
     },
   },
   openGraph: {
     title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
-    url: "https://mediguide4u.com",
+    url: "https://www.mediguide4u.com",
     siteName: "mediguide4u",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://mediguide4u.com/logo.png",
+        url: "https://www.mediguide4u.com/logo.png",
         width: 1200,
         height: 630,
         alt: "mediguide4u - Physician-Reviewed Healthcare Guides",
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
     site: "@mediguide4u",
     creator: "@mediguide4u",
-    images: ["https://mediguide4u.com/logo.png"],
+    images: ["https://www.mediguide4u.com/logo.png"],
   },
   robots: {
     index: true,
@@ -122,11 +122,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "MedicalOrganization",
     "name": "mediguide4u",
-    "url": "https://mediguide4u.com",
-    "logo": "https://mediguide4u.com/logo.png",
+    "url": "https://www.mediguide4u.com",
+    "logo": "https://www.mediguide4u.com/logo.png",
     "description": "An independent educational platform providing clear, physician-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
-    "publishingPrinciples": "https://mediguide4u.com/editorial-policy",
-    "correctionsPolicy": "https://mediguide4u.com/corrections-policy",
+    "publishingPrinciples": "https://www.mediguide4u.com/editorial-policy",
+    "correctionsPolicy": "https://www.mediguide4u.com/corrections-policy",
     "knowsAbout": [
       "Internal Medicine",
       "Cardiovascular Health",
@@ -139,7 +139,7 @@ export default function RootLayout({
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Editorial Inquiries",
-      "url": "https://mediguide4u.com/contact"
+      "url": "https://www.mediguide4u.com/contact"
     }
   };
 
@@ -147,10 +147,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "mediguide4u",
-    "url": "https://mediguide4u.com",
+    "url": "https://www.mediguide4u.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://mediguide4u.com/search?q={search_term_string}",
+      "target": "https://www.mediguide4u.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

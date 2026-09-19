@@ -30,13 +30,13 @@ export const metadata: Metadata = {
   description:
     "Learn about mediguide4u, our mission, vision, story, editorial research methodology, source selection standards, and commitment to accessible health literacy.",
   alternates: {
-    canonical: "https://mediguide4u.com/about",
+    canonical: "https://www.mediguide4u.com/about",
   },
   openGraph: {
     title: "About mediguide4u | Medical Literacy & Editorial Standards",
     description:
       "Learn about mediguide4u, our mission, vision, story, editorial research methodology, source selection standards, and commitment to accessible health literacy.",
-    url: "https://mediguide4u.com/about",
+    url: "https://www.mediguide4u.com/about",
     siteName: "mediguide4u",
     type: "website",
   },

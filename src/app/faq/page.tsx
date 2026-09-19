@@ -48,13 +48,13 @@ export default async function FAQPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com",
+        "item": "https://www.mediguide4u.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Frequently Asked Questions",
-        "item": "https://mediguide4u.com/faq",
+        "item": "https://www.mediguide4u.com/faq",
       },
     ],
   };

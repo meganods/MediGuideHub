@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Read the mediguide4u Accessibility Statement regarding our commitment to digital inclusion and WCAG 2.1 AA standards.",
   alternates: {
-    canonical: "https://mediguide4u.com/accessibility",
+    canonical: "https://www.mediguide4u.com/accessibility",
   },
   openGraph: {
     title: "Accessibility Statement | mediguide4u",
     description:
       "Read the mediguide4u Accessibility Statement regarding our commitment to digital inclusion and WCAG 2.1 AA standards.",
-    url: "https://mediguide4u.com/accessibility",
+    url: "https://www.mediguide4u.com/accessibility",
     siteName: "mediguide4u",
     type: "website",
   },

@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Review mediguide4u's affiliate disclosure and transparency policies regarding commissions, external links, and editorial independence.",
   alternates: {
-    canonical: "https://mediguide4u.com/affiliate-disclosure",
+    canonical: "https://www.mediguide4u.com/affiliate-disclosure",
   },
   openGraph: {
     title: "Affiliate Disclosure | mediguide4u",
     description:
       "Review mediguide4u's affiliate disclosure and transparency policies regarding commissions, external links, and editorial independence.",
-    url: "https://mediguide4u.com/affiliate-disclosure",
+    url: "https://www.mediguide4u.com/affiliate-disclosure",
     siteName: "mediguide4u",
     type: "website",
   },

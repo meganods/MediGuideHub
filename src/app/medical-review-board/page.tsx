@@ -51,12 +51,12 @@ export default async function MedicalReviewBoardPage() {
     "name": "mediguide4u Medical Review Board & Clinical Advisors",
     "description":
       "Dedicated board-certified medical doctors and clinical specialists responsible for fact-checking and verifying healthcare literacy content at mediguide4u.",
-    "url": "https://mediguide4u.com/medical-review-board",
+    "url": "https://www.mediguide4u.com/medical-review-board",
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/logo.png",
+      "url": "https://www.mediguide4u.com",
+      "logo": "https://www.mediguide4u.com/logo.png",
       "medicalSpecialty": [
         "Cardiology",
         "Endocrinology",
@@ -76,7 +76,7 @@ export default async function MedicalReviewBoardPage() {
           "jobTitle": doc.title,
           "description": doc.bio,
           "medicalSpecialty": doc.specialty,
-          "url": `https://mediguide4u.com/author/${doc.id}`,
+          "url": `https://www.mediguide4u.com/author/${doc.id}`,
           "hasCredential": [
             {
               "@type": "EducationalOccupationalCredential",
@@ -87,7 +87,7 @@ export default async function MedicalReviewBoardPage() {
           "worksFor": {
             "@type": "MedicalOrganization",
             "name": "mediguide4u",
-            "url": "https://mediguide4u.com"
+            "url": "https://www.mediguide4u.com"
           }
         }
       }))

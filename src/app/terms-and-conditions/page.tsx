@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Review the terms and conditions governing your access to and use of the mediguide4u healthcare information platform.",
   alternates: {
-    canonical: "https://mediguide4u.com/terms-and-conditions",
+    canonical: "https://www.mediguide4u.com/terms-and-conditions",
   },
   openGraph: {
-    title: "Terms and Conditions | mediguide4u",
+    title: "Terms & Conditions | mediguide4u",
     description:
-      "Review the terms and conditions governing your access to and use of the mediguide4u healthcare information platform.",
-    url: "https://mediguide4u.com/terms-and-conditions",
+      "Review the terms, educational conditions, medical content disclaimers, and user agreements for accessing mediguide4u.",
+    url: "https://www.mediguide4u.com/terms-and-conditions",
     siteName: "mediguide4u",
     type: "website",
   },

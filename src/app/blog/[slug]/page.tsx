@@ -184,16 +184,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   const authorSchema = isIndividualAuthor ? {
     "@type": "Person",
     "name": post.author,
-    "url": `https://mediguide4u.com/author/${authorSlug}`,
+    "url": `https://www.mediguide4u.com/author/${authorSlug}`,
     "worksFor": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://www.mediguide4u.com"
     }
   } : {
     "@type": "MedicalOrganization",
     "name": "Mediguide4u Editorial Staff",
-    "url": "https://mediguide4u.com/about"
+    "url": "https://www.mediguide4u.com/about"
   };
 
   const reviewerName = post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD";
@@ -206,7 +206,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "Physician",
     "name": reviewerMatch?.name || reviewerName,
     "jobTitle": reviewerMatch?.title || "Board-Certified Clinical Reviewer",
-    "url": `https://mediguide4u.com/author/${reviewerSlug}`,
+    "url": `https://www.mediguide4u.com/author/${reviewerSlug}`,
     "hasCredential": reviewerMatch?.credentials ? [
       {
         "@type": "EducationalOccupationalCredential",
@@ -218,7 +218,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "worksFor": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://www.mediguide4u.com"
     }
   };
 
@@ -258,7 +258,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "headline": post.title,
     "description": post.summary,
     "inLanguage": "en-US",
-    "image": post.featuredImage || "https://mediguide4u.com/logo.png",
+    "image": post.featuredImage || "https://www.mediguide4u.com/logo.png",
     "datePublished": post.publishedAt,
     "dateModified": post.updatedAt || post.publishedAt,
     "lastReviewed": reviewDate,
@@ -278,15 +278,15 @@ export default async function BlogPostPage({ params }: PageProps) {
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
+      "url": "https://www.mediguide4u.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://mediguide4u.com/logo.png"
+        "url": "https://www.mediguide4u.com/logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://mediguide4u.com/blog/${post.slug}`
+      "@id": `https://www.mediguide4u.com/blog/${post.slug}`
     }
   };
 
@@ -299,25 +299,25 @@ export default async function BlogPostPage({ params }: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com"
+        "item": "https://www.mediguide4u.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Healthcare Guides",
-        "item": "https://mediguide4u.com/blog"
+        "item": "https://www.mediguide4u.com/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.category,
-        "item": `https://mediguide4u.com/category/${categorySlug}`
+        "item": `https://www.mediguide4u.com/category/${categorySlug}`
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": post.title,
-        "item": `https://mediguide4u.com/blog/${post.slug}`
+        "item": `https://www.mediguide4u.com/blog/${post.slug}`
       }
     ]
   };

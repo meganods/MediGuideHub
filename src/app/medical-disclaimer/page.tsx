@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Read the mediguide4u Medical Disclaimer regarding our educational healthcare content, health guides, and professional medical consultation guidelines.",
   alternates: {
-    canonical: "https://mediguide4u.com/medical-disclaimer",
+    canonical: "https://www.mediguide4u.com/medical-disclaimer",
   },
   openGraph: {
     title: "Medical Disclaimer | mediguide4u",
     description:
       "Read the mediguide4u Medical Disclaimer regarding our educational healthcare content, health guides, and professional medical consultation guidelines.",
-    url: "https://mediguide4u.com/medical-disclaimer",
+    url: "https://www.mediguide4u.com/medical-disclaimer",
     siteName: "mediguide4u",
     type: "website",
   },

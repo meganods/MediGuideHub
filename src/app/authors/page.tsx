@@ -45,14 +45,14 @@ export default async function AuthorsPage() {
     "@type": "AboutPage",
     "name": "mediguide4u Editorial Board & Medical Reviewers",
     "description": "Qualified medical writers and clinical review board behind mediguide4u educational healthcare guides.",
-    "url": "https://mediguide4u.com/authors",
+    "url": "https://www.mediguide4u.com/authors",
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
+      "url": "https://www.mediguide4u.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://mediguide4u.com/logo.png",
+        "url": "https://www.mediguide4u.com/logo.png",
       },
     },
     "mainEntity": {

@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Search doctor-reviewed medical guides, symptoms explanations, condition overviews, and clinical nutrition resources on mediguide4u.",
   alternates: {
-    canonical: "https://mediguide4u.com/search",
+    canonical: "https://www.mediguide4u.com/search",
   },
   openGraph: {
     title: "Search Health Guides & Medical Resources | mediguide4u",
     description:
       "Search doctor-reviewed medical guides, symptoms explanations, condition overviews, and clinical nutrition resources on mediguide4u.",
-    url: "https://mediguide4u.com/search",
+    url: "https://www.mediguide4u.com/search",
     siteName: "mediguide4u",
     type: "website",
   },
@@ -38,11 +38,11 @@ export default async function SearchPage() {
     "@context": "https://schema.org",
     "@type": "SearchResultsPage",
     "name": "Search Health Guides | mediguide4u",
-    "url": "https://mediguide4u.com/search",
+    "url": "https://www.mediguide4u.com/search",
     "publisher": {
       "@type": "Organization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://www.mediguide4u.com"
     }
   };
 

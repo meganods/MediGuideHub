@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Review mediguide4u's corrections policy, error reporting process, editorial verification timeline, and commitment to factual accuracy.",
   alternates: {
-    canonical: "https://mediguide4u.com/corrections-policy",
+    canonical: "https://www.mediguide4u.com/corrections-policy",
   },
   openGraph: {
     title: "Corrections Policy | mediguide4u",
     description:
-      "Review mediguide4u's corrections policy, error reporting process, editorial verification timeline, and commitment to factual accuracy.",
-    url: "https://mediguide4u.com/corrections-policy",
+      "Review mediguide4u's transparent policy on corrections, retractions, clinical updates, and editorial accuracy standards.",
+    url: "https://www.mediguide4u.com/corrections-policy",
     siteName: "mediguide4u",
     type: "website",
   },

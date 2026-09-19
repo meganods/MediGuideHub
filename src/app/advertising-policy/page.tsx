@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Review mediguide4u's strict advertising policy, our commitment to complete editorial independence, and how we handle third-party sponsorships.",
   alternates: {
-    canonical: "https://mediguide4u.com/advertising-policy",
+    canonical: "https://www.mediguide4u.com/advertising-policy",
   },
   openGraph: {
     title: "Advertising Policy | mediguide4u",
     description:
-      "Review mediguide4u's strict advertising policy, our commitment to complete editorial independence, and how we handle third-party sponsorships.",
-    url: "https://mediguide4u.com/advertising-policy",
+      "Learn about mediguide4u's advertising policy, commercial separation from editorial content, and sponsor guidelines.",
+    url: "https://www.mediguide4u.com/advertising-policy",
     siteName: "mediguide4u",
     type: "website",
   },

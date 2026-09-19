@@ -96,7 +96,7 @@ export default async function AuthorProfilePage({ params }: PageProps) {
     "name": author.name,
     "jobTitle": author.title,
     "description": author.bio,
-    "url": `https://mediguide4u.com/author/${author.id}`,
+    "url": `https://www.mediguide4u.com/author/${author.id}`,
     "hasCredential": author.credentials ? [
       {
         "@type": "EducationalOccupationalCredential",
@@ -117,8 +117,8 @@ export default async function AuthorProfilePage({ params }: PageProps) {
     "worksFor": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/logo.png"
+      "url": "https://www.mediguide4u.com",
+      "logo": "https://www.mediguide4u.com/logo.png"
     }
   };
 
@@ -130,19 +130,19 @@ export default async function AuthorProfilePage({ params }: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com",
+        "item": "https://www.mediguide4u.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Medical Review Board",
-        "item": "https://mediguide4u.com/medical-review-board",
+        "item": "https://www.mediguide4u.com/medical-review-board",
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": author.name,
-        "item": `https://mediguide4u.com/author/${author.id}`,
+        "item": `https://www.mediguide4u.com/author/${author.id}`,
       },
     ],
   };

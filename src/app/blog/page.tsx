@@ -41,11 +41,11 @@ export default async function BlogIndexPage() {
     "@type": "CollectionPage",
     "name": "Doctor-Reviewed Health Guides & Articles",
     "description": "Educational healthcare and wellness guides from mediguide4u.",
-    "url": "https://mediguide4u.com/blog",
-    "publisher": {
+    url: "https://www.mediguide4u.com/blog",
+    publisher: {
       "@type": "Organization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://www.mediguide4u.com"
     }
   };
 

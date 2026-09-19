@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "Get in touch with the mediguide4u team for editorial feedback, content corrections, partnership inquiries, or general support.",
   alternates: {
-    canonical: "https://mediguide4u.com/contact",
+    canonical: "https://www.mediguide4u.com/contact",
   },
   openGraph: {
     title: "Contact mediguide4u | Support, Editorial Feedback & Inquiries",
     description:
       "Get in touch with the mediguide4u team for editorial feedback, content corrections, partnership inquiries, or general support.",
-    url: "https://mediguide4u.com/contact",
+    url: "https://www.mediguide4u.com/contact",
     siteName: "mediguide4u",
     type: "website",
   },
@@ -33,12 +33,12 @@ export default function ContactPage() {
     "@type": "ContactPage",
     "name": "Contact mediguide4u",
     "description": "Contact form, office details, and support inquiries for mediguide4u.",
-    "url": "https://mediguide4u.com/contact",
+    "url": "https://www.mediguide4u.com/contact",
     "mainEntity": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/logo.png",
+      "url": "https://www.mediguide4u.com",
+      "logo": "https://www.mediguide4u.com/logo.png",
       "email": "support@mediguide4u.com",
       "contactPoint": {
         "@type": "ContactPoint",
@@ -57,13 +57,13 @@ export default function ContactPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com",
+        "item": "https://www.mediguide4u.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Contact Us",
-        "item": "https://mediguide4u.com/contact",
+        "item": "https://www.mediguide4u.com/contact",
       },
     ],
   };

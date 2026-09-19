@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Learn about mediguide4u's editorial policy, fact-checking process, research standards, content updates, and corrections procedures.",
   alternates: {
-    canonical: "https://mediguide4u.com/editorial-policy",
+    canonical: "https://www.mediguide4u.com/editorial-policy",
   },
   openGraph: {
     title: "Editorial Policy | mediguide4u",
     description:
       "Learn about mediguide4u's editorial policy, fact-checking process, research standards, content updates, and corrections procedures.",
-    url: "https://mediguide4u.com/editorial-policy",
+    url: "https://www.mediguide4u.com/editorial-policy",
     siteName: "mediguide4u",
     type: "website",
   },

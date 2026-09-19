@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Review mediguide4u's DMCA copyright policy, infringement notice procedures, counter-notification process, and designated agent details.",
   alternates: {
-    canonical: "https://mediguide4u.com/dmca",
+    canonical: "https://www.mediguide4u.com/dmca",
   },
   openGraph: {
     title: "DMCA Copyright Policy | mediguide4u",
     description:
       "Review mediguide4u's DMCA copyright policy, infringement notice procedures, counter-notification process, and designated agent details.",
-    url: "https://mediguide4u.com/dmca",
+    url: "https://www.mediguide4u.com/dmca",
     siteName: "mediguide4u",
     type: "website",
   },

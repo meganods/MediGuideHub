@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
     description:
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
-    url: "https://mediguide4u.com",
+    url: "https://www.mediguide4u.com",
     siteName: "mediguide4u",
     type: "website",
   },
@@ -44,10 +44,10 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "mediguide4u",
-    "url": "https://mediguide4u.com",
+    "url": "https://www.mediguide4u.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://mediguide4u.com/search?q={search_term_string}",
+      "target": "https://www.mediguide4u.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

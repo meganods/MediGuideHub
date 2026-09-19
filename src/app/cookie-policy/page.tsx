@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Learn about the types of cookies used on mediguide4u, their purpose in optimizing site speed and user experience, and how to manage your cookie preferences.",
   alternates: {
-    canonical: "https://mediguide4u.com/cookie-policy",
+    canonical: "https://www.mediguide4u.com/cookie-policy",
   },
   openGraph: {
     title: "Cookie Policy | mediguide4u",
     description:
       "Learn about the types of cookies used on mediguide4u, their purpose in optimizing site speed and user experience, and how to manage your cookie preferences.",
-    url: "https://mediguide4u.com/cookie-policy",
+    url: "https://www.mediguide4u.com/cookie-policy",
     siteName: "mediguide4u",
     type: "website",
   },

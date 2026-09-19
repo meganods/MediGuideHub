@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "https://www.mediguide4u.com/search",
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
   openGraph: {

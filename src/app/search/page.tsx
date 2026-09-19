@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.mediguide4u.com/search",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     title: "Search Health Guides & Medical Resources | mediguide4u",
     description:

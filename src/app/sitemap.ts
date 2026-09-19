@@ -15,7 +15,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/authors",
     "/contact",
     "/faq",
-    "/search",
     "/sitemap",
     "/privacy-policy",
     "/terms-and-conditions",
@@ -29,12 +28,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/dmca",
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: (route === "" || route === "/blog" ? "daily" : "weekly") as "daily" | "weekly",
-    priority: route === "" ? 1.0 : route === "/blog" ? 0.9 : 0.7,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => {
+    let priority = 0.6;
+    let changeFrequency: "daily" | "weekly" | "monthly" = "monthly";
+
+    if (route === "") {
+      priority = 1.0;
+      changeFrequency = "daily";
+    } else if (route === "/blog" || route === "/tools" || route === "/quizzes") {
+      priority = 0.9;
+      changeFrequency = "daily";
+    } else if (["/about", "/medical-review-board", "/authors", "/faq", "/sitemap"].includes(route)) {
+      priority = 0.8;
+      changeFrequency = "weekly";
+    }
+
+    return {
+      url: `${baseUrl}${route}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    };
+  });
 
   try {
     const [posts, categories, authors] = await Promise.all([

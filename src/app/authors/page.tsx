@@ -65,7 +65,7 @@ export default async function AuthorsPage() {
           "name": p.name,
           "jobTitle": p.title,
           "description": p.bio,
-          "url": `https://mediguide4u.com/author/${p.id}`,
+          "url": `https://www.mediguide4u.com/author/${p.id}`,
         }
       }))
     }

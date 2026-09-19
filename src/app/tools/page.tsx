@@ -44,7 +44,7 @@ export default function ToolsPage() {
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com"
+      "url": "https://www.mediguide4u.com"
     }
   };
 

@@ -1003,7 +1003,7 @@ export interface BlogCategory {
 export const INITIAL_CATEGORIES: BlogCategory[] = [
   {
     "id": "vljwBZiyLAp8afPRf9XJ",
-    "seoCanonical": "https://mediguide4u.com/category/heart-health",
+    "seoCanonical": "https://www.mediguide4u.com/category/heart-health",
     "description": "Doctor-reviewed clinical guides and educational resources on cardiovascular health, hypertension management, and arterial wellness.",
     "seoDesc": "Explore physician-verified educational guides and clinical protocols on Heart Health and blood pressure management at mediguide4u.",
     "name": "Heart Health",
@@ -1025,7 +1025,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
   },
   {
     "id": "cat-preventive-care",
-    "seoCanonical": "https://mediguide4u.com/category/preventive-care",
+    "seoCanonical": "https://www.mediguide4u.com/category/preventive-care",
     "description": "Essential preventive health checkups, routine screening guidelines, and proactive wellness strategies.",
     "seoDesc": "Explore essential preventive healthcare guides, medical screening checklists, and proactive health strategies at mediguide4u.",
     "name": "Preventive Care",
@@ -1061,7 +1061,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "icon": "Activity",
     "seoSchemaType": "MedicalWebPage",
     "status": "Active",
-    "seoCanonical": "https://mediguide4u.com/category/diabetes"
+    "seoCanonical": "https://www.mediguide4u.com/category/diabetes"
   },
   {
     "id": "cat-mental-health",
@@ -1079,7 +1079,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "icon": "Brain",
     "seoSchemaType": "MedicalWebPage",
     "status": "Active",
-    "seoCanonical": "https://mediguide4u.com/category/mental-health"
+    "seoCanonical": "https://www.mediguide4u.com/category/mental-health"
   },
   {
     "id": "bqfqp1wA6NfNPaOG33L8",
@@ -1097,7 +1097,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "status": "Active",
     "icon": "Users",
     "name": "Women's Health",
-    "seoCanonical": "https://mediguide4u.com/category/women-s-health"
+    "seoCanonical": "https://www.mediguide4u.com/category/women-s-health"
   },
   {
     "id": "0ZB9vzEJgTDM3CkhKBES",
@@ -1115,7 +1115,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "createdAt": "2026-08-06",
     "featuredCategory": false,
     "description": "Objective educational guides on pediatric health, childhood nutrition, immunization schedules, and growth milestones.",
-    "seoCanonical": "https://mediguide4u.com/category/children-s-health"
+    "seoCanonical": "https://www.mediguide4u.com/category/children-s-health"
   },
   {
     "id": "hct1sSxymZnwuO7rkfxB",
@@ -1133,7 +1133,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "slug": "fitness",
     "seoDesc": "Explore structured workout routines, strength training science, and physical conditioning at mediguide4u.",
     "featuredCategory": false,
-    "seoCanonical": "https://mediguide4u.com/category/fitness"
+    "seoCanonical": "https://www.mediguide4u.com/category/fitness"
   },
   {
     "id": "zVp31LhXfR9n1u312a0d",
@@ -1151,7 +1151,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "seoSchemaType": "MedicalWebPage",
     "status": "Active",
     "featuredCategory": false,
-    "seoCanonical": "https://mediguide4u.com/category/senior-healthcare"
+    "seoCanonical": "https://www.mediguide4u.com/category/senior-healthcare"
   },
   {
     "id": "vyFwBnh6E7SdphpMlXQc",
@@ -1168,7 +1168,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "seoDesc": "Clear educational guides on adult and childhood immunization schedules, vaccine safety, and public health science.",
     "slug": "vaccination",
     "description": "Objective educational guides and health literacy resources on Vaccination and immunization science.",
-    "seoCanonical": "https://mediguide4u.com/category/vaccination",
+    "seoCanonical": "https://www.mediguide4u.com/category/vaccination",
     "seoScore": 94
   },
   {
@@ -1187,7 +1187,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "icon": "Sparkles",
     "status": "Active",
     "slug": "wellness",
-    "seoCanonical": "https://mediguide4u.com/category/wellness"
+    "seoCanonical": "https://www.mediguide4u.com/category/wellness"
   },
   {
     "id": "bAn7Hes8CbolEDmty7rb",
@@ -1205,7 +1205,7 @@ export const INITIAL_CATEGORIES: BlogCategory[] = [
     "status": "Active",
     "icon": "FileText",
     "name": "Lifestyle Diseases",
-    "seoCanonical": "https://mediguide4u.com/category/lifestyle-diseases"
+    "seoCanonical": "https://www.mediguide4u.com/category/lifestyle-diseases"
   }
 ];
 

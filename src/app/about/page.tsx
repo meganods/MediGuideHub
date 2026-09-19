@@ -110,12 +110,12 @@ export default function AboutPage() {
     "@type": "AboutPage",
     "name": "About mediguide4u",
     "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and peer-reviewed standards.",
-    "url": "https://mediguide4u.com/about",
+    "url": "https://www.mediguide4u.com/about",
     "mainEntity": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/logo.png",
+      "url": "https://www.mediguide4u.com",
+      "logo": "https://www.mediguide4u.com/logo.png",
       "description": "An independent educational publication dedicated to improving public healthcare literacy through doctor-reviewed clinical guides."
     }
   };
@@ -128,13 +128,13 @@ export default function AboutPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com",
+        "item": "https://www.mediguide4u.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "About Us",
-        "item": "https://mediguide4u.com/about",
+        "item": "https://www.mediguide4u.com/about",
       },
     ],
   };

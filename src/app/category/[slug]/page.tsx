@@ -145,18 +145,18 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
     "@type": "CollectionPage",
     "name": `${category.name} Health Guides`,
     "description": category.description || `Educational guides on ${category.name}`,
-    "url": `https://mediguide4u.com/category/${category.slug}`,
+    "url": `https://www.mediguide4u.com/category/${category.slug}`,
     "publisher": {
       "@type": "MedicalOrganization",
       "name": "mediguide4u",
-      "url": "https://mediguide4u.com",
-      "logo": "https://mediguide4u.com/logo.png"
+      "url": "https://www.mediguide4u.com",
+      "logo": "https://www.mediguide4u.com/logo.png"
     },
     "hasPart": matchingPosts.map((post) => ({
       "@type": "MedicalWebPage",
       "name": post.title,
       "headline": post.title,
-      "url": `https://mediguide4u.com/blog/${post.slug}`,
+      "url": `https://www.mediguide4u.com/blog/${post.slug}`,
       "description": post.summary,
       "datePublished": post.publishedAt,
     }))
@@ -170,19 +170,19 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mediguide4u.com",
+        "item": "https://www.mediguide4u.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://mediguide4u.com/blog",
+        "item": "https://www.mediguide4u.com/blog",
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": category.name,
-        "item": `https://mediguide4u.com/category/${category.slug}`,
+        "item": `https://www.mediguide4u.com/category/${category.slug}`,
       },
     ],
   };

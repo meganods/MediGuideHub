@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pageTitle = post.metaTitle || `${post.title} | mediguide4u`;
   const pageDescription = post.metaDescription || post.summary;
   const canonicalUrl = post.canonicalUrl || `https://www.mediguide4u.com/blog/${post.slug}`;
-  const ogImage = post.featuredImage || "https://mediguide4u.com/icon.png";
+  const ogImage = post.featuredImage || "https://www.mediguide4u.com/icon.png";
   const authorList = post.author && post.author !== "Mediguide4u Editorial Staff" 
     ? [post.author, "Mediguide4u Editorial Staff"] 
     : ["Mediguide4u Editorial Staff"];

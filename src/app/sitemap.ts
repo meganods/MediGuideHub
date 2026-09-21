@@ -63,8 +63,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const categoryEntries: MetadataRoute.Sitemap = categories.map((cat) => ({
       url: `${baseUrl}/category/${cat.slug}`,
       lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
+      changeFrequency: "daily" as const,
+      priority: 0.9,
     }));
 
     // Dynamic /author/[slug] entries
@@ -72,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/author/${author.id}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: 0.7,
+      priority: 0.8,
     }));
 
     // Dynamic /blog/[slug] entries
@@ -84,8 +84,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return {
           url: `${baseUrl}/blog/${post.slug}`,
           lastModified: isNaN(lastMod.getTime()) ? new Date() : lastMod,
-          changeFrequency: "weekly" as const,
-          priority: 0.8,
+          changeFrequency: "daily" as const,
+          priority: 0.9,
         };
       });
 

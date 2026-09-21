@@ -17,7 +17,10 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: "https://www.mediguide4u.com/sitemap.xml",
+    sitemap: [
+      "https://www.mediguide4u.com/sitemap.xml",
+      "https://www.mediguide4u.com/feed.xml",
+    ],
     host: "https://www.mediguide4u.com",
   };
 }

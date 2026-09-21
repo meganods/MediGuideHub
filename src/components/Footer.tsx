@@ -196,6 +196,41 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Medical Specialties & Categories Row (Crawlability & Internal Link Architecture) */}
+        <div className="py-8 border-b border-stone-100">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <h4 className="font-heading font-bold text-[#113F48] text-xs uppercase tracking-wider">
+              Clinical Specializations &amp; Category Hubs
+            </h4>
+            <Link href="/blog" className="text-xs font-bold text-[#C9A15A] hover:underline flex items-center gap-1">
+              View All 76+ Health Guides &rarr;
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { label: "Heart Health", href: "/category/heart-health" },
+              { label: "Preventive Care", href: "/category/preventive-care" },
+              { label: "Diabetes & Metabolism", href: "/category/diabetes" },
+              { label: "Mental Health", href: "/category/mental-health" },
+              { label: "Women's Health", href: "/category/women-s-health" },
+              { label: "Children's Health", href: "/category/children-s-health" },
+              { label: "Fitness & Physical Health", href: "/category/fitness" },
+              { label: "Senior Healthcare", href: "/category/senior-healthcare" },
+              { label: "Vaccination & Immunology", href: "/category/vaccination" },
+              { label: "Nutrition & Wellness", href: "/category/wellness" },
+              { label: "Lifestyle Diseases", href: "/category/lifestyle-diseases" },
+            ].map((cat) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className="text-xs bg-stone-50 hover:bg-[#113F48] hover:text-white text-stone-600 px-3 py-1.5 rounded-lg border border-stone-200 transition-all font-medium"
+              >
+                {cat.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Newsletter Section */}
         <div className="py-8 border-b border-stone-100 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="max-w-md">

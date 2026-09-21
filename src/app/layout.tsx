@@ -61,7 +61,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "./",
     types: {
       "application/rss+xml": "https://www.mediguide4u.com/feed.xml",
     },

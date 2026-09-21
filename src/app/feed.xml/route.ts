@@ -18,8 +18,7 @@ export async function GET() {
   try {
     const posts = await getPublishedBlogPosts();
     const publishedPosts = posts
-      .filter((p) => p.slug && (!p.status || p.status.toLowerCase() === "published"))
-      .slice(0, 50);
+      .filter((p) => p.slug && (!p.status || p.status.toLowerCase() === "published"));
 
     const rssItems = publishedPosts
       .map((post) => {

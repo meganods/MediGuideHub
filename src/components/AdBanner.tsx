@@ -39,6 +39,14 @@ export default function AdBanner({
     "responsive": "my-6 min-h-[100px] w-full",
   };
 
+  // Only render manual ad unit if a real ad slot ID is provided
+  const hasRealSlot = slot && slot !== "0000000000" && slot.trim() !== "";
+
+  if (!hasRealSlot) {
+    // Return null to avoid rendering empty blank containers that trigger AdSense "Low-value content" violations during site review
+    return null;
+  }
+
   return (
     <div
       className={`ad-container w-full overflow-hidden text-center transition-all ${formatStyles[format]} ${className}`}
@@ -51,30 +59,18 @@ export default function AdBanner({
         </span>
       </div>
 
-      {clientId ? (
-        <div className="bg-stone-50/50 border border-stone-150 rounded-xl p-2 flex items-center justify-center overflow-hidden min-h-[90px]">
-          <ins
-            ref={adRef}
-            className="adsbygoogle block"
-            style={{ display: "block", textAlign: "center" }}
-            data-ad-client={clientId}
-            data-ad-slot={slot}
-            data-ad-format={format === "in-article" ? "fluid" : "auto"}
-            data-ad-layout={format === "in-article" ? "in-article" : undefined}
-            data-full-width-responsive="true"
-          />
-        </div>
-      ) : (
-        <div className="bg-[#FDFBF7] border border-dashed border-stone-300/80 rounded-xl p-6 text-center text-stone-400 flex flex-col items-center justify-center gap-1 min-h-[90px]">
-          <span className="text-xs font-semibold text-stone-500">Google AdSense Placement</span>
-          <span className="text-[10px] text-stone-400">
-            {format === "in-article" && "In-Article Fluid Responsive Ad"}
-            {format === "sidebar" && "Sidebar Display Ad (300x250 / 300x600)"}
-            {format === "leaderboard" && "Leaderboard Responsive Horizontal Ad"}
-            {format === "responsive" && "Universal Responsive Display Ad"}
-          </span>
-        </div>
-      )}
+      <div className="bg-stone-50/50 border border-stone-150 rounded-xl p-2 flex items-center justify-center overflow-hidden min-h-[90px]">
+        <ins
+          ref={adRef}
+          className="adsbygoogle block"
+          style={{ display: "block", textAlign: "center" }}
+          data-ad-client={clientId}
+          data-ad-slot={slot}
+          data-ad-format={format === "in-article" ? "fluid" : "auto"}
+          data-ad-layout={format === "in-article" ? "in-article" : undefined}
+          data-full-width-responsive="true"
+        />
+      </div>
     </div>
   );
 }

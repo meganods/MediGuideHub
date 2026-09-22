@@ -28,7 +28,7 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
 
           <div className="space-y-2">
             <span className="text-[10px] font-bold text-red-500 bg-red-50 border border-red-200 px-2 py-0.5 rounded uppercase">System Error</span>
-            <h1 className="text-2xl font-extrabold text-[#113F48]">An Unexpected Error Occred</h1>
+            <h1 className="text-2xl font-extrabold text-[#113F48]">An Unexpected Error Occurred</h1>
             <p className="text-xs text-stone-500 leading-relaxed">
               We encountered a temporary server error. Click below to try reloading the page, or return to our homepage.
             </p>

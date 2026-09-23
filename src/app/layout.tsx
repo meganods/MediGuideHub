@@ -163,6 +163,11 @@ export default function RootLayout({
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
           crossOrigin="anonymous"
         />
+        {/* Google Analytics 4 (GA4) Tag */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-J56BBFCX08"
+        />
         <meta name="google-adsense-account" content={adsenseClientId} />
         <link rel="alternate" type="application/rss+xml" title="mediguide4u Health Guides" href="/feed.xml" />
         <script
@@ -170,6 +175,8 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-J56BBFCX08');
               
               var storedConsent = null;
               try {

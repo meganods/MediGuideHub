@@ -175,8 +175,6 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-J56BBFCX08');
               
               var storedConsent = null;
               try {
@@ -202,9 +200,15 @@ export default function RootLayout({
                   'ad_storage': 'denied',
                   'ad_user_data': 'denied',
                   'ad_personalization': 'denied',
-                  'analytics_storage': 'denied'
+                  'analytics_storage': 'granted'
                 });
               }
+
+              gtag('js', new Date());
+              gtag('config', 'G-J56BBFCX08', {
+                page_path: window.location.pathname,
+                send_page_view: true
+              });
             `,
           }}
         />

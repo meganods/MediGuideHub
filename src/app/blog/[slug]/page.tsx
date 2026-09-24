@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -147,6 +147,10 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   if (!post || (post.status && post.status.toLowerCase() !== "published")) {
     notFound();
+  }
+
+  if (slug !== post.slug) {
+    permanentRedirect(`/blog/${post.slug}`);
   }
 
   // Resolve Category Slug

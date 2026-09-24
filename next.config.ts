@@ -66,6 +66,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/author/dr-krishan-chugh-mbbs-md-pediatrics-fap",
+        destination: "/author/dr-krishan-chugh-md",
+        permanent: true,
+      },
+      {
+        source: "/blog/pediatric-rotavirus-dehydration-infants-ors-warning-signs",
+        destination: "/blog/pediatric-dehydration-infants-ors-warning-signs",
+        permanent: true,
+      },
+      {
         source: "/blog/high-blood-pressure-symptoms-causes-risk-factors-and-prevention",
         destination: "/blog/managing-blood-pressure-naturally",
         permanent: true,

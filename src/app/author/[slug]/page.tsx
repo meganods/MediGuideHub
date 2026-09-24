@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -81,6 +81,10 @@ export default async function AuthorProfilePage({ params }: PageProps) {
 
   if (!author) {
     notFound();
+  }
+
+  if (slug !== author.id) {
+    permanentRedirect(`/author/${author.id}`);
   }
 
   const [authoredPosts, reviewedPosts] = await Promise.all([

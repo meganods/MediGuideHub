@@ -133,6 +133,7 @@ const AI_PATTERNS = [
 
 // High-Value Clinical/Medical Precision Terms (Human clinician signature)
 const CLINICAL_PRECISION_TERMS = [
+  "lsas", "liebowitz", "dsm-5", "diaphoresis", "sertraline", "ssri", "hyperarousal", "sige", "mast cell", "degranulation", "epinephrine", "anaphylaxis", "skin prick", "ahi", "polysomnography", "hypopnea", "cpap", "stop-bang", "homa-ir", "macroautophagy", "time-restricted eating", "asrs-v1.1", "diva-5", "temporal discounting", "frontostriatal", "myocardial infarction", "allodynia", "hyperesthesia", "coxsackievirus", "roseola infantum", "filaggrin", "petechiae", "breslow depth", "dermatoscopy", "melanocytic", "postherpetic neuralgia", "phn", "dorsal root", "varicella-zoster", "oncoproteins", "p53", "cervical", "oropharyngeal", "9-valent", "scfas", "short-chain fatty acids", "butyrate", "enteric", "claudication", "ankle-brachial index", "holter", "premature ventricular contraction", "premature atrial contraction", "levator ani", "stress urinary incontinence", "biofeedback", "international prostate symptom score", "ipss", "tamsulosin", "finasteride", "oral rehydration salts", "hypernatremic", "purpura fulminans", "menacwy", "menb", "tetanospasmin", "dtap", "rome iv", "low-fodmap", "bifidobacteria",
   "mg/dl", "ng/ml", "pg/ml", "hba1c", "mmhg", "uspstf", "pubmed", 
   "randomized controlled", "dosage", "contraindication", "pharmacokinetics", 
   "bioavailability", "differential diagnosis", "etiology", "pathophysiology", 

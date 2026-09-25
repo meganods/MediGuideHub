@@ -1,127 +1,5 @@
 [
   {
-    "id": "med_art_socanx_114",
-    "title": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
-    "slug": "social-anxiety-disorder-symptoms-cbt-exposure",
-    "category": "Mental Health",
-    "wordCount": 1290,
-    "aiScore": 39,
-    "humanScore": 61,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 21.9,
-    "sentenceStdDev": 11.7,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_allergy_121",
-    "title": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
-    "slug": "childhood-food-allergies-ige-testing-epipen-plan",
-    "category": "Children's Health",
-    "wordCount": 1314,
-    "aiScore": 39,
-    "humanScore": 61,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 19.1,
-    "sentenceStdDev": 11.4,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_osa_126",
-    "title": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
-    "slug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
-    "category": "Wellness",
-    "wordCount": 1339,
-    "aiScore": 39,
-    "humanScore": 61,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 18.9,
-    "sentenceStdDev": 8.9,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_fasting_128",
-    "title": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
-    "slug": "intermittent-fasting-autophagy-insulin-sensitivity",
-    "category": "Wellness",
-    "wordCount": 1259,
-    "aiScore": 39,
-    "humanScore": 61,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 1,
-    "clinicalDensity": 0.79,
-    "topClinical": [
-      {
-        "term": "resistance training",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 23,
-    "sentenceStdDev": 9.4,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-vaccine-adult-01",
-    "title": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
-    "slug": "adult-vaccination-schedule-preventive-guide",
-    "category": "Vaccination",
-    "wordCount": 1312,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 26.7,
-    "sentenceStdDev": 17.9,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-atrial-fibrillation",
-    "title": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
-    "slug": "atrial-fibrillation-afib-symptoms-risks-treatment",
-    "category": "Heart Health",
-    "wordCount": 1323,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 2,
-    "clinicalDensity": 1.51,
-    "topClinical": [
-      {
-        "term": "mg/dl",
-        "count": 1
-      },
-      {
-        "term": "mmhg",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 26.3,
-    "sentenceStdDev": 34.9,
-    "referenceCount": 3
-  },
-  {
     "id": "post-gerd-acid-reflux",
     "title": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
     "slug": "gerd-acid-reflux-symptoms-causes-lifestyle-treatment",
@@ -155,111 +33,16 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
+    "clinicalCount": 2,
+    "clinicalDensity": 1.44,
+    "topClinical": [
+      {
+        "term": "frontostriatal",
+        "count": 2
+      }
+    ],
     "sentenceAvg": 22.3,
     "sentenceStdDev": 18.1,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-panic-vs-anxiety-attacks",
-    "title": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
-    "slug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
-    "category": "Mental Health",
-    "wordCount": 1557,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 2,
-    "clinicalDensity": 1.28,
-    "topClinical": [
-      {
-        "term": "parasympathetic",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 20.7,
-    "sentenceStdDev": 17.3,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-childhood-rashes",
-    "title": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
-    "slug": "childhood-rashes-eczema-hand-foot-mouth-identification",
-    "category": "Children's Health",
-    "wordCount": 1434,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 19.3,
-    "sentenceStdDev": 18.9,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-skin-cancer-abcde",
-    "title": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
-    "slug": "skin-cancer-screening-abcde-melanoma-mole-check",
-    "category": "Preventive Care",
-    "wordCount": 1562,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 21.6,
-    "sentenceStdDev": 16.1,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-shingles-vaccine",
-    "title": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
-    "slug": "shingles-vaccine-shingrix-side-effects-eligibility",
-    "category": "Vaccination",
-    "wordCount": 1387,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 19.5,
-    "sentenceStdDev": 14.6,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-hpv-vaccine",
-    "title": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
-    "slug": "hpv-vaccine-cancer-prevention-age-safety-guide",
-    "category": "Vaccination",
-    "wordCount": 1499,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 2,
-    "clinicalDensity": 1.33,
-    "topClinical": [
-      {
-        "term": "pap smear",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 25.3,
-    "sentenceStdDev": 18.9,
     "referenceCount": 3
   },
   {
@@ -281,128 +64,6 @@
     "referenceCount": 3
   },
   {
-    "id": "post-gut-microbiome-axis",
-    "title": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
-    "slug": "gut-microbiome-probiotics-prebiotics-gut-brain-axis",
-    "category": "Wellness",
-    "wordCount": 1585,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 1,
-    "clinicalDensity": 0.63,
-    "topClinical": [
-      {
-        "term": "cortisol",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 24.3,
-    "sentenceStdDev": 18.7,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_pad_102",
-    "title": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
-    "slug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
-    "category": "Heart Health",
-    "wordCount": 1343,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 4,
-    "clinicalDensity": 2.98,
-    "topClinical": [
-      {
-        "term": "endothelial",
-        "count": 2
-      },
-      {
-        "term": "nitric oxide",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 18.1,
-    "sentenceStdDev": 10.6,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_palp_103",
-    "title": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
-    "slug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
-    "category": "Heart Health",
-    "wordCount": 1164,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 3,
-    "clinicalDensity": 2.58,
-    "topClinical": [
-      {
-        "term": "mg/dl",
-        "count": 2
-      },
-      {
-        "term": "cortisol",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 19.7,
-    "sentenceStdDev": 11.8,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_pelvic_109",
-    "title": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
-    "slug": "pelvic-floor-dysfunction-prolapse-incontinence-therapy",
-    "category": "Women's Health",
-    "wordCount": 1318,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 24.4,
-    "sentenceStdDev": 19,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_bph_111",
-    "title": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
-    "slug": "bph-enlarged-prostate-symptoms-medications-psa",
-    "category": "Senior Healthcare",
-    "wordCount": 1230,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 4,
-    "clinicalDensity": 3.25,
-    "topClinical": [
-      {
-        "term": "hypertrophy",
-        "count": 2
-      },
-      {
-        "term": "nitric oxide",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 22.8,
-    "sentenceStdDev": 10.4,
-    "referenceCount": 3
-  },
-  {
     "id": "med_art_dehydration_120",
     "title": "Pediatric Dehydration: Signs of Fluid Loss in Infants, Oral Rehydration (ORS), and Red Flags",
     "slug": "pediatric-dehydration-infants-ors-warning-signs",
@@ -421,62 +82,65 @@
     "referenceCount": 3
   },
   {
-    "id": "med_art_meningococcal_122",
-    "title": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
-    "slug": "meningococcal-vaccine-menacwy-menb-teens-college",
-    "category": "Vaccination",
-    "wordCount": 1280,
+    "id": "med_art_fasting_128",
+    "title": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
+    "slug": "intermittent-fasting-autophagy-insulin-sensitivity",
+    "category": "Wellness",
+    "wordCount": 1259,
     "aiScore": 29,
     "humanScore": 71,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 22.4,
-    "sentenceStdDev": 18.5,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_tdap_123",
-    "title": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
-    "slug": "tdap-booster-vaccine-tetanus-pertussis-schedule",
-    "category": "Vaccination",
-    "wordCount": 1208,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensity": 0,
-    "topClinical": [],
-    "sentenceAvg": 24.1,
-    "sentenceStdDev": 13.4,
-    "referenceCount": 3
-  },
-  {
-    "id": "med_art_ibs_130",
-    "title": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
-    "slug": "ibs-low-fodmap-diet-symptoms-management",
-    "category": "Lifestyle Diseases",
-    "wordCount": 1394,
-    "aiScore": 29,
-    "humanScore": 71,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 1,
-    "clinicalDensity": 0.72,
+    "clinicalCount": 5,
+    "clinicalDensity": 3.97,
     "topClinical": [
       {
-        "term": "hpa axis",
+        "term": "time-restricted eating",
+        "count": 4
+      },
+      {
+        "term": "resistance training",
         "count": 1
       }
     ],
-    "sentenceAvg": 27.9,
-    "sentenceStdDev": 17.5,
+    "sentenceAvg": 23,
+    "sentenceStdDev": 9.4,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_palp_103",
+    "title": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
+    "slug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
+    "category": "Heart Health",
+    "wordCount": 1164,
+    "aiScore": 21,
+    "humanScore": 79,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 5,
+    "clinicalDensity": 4.3,
+    "topClinical": [
+      {
+        "term": "mg/dl",
+        "count": 2
+      },
+      {
+        "term": "epinephrine",
+        "count": 1
+      },
+      {
+        "term": "holter",
+        "count": 1
+      },
+      {
+        "term": "cortisol",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 19.7,
+    "sentenceStdDev": 11.8,
     "referenceCount": 3
   },
   {
@@ -538,42 +202,6 @@
     "referenceCount": 3
   },
   {
-    "id": "post-diabetic-neuropathy",
-    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
-    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
-    "category": "Diabetes",
-    "wordCount": 1326,
-    "aiScore": 20,
-    "humanScore": 80,
-    "buzzwordCount": 1,
-    "buzzwordDensity": 0.75,
-    "topBuzzwords": [
-      {
-        "phrase": "furthermore",
-        "count": 1
-      }
-    ],
-    "clinicalCount": 6,
-    "clinicalDensity": 4.52,
-    "topClinical": [
-      {
-        "term": "hba1c",
-        "count": 2
-      },
-      {
-        "term": "pathophysiology",
-        "count": 2
-      },
-      {
-        "term": "endothelial",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 21.3,
-    "sentenceStdDev": 14.7,
-    "referenceCount": 3
-  },
-  {
     "id": "post-child-nutrition-01",
     "title": "Pediatric Nutrition and Growth: Evidence-Based Dietary Guidelines for Children",
     "slug": "childhood-nutrition-developmental-milestones",
@@ -605,30 +233,38 @@
     "referenceCount": 3
   },
   {
-    "id": "post-pcos-hormone-balance",
-    "title": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
-    "slug": "pcos-symptoms-hormone-balance-treatment-guide",
-    "category": "Women's Health",
-    "wordCount": 1333,
+    "id": "post-atrial-fibrillation",
+    "title": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "slug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "category": "Heart Health",
+    "wordCount": 1323,
     "aiScore": 19,
     "humanScore": 81,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 4,
-    "clinicalDensity": 3,
+    "clinicalDensity": 3.02,
     "topClinical": [
       {
-        "term": "pathophysiology",
-        "count": 3
+        "term": "cpap",
+        "count": 1
       },
       {
-        "term": "folate",
+        "term": "holter",
+        "count": 1
+      },
+      {
+        "term": "mg/dl",
+        "count": 1
+      },
+      {
+        "term": "mmhg",
         "count": 1
       }
     ],
-    "sentenceAvg": 35.8,
-    "sentenceStdDev": 46.6,
+    "sentenceAvg": 26.3,
+    "sentenceStdDev": 34.9,
     "referenceCount": 3
   },
   {
@@ -686,37 +322,6 @@
     "referenceCount": 3
   },
   {
-    "id": "post-clinical-depression",
-    "title": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
-    "slug": "clinical-depression-symptoms-causes-therapy-treatment",
-    "category": "Mental Health",
-    "wordCount": 1425,
-    "aiScore": 19,
-    "humanScore": 81,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 4,
-    "clinicalDensity": 2.81,
-    "topClinical": [
-      {
-        "term": "pathophysiology",
-        "count": 2
-      },
-      {
-        "term": "randomized controlled",
-        "count": 1
-      },
-      {
-        "term": "hpa axis",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 27.3,
-    "sentenceStdDev": 40,
-    "referenceCount": 3
-  },
-  {
     "id": "post-childhood-asthma",
     "title": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
     "slug": "childhood-asthma-triggers-inhaler-guide-action-plan",
@@ -737,29 +342,6 @@
     ],
     "sentenceAvg": 20.5,
     "sentenceStdDev": 12.8,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-pediatric-fever",
-    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
-    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
-    "category": "Children's Health",
-    "wordCount": 1497,
-    "aiScore": 19,
-    "humanScore": 81,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 4,
-    "clinicalDensity": 2.67,
-    "topClinical": [
-      {
-        "term": "antipyretic",
-        "count": 4
-      }
-    ],
-    "sentenceAvg": 20.5,
-    "sentenceStdDev": 15.4,
     "referenceCount": 3
   },
   {
@@ -810,6 +392,29 @@
     ],
     "sentenceAvg": 25.3,
     "sentenceStdDev": 20.6,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-skin-cancer-abcde",
+    "title": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
+    "slug": "skin-cancer-screening-abcde-melanoma-mole-check",
+    "category": "Preventive Care",
+    "wordCount": 1562,
+    "aiScore": 19,
+    "humanScore": 81,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 6,
+    "clinicalDensity": 3.84,
+    "topClinical": [
+      {
+        "term": "breslow depth",
+        "count": 6
+      }
+    ],
+    "sentenceAvg": 21.6,
+    "sentenceStdDev": 16.1,
     "referenceCount": 3
   },
   {
@@ -925,38 +530,30 @@
     "referenceCount": 3
   },
   {
-    "id": "med_art_hscrp_116",
-    "title": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
-    "slug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
-    "category": "Preventive Care",
-    "wordCount": 1218,
+    "id": "med_art_socanx_114",
+    "title": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
+    "slug": "social-anxiety-disorder-symptoms-cbt-exposure",
+    "category": "Mental Health",
+    "wordCount": 1290,
     "aiScore": 13,
     "humanScore": 87,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 9,
-    "clinicalDensity": 7.39,
+    "clinicalCount": 8,
+    "clinicalDensity": 6.2,
     "topClinical": [
       {
-        "term": "statin",
+        "term": "dsm-5",
+        "count": 5
+      },
+      {
+        "term": "sertraline",
         "count": 3
-      },
-      {
-        "term": "mg/dl",
-        "count": 2
-      },
-      {
-        "term": "randomized controlled",
-        "count": 2
-      },
-      {
-        "term": "endothelial",
-        "count": 2
       }
     ],
-    "sentenceAvg": 19.1,
-    "sentenceStdDev": 10.9,
+    "sentenceAvg": 21.9,
+    "sentenceStdDev": 11.7,
     "referenceCount": 3
   },
   {
@@ -987,26 +584,101 @@
     "referenceCount": 3
   },
   {
-    "id": "post-mental-sleep-01",
-    "title": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
-    "slug": "anxiety-and-sleep-hygiene-evidence-based-strategies",
-    "category": "Mental Health",
-    "wordCount": 1472,
+    "id": "post-diabetic-neuropathy",
+    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "category": "Diabetes",
+    "wordCount": 1326,
+    "aiScore": 12,
+    "humanScore": 88,
+    "buzzwordCount": 1,
+    "buzzwordDensity": 0.75,
+    "topBuzzwords": [
+      {
+        "phrase": "furthermore",
+        "count": 1
+      }
+    ],
+    "clinicalCount": 7,
+    "clinicalDensity": 5.28,
+    "topClinical": [
+      {
+        "term": "hba1c",
+        "count": 2
+      },
+      {
+        "term": "pathophysiology",
+        "count": 2
+      },
+      {
+        "term": "endothelial",
+        "count": 2
+      },
+      {
+        "term": "allodynia",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 21.3,
+    "sentenceStdDev": 14.7,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-pcos-hormone-balance",
+    "title": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
+    "slug": "pcos-symptoms-hormone-balance-treatment-guide",
+    "category": "Women's Health",
+    "wordCount": 1333,
     "aiScore": 11,
     "humanScore": 89,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 7,
-    "clinicalDensity": 4.76,
+    "clinicalCount": 6,
+    "clinicalDensity": 4.5,
     "topClinical": [
       {
-        "term": "cortisol",
-        "count": 7
+        "term": "pathophysiology",
+        "count": 3
+      },
+      {
+        "term": "homa-ir",
+        "count": 2
+      },
+      {
+        "term": "folate",
+        "count": 1
       }
     ],
-    "sentenceAvg": 21.3,
-    "sentenceStdDev": 15.3,
+    "sentenceAvg": 35.8,
+    "sentenceStdDev": 46.6,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-pediatric-fever",
+    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "category": "Children's Health",
+    "wordCount": 1497,
+    "aiScore": 11,
+    "humanScore": 89,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 6,
+    "clinicalDensity": 4.01,
+    "topClinical": [
+      {
+        "term": "antipyretic",
+        "count": 4
+      },
+      {
+        "term": "petechiae",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 20.5,
+    "sentenceStdDev": 15.4,
     "referenceCount": 3
   },
   {
@@ -1124,6 +796,45 @@
     "referenceCount": 3
   },
   {
+    "id": "med_art_pad_102",
+    "title": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
+    "slug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
+    "category": "Heart Health",
+    "wordCount": 1343,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 25,
+    "clinicalDensity": 18.62,
+    "topClinical": [
+      {
+        "term": "claudication",
+        "count": 13
+      },
+      {
+        "term": "ankle-brachial index",
+        "count": 6
+      },
+      {
+        "term": "myocardial infarction",
+        "count": 2
+      },
+      {
+        "term": "endothelial",
+        "count": 2
+      },
+      {
+        "term": "nitric oxide",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 18.1,
+    "sentenceStdDev": 10.6,
+    "referenceCount": 3
+  },
+  {
     "id": "med_art_cgm_104",
     "title": "Continuous Glucose Monitors (CGM): Time in Range (TIR), Interstitial Lag, and Glucose Spikes",
     "slug": "continuous-glucose-monitors-cgm-time-in-range-guide",
@@ -1134,8 +845,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 51,
-    "clinicalDensity": 40.73,
+    "clinicalCount": 53,
+    "clinicalDensity": 42.33,
     "topClinical": [
       {
         "term": "interstitial",
@@ -1152,6 +863,10 @@
       {
         "term": "hba1c",
         "count": 8
+      },
+      {
+        "term": "biofeedback",
+        "count": 2
       }
     ],
     "sentenceAvg": 21.3,
@@ -1311,6 +1026,49 @@
     "referenceCount": 3
   },
   {
+    "id": "med_art_bph_111",
+    "title": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
+    "slug": "bph-enlarged-prostate-symptoms-medications-psa",
+    "category": "Senior Healthcare",
+    "wordCount": 1230,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 23,
+    "clinicalDensity": 18.7,
+    "topClinical": [
+      {
+        "term": "ipss",
+        "count": 7
+      },
+      {
+        "term": "finasteride",
+        "count": 5
+      },
+      {
+        "term": "international prostate symptom score",
+        "count": 4
+      },
+      {
+        "term": "tamsulosin",
+        "count": 3
+      },
+      {
+        "term": "hypertrophy",
+        "count": 2
+      },
+      {
+        "term": "nitric oxide",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 22.8,
+    "sentenceStdDev": 10.4,
+    "referenceCount": 3
+  },
+  {
     "id": "med_art_polypharmacy_112",
     "title": "Polypharmacy in Older Adults: Drug Interactions, the Beers Criteria, and Deprescribing",
     "slug": "polypharmacy-in-seniors-deprescribing-beers-criteria",
@@ -1347,6 +1105,131 @@
     ],
     "sentenceAvg": 21.1,
     "sentenceStdDev": 10.5,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_hscrp_116",
+    "title": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
+    "slug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
+    "category": "Preventive Care",
+    "wordCount": 1218,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 13,
+    "clinicalDensity": 10.67,
+    "topClinical": [
+      {
+        "term": "statin",
+        "count": 3
+      },
+      {
+        "term": "cpap",
+        "count": 2
+      },
+      {
+        "term": "myocardial infarction",
+        "count": 2
+      },
+      {
+        "term": "mg/dl",
+        "count": 2
+      },
+      {
+        "term": "randomized controlled",
+        "count": 2
+      },
+      {
+        "term": "endothelial",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 19.1,
+    "sentenceStdDev": 10.9,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_allergy_121",
+    "title": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
+    "slug": "childhood-food-allergies-ige-testing-epipen-plan",
+    "category": "Children's Health",
+    "wordCount": 1314,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 35,
+    "clinicalDensity": 26.64,
+    "topClinical": [
+      {
+        "term": "anaphylaxis",
+        "count": 13
+      },
+      {
+        "term": "epinephrine",
+        "count": 12
+      },
+      {
+        "term": "skin prick",
+        "count": 5
+      },
+      {
+        "term": "sige",
+        "count": 2
+      },
+      {
+        "term": "degranulation",
+        "count": 2
+      },
+      {
+        "term": "mast cell",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 19.1,
+    "sentenceStdDev": 11.4,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_osa_126",
+    "title": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
+    "slug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
+    "category": "Wellness",
+    "wordCount": 1339,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 38,
+    "clinicalDensity": 28.38,
+    "topClinical": [
+      {
+        "term": "ahi",
+        "count": 12
+      },
+      {
+        "term": "cpap",
+        "count": 11
+      },
+      {
+        "term": "hypopnea",
+        "count": 6
+      },
+      {
+        "term": "stop-bang",
+        "count": 6
+      },
+      {
+        "term": "polysomnography",
+        "count": 3
+      }
+    ],
+    "sentenceAvg": 18.9,
+    "sentenceStdDev": 8.9,
     "referenceCount": 3
   },
   {
@@ -1571,9 +1454,13 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 17,
-    "clinicalDensity": 10.98,
+    "clinicalCount": 30,
+    "clinicalDensity": 19.38,
     "topClinical": [
+      {
+        "term": "cervical",
+        "count": 13
+      },
       {
         "term": "mammography",
         "count": 7
@@ -1606,8 +1493,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 47,
-    "clinicalDensity": 29.17,
+    "clinicalCount": 48,
+    "clinicalDensity": 29.8,
     "topClinical": [
       {
         "term": "mmhg",
@@ -1649,8 +1536,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 31,
-    "clinicalDensity": 22.08,
+    "clinicalCount": 32,
+    "clinicalDensity": 22.79,
     "topClinical": [
       {
         "term": "cortisol",
@@ -1673,7 +1560,7 @@
         "count": 2
       },
       {
-        "term": "vagal tone",
+        "term": "epinephrine",
         "count": 1
       }
     ],
@@ -1692,8 +1579,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 32,
-    "clinicalDensity": 23.95,
+    "clinicalCount": 34,
+    "clinicalDensity": 25.45,
     "topClinical": [
       {
         "term": "hypertrophy",
@@ -1712,11 +1599,11 @@
         "count": 3
       },
       {
-        "term": "mmhg",
+        "term": "myocardial infarction",
         "count": 2
       },
       {
-        "term": "vagal tone",
+        "term": "mmhg",
         "count": 2
       }
     ],
@@ -1774,8 +1661,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 8,
-    "clinicalDensity": 6.14,
+    "clinicalCount": 9,
+    "clinicalDensity": 6.91,
     "topClinical": [
       {
         "term": "endothelial",
@@ -1784,6 +1671,10 @@
       {
         "term": "nitric oxide",
         "count": 3
+      },
+      {
+        "term": "scfas",
+        "count": 1
       },
       {
         "term": "bioavailability",
@@ -1805,12 +1696,16 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 12,
-    "clinicalDensity": 9.94,
+    "clinicalCount": 14,
+    "clinicalDensity": 11.6,
     "topClinical": [
       {
         "term": "uspstf",
         "count": 9
+      },
+      {
+        "term": "cervical",
+        "count": 2
       },
       {
         "term": "mammography",
@@ -1826,6 +1721,80 @@
     "referenceCount": 3
   },
   {
+    "id": "post-mental-sleep-01",
+    "title": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
+    "slug": "anxiety-and-sleep-hygiene-evidence-based-strategies",
+    "category": "Mental Health",
+    "wordCount": 1472,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 12,
+    "clinicalDensity": 8.15,
+    "topClinical": [
+      {
+        "term": "cortisol",
+        "count": 7
+      },
+      {
+        "term": "hyperarousal",
+        "count": 3
+      },
+      {
+        "term": "polysomnography",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 21.3,
+    "sentenceStdDev": 15.3,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-vaccine-adult-01",
+    "title": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
+    "slug": "adult-vaccination-schedule-preventive-guide",
+    "category": "Vaccination",
+    "wordCount": 1312,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 16,
+    "clinicalDensity": 12.2,
+    "topClinical": [
+      {
+        "term": "postherpetic neuralgia",
+        "count": 4
+      },
+      {
+        "term": "varicella-zoster",
+        "count": 3
+      },
+      {
+        "term": "cervical",
+        "count": 2
+      },
+      {
+        "term": "oropharyngeal",
+        "count": 2
+      },
+      {
+        "term": "menacwy",
+        "count": 2
+      },
+      {
+        "term": "menb",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 26.7,
+    "sentenceStdDev": 17.9,
+    "referenceCount": 3
+  },
+  {
     "id": "post-coronary-artery-disease",
     "title": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
     "slug": "coronary-artery-disease-symptoms-causes-treatment",
@@ -1836,8 +1805,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 12,
-    "clinicalDensity": 9.85,
+    "clinicalCount": 17,
+    "clinicalDensity": 13.96,
     "topClinical": [
       {
         "term": "endothelial",
@@ -1846,6 +1815,14 @@
       {
         "term": "statin",
         "count": 4
+      },
+      {
+        "term": "myocardial infarction",
+        "count": 3
+      },
+      {
+        "term": "diaphoresis",
+        "count": 2
       },
       {
         "term": "pathophysiology",
@@ -1871,8 +1848,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 33,
-    "clinicalDensity": 25.31,
+    "clinicalCount": 38,
+    "clinicalDensity": 29.14,
     "topClinical": [
       {
         "term": "mg/dl",
@@ -1881,6 +1858,10 @@
       {
         "term": "hba1c",
         "count": 12
+      },
+      {
+        "term": "homa-ir",
+        "count": 5
       },
       {
         "term": "pathophysiology",
@@ -1910,12 +1891,20 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 18,
-    "clinicalDensity": 13.13,
+    "clinicalCount": 22,
+    "clinicalDensity": 16.05,
     "topClinical": [
       {
         "term": "mg/dl",
         "count": 15
+      },
+      {
+        "term": "diaphoresis",
+        "count": 2
+      },
+      {
+        "term": "epinephrine",
+        "count": 2
       },
       {
         "term": "cortisol",
@@ -1968,8 +1957,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 36,
-    "clinicalDensity": 25.66,
+    "clinicalCount": 40,
+    "clinicalDensity": 28.51,
     "topClinical": [
       {
         "term": "mg/dl",
@@ -1988,16 +1977,129 @@
         "count": 3
       },
       {
-        "term": "statin",
+        "term": "time-restricted eating",
         "count": 2
       },
       {
-        "term": "hypertrophy",
+        "term": "myocardial infarction",
         "count": 2
       }
     ],
     "sentenceAvg": 21.9,
     "sentenceStdDev": 15.9,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-clinical-depression",
+    "title": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
+    "slug": "clinical-depression-symptoms-causes-therapy-treatment",
+    "category": "Mental Health",
+    "wordCount": 1425,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 11,
+    "clinicalDensity": 7.72,
+    "topClinical": [
+      {
+        "term": "dsm-5",
+        "count": 5
+      },
+      {
+        "term": "pathophysiology",
+        "count": 2
+      },
+      {
+        "term": "sertraline",
+        "count": 1
+      },
+      {
+        "term": "ssri",
+        "count": 1
+      },
+      {
+        "term": "randomized controlled",
+        "count": 1
+      },
+      {
+        "term": "hpa axis",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 27.3,
+    "sentenceStdDev": 40,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-panic-vs-anxiety-attacks",
+    "title": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
+    "slug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
+    "category": "Mental Health",
+    "wordCount": 1557,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 9,
+    "clinicalDensity": 5.78,
+    "topClinical": [
+      {
+        "term": "dsm-5",
+        "count": 5
+      },
+      {
+        "term": "myocardial infarction",
+        "count": 2
+      },
+      {
+        "term": "parasympathetic",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 20.7,
+    "sentenceStdDev": 17.3,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-childhood-rashes",
+    "title": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
+    "slug": "childhood-rashes-eczema-hand-foot-mouth-identification",
+    "category": "Children's Health",
+    "wordCount": 1434,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 17,
+    "clinicalDensity": 11.85,
+    "topClinical": [
+      {
+        "term": "petechiae",
+        "count": 5
+      },
+      {
+        "term": "coxsackievirus",
+        "count": 4
+      },
+      {
+        "term": "roseola infantum",
+        "count": 3
+      },
+      {
+        "term": "filaggrin",
+        "count": 3
+      },
+      {
+        "term": "anaphylaxis",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 19.3,
+    "sentenceStdDev": 18.9,
     "referenceCount": 3
   },
   {
@@ -2050,12 +2152,16 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 8,
-    "clinicalDensity": 5.82,
+    "clinicalCount": 12,
+    "clinicalDensity": 8.73,
     "topClinical": [
       {
         "term": "uspstf",
         "count": 6
+      },
+      {
+        "term": "p53",
+        "count": 4
       },
       {
         "term": "mammography",
@@ -2107,6 +2213,88 @@
     ],
     "sentenceAvg": 18.6,
     "sentenceStdDev": 15.4,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-shingles-vaccine",
+    "title": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
+    "slug": "shingles-vaccine-shingrix-side-effects-eligibility",
+    "category": "Vaccination",
+    "wordCount": 1387,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 16,
+    "clinicalDensity": 11.54,
+    "topClinical": [
+      {
+        "term": "postherpetic neuralgia",
+        "count": 5
+      },
+      {
+        "term": "phn",
+        "count": 5
+      },
+      {
+        "term": "anaphylaxis",
+        "count": 2
+      },
+      {
+        "term": "dorsal root",
+        "count": 2
+      },
+      {
+        "term": "varicella-zoster",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 19.5,
+    "sentenceStdDev": 14.6,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-hpv-vaccine",
+    "title": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
+    "slug": "hpv-vaccine-cancer-prevention-age-safety-guide",
+    "category": "Vaccination",
+    "wordCount": 1499,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 33,
+    "clinicalDensity": 22.01,
+    "topClinical": [
+      {
+        "term": "cervical",
+        "count": 10
+      },
+      {
+        "term": "oncoproteins",
+        "count": 7
+      },
+      {
+        "term": "oropharyngeal",
+        "count": 6
+      },
+      {
+        "term": "p53",
+        "count": 4
+      },
+      {
+        "term": "9-valent",
+        "count": 4
+      },
+      {
+        "term": "pap smear",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 25.3,
+    "sentenceStdDev": 18.9,
     "referenceCount": 3
   },
   {
@@ -2189,6 +2377,41 @@
     "referenceCount": 3
   },
   {
+    "id": "post-gut-microbiome-axis",
+    "title": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
+    "slug": "gut-microbiome-probiotics-prebiotics-gut-brain-axis",
+    "category": "Wellness",
+    "wordCount": 1585,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 23,
+    "clinicalDensity": 14.51,
+    "topClinical": [
+      {
+        "term": "butyrate",
+        "count": 12
+      },
+      {
+        "term": "short-chain fatty acids",
+        "count": 6
+      },
+      {
+        "term": "scfas",
+        "count": 4
+      },
+      {
+        "term": "cortisol",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 24.3,
+    "sentenceStdDev": 18.7,
+    "referenceCount": 3
+  },
+  {
     "id": "med_art_hashimoto_107",
     "title": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
     "slug": "hypothyroidism-hashimotos-tsh-levels-treatment",
@@ -2224,6 +2447,37 @@
     "referenceCount": 3
   },
   {
+    "id": "med_art_pelvic_109",
+    "title": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
+    "slug": "pelvic-floor-dysfunction-prolapse-incontinence-therapy",
+    "category": "Women's Health",
+    "wordCount": 1318,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 8,
+    "clinicalDensity": 6.07,
+    "topClinical": [
+      {
+        "term": "stress urinary incontinence",
+        "count": 3
+      },
+      {
+        "term": "biofeedback",
+        "count": 3
+      },
+      {
+        "term": "levator ani",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 24.4,
+    "sentenceStdDev": 19,
+    "referenceCount": 3
+  },
+  {
     "id": "med_art_migraine_115",
     "title": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
     "slug": "migraine-vs-tension-headache-aura-cgrp-treatment",
@@ -2248,6 +2502,60 @@
     ],
     "sentenceAvg": 22.8,
     "sentenceStdDev": 13.2,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_meningococcal_122",
+    "title": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
+    "slug": "meningococcal-vaccine-menacwy-menb-teens-college",
+    "category": "Vaccination",
+    "wordCount": 1280,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 35,
+    "clinicalDensity": 27.34,
+    "topClinical": [
+      {
+        "term": "menb",
+        "count": 17
+      },
+      {
+        "term": "menacwy",
+        "count": 15
+      },
+      {
+        "term": "purpura fulminans",
+        "count": 3
+      }
+    ],
+    "sentenceAvg": 22.4,
+    "sentenceStdDev": 18.5,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_tdap_123",
+    "title": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
+    "slug": "tdap-booster-vaccine-tetanus-pertussis-schedule",
+    "category": "Vaccination",
+    "wordCount": 1208,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 8,
+    "clinicalDensity": 6.62,
+    "topClinical": [
+      {
+        "term": "dtap",
+        "count": 8
+      }
+    ],
+    "sentenceAvg": 24.1,
+    "sentenceStdDev": 13.4,
     "referenceCount": 3
   },
   {
@@ -2300,8 +2608,8 @@
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
-    "clinicalCount": 8,
-    "clinicalDensity": 6.4,
+    "clinicalCount": 16,
+    "clinicalDensity": 12.8,
     "topClinical": [
       {
         "term": "ng/ml",
@@ -2312,12 +2620,63 @@
         "count": 3
       },
       {
-        "term": "cortisol",
-        "count": 1
+        "term": "homa-ir",
+        "count": 2
+      },
+      {
+        "term": "scfas",
+        "count": 2
+      },
+      {
+        "term": "short-chain fatty acids",
+        "count": 2
+      },
+      {
+        "term": "butyrate",
+        "count": 2
       }
     ],
     "sentenceAvg": 23.1,
     "sentenceStdDev": 12.9,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_ibs_130",
+    "title": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
+    "slug": "ibs-low-fodmap-diet-symptoms-management",
+    "category": "Lifestyle Diseases",
+    "wordCount": 1394,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 28,
+    "clinicalDensity": 20.09,
+    "topClinical": [
+      {
+        "term": "low-fodmap",
+        "count": 13
+      },
+      {
+        "term": "enteric",
+        "count": 6
+      },
+      {
+        "term": "rome iv",
+        "count": 6
+      },
+      {
+        "term": "bifidobacteria",
+        "count": 2
+      },
+      {
+        "term": "hpa axis",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 27.9,
+    "sentenceStdDev": 17.5,
     "referenceCount": 3
   }
 ]

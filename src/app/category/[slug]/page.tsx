@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AdBanner from "@/components/AdBanner";
@@ -100,6 +100,10 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
 
   if (!category) {
     notFound();
+  }
+
+  if (slug !== category.slug) {
+    permanentRedirect(`/category/${category.slug}`);
   }
 
   // Filter posts matching this category cleanly

@@ -71,6 +71,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/category/:slug*",
+        destination: "/category/:slug*",
+        permanent: true,
+      },
+      {
         source: "/blog/pediatric-rotavirus-dehydration-infants-ors-warning-signs",
         destination: "/blog/pediatric-dehydration-infants-ors-warning-signs",
         permanent: true,

@@ -109,7 +109,7 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About mediguide4u",
-    "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and peer-reviewed standards.",
+    "description": "Information about mediguide4u's educational mission, health literacy objectives, editorial research methodology, and medically-reviewed standards.",
     "url": "https://www.mediguide4u.com/about",
     "mainEntity": {
       "@type": "MedicalOrganization",
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 About mediguide4u
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-[#113F48] leading-tight">
-                Empowering Health Literacy Through Clear, Physician-Reviewed Guidance
+                Empowering Health Literacy Through Clear, Medically-Reviewed Guidance
               </h1>
               <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
                 mediguide4u is an independent educational platform dedicated to making health, nutrition, and preventive wellness information understandable, transparent, and freely accessible to everyone.
@@ -301,7 +301,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-lg font-bold text-[#113F48]">How Sources Are Selected</h3>
                 <p className="text-stone-500 text-sm leading-relaxed">
-                  We prioritize primary sources including the <strong>National Institutes of Health (NIH)</strong>, <strong>CDC</strong>, <strong>World Health Organization (WHO)</strong>, <strong>PubMed</strong>, and peer-reviewed journals.
+                  We prioritize primary sources including the <strong>National Institutes of Health (NIH)</strong>, <strong>CDC</strong>, <strong>World Health Organization (WHO)</strong>, <strong>PubMed</strong>, and medically-reviewed journals.
                 </p>
               </div>
             </div>

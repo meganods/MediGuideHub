@@ -93,7 +93,7 @@ export default function CookieConsent() {
             </button>
           </div>
           <p className="text-stone-300 leading-relaxed text-[11px]">
-            mediguide4u uses cookies and third-party advertising partners (including Google AdSense) to deliver physician-reviewed health resources, analyze traffic, and display relevant educational content in accordance with our{" "}
+            mediguide4u uses cookies and third-party advertising partners (including Google AdSense) to deliver medically-reviewed health resources, analyze traffic, and display relevant educational content in accordance with our{" "}
             <Link href="/privacy-policy" className="text-[#C9A15A] underline hover:text-white font-medium">
               Privacy Policy
             </Link>{" "}

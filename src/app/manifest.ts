@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "mediguide4u - Physician-Reviewed Healthcare Guides",
+    name: "mediguide4u - Medically-Reviewed Healthcare Guides",
     short_name: "mediguide4u",
     description: "Clear, doctor-reviewed health guides covering symptoms, conditions, clinical nutrition, and preventive wellness strategies.",
     start_url: "/",

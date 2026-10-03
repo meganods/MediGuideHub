@@ -85,7 +85,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-stone-500 leading-relaxed">
-              Helping people make informed wellness decisions through clear, physician-reviewed health guides, educational resources, and objective medical literacy content.
+              Helping people make informed wellness decisions through clear, medically-reviewed health guides, educational resources, and objective medical literacy content.
             </p>
           </div>
 

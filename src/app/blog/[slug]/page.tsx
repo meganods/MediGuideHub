@@ -550,7 +550,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     World Health Organization (WHO). <a href="https://www.who.int" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Global Clinical Treatment Standards &amp; Fact Sheets]</a>.
                   </li>
                   <li>
-                    National Library of Medicine / PubMed. <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Peer-Reviewed Biomedical Literature Database]</a>.
+                    National Library of Medicine / PubMed. <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-[#C9A15A] hover:underline font-semibold">[Medically-Reviewed Biomedical Literature Database]</a>.
                   </li>
                 </ol>
               </div>

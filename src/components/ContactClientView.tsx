@@ -389,7 +389,7 @@ export default function ContactClientView() {
                   <h3 className="font-bold text-sm uppercase tracking-wide">Medical Emergency Notice</h3>
                 </div>
                 <p className="text-red-900 text-xs font-semibold leading-relaxed">
-                  mediguide4u does not provide emergency medical services. If you are experiencing a medical emergency, immediately contact your local emergency services (e.g. 911/112) or visit the nearest emergency room.
+                  mediguide4u does not provide emergency medical services. If you are experiencing a medical emergency, immediately contact your local emergency services (e.g. 112 (India) / 911 (US)) or visit the nearest emergency room.
                 </p>
               </div>
 

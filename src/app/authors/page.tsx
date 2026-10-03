@@ -102,7 +102,7 @@ export default async function AuthorsPage() {
             </h1>
 
             <p className="text-stone-600 text-sm sm:text-base max-w-3xl leading-relaxed">
-              At mediguide4u, healthcare guides are created by experienced health writers and fact-checked by medical professionals. We synthesize guidelines from the NIH, WHO, CDC, and peer-reviewed clinical literature with zero commercial bias.
+              At mediguide4u, healthcare guides are created by experienced health writers and fact-checked by medical professionals. We synthesize guidelines from the NIH, WHO, CDC, and medically-reviewed clinical literature with zero commercial bias.
             </p>
 
             <div className="pt-4 flex flex-wrap gap-4 border-t border-stone-100 text-xs text-stone-600">
@@ -110,10 +110,10 @@ export default async function AuthorsPage() {
                 <BookOpen className="h-4 w-4 text-[#C9A15A]" /> {posts.length}+ Educational Guides Published
               </span>
               <span className="flex items-center gap-1.5 font-semibold text-emerald-800">
-                <ShieldCheck className="h-4 w-4 text-emerald-600" /> Fact-Checked against Peer-Reviewed Sources
+                <ShieldCheck className="h-4 w-4 text-emerald-600" /> Fact-Checked against Medically-Reviewed Sources
               </span>
               <span className="flex items-center gap-1.5 font-semibold text-[#113F48]">
-                <Stethoscope className="h-4 w-4 text-[#C9A15A]" /> Physician-Reviewed Clinical Standards
+                <Stethoscope className="h-4 w-4 text-[#C9A15A]" /> Medically-Reviewed Clinical Standards
               </span>
             </div>
           </header>
@@ -224,7 +224,7 @@ export default async function AuthorsPage() {
                 <span className="text-xs font-bold text-[#C9A15A] uppercase tracking-wider">Step 3</span>
                 <h3 className="font-bold text-base text-[#113F48]">Fact-Checking &amp; Citation</h3>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  Every statistic, clinical claim, and treatment protocol is cross-checked with peer-reviewed medical publications.
+                  Every statistic, clinical claim, and treatment protocol is cross-checked with medically-reviewed medical publications.
                 </p>
               </div>
 

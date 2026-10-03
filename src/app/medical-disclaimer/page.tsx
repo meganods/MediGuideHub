@@ -88,7 +88,7 @@ export default function MedicalDisclaimerPage() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold text-[#113F48]">3. Not Emergency Medical Advice</h2>
                 <p>
-                  If you are experiencing a medical emergency, you must immediately call your local emergency services (such as 102/112 in India, 911 in the United States) or visit the nearest emergency room. Never disregard or delay professional care because of something read on this platform.
+                  If you are experiencing a medical emergency, you must immediately call your local emergency services (such as 112 in India, 911 in the United States) or visit the nearest emergency room. Never disregard or delay professional care because of something read on this platform.
                 </p>
               </div>
 

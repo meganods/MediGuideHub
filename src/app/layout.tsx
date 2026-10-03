@@ -34,7 +34,7 @@ const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-526
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mediguide4u.com"),
   title: {
-    default: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
+    default: "mediguide4u - Medically-Reviewed Healthcare & Wellness Guides",
     template: "%s | mediguide4u",
   },
   description:
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
+    title: "mediguide4u - Medically-Reviewed Healthcare & Wellness Guides",
     description:
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
     url: "https://www.mediguide4u.com",
@@ -78,13 +78,13 @@ export const metadata: Metadata = {
         url: "https://www.mediguide4u.com/logo.png",
         width: 1200,
         height: 630,
-        alt: "mediguide4u - Physician-Reviewed Healthcare Guides",
+        alt: "mediguide4u - Medically-Reviewed Healthcare Guides",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "mediguide4u - Physician-Reviewed Healthcare & Wellness Guides",
+    title: "mediguide4u - Medically-Reviewed Healthcare & Wellness Guides",
     description:
       "Explore clear, doctor-reviewed healthcare guides covering symptoms, conditions, nutrition science, preventive medicine, and everyday wellness.",
     site: "@mediguide4u",

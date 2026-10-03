@@ -279,7 +279,7 @@ export default function SitemapClientView({
                   <BookOpen className="h-5 w-5 text-[#C9A15A]" /> All Healthcare &amp; Medical Guides ({filteredPosts.length} Articles)
                 </h2>
                 <p className="text-xs text-stone-500 mt-1">
-                  Browse our complete directory of peer-reviewed clinical healthcare resources organized by topic area.
+                  Browse our complete directory of medically-reviewed clinical healthcare resources organized by topic area.
                 </p>
               </div>
               <Link 

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Medical Review Board & Clinical Advisors | mediguide4u",
     description:
-      "Meet the board-certified physicians and clinical specialists who verify every health guide on mediguide4u against peer-reviewed medical standards.",
+      "Meet the board-certified physicians and clinical specialists who verify every health guide on mediguide4u against medically-reviewed medical standards.",
     url: "https://www.mediguide4u.com/medical-review-board",
     siteName: "mediguide4u",
     type: "website",

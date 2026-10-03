@@ -127,7 +127,7 @@ export default function HomeClientView({
         <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
           <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-center">
             <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-[#C9A15A]" /> Educational Healthcare Platform</span>
-            <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#C9A15A]" /> Physician-Reviewed Information</span>
+            <span className="flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-[#C9A15A]" /> Medically-Reviewed Information</span>
             <span className="flex items-center gap-1.5"><Lock className="h-3.5 w-3.5 text-[#C9A15A]" /> Privacy Protected</span>
             <span className="flex items-center gap-1.5"><RefreshCcw className="h-3.5 w-3.5 text-[#C9A15A]" /> Regularly Updated Content</span>
             <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-[#C9A15A]" /> Secure Platform</span>
@@ -397,14 +397,14 @@ export default function HomeClientView({
             `}} />
             <div className="animate-marquee-scroll flex gap-6 py-2">
               {[
-                { num: "01", step: "Research", desc: "Reviewing peer-reviewed literature and public databases" },
+                { num: "01", step: "Research", desc: "Reviewing medically-reviewed literature and public databases" },
                 { num: "02", step: "Writing", desc: "Explaining health concepts in clear language" },
                 { num: "03", step: "Editorial Review", desc: "Checking clarity, tone, and educational quality" },
                 { num: "04", step: "Fact Checking", desc: "Cross-referencing claims against medical literature" },
                 { num: "05", step: "Publishing", desc: "Making guides freely available to readers" },
                 { num: "06", step: "Regular Updates", desc: "Refreshing guides to reflect updated findings" }
               ].concat([
-                { num: "01", step: "Research", desc: "Reviewing peer-reviewed literature and public databases" },
+                { num: "01", step: "Research", desc: "Reviewing medically-reviewed literature and public databases" },
                 { num: "02", step: "Writing", desc: "Explaining health concepts in clear language" },
                 { num: "03", step: "Editorial Review", desc: "Checking clarity, tone, and educational quality" },
                 { num: "04", step: "Fact Checking", desc: "Cross-referencing claims against medical literature" },

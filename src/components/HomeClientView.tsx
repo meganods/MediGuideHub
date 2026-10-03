@@ -238,7 +238,7 @@ export default function HomeClientView({
               { title: "Health Guides", desc: "Comprehensive healthcare guides and clinical awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
               { title: "Preventive Care", desc: "Methods to sustain wellness before illness", icon: <Shield className="h-5 w-5 text-[#C9A15A]" />, href: "/category/preventive-care" },
               { title: "Mental Health", desc: "Psychological and emotional wellness guides", icon: <Heart className="h-5 w-5 text-[#C9A15A]" />, href: "/category/mental-health" },
-              { title: "Nutrition Science", desc: "Dietary guidelines, micronutrients, and meal planning", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/fitness" },
+              { title: "Diabetes & Metabolism", desc: "Blood glucose control, insulin resistance and metabolic diet", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/diabetes" },
               { title: "Heart Health", desc: "Cardiovascular wellness and risk prevention", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" />, href: "/category/heart-health" },
               { title: "Women's Health", desc: "Dedicated resources for female health needs", icon: <Users className="h-5 w-5 text-[#C9A15A]" />, href: "/category/women-s-health" },
               { title: "Children's Health", desc: "Pediatric wellness and developmental guides", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" />, href: "/category/children-s-health" },

@@ -458,38 +458,6 @@
     "referenceCount": 3
   },
   {
-    "id": "med_art_otitis_119",
-    "title": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
-    "slug": "childhood-ear-infections-otitis-media-antibiotics-tubes",
-    "category": "Children's Health",
-    "wordCount": 1318,
-    "aiScore": 15,
-    "humanScore": 85,
-    "buzzwordCount": 1,
-    "buzzwordDensity": 0.76,
-    "topBuzzwords": [
-      {
-        "phrase": "cornerstone of",
-        "count": 1
-      }
-    ],
-    "clinicalCount": 19,
-    "clinicalDensity": 14.42,
-    "topClinical": [
-      {
-        "term": "otitis media",
-        "count": 13
-      },
-      {
-        "term": "tympanic",
-        "count": 6
-      }
-    ],
-    "sentenceAvg": 20.3,
-    "sentenceStdDev": 9.7,
-    "referenceCount": 3
-  },
-  {
     "id": "post-high-cholesterol",
     "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
     "slug": "high-cholesterol-lipid-panel-diet-statin-guide",
@@ -581,46 +549,6 @@
     ],
     "sentenceAvg": 20.9,
     "sentenceStdDev": 11.1,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-diabetic-neuropathy",
-    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
-    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
-    "category": "Diabetes",
-    "wordCount": 1326,
-    "aiScore": 12,
-    "humanScore": 88,
-    "buzzwordCount": 1,
-    "buzzwordDensity": 0.75,
-    "topBuzzwords": [
-      {
-        "phrase": "furthermore",
-        "count": 1
-      }
-    ],
-    "clinicalCount": 7,
-    "clinicalDensity": 5.28,
-    "topClinical": [
-      {
-        "term": "hba1c",
-        "count": 2
-      },
-      {
-        "term": "pathophysiology",
-        "count": 2
-      },
-      {
-        "term": "endothelial",
-        "count": 2
-      },
-      {
-        "term": "allodynia",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 21.3,
-    "sentenceStdDev": 14.7,
     "referenceCount": 3
   },
   {
@@ -1148,6 +1076,33 @@
     ],
     "sentenceAvg": 19.1,
     "sentenceStdDev": 10.9,
+    "referenceCount": 3
+  },
+  {
+    "id": "med_art_otitis_119",
+    "title": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
+    "slug": "childhood-ear-infections-otitis-media-antibiotics-tubes",
+    "category": "Children's Health",
+    "wordCount": 1318,
+    "aiScore": 6,
+    "humanScore": 94,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 19,
+    "clinicalDensity": 14.42,
+    "topClinical": [
+      {
+        "term": "otitis media",
+        "count": 13
+      },
+      {
+        "term": "tympanic",
+        "count": 6
+      }
+    ],
+    "sentenceAvg": 20.3,
+    "sentenceStdDev": 9.7,
     "referenceCount": 3
   },
   {
@@ -1881,6 +1836,41 @@
     "referenceCount": 3
   },
   {
+    "id": "post-diabetic-neuropathy",
+    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "category": "Diabetes",
+    "wordCount": 1326,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 7,
+    "clinicalDensity": 5.28,
+    "topClinical": [
+      {
+        "term": "hba1c",
+        "count": 2
+      },
+      {
+        "term": "pathophysiology",
+        "count": 2
+      },
+      {
+        "term": "endothelial",
+        "count": 2
+      },
+      {
+        "term": "allodynia",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 21.3,
+    "sentenceStdDev": 14.7,
+    "referenceCount": 3
+  },
+  {
     "id": "post-hypoglycemia-emergency",
     "title": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
     "slug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
@@ -2348,14 +2338,9 @@
     "wordCount": 1557,
     "aiScore": 5,
     "humanScore": 95,
-    "buzzwordCount": 1,
-    "buzzwordDensity": 0.64,
-    "topBuzzwords": [
-      {
-        "phrase": "cornerstone of",
-        "count": 1
-      }
-    ],
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
     "clinicalCount": 28,
     "clinicalDensity": 17.98,
     "topClinical": [

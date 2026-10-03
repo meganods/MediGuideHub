@@ -143,7 +143,7 @@ export function SymptomsChecklist({ id, heading, content, items, multiColumn }: 
 }
 
 // --- COMPARISON TABLE COMPONENT ---
-export function ComparisonTable({ id, heading, columns, rows }: { id?: string; heading?: string; columns?: string[]; rows?: string[][] }) {
+export function ComparisonTable({ id, heading, columns, rows }: { id?: string; heading?: string; columns?: string[]; rows?: (string[] | { cells?: string[]; row?: string[] })[] }) {
   return (
     <div id={id} className="space-y-3 overflow-hidden scroll-mt-24">
       {heading && <h3 className="text-base font-bold text-[#113F48]">{heading}</h3>}
@@ -157,13 +157,18 @@ export function ComparisonTable({ id, heading, columns, rows }: { id?: string; h
             </tr>
           </thead>
           <tbody>
-            {rows?.map((row, rIdx) => (
-              <tr key={rIdx} className="hover:bg-stone-50/50">
-                {row.map((cell, cIdx) => (
-                  <td key={cIdx} className="p-3 border-b border-stone-150 text-xs text-stone-700">{cell}</td>
-                ))}
-              </tr>
-            ))}
+            {rows?.map((rowItem, rIdx) => {
+              const cells: string[] = Array.isArray(rowItem) 
+                ? rowItem 
+                : (rowItem?.cells || rowItem?.row || []);
+              return (
+                <tr key={rIdx} className="hover:bg-stone-50/50">
+                  {cells.map((cell, cIdx) => (
+                    <td key={cIdx} className="p-3 border-b border-stone-150 text-xs text-stone-700">{cell}</td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

@@ -1,9 +1,9 @@
 [
   {
     "id": "3CHKf7kSf3hr3TKWBdYj",
-    "title": "Vitamin D Deficiency: Symptoms, Causes, Risk Factors, and How to Maintain Healthy Levels",
+    "title": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
     "slug": "vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels",
-    "category": "Fitness",
+    "category": "Lifestyle Diseases",
     "wordCount": 76,
     "aiScore": 60,
     "buzzwordCount": 0,
@@ -16,26 +16,10 @@
     "bulletCount": 0
   },
   {
-    "id": "zf3c3UI6BSv6ZwsmweWC",
-    "title": "Fatty Liver Disease: Symptoms, Causes, Diagnosis, and Lifestyle Management",
-    "slug": "fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management",
-    "category": "Senior Healthcare",
-    "wordCount": 133,
-    "aiScore": 60,
-    "buzzwordCount": 0,
-    "buzzwordDensityPer1k": "0.0",
-    "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensityPer1k": "0.0",
-    "topClinical": [],
-    "stdDev": "4.7",
-    "bulletCount": 0
-  },
-  {
     "id": "6ICFP9fPsoFVg1DlCf9D",
-    "title": "Vitamin B12 Deficiency: Symptoms, Causes, and Treatment",
+    "title": "Vitamin B12 Deficiency: Symptoms, Causes, Foods, Blood Tests, and Treatment Guide",
     "slug": "vitamin-b12-deficiency-symptoms-causes-and-treatment",
-    "category": "Fitness",
+    "category": "Lifestyle Diseases",
     "wordCount": 114,
     "aiScore": 50,
     "buzzwordCount": 0,
@@ -48,11 +32,11 @@
     "bulletCount": 0
   },
   {
-    "id": "d9NZloB6wv0AVj1ZF6w3",
-    "title": "Iron Deficiency Anemia: Symptoms, Causes, and Treatment",
-    "slug": "iron-deficiency-anemia-symptoms-causes-and-treatment",
-    "category": "Lifestyle Diseases",
-    "wordCount": 157,
+    "id": "med_art_burnout_113",
+    "title": "Burnout vs. Clinical Depression: Biological Differences, Allostatic Load, and Recovery",
+    "slug": "burnout-vs-depression-differences-recovery-plan",
+    "category": "Mental Health",
+    "wordCount": 445,
     "aiScore": 50,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
@@ -60,15 +44,95 @@
     "clinicalCount": 0,
     "clinicalDensityPer1k": "0.0",
     "topClinical": [],
-    "stdDev": "8.0",
-    "bulletCount": 0
+    "stdDev": "9.9",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_ckd_129",
+    "title": "Chronic Kidney Disease (CKD): Stages, eGFR Decline, Potassium, and Renal Nutrition",
+    "slug": "chronic-kidney-disease-ckd-stages-egfr-diet",
+    "category": "Lifestyle Diseases",
+    "wordCount": 506,
+    "aiScore": 50,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "8.7",
+    "bulletCount": 12
+  },
+  {
+    "id": "med_art_fasting_128",
+    "title": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
+    "slug": "intermittent-fasting-autophagy-insulin-sensitivity",
+    "category": "Wellness",
+    "wordCount": 486,
+    "aiScore": 50,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "8.5",
+    "bulletCount": 11
+  },
+  {
+    "id": "med_art_osa_126",
+    "title": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
+    "slug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
+    "category": "Wellness",
+    "wordCount": 513,
+    "aiScore": 50,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "9.3",
+    "bulletCount": 17
+  },
+  {
+    "id": "med_art_polypharmacy_112",
+    "title": "Polypharmacy in Older Adults: Drug Interactions, the Beers Criteria, and Deprescribing",
+    "slug": "polypharmacy-in-seniors-deprescribing-beers-criteria",
+    "category": "Senior Healthcare",
+    "wordCount": 485,
+    "aiScore": 50,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "9.8",
+    "bulletCount": 12
+  },
+  {
+    "id": "med_art_retinopathy_105",
+    "title": "Diabetic Retinopathy: Stages, Dilated Eye Exams, Microaneurysms, and Vision Protection",
+    "slug": "diabetic-retinopathy-stages-eye-exam-prevention",
+    "category": "Diabetes",
+    "wordCount": 521,
+    "aiScore": 50,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "6.8",
+    "bulletCount": 12
   },
   {
     "id": "2SudQNJlZsDTwQ5IzbZV",
-    "title": "The Truth About Superfoods and Micronutrients: Fueling Your Immune System",
+    "title": "The Truth About Superfoods and Micronutrients: Nutritional Biochemistry vs. Marketing Myths",
     "slug": "truth-about-superfoods-micronutrients",
-    "category": "Nutrition",
-    "wordCount": 913,
+    "category": "Wellness",
+    "wordCount": 436,
     "aiScore": 40,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
@@ -76,15 +140,15 @@
     "clinicalCount": 0,
     "clinicalDensityPer1k": "0.0",
     "topClinical": [],
-    "stdDev": "15.6",
+    "stdDev": "11.7",
     "bulletCount": 0
   },
   {
-    "id": "YOO8U0F8SphTpGMX8a13",
-    "title": "Active Aging: Complete Wellness and Mobility Guide for Seniors",
-    "slug": "active-aging-seniors-guide",
-    "category": "Senior Health",
-    "wordCount": 1013,
+    "id": "med_art_allergy_121",
+    "title": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
+    "slug": "childhood-food-allergies-ige-testing-epipen-plan",
+    "category": "Children's Health",
+    "wordCount": 517,
     "aiScore": 40,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
@@ -92,15 +156,15 @@
     "clinicalCount": 0,
     "clinicalDensityPer1k": "0.0",
     "topClinical": [],
-    "stdDev": "21.2",
-    "bulletCount": 0
+    "stdDev": "12.3",
+    "bulletCount": 12
   },
   {
-    "id": "jruS0HSNNuypyP4LD0vc",
-    "title": "Designing Your Weekly Workout Routine: A Clinical Approach to Fitness",
-    "slug": "designing-weekly-workout-routine",
-    "category": "Fitness & Wellness",
-    "wordCount": 932,
+    "id": "med_art_bph_111",
+    "title": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
+    "slug": "bph-enlarged-prostate-symptoms-medications-psa",
+    "category": "Senior Healthcare",
+    "wordCount": 476,
     "aiScore": 40,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
@@ -108,15 +172,228 @@
     "clinicalCount": 0,
     "clinicalDensityPer1k": "0.0",
     "topClinical": [],
-    "stdDev": "19.3",
-    "bulletCount": 0
+    "stdDev": "10.2",
+    "bulletCount": 11
+  },
+  {
+    "id": "med_art_d3k2_118",
+    "title": "Vitamin D3 and K2 Synergy: Calcium Absorption, Osteocalcin, and Arterial Calcification",
+    "slug": "vitamin-d3-k2-synergy-calcium-artery-health",
+    "category": "Preventive Care",
+    "wordCount": 515,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "11.6",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_dehydration_120",
+    "title": "Pediatric Dehydration: Signs of Fluid Loss in Infants, Oral Rehydration (ORS), and Red Flags",
+    "slug": "pediatric-dehydration-infants-ors-warning-signs",
+    "category": "Children's Health",
+    "wordCount": 476,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "17.1",
+    "bulletCount": 7
+  },
+  {
+    "id": "med_art_ibs_130",
+    "title": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
+    "slug": "ibs-low-fodmap-diet-symptoms-management",
+    "category": "Lifestyle Diseases",
+    "wordCount": 545,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "19.2",
+    "bulletCount": 11
+  },
+  {
+    "id": "med_art_meningococcal_122",
+    "title": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
+    "slug": "meningococcal-vaccine-menacwy-menb-teens-college",
+    "category": "Vaccination",
+    "wordCount": 464,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "12.4",
+    "bulletCount": 8
+  },
+  {
+    "id": "med_art_migraine_115",
+    "title": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
+    "slug": "migraine-vs-tension-headache-aura-cgrp-treatment",
+    "category": "Mental Health",
+    "wordCount": 468,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "14.0",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_nephropathy_106",
+    "title": "Diabetic Kidney Disease (Nephropathy): eGFR, Urine Albumin (uACR), and Renal Protection",
+    "slug": "diabetic-kidney-disease-uacr-egfr-management",
+    "category": "Diabetes",
+    "wordCount": 456,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "10.6",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_otitis_119",
+    "title": "Childhood Ear Infections (Otitis Media): Fluid vs. Infection, Antibiotics, and Ear Tubes",
+    "slug": "childhood-ear-infections-otitis-media-antibiotics-tubes",
+    "category": "Children's Health",
+    "wordCount": 497,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "10.1",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_pad_102",
+    "title": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
+    "slug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
+    "category": "Heart Health",
+    "wordCount": 546,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "11.0",
+    "bulletCount": 14
+  },
+  {
+    "id": "med_art_pelvic_109",
+    "title": "Pelvic Floor Dysfunction: Stress Incontinence, Prolapse, and Specialized Physical Therapy",
+    "slug": "pelvic-floor-dysfunction-prolapse-incontinence-therapy",
+    "category": "Women's Health",
+    "wordCount": 483,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "15.1",
+    "bulletCount": 14
+  },
+  {
+    "id": "med_art_sarcopenia_110",
+    "title": "Sarcopenia in Older Adults: Muscle Loss, Protein Distribution, and Resistance Training",
+    "slug": "sarcopenia-muscle-loss-seniors-protein-exercise",
+    "category": "Senior Healthcare",
+    "wordCount": 493,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.0",
+    "topClinical": [
+      {
+        "marker": "ng/ml",
+        "count": 1
+      }
+    ],
+    "stdDev": "9.5",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_socanx_114",
+    "title": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
+    "slug": "social-anxiety-disorder-symptoms-cbt-exposure",
+    "category": "Mental Health",
+    "wordCount": 511,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "12.2",
+    "bulletCount": 12
+  },
+  {
+    "id": "med_art_tdap_123",
+    "title": "Tdap Booster Vaccine: Tetanus, Diphtheria, Pertussis Timing, Pregnancy, and Wound Care",
+    "slug": "tdap-booster-vaccine-tetanus-pertussis-schedule",
+    "category": "Vaccination",
+    "wordCount": 453,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "14.5",
+    "bulletCount": 9
+  },
+  {
+    "id": "med_art_zone2_124",
+    "title": "Zone 2 Cardio Training: Mitochondrial Density, Fat Oxidation, and Metabolic Health",
+    "slug": "zone-2-cardio-mitochondrial-health-fat-burning",
+    "category": "Fitness",
+    "wordCount": 426,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "12.0",
+    "bulletCount": 11
   },
   {
     "id": "pgv7ziJ9cpaFE3I8MQvD",
-    "title": "The Science of Stress Management: Clinical Techniques for Daily Life",
+    "title": "The Science of Stress Management: Neurobiology, Cortisol Regulation, and Clinical Techniques",
     "slug": "science-of-stress-management",
     "category": "Mental Health",
-    "wordCount": 1051,
+    "wordCount": 508,
     "aiScore": 40,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
@@ -124,44 +401,1111 @@
     "clinicalCount": 0,
     "clinicalDensityPer1k": "0.0",
     "topClinical": [],
-    "stdDev": "18.5",
+    "stdDev": "39.9",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-adult-adhd",
+    "title": "Adult ADHD: Diagnostic Symptoms, Executive Dysfunction, and Daily Coping Strategies",
+    "slug": "adult-adhd-signs-executive-dysfunction-management",
+    "category": "Mental Health",
+    "wordCount": 482,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "21.6",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-atrial-fibrillation",
+    "title": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "slug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "category": "Heart Health",
+    "wordCount": 422,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "49.5",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-child-nutrition-01",
+    "title": "Pediatric Nutrition and Growth: Evidence-Based Dietary Guidelines for Children",
+    "slug": "childhood-nutrition-developmental-milestones",
+    "category": "Children's Health",
+    "wordCount": 473,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "26.1",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-childhood-rashes",
+    "title": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
+    "slug": "childhood-rashes-eczema-hand-foot-mouth-identification",
+    "category": "Children's Health",
+    "wordCount": 472,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "26.4",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-circadian-rhythms-sleep",
+    "title": "Circadian Rhythms and Sleep Architecture: Optimizing REM and Deep Sleep Cycles",
+    "slug": "circadian-rhythm-sleep-architecture-rem-deep-sleep-guide",
+    "category": "Wellness",
+    "wordCount": 555,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "21.8",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-early-dementia-alzheimers",
+    "title": "Early Signs of Dementia and Alzheimer's vs. Normal Age-Related Memory Changes",
+    "slug": "early-signs-dementia-alzheimers-vs-normal-aging",
+    "category": "Senior Healthcare",
+    "wordCount": 472,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "42.0",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-gut-microbiome-axis",
+    "title": "The Gut Microbiome: Probiotics, Prebiotics, and the Gut-Brain Signaling Axis",
+    "slug": "gut-microbiome-probiotics-prebiotics-gut-brain-axis",
+    "category": "Wellness",
+    "wordCount": 548,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "22.6",
+    "bulletCount": 3
+  },
+  {
+    "id": "post-hpv-vaccine",
+    "title": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
+    "slug": "hpv-vaccine-cancer-prevention-age-safety-guide",
+    "category": "Vaccination",
+    "wordCount": 491,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "22.6",
+    "bulletCount": 2
+  },
+  {
+    "id": "post-mental-sleep-01",
+    "title": "Anxiety, Stress, and Sleep Architecture: Clinical Mechanisms & Evidence-Based Interventions",
+    "slug": "anxiety-and-sleep-hygiene-evidence-based-strategies",
+    "category": "Mental Health",
+    "wordCount": 520,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "13.7",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-panic-vs-anxiety-attacks",
+    "title": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
+    "slug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
+    "category": "Mental Health",
+    "wordCount": 535,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "18.7",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-pediatric-fever",
+    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "category": "Children's Health",
+    "wordCount": 493,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "18.0",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-perimenopause-menopause-guide",
+    "title": "Perimenopause and Menopause: Vasomotor Symptoms, Mood Changes, and HRT Evidence",
+    "slug": "perimenopause-menopause-symptoms-hrt-management",
+    "category": "Women's Health",
+    "wordCount": 500,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "70.3",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-pneumococcal-vaccine",
+    "title": "Pneumococcal Vaccines for Older Adults: Understanding PCV15, PCV20, and PPSV23",
+    "slug": "pneumococcal-vaccine-pcv20-ppsv23-pneumonia-guide",
+    "category": "Vaccination",
+    "wordCount": 469,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "22.9",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-shingles-vaccine",
+    "title": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
+    "slug": "shingles-vaccine-shingrix-side-effects-eligibility",
+    "category": "Vaccination",
+    "wordCount": 487,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "13.9",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-skin-cancer-abcde",
+    "title": "Skin Cancer Screenings: The ABCDE Rule for Melanoma and Suspicious Mole Checks",
+    "slug": "skin-cancer-screening-abcde-melanoma-mole-check",
+    "category": "Preventive Care",
+    "wordCount": 535,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "18.1",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-vaccine-adult-01",
+    "title": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
+    "slug": "adult-vaccination-schedule-preventive-guide",
+    "category": "Vaccination",
+    "wordCount": 405,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "19.6",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-vo2-max-heart-rate-zones",
+    "title": "VO2 Max and Heart Rate Zones: How Aerobic Capacity Predicts Long-Term Health",
+    "slug": "vo2-max-heart-rate-zones-cardio-longevity",
+    "category": "Fitness",
+    "wordCount": 511,
+    "aiScore": 40,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 0,
+    "clinicalDensityPer1k": "0.0",
+    "topClinical": [],
+    "stdDev": "16.5",
+    "bulletCount": 2
+  },
+  {
+    "id": "YOO8U0F8SphTpGMX8a13",
+    "title": "Active Aging: Complete Mobility, Sarcopenia Prevention, and Bone Health Guide for Seniors",
+    "slug": "active-aging-seniors-guide",
+    "category": "Senior Healthcare",
+    "wordCount": 536,
+    "aiScore": 31,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "1.9",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "19.2",
+    "bulletCount": 0
+  },
+  {
+    "id": "med_art_doms_125",
+    "title": "Delayed Onset Muscle Soreness (DOMS): Microtrauma, Cold Plunges, and Recovery Science",
+    "slug": "doms-muscle-soreness-exercise-recovery-science",
+    "category": "Fitness",
+    "wordCount": 496,
+    "aiScore": 30,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.0",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "12.8",
+    "bulletCount": 7
+  },
+  {
+    "id": "post-cardio-vs-strength-training",
+    "title": "Cardio vs Strength Training: Optimizing Muscle Mass, Fat Loss, and Metabolic Health",
+    "slug": "cardio-vs-strength-training-muscle-fat-loss-longevity",
+    "category": "Fitness",
+    "wordCount": 512,
+    "aiScore": 30,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.0",
+    "topClinical": [
+      {
+        "marker": "mmhg",
+        "count": 1
+      }
+    ],
+    "stdDev": "15.0",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-clinical-depression",
+    "title": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
+    "slug": "clinical-depression-symptoms-causes-therapy-treatment",
+    "category": "Mental Health",
+    "wordCount": 487,
+    "aiScore": 30,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.1",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "63.5",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-osteoarthritis-management",
+    "title": "Osteoarthritis: Joint Cartilage Wear, Mobility Preservation, and Pain Management",
+    "slug": "osteoarthritis-joint-pain-cartilage-care-treatment",
+    "category": "Senior Healthcare",
+    "wordCount": 486,
+    "aiScore": 30,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.1",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "24.3",
     "bulletCount": 0
   },
   {
     "id": "womens-health-checks-preventive-care",
-    "title": "Women's Health: The Health Checks You Shouldn't Keep Putting Off",
+    "title": "Women's Health: Essential Preventive Screenings, Age Guidelines, and Clinical Checklists",
     "slug": "womens-health-checks-preventive-care",
     "category": "Women's Health",
-    "wordCount": 656,
-    "aiScore": 40,
+    "wordCount": 524,
+    "aiScore": 30,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
     "topBuzzwords": [],
-    "clinicalCount": 0,
-    "clinicalDensityPer1k": "0.0",
-    "topClinical": [],
-    "stdDev": "12.9",
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "1.9",
+    "topClinical": [
+      {
+        "marker": "uspstf",
+        "count": 1
+      }
+    ],
+    "stdDev": "42.8",
     "bulletCount": 0
   },
   {
-    "id": "nVO3DHRhIlMtLOmJAHyM",
-    "title": "Managing Blood Pressure Naturally: Evidence-Based Lifestyle Strategies",
-    "slug": "managing-blood-pressure-naturally",
+    "id": "med_art_palp_103",
+    "title": "Heart Palpitations: Premature Beats (PVCs, PACs), Common Triggers, and Red-Flag Signs",
+    "slug": "heart-palpitations-pvcs-pacs-causes-when-to-worry",
     "category": "Heart Health",
-    "wordCount": 924,
+    "wordCount": 445,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.2",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 1
+      }
+    ],
+    "stdDev": "12.8",
+    "bulletCount": 9
+  },
+  {
+    "id": "post-childhood-asthma",
+    "title": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
+    "slug": "childhood-asthma-triggers-inhaler-guide-action-plan",
+    "category": "Children's Health",
+    "wordCount": 451,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.2",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "14.4",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-diabetic-neuropathy",
+    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "category": "Diabetes",
+    "wordCount": 444,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.3",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "19.4",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-endometriosis-guide",
+    "title": "Endometriosis: Chronic Pelvic Pain, Laparoscopy Diagnosis, and Medical Therapies",
+    "slug": "endometriosis-symptoms-diagnosis-pelvic-pain-treatment",
+    "category": "Women's Health",
+    "wordCount": 475,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.1",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "61.2",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-gerd-acid-reflux",
+    "title": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
+    "slug": "gerd-acid-reflux-symptoms-causes-lifestyle-treatment",
+    "category": "Lifestyle Diseases",
+    "wordCount": 453,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.2",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "22.9",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-pcos-hormone-balance",
+    "title": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
+    "slug": "pcos-symptoms-hormone-balance-treatment-guide",
+    "category": "Women's Health",
+    "wordCount": 447,
+    "aiScore": 29,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.2",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "58.3",
+    "bulletCount": 0
+  },
+  {
+    "id": "jruS0HSNNuypyP4LD0vc",
+    "title": "Designing a Weekly Workout Routine: Evidence-Based Hypertrophy, Cardio, and Longevity Programming",
+    "slug": "designing-weekly-workout-routine",
+    "category": "Fitness",
+    "wordCount": 429,
+    "aiScore": 28,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.3",
+    "topClinical": [
+      {
+        "marker": "mmhg",
+        "count": 1
+      }
+    ],
+    "stdDev": "28.3",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-coronary-artery-disease",
+    "title": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
+    "slug": "coronary-artery-disease-symptoms-causes-treatment",
+    "category": "Heart Health",
+    "wordCount": 397,
+    "aiScore": 27,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 1,
+    "clinicalDensityPer1k": "2.5",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "25.5",
+    "bulletCount": 0
+  },
+  {
+    "id": "med_art_cac_117",
+    "title": "Coronary Calcium Scan (CAC): Agatston Score Meaning, Plaque Detection, and Statin Decisions",
+    "slug": "coronary-calcium-scan-cac-score-interpretation",
+    "category": "Preventive Care",
+    "wordCount": 521,
+    "aiScore": 21,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "3.8",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 2
+      }
+    ],
+    "stdDev": "10.4",
+    "bulletCount": 10
+  },
+  {
+    "id": "post-osteoporosis-bone-density",
+    "title": "Osteoporosis and Bone Mineral Density: DEXA Scans, Calcium, and Fall Prevention",
+    "slug": "osteoporosis-bone-density-dexa-scan-prevention",
+    "category": "Senior Healthcare",
+    "wordCount": 530,
+    "aiScore": 21,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "3.8",
+    "topClinical": [
+      {
+        "marker": "ng/ml",
+        "count": 1
+      },
+      {
+        "marker": "uspstf",
+        "count": 1
+      }
+    ],
+    "stdDev": "20.8",
+    "bulletCount": 4
+  },
+  {
+    "id": "med_art_inflammation_127",
+    "title": "Chronic Systemic Inflammation: Root Causes, Cytokine Biomarkers, and Anti-Inflammatory Protocols",
+    "slug": "chronic-systemic-inflammation-causes-diet-lifestyle",
+    "category": "Wellness",
+    "wordCount": 496,
+    "aiScore": 20,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "4.0",
+    "topClinical": [
+      {
+        "marker": "ng/ml",
+        "count": 2
+      }
+    ],
+    "stdDev": "13.1",
+    "bulletCount": 12
+  },
+  {
+    "id": "post-gout-hyperuricemia",
+    "title": "Gout and Hyperuricemia: Uric Acid Causes, Flare-Up Relief, and Low-Purine Diet",
+    "slug": "gout-hyperuricemia-causes-uric-acid-diet-treatment",
+    "category": "Lifestyle Diseases",
+    "wordCount": 507,
+    "aiScore": 20,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "3.9",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 2
+      }
+    ],
+    "stdDev": "17.5",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-colon-cancer-screening",
+    "title": "Colorectal Cancer Screening: Colonoscopy, Cologuard, and Stool DNA Test Guidelines",
+    "slug": "colon-cancer-screening-colonoscopy-cologuard-guide",
+    "category": "Preventive Care",
+    "wordCount": 454,
     "aiScore": 18,
     "buzzwordCount": 0,
     "buzzwordDensityPer1k": "0.0",
     "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "4.4",
+    "topClinical": [
+      {
+        "marker": "uspstf",
+        "count": 2
+      }
+    ],
+    "stdDev": "14.9",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-metabolic-syndrome",
+    "title": "Metabolic Syndrome: Clinical Diagnostic Criteria, Heart Risks, and Lifestyle Reversal",
+    "slug": "metabolic-syndrome-criteria-risks-reversal-plan",
+    "category": "Lifestyle Diseases",
+    "wordCount": 456,
+    "aiScore": 18,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "4.4",
+    "topClinical": [
+      {
+        "marker": "pathophysiology",
+        "count": 2
+      }
+    ],
+    "stdDev": "20.7",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-screenings-by-age",
+    "title": "Essential Preventive Health Screenings by Age: The Clinical Evidence-Based Checklist",
+    "slug": "essential-preventive-health-screenings-by-age",
+    "category": "Preventive Care",
+    "wordCount": 361,
+    "aiScore": 12,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 2,
+    "clinicalDensityPer1k": "5.5",
+    "topClinical": [
+      {
+        "marker": "uspstf",
+        "count": 2
+      }
+    ],
+    "stdDev": "18.4",
+    "bulletCount": 0
+  },
+  {
+    "id": "med_art_hfpef_101",
+    "title": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
+    "slug": "heart-failure-hfpef-symptoms-diagnosis-management",
+    "category": "Heart Health",
+    "wordCount": 629,
+    "aiScore": 10,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 5,
+    "clinicalDensityPer1k": "7.9",
+    "topClinical": [
+      {
+        "marker": "pg/ml",
+        "count": 2
+      },
+      {
+        "marker": "mmhg",
+        "count": 1
+      },
+      {
+        "marker": "pathophysiology",
+        "count": 2
+      }
+    ],
+    "stdDev": "8.7",
+    "bulletCount": 13
+  },
+  {
+    "id": "post-routine-blood-tests-explained",
+    "title": "Routine Blood Tests Explained: Understanding CBC, CMP, Lipid, and Liver Panels",
+    "slug": "routine-blood-test-results-explained-cbc-cmp-kidney-liver",
+    "category": "Preventive Care",
+    "wordCount": 501,
+    "aiScore": 10,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 3,
+    "clinicalDensityPer1k": "6.0",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 1
+      },
+      {
+        "marker": "microcytic",
+        "count": 1
+      },
+      {
+        "marker": "macrocytic",
+        "count": 1
+      }
+    ],
+    "stdDev": "19.4",
+    "bulletCount": 5
+  },
+  {
+    "id": "med_art_hscrp_116",
+    "title": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
+    "slug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
+    "category": "Preventive Care",
+    "wordCount": 475,
+    "aiScore": 8,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 3,
+    "clinicalDensityPer1k": "6.3",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 1
+      },
+      {
+        "marker": "clinical trial",
+        "count": 1
+      },
+      {
+        "marker": "randomized controlled",
+        "count": 1
+      }
+    ],
+    "stdDev": "10.9",
+    "bulletCount": 10
+  },
+  {
+    "id": "post-hypoglycemia-emergency",
+    "title": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
+    "slug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
+    "category": "Diabetes",
+    "wordCount": 436,
+    "aiScore": 6,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 3,
+    "clinicalDensityPer1k": "6.9",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 3
+      }
+    ],
+    "stdDev": "20.7",
+    "bulletCount": 0
+  },
+  {
+    "id": "d9NZloB6wv0AVj1ZF6w3",
+    "title": "Iron Deficiency Anemia: Symptoms, Ferritin Testing, Causes, and Clinical Management",
+    "slug": "iron-deficiency-anemia-symptoms-causes-and-treatment",
+    "category": "Lifestyle Diseases",
+    "wordCount": 679,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 7,
+    "clinicalDensityPer1k": "10.3",
+    "topClinical": [
+      {
+        "marker": "differential diagnosis",
+        "count": 1
+      },
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      },
+      {
+        "marker": "serum ferritin",
+        "count": 2
+      },
+      {
+        "marker": "transferrin saturation",
+        "count": 1
+      },
+      {
+        "marker": "microcytic",
+        "count": 2
+      }
+    ],
+    "stdDev": "34.3",
+    "bulletCount": 0
+  },
+  {
+    "id": "med_art_cgm_104",
+    "title": "Continuous Glucose Monitors (CGM): Time in Range (TIR), Interstitial Lag, and Glucose Spikes",
+    "slug": "continuous-glucose-monitors-cgm-time-in-range-guide",
+    "category": "Diabetes",
+    "wordCount": 493,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 8,
+    "clinicalDensityPer1k": "16.2",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 5
+      },
+      {
+        "marker": "hba1c",
+        "count": 3
+      }
+    ],
+    "stdDev": "11.6",
+    "bulletCount": 10
+  },
+  {
+    "id": "med_art_hashimoto_107",
+    "title": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
+    "slug": "hypothyroidism-hashimotos-tsh-levels-treatment",
+    "category": "Women's Health",
+    "wordCount": 520,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
     "clinicalCount": 4,
-    "clinicalDensityPer1k": "4.3",
+    "clinicalDensityPer1k": "7.7",
+    "topClinical": [
+      {
+        "marker": "ng/ml",
+        "count": 1
+      },
+      {
+        "marker": "pg/ml",
+        "count": 1
+      },
+      {
+        "marker": "bioavailability",
+        "count": 1
+      },
+      {
+        "marker": "etiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "13.6",
+    "bulletCount": 12
+  },
+  {
+    "id": "med_art_irondef_108",
+    "title": "Iron Deficiency Without Anemia (IDWA): Serum Ferritin, Fatigue, and Replenishment Protocols",
+    "slug": "iron-deficiency-without-anemia-ferritin-fatigue",
+    "category": "Women's Health",
+    "wordCount": 545,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 11,
+    "clinicalDensityPer1k": "20.2",
+    "topClinical": [
+      {
+        "marker": "ng/ml",
+        "count": 5
+      },
+      {
+        "marker": "bioavailability",
+        "count": 1
+      },
+      {
+        "marker": "serum ferritin",
+        "count": 3
+      },
+      {
+        "marker": "transferrin saturation",
+        "count": 2
+      }
+    ],
+    "stdDev": "10.0",
+    "bulletCount": 11
+  },
+  {
+    "id": "nVO3DHRhIlMtLOmJAHyM",
+    "title": "Managing Blood Pressure Naturally: Evidence-Based Clinical Strategies & DASH Protocols",
+    "slug": "managing-blood-pressure-naturally",
+    "category": "Heart Health",
+    "wordCount": 603,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 9,
+    "clinicalDensityPer1k": "14.9",
     "topClinical": [
       {
         "marker": "mmhg",
-        "count": 4
+        "count": 8
+      },
+      {
+        "marker": "bioavailability",
+        "count": 1
       }
     ],
-    "stdDev": "13.9",
+    "stdDev": "20.1",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-high-cholesterol",
+    "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
+    "slug": "high-cholesterol-lipid-panel-diet-statin-guide",
+    "category": "Heart Health",
+    "wordCount": 456,
+    "aiScore": 5,
+    "buzzwordCount": 1,
+    "buzzwordDensityPer1k": "2.2",
+    "topBuzzwords": [
+      {
+        "phrase": "demystifying",
+        "count": 1
+      }
+    ],
+    "clinicalCount": 11,
+    "clinicalDensityPer1k": "24.1",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 11
+      }
+    ],
+    "stdDev": "25.5",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-prediabetes-insulin-resistance",
+    "title": "Pre-Diabetes and Insulin Resistance: How to Lower Blood Glucose Before Type 2 Diabetes",
+    "slug": "prediabetes-insulin-resistance-reversal-guide",
+    "category": "Diabetes",
+    "wordCount": 468,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 8,
+    "clinicalDensityPer1k": "17.1",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 3
+      },
+      {
+        "marker": "hba1c",
+        "count": 4
+      },
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      }
+    ],
+    "stdDev": "11.3",
+    "bulletCount": 0
+  },
+  {
+    "id": "post-type2-diabetes",
+    "title": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
+    "slug": "type-2-diabetes-management-symptoms-diet-and-prevention",
+    "category": "Diabetes",
+    "wordCount": 635,
+    "aiScore": 5,
+    "buzzwordCount": 1,
+    "buzzwordDensityPer1k": "1.6",
+    "topBuzzwords": [
+      {
+        "phrase": "furthermore",
+        "count": 1
+      }
+    ],
+    "clinicalCount": 6,
+    "clinicalDensityPer1k": "9.4",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 1
+      },
+      {
+        "marker": "hba1c",
+        "count": 3
+      },
+      {
+        "marker": "pathophysiology",
+        "count": 2
+      }
+    ],
+    "stdDev": "31.7",
+    "bulletCount": 0
+  },
+  {
+    "id": "zf3c3UI6BSv6ZwsmweWC",
+    "title": "Fatty Liver Disease (MASLD/MASH): Symptoms, Staging, FIB-4 Score, and Reversal Strategies",
+    "slug": "fatty-liver-disease-symptoms-causes-diagnosis-and-lifestyle-management",
+    "category": "Lifestyle Diseases",
+    "wordCount": 680,
+    "aiScore": 5,
+    "buzzwordCount": 0,
+    "buzzwordDensityPer1k": "0.0",
+    "topBuzzwords": [],
+    "clinicalCount": 7,
+    "clinicalDensityPer1k": "10.3",
+    "topClinical": [
+      {
+        "marker": "mg/dl",
+        "count": 1
+      },
+      {
+        "marker": "etiology",
+        "count": 1
+      },
+      {
+        "marker": "pathophysiology",
+        "count": 1
+      },
+      {
+        "marker": "steatohepatitis",
+        "count": 1
+      },
+      {
+        "marker": "fibroscan",
+        "count": 2
+      }
+    ],
+    "stdDev": "33.7",
     "bulletCount": 0
   }
 ]

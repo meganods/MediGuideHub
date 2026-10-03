@@ -1,0 +1,28 @@
+# Exclude dependencies and build output
+node_modules/
+.next/
+out/
+build/
+
+# Exclude Vercel and Git internal folders
+.vercel/
+.git/
+
+# Exclude local environment variables
+.env.local
+.env.development
+.env.development.local
+
+# Exclude scripts and test files
+scripts/
+check_*.js
+test_*.js
+
+# Exclude documentation
+*.md
+
+# Exclude specific firebase secrets
+firebase-service-account.json
+
+# Exclude mac files
+.DS_Store

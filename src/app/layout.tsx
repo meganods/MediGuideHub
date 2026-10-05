@@ -123,7 +123,7 @@ export default function RootLayout({
     "name": "mediguide4u",
     "url": "https://www.mediguide4u.com",
     "logo": "https://www.mediguide4u.com/logo.png",
-    "description": "An independent educational platform providing clear, physician-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
+    "description": "An independent educational platform providing clear, medically-reviewed healthcare and wellness guides covering symptoms, conditions, nutrition, and preventive care.",
     "publishingPrinciples": "https://www.mediguide4u.com/editorial-policy",
     "correctionsPolicy": "https://www.mediguide4u.com/corrections-policy",
     "knowsAbout": [

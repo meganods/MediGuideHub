@@ -733,8 +733,7 @@ function AdminContent() {
         const defaultCats = [
           "Health Articles", "Preventive Care", "Mental Health", "Nutrition", 
           "Heart Health", "Diabetes", "Women's Health", "Children's Health", 
-          "Fitness", "Medical Resources", "Health Insurance", "Prescription Guide", 
-          "Vaccination", "Senior Healthcare", "Emergency Care", "Wellness", "Lifestyle Diseases"
+          "Fitness", "Vaccination", "Senior Healthcare", "Wellness", "Lifestyle Diseases"
         ];
         for (let i = 0; i < defaultCats.length; i++) {
           const name = defaultCats[i];

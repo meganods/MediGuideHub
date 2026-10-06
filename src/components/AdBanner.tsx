@@ -17,8 +17,11 @@ export default function AdBanner({
   const pushedRef = useRef(false);
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-5266755800049907";
 
+  const hasRealSlot = slot && slot !== "0000000000" && slot.trim() !== "";
+
   useEffect(() => {
     if (!clientId) return;
+    if (!hasRealSlot) return; // Don't push if we aren't rendering the <ins> tag
     if (pushedRef.current) return;
 
     try {
@@ -29,7 +32,7 @@ export default function AdBanner({
     } catch (err) {
       console.warn("AdSense adsbygoogle error:", err);
     }
-  }, [clientId]);
+  }, [clientId, hasRealSlot]);
 
   // Dimension & styling presets
   const formatStyles = {
@@ -40,8 +43,6 @@ export default function AdBanner({
   };
 
   // Only render manual ad unit if a real ad slot ID is provided
-  const hasRealSlot = slot && slot !== "0000000000" && slot.trim() !== "";
-
   if (!hasRealSlot) {
     // Return null to avoid rendering empty blank containers that trigger AdSense "Low-value content" violations during site review
     return null;

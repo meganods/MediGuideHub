@@ -5,12 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EDITORIAL_PROFILES, MEDICAL_REVIEWERS } from "@/lib/mockData";
 import { getPublishedBlogPosts } from "@/lib/db";
-import { 
-  Users, 
-  ShieldCheck, 
-  BookOpen, 
-  CheckCircle2, 
-  ArrowRight, 
+import {
+  Users,
+  ShieldCheck,
+  BookOpen,
+  CheckCircle2,
+  ArrowRight,
   FileText,
   Scale,
   Award,
@@ -82,7 +82,7 @@ export default async function AuthorsPage() {
 
       <main className="flex-grow py-12">
         <div className="w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none space-y-12">
-          
+
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="text-xs text-stone-500 flex items-center gap-2 font-medium">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>

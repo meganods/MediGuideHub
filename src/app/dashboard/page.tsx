@@ -787,7 +787,7 @@ function DashboardContent() {
                   {[
                     "Nutrition", "Mental Health", "Heart Health", "Diabetes", 
                     "Women's Health", "Children's Health", "Fitness", 
-                    "Preventive Care", "Medical Resources", "Health Insurance"
+                    "Preventive Care"
                   ].map((interest) => {
                     const isSelected = healthInterests.includes(interest);
                     return (

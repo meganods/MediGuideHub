@@ -1,2 +1,1 @@
-# Google AdSense ads.txt for mediguide4u.com
 google.com, pub-5266755800049907, DIRECT, f08c47fec0942fa0

@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import FAQClientView from "@/components/FAQClientView";
 import { getPublishedFAQs } from "@/lib/db";
 
-export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
-
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | mediguide4u",
   description:

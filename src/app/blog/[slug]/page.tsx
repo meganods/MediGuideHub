@@ -47,7 +47,6 @@ import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
 import PostCommentsSection from "@/components/PostCommentsSection";
 import AdBanner from "@/components/AdBanner";
 
-export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 export const dynamicParams = true; // Allow newly published slugs to be rendered on-demand
 
 interface PageProps {
@@ -159,15 +158,20 @@ export default async function BlogPostPage({ params }: PageProps) {
   );
   const categorySlug = categoryMatch ? categoryMatch.slug : post.category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-  // Related posts from the same category or general fallback
+  // Related posts from the same category or general fallback (slimmed payload)
   const sameCategoryPosts = allPosts.filter(p => p.category === post.category && p.slug !== post.slug);
   const otherPosts = allPosts.filter(p => p.category !== post.category && p.slug !== post.slug);
-  const relatedPosts = [...sameCategoryPosts, ...otherPosts].slice(0, 3);
+  const relatedPosts = [...sameCategoryPosts, ...otherPosts].slice(0, 3).map(r => ({
+    slug: r.slug,
+    title: r.title,
+    featuredImage: r.featuredImage,
+    category: r.category
+  }));
 
-  // Previous & Next posts for contextual navigation
+  // Previous & Next posts for contextual navigation (slimmed payload)
   const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
-  const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex >= 0 && currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  const prevPost = currentIndex > 0 ? { slug: allPosts[currentIndex - 1].slug, title: allPosts[currentIndex - 1].title } : null;
+  const nextPost = currentIndex >= 0 && currentIndex < allPosts.length - 1 ? { slug: allPosts[currentIndex + 1].slug, title: allPosts[currentIndex + 1].title } : null;
 
   // Dynamic headings list for TOC
   const headings = post.contentBlocks && post.contentBlocks.length > 0

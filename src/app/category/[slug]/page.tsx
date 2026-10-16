@@ -19,7 +19,6 @@ import {
   FileText 
 } from "lucide-react";
 
-export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
 export const dynamicParams = true;
 
 interface CategoryPageProps {

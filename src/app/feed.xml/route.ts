@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPublishedBlogPosts } from "@/lib/db";
 
-export const revalidate = 86400; // Cache for 24 hours to minimize origin compute
+export const dynamic = "force-static"; // Pre-generate feed statically at build time to prevent origin ISR compute
 
 function escapeXml(unsafe: string): string {
   return (unsafe || "")

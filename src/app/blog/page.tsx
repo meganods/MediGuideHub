@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import BlogListingClient from "@/components/BlogListingClient";
 import { getPublishedBlogPosts, getCategories } from "@/lib/db";
 
-export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
-
 export const metadata: Metadata = {
   title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",
   description:

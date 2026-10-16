@@ -5,8 +5,6 @@ import Footer from "@/components/Footer";
 import SitemapClientView from "@/components/SitemapClientView";
 import { getPublishedBlogPosts, getCategories, getPublishedFAQs } from "@/lib/db";
 
-export const revalidate = 86400; // Revalidate every 24 hours to prevent high ISR writes on Vercel
-
 export const metadata: Metadata = {
   title: "HTML Sitemap & Navigation Directory | mediguide4u",
   description:

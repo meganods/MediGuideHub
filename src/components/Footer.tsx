@@ -115,7 +115,11 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {healthcareLinks.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-sm text-stone-500 hover:text-[#C9A15A] transition-colors">
+                    <Link 
+                      href={l.href} 
+                      rel={l.href.includes("?") ? "nofollow" : undefined}
+                      className="text-sm text-stone-500 hover:text-[#C9A15A] transition-colors"
+                    >
                       {l.label}
                     </Link>
                   </li>
@@ -203,22 +207,17 @@ export default function Footer() {
               Clinical Specializations &amp; Category Hubs
             </h4>
             <Link href="/blog" className="text-xs font-bold text-[#C9A15A] hover:underline flex items-center gap-1">
-              View All 76+ Health Guides &rarr;
+              View All 46 Master Health Guides &rarr;
             </Link>
           </div>
           <div className="flex flex-wrap gap-2">
             {[
-              { label: "Heart Health", href: "/category/heart-health" },
-              { label: "Preventive Care", href: "/category/preventive-care" },
-              { label: "Diabetes & Metabolism", href: "/category/diabetes" },
-              { label: "Mental Health", href: "/category/mental-health" },
-              { label: "Women's Health", href: "/category/women-s-health" },
-              { label: "Children's Health", href: "/category/children-s-health" },
-              { label: "Fitness & Physical Health", href: "/category/fitness" },
-              { label: "Senior Healthcare", href: "/category/senior-healthcare" },
-              { label: "Vaccination & Immunology", href: "/category/vaccination" },
-              { label: "Nutrition & Wellness", href: "/category/wellness" },
-              { label: "Lifestyle Diseases", href: "/category/lifestyle-diseases" },
+              { label: "Heart & Cardiometabolic Health", href: "/category/heart-health" },
+              { label: "Preventive Care & Diagnostics", href: "/category/preventive-care" },
+              { label: "Mental Health & Sleep Science", href: "/category/mental-health" },
+              { label: "Women's & Hormonal Health", href: "/category/women-s-health" },
+              { label: "Senior Healthcare & Longevity", href: "/category/senior-healthcare" },
+              { label: "Digestive Health & Clinical Nutrition", href: "/category/wellness" },
             ].map((cat) => (
               <Link
                 key={cat.href}

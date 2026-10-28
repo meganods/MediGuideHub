@@ -1,0 +1,370 @@
+[
+  {
+    "id": "post-gerd-acid-reflux",
+    "slug": "gerd-acid-reflux-symptoms-causes-lifestyle-treatment",
+    "title": "GERD and Chronic Acid Reflux: Triggers, PPI Medications, and Dietary Adjustments",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 1983,
+    "status": "Published"
+  },
+  {
+    "id": "post-gout-hyperuricemia",
+    "slug": "gout-hyperuricemia-causes-uric-acid-diet-treatment",
+    "title": "Gout and Hyperuricemia: Uric Acid Causes, Flare-Up Relief, and Low-Purine Diet",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 2109,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_fasting_128",
+    "slug": "intermittent-fasting-autophagy-insulin-sensitivity",
+    "title": "Intermittent Fasting & Autophagy: 16/8 Protocols, Cellular Cleansing, and Metabolic Health",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 2141,
+    "status": "Published"
+  },
+  {
+    "id": "post-vo2-max-heart-rate-zones",
+    "slug": "vo2-max-heart-rate-zones-cardio-longevity",
+    "title": "VO2 Max and Heart Rate Zones: How Aerobic Capacity Predicts Long-Term Health",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 2152,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_ibs_130",
+    "slug": "ibs-low-fodmap-diet-symptoms-management",
+    "title": "Irritable Bowel Syndrome (IBS): Subtypes, Visceral Hypersensitivity, and Low-FODMAP Diet",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 2384,
+    "status": "Published"
+  },
+  {
+    "id": "post-cardio-vs-strength-training",
+    "slug": "cardio-vs-strength-training-muscle-fat-loss-longevity",
+    "title": "Cardio vs Strength Training: Optimizing Muscle Mass, Fat Loss, and Metabolic Health",
+    "category": "Digestive Health & Clinical Nutrition",
+    "wordCount": 2445,
+    "status": "Published"
+  },
+  {
+    "id": "post-atrial-fibrillation",
+    "slug": "atrial-fibrillation-afib-symptoms-risks-treatment",
+    "title": "Atrial Fibrillation (AFib): Symptoms, Stroke Risks, and Rate Control Strategies",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 1937,
+    "status": "Published"
+  },
+  {
+    "id": "post-high-cholesterol",
+    "slug": "high-cholesterol-lipid-panel-diet-statin-guide",
+    "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 1993,
+    "status": "Published"
+  },
+  {
+    "id": "post-metabolic-syndrome",
+    "slug": "metabolic-syndrome-criteria-risks-reversal-plan",
+    "title": "Metabolic Syndrome: Clinical Diagnostic Criteria, Heart Risks, and Lifestyle Reversal",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2005,
+    "status": "Published"
+  },
+  {
+    "id": "post-diabetic-neuropathy",
+    "slug": "diabetic-neuropathy-symptoms-nerve-pain-management",
+    "title": "Diabetic Neuropathy: Early Nerve Pain Symptoms, Foot Exams, and Blood Sugar Control",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2072,
+    "status": "Published"
+  },
+  {
+    "id": "post-coronary-artery-disease",
+    "slug": "coronary-artery-disease-symptoms-causes-treatment",
+    "title": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2077,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_hfpef_101",
+    "slug": "heart-failure-hfpef-symptoms-diagnosis-management",
+    "title": "Heart Failure with Preserved Ejection Fraction (HFpEF): Symptoms, Stiff Heart Muscle, and Treatment",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2139,
+    "status": "Published"
+  },
+  {
+    "id": "post-hypoglycemia-emergency",
+    "slug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
+    "title": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2170,
+    "status": "Published"
+  },
+  {
+    "id": "nVO3DHRhIlMtLOmJAHyM",
+    "slug": "managing-blood-pressure-naturally",
+    "title": "Managing Blood Pressure Naturally: Evidence-Based Clinical Strategies & DASH Protocols",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2250,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_pad_102",
+    "slug": "peripheral-artery-disease-pad-symptoms-abi-treatment",
+    "title": "Peripheral Artery Disease (PAD): Symptoms, Ankle-Brachial Index (ABI), and Walking Therapy",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2255,
+    "status": "Published"
+  },
+  {
+    "id": "post-type2-diabetes",
+    "slug": "type-2-diabetes-management-symptoms-diet-and-prevention",
+    "title": "Type 2 Diabetes: Clinical Diagnosis, HbA1c Cutoffs, Pharmacotherapy, and Remission Protocols",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 2297,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_masld_131",
+    "slug": "masld-fatty-liver-disease-symptoms-fibroscan-reversal-diet",
+    "title": "Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD): Stages, SGPT/ALT Tests, FibroScan, and Evidence-Based Dietary Reversal",
+    "category": "Heart & Cardiometabolic Health",
+    "wordCount": 3184,
+    "status": "Published"
+  },
+  {
+    "id": "post-adult-adhd",
+    "slug": "adult-adhd-signs-executive-dysfunction-management",
+    "title": "Adult ADHD: Diagnostic Symptoms, Executive Dysfunction, and Daily Coping Strategies",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 1979,
+    "status": "Published"
+  },
+  {
+    "id": "post-clinical-depression",
+    "slug": "clinical-depression-symptoms-causes-therapy-treatment",
+    "title": "Major Depressive Disorder (MDD): Clinical Symptoms, Neurotransmitters, and Therapy",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 1979,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_migraine_115",
+    "slug": "migraine-vs-tension-headache-aura-cgrp-treatment",
+    "title": "Migraine vs. Tension Headache: Aura, CGRP Pathway, Triggers, and Abortive Treatments",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 2008,
+    "status": "Published"
+  },
+  {
+    "id": "pgv7ziJ9cpaFE3I8MQvD",
+    "slug": "science-of-stress-management",
+    "title": "The Science of Stress Management: Neurobiology, Cortisol Regulation, and Clinical Techniques",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 2014,
+    "status": "Published"
+  },
+  {
+    "id": "post-panic-vs-anxiety-attacks",
+    "slug": "panic-attack-vs-anxiety-attack-symptoms-grounding-techniques",
+    "title": "Panic Attacks vs Anxiety Attacks: Differentiating Symptoms and Grounding Techniques",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 2084,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_osa_126",
+    "slug": "obstructive-sleep-apnea-osa-cpap-heart-risks",
+    "title": "Obstructive Sleep Apnea (OSA): STOP-Bang Screening, CPAP Therapy, and Heart Health",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 2186,
+    "status": "Published"
+  },
+  {
+    "id": "post-circadian-rhythms-sleep",
+    "slug": "circadian-rhythm-sleep-architecture-rem-deep-sleep-guide",
+    "title": "Circadian Rhythms and Sleep Architecture: Optimizing REM and Deep Sleep Cycles",
+    "category": "Mental Health & Sleep Science",
+    "wordCount": 2425,
+    "status": "Published"
+  },
+  {
+    "id": "3CHKf7kSf3hr3TKWBdYj",
+    "slug": "vitamin-d-deficiency-symptoms-causes-risk-factors-and-how-to-maintain-healthy-levels",
+    "title": "Vitamin D Deficiency: Symptoms, Causes, Foods, 25(OH)D Lab Ranges, and D3 Dosing",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 1857,
+    "status": "Published"
+  },
+  {
+    "id": "post-childhood-rashes",
+    "slug": "childhood-rashes-eczema-hand-foot-mouth-identification",
+    "title": "Common Childhood Rashes: Eczema, Hand-Foot-Mouth, and Viral Exanthems",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 1977,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_hscrp_116",
+    "slug": "hs-crp-blood-test-systemic-inflammation-heart-risk",
+    "title": "hs-CRP Blood Test: Systemic Inflammation, Vascular Health, and Cardiovascular Risk",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 1979,
+    "status": "Published"
+  },
+  {
+    "id": "post-shingles-vaccine",
+    "slug": "shingles-vaccine-shingrix-side-effects-eligibility",
+    "title": "Shingles Vaccine (Shingrix): Two-Dose Schedule, Side Effects, and Eligibility for Adults 50+",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 1984,
+    "status": "Published"
+  },
+  {
+    "id": "post-childhood-asthma",
+    "slug": "childhood-asthma-triggers-inhaler-guide-action-plan",
+    "title": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2000,
+    "status": "Published"
+  },
+  {
+    "id": "post-colon-cancer-screening",
+    "slug": "colon-cancer-screening-colonoscopy-cologuard-guide",
+    "title": "Colorectal Cancer Screening: Colonoscopy, Cologuard, and Stool DNA Test Guidelines",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2047,
+    "status": "Published"
+  },
+  {
+    "id": "post-vaccine-adult-01",
+    "slug": "adult-vaccination-schedule-preventive-guide",
+    "title": "Adult Immunization Schedule: Clinical Evidence, Schedules & Vaccine Literacy",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2054,
+    "status": "Published"
+  },
+  {
+    "id": "post-screenings-by-age",
+    "slug": "essential-preventive-health-screenings-by-age",
+    "title": "Essential Preventive Health Screenings by Age: The Clinical Evidence-Based Checklist",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2063,
+    "status": "Published"
+  },
+  {
+    "id": "post-hpv-vaccine",
+    "slug": "hpv-vaccine-cancer-prevention-age-safety-guide",
+    "title": "HPV Vaccine: Cancer Prevention, Recommended Age Windows, and Safety Guidelines",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2094,
+    "status": "Published"
+  },
+  {
+    "id": "post-routine-blood-tests-explained",
+    "slug": "routine-blood-test-results-explained-cbc-cmp-kidney-liver",
+    "title": "Routine Blood Tests Explained: Understanding CBC, CMP, Lipid, and Liver Panels",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2110,
+    "status": "Published"
+  },
+  {
+    "id": "post-pediatric-fever",
+    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2343,
+    "status": "Published"
+  },
+  {
+    "id": "d9NZloB6wv0AVj1ZF6w3",
+    "slug": "iron-deficiency-anemia-symptoms-causes-and-treatment",
+    "title": "Iron Deficiency Anemia: Symptoms, Ferritin Testing, Causes, and Clinical Management",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2387,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_b12_132",
+    "slug": "vitamin-b12-deficiency-neuropathy-symptoms-treatment-guide",
+    "title": "Vitamin B12 Deficiency and Peripheral Neuropathy: Symptoms, Methylmalonic Acid (MMA) Testing, and Injection vs. Sublingual Protocols",
+    "category": "Preventive Care & Diagnostics",
+    "wordCount": 2988,
+    "status": "Published"
+  },
+  {
+    "id": "post-early-dementia-alzheimers",
+    "slug": "early-signs-dementia-alzheimers-vs-normal-aging",
+    "title": "Early Signs of Dementia and Alzheimer's vs. Normal Age-Related Memory Changes",
+    "category": "Senior Healthcare & Longevity",
+    "wordCount": 2005,
+    "status": "Published"
+  },
+  {
+    "id": "YOO8U0F8SphTpGMX8a13",
+    "slug": "active-aging-seniors-guide",
+    "title": "Active Aging: Complete Mobility, Sarcopenia Prevention, and Bone Health Guide for Seniors",
+    "category": "Senior Healthcare & Longevity",
+    "wordCount": 2043,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_ckd_129",
+    "slug": "chronic-kidney-disease-ckd-stages-egfr-diet",
+    "title": "Chronic Kidney Disease (CKD): Stages, eGFR Decline, Potassium, and Renal Nutrition",
+    "category": "Senior Healthcare & Longevity",
+    "wordCount": 2082,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_bph_111",
+    "slug": "bph-enlarged-prostate-symptoms-medications-psa",
+    "title": "Benign Prostatic Hyperplasia (BPH): IPSS Score, PSA Testing, and Urinary Management",
+    "category": "Senior Healthcare & Longevity",
+    "wordCount": 2091,
+    "status": "Published"
+  },
+  {
+    "id": "post-osteoporosis-bone-density",
+    "slug": "osteoporosis-bone-density-dexa-scan-prevention",
+    "title": "Osteoporosis and Bone Mineral Density: DEXA Scans, Calcium, and Fall Prevention",
+    "category": "Senior Healthcare & Longevity",
+    "wordCount": 2223,
+    "status": "Published"
+  },
+  {
+    "id": "post-pcos-hormone-balance",
+    "slug": "pcos-symptoms-hormone-balance-treatment-guide",
+    "title": "Polycystic Ovary Syndrome (PCOS): Symptoms, Hormone Imbalances, and Management",
+    "category": "Women's & Hormonal Health",
+    "wordCount": 1951,
+    "status": "Published"
+  },
+  {
+    "id": "post-endometriosis-guide",
+    "slug": "endometriosis-symptoms-diagnosis-pelvic-pain-treatment",
+    "title": "Endometriosis: Chronic Pelvic Pain, Laparoscopy Diagnosis, and Medical Therapies",
+    "category": "Women's & Hormonal Health",
+    "wordCount": 2022,
+    "status": "Published"
+  },
+  {
+    "id": "post-perimenopause-menopause-guide",
+    "slug": "perimenopause-menopause-symptoms-hrt-management",
+    "title": "Perimenopause and Menopause: Vasomotor Symptoms, Mood Changes, and HRT Evidence",
+    "category": "Women's & Hormonal Health",
+    "wordCount": 2194,
+    "status": "Published"
+  },
+  {
+    "id": "med_art_hashimoto_107",
+    "slug": "hypothyroidism-hashimotos-tsh-levels-treatment",
+    "title": "Hypothyroidism and Hashimoto's Thyroiditis: TSH, Free T4, TPO Antibodies, and Levothyroxine",
+    "category": "Women's & Hormonal Health",
+    "wordCount": 2208,
+    "status": "Published"
+  }
+]

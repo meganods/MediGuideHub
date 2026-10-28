@@ -326,22 +326,49 @@
     "title": "Childhood Asthma: Recognizing Symptoms, Inhaler Techniques, and Action Plans",
     "slug": "childhood-asthma-triggers-inhaler-guide-action-plan",
     "category": "Children's Health",
-    "wordCount": 1357,
+    "wordCount": 1393,
     "aiScore": 19,
     "humanScore": 81,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 3,
-    "clinicalDensity": 2.21,
+    "clinicalDensity": 2.15,
     "topClinical": [
       {
         "term": "pathophysiology",
         "count": 3
       }
     ],
-    "sentenceAvg": 20.5,
-    "sentenceStdDev": 12.8,
+    "sentenceAvg": 21,
+    "sentenceStdDev": 13.3,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-pediatric-fever",
+    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
+    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
+    "category": "Children's Health",
+    "wordCount": 1506,
+    "aiScore": 19,
+    "humanScore": 81,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 6,
+    "clinicalDensity": 3.98,
+    "topClinical": [
+      {
+        "term": "antipyretic",
+        "count": 4
+      },
+      {
+        "term": "petechiae",
+        "count": 2
+      }
+    ],
+    "sentenceAvg": 20.6,
+    "sentenceStdDev": 15.4,
     "referenceCount": 3
   },
   {
@@ -458,46 +485,6 @@
     "referenceCount": 3
   },
   {
-    "id": "post-high-cholesterol",
-    "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
-    "slug": "high-cholesterol-lipid-panel-diet-statin-guide",
-    "category": "Heart Health",
-    "wordCount": 1366,
-    "aiScore": 14,
-    "humanScore": 86,
-    "buzzwordCount": 2,
-    "buzzwordDensity": 1.46,
-    "topBuzzwords": [
-      {
-        "phrase": "demystifying",
-        "count": 2
-      }
-    ],
-    "clinicalCount": 41,
-    "clinicalDensity": 30.01,
-    "topClinical": [
-      {
-        "term": "mg/dl",
-        "count": 25
-      },
-      {
-        "term": "statin",
-        "count": 13
-      },
-      {
-        "term": "endothelial",
-        "count": 2
-      },
-      {
-        "term": "cortisol",
-        "count": 1
-      }
-    ],
-    "sentenceAvg": 25.7,
-    "sentenceStdDev": 20.9,
-    "referenceCount": 3
-  },
-  {
     "id": "med_art_socanx_114",
     "title": "Social Anxiety Disorder: Diagnostic Features, Cognitive Distortions, and Exposure Therapy",
     "slug": "social-anxiety-disorder-symptoms-cbt-exposure",
@@ -580,33 +567,6 @@
     ],
     "sentenceAvg": 35.8,
     "sentenceStdDev": 46.6,
-    "referenceCount": 3
-  },
-  {
-    "id": "post-pediatric-fever",
-    "title": "Pediatric Fever Management: Temperature Thresholds, Antipyretics, and Red-Flag Signs",
-    "slug": "pediatric-fever-management-temperature-guide-when-to-see-doctor",
-    "category": "Children's Health",
-    "wordCount": 1497,
-    "aiScore": 11,
-    "humanScore": 89,
-    "buzzwordCount": 0,
-    "buzzwordDensity": 0,
-    "topBuzzwords": [],
-    "clinicalCount": 6,
-    "clinicalDensity": 4.01,
-    "topClinical": [
-      {
-        "term": "antipyretic",
-        "count": 4
-      },
-      {
-        "term": "petechiae",
-        "count": 2
-      }
-    ],
-    "sentenceAvg": 20.5,
-    "sentenceStdDev": 15.4,
     "referenceCount": 3
   },
   {
@@ -1110,14 +1070,14 @@
     "title": "Childhood Food Allergies: IgE Mechanisms, Early Allergen Introduction, and Anaphylaxis",
     "slug": "childhood-food-allergies-ige-testing-epipen-plan",
     "category": "Children's Health",
-    "wordCount": 1314,
+    "wordCount": 1332,
     "aiScore": 6,
     "humanScore": 94,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 35,
-    "clinicalDensity": 26.64,
+    "clinicalDensity": 26.28,
     "topClinical": [
       {
         "term": "anaphylaxis",
@@ -1144,8 +1104,8 @@
         "count": 1
       }
     ],
-    "sentenceAvg": 19.1,
-    "sentenceStdDev": 11.4,
+    "sentenceAvg": 19.3,
+    "sentenceStdDev": 11.5,
     "referenceCount": 3
   },
   {
@@ -1754,14 +1714,14 @@
     "title": "Coronary Artery Disease: Warning Signs, Risk Factors, and Medical Management",
     "slug": "coronary-artery-disease-symptoms-causes-treatment",
     "category": "Heart Health",
-    "wordCount": 1218,
+    "wordCount": 1236,
     "aiScore": 5,
     "humanScore": 95,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 17,
-    "clinicalDensity": 13.96,
+    "clinicalDensity": 13.75,
     "topClinical": [
       {
         "term": "endothelial",
@@ -1788,8 +1748,43 @@
         "count": 1
       }
     ],
-    "sentenceAvg": 23.7,
-    "sentenceStdDev": 20.8,
+    "sentenceAvg": 24.1,
+    "sentenceStdDev": 22.2,
+    "referenceCount": 3
+  },
+  {
+    "id": "post-high-cholesterol",
+    "title": "High Cholesterol (Hyperlipidemia): Understanding Lipid Panels, Statin Therapy, and Diet",
+    "slug": "high-cholesterol-lipid-panel-diet-statin-guide",
+    "category": "Heart Health",
+    "wordCount": 1368,
+    "aiScore": 5,
+    "humanScore": 95,
+    "buzzwordCount": 0,
+    "buzzwordDensity": 0,
+    "topBuzzwords": [],
+    "clinicalCount": 41,
+    "clinicalDensity": 29.97,
+    "topClinical": [
+      {
+        "term": "mg/dl",
+        "count": 25
+      },
+      {
+        "term": "statin",
+        "count": 13
+      },
+      {
+        "term": "endothelial",
+        "count": 2
+      },
+      {
+        "term": "cortisol",
+        "count": 1
+      }
+    ],
+    "sentenceAvg": 25.7,
+    "sentenceStdDev": 20.9,
     "referenceCount": 3
   },
   {
@@ -1875,14 +1870,14 @@
     "title": "Hypoglycemia (Low Blood Sugar): Symptoms, Rule of 15 Treatment, and Emergency Care",
     "slug": "hypoglycemia-low-blood-sugar-symptoms-emergency-treatment",
     "category": "Diabetes",
-    "wordCount": 1371,
+    "wordCount": 1398,
     "aiScore": 5,
     "humanScore": 95,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 22,
-    "clinicalDensity": 16.05,
+    "clinicalDensity": 15.74,
     "topClinical": [
       {
         "term": "mg/dl",
@@ -1905,8 +1900,8 @@
         "count": 1
       }
     ],
-    "sentenceAvg": 20.5,
-    "sentenceStdDev": 17.5,
+    "sentenceAvg": 20.9,
+    "sentenceStdDev": 17.6,
     "referenceCount": 3
   },
   {
@@ -2494,14 +2489,14 @@
     "title": "Meningococcal Vaccines (MenACWY and MenB): Schedule, College Risks, and Disease Prevention",
     "slug": "meningococcal-vaccine-menacwy-menb-teens-college",
     "category": "Vaccination",
-    "wordCount": 1280,
+    "wordCount": 1298,
     "aiScore": 5,
     "humanScore": 95,
     "buzzwordCount": 0,
     "buzzwordDensity": 0,
     "topBuzzwords": [],
     "clinicalCount": 35,
-    "clinicalDensity": 27.34,
+    "clinicalDensity": 26.96,
     "topClinical": [
       {
         "term": "menb",
@@ -2516,8 +2511,8 @@
         "count": 3
       }
     ],
-    "sentenceAvg": 22.4,
-    "sentenceStdDev": 18.5,
+    "sentenceAvg": 22.7,
+    "sentenceStdDev": 18.8,
     "referenceCount": 3
   },
   {

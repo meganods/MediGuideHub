@@ -26,7 +26,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       "/blog",
       "/tools",
       "/quizzes",
-      "/search",
       "/about",
       "/medical-review-board",
       "/authors",
@@ -58,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority = 0.9;
         changeFrequency = "daily";
         lastModified = latestPostDate;
-      } else if (route === "/tools" || route === "/quizzes" || route === "/search") {
+      } else if (route === "/tools" || route === "/quizzes") {
         priority = 0.8;
         changeFrequency = "weekly";
         lastModified = new Date("2026-03-10T00:00:00Z");

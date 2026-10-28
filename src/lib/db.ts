@@ -96,14 +96,14 @@ export interface SiteSettings {
 
 // LocalStorage Helper Keys
 const KEYS = {
-  POSTS: "mediguide4u_posts_v4",
-  CATEGORIES: "mediguide4u_categories_v4",
-  FAQS: "mediguide4u_faqs_v4",
-  TESTIMONIALS: "mediguide4u_testimonials_v4",
-  CONTACTS: "mediguide4u_contacts_v4",
-  SUBSCRIBERS: "mediguide4u_subscribers_v4",
-  USERS: "mediguide4u_users_v4",
-  SITE_SETTINGS: "mediguide4u_site_settings_v4",
+  POSTS: "mediguide4u_posts_v5",
+  CATEGORIES: "mediguide4u_categories_v5",
+  FAQS: "mediguide4u_faqs_v5",
+  TESTIMONIALS: "mediguide4u_testimonials_v5",
+  CONTACTS: "mediguide4u_contacts_v5",
+  SUBSCRIBERS: "mediguide4u_subscribers_v5",
+  USERS: "mediguide4u_users_v5",
+  SITE_SETTINGS: "mediguide4u_site_settings_v5",
   CURRENT_USER: "mediguide4u_current_user",
 };
 
@@ -189,8 +189,10 @@ const initLocalStorage = () => {
     localStorage.removeItem("mediguide4u_posts");
     localStorage.removeItem("mediguide4u_posts_v2");
     localStorage.removeItem("mediguide4u_posts_v3");
-    localStorage.removeItem("mediguide4u_faqs");
+    localStorage.removeItem("mediguide4u_posts_v4");
     localStorage.removeItem("mediguide4u_categories");
+    localStorage.removeItem("mediguide4u_categories_v4");
+    localStorage.removeItem("mediguide4u_faqs");
     localStorage.removeItem("mediguide4u_testimonials");
   } catch (e) {}
 
@@ -199,21 +201,18 @@ const initLocalStorage = () => {
     if (!raw) {
       localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
     } else {
-      const parsed: BlogPost[] = JSON.parse(raw);
-      let changed = false;
+      let parsed: BlogPost[] = JSON.parse(raw);
+      // Keep only active posts that exist in INITIAL_BLOG_POSTS
+      parsed = parsed.filter(p => INITIAL_BLOG_POSTS.some(ip => ip.slug === p.slug));
       for (const initPost of INITIAL_BLOG_POSTS) {
         const existingIdx = parsed.findIndex(p => p.slug === initPost.slug);
         if (existingIdx === -1) {
           parsed.push(initPost);
-          changed = true;
         } else if (!parsed[existingIdx].contentBlocks || parsed[existingIdx].contentBlocks.length < (initPost.contentBlocks?.length || 1)) {
           parsed[existingIdx] = initPost;
-          changed = true;
         }
       }
-      if (changed || parsed.length < INITIAL_BLOG_POSTS.length) {
-        localStorage.setItem(KEYS.POSTS, JSON.stringify(parsed));
-      }
+      localStorage.setItem(KEYS.POSTS, JSON.stringify(parsed));
     }
   } catch (e) {
     localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
@@ -222,9 +221,8 @@ const initLocalStorage = () => {
   if (!localStorage.getItem(KEYS.FAQS)) {
     localStorage.setItem(KEYS.FAQS, JSON.stringify(INITIAL_FAQS));
   }
-  if (!localStorage.getItem(KEYS.CATEGORIES)) {
-    localStorage.setItem(KEYS.CATEGORIES, JSON.stringify(INITIAL_CATEGORIES));
-  }
+  // Always keep categories in sync with 6 authoritative pillars
+  localStorage.setItem(KEYS.CATEGORIES, JSON.stringify(INITIAL_CATEGORIES));
   if (!localStorage.getItem(KEYS.TESTIMONIALS)) {
     localStorage.setItem(KEYS.TESTIMONIALS, JSON.stringify(INITIAL_TESTIMONIALS));
   }

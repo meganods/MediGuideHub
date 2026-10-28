@@ -235,14 +235,14 @@ export default function HomeClientView({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { title: "Health Guides", desc: "Comprehensive healthcare guides and clinical awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
-              { title: "Preventive Care", desc: "Methods to sustain wellness before illness", icon: <Shield className="h-5 w-5 text-[#C9A15A]" />, href: "/category/preventive-care" },
-              { title: "Mental Health", desc: "Psychological and emotional wellness guides", icon: <Heart className="h-5 w-5 text-[#C9A15A]" />, href: "/category/mental-health" },
-              { title: "Diabetes & Metabolism", desc: "Blood glucose control, insulin resistance and metabolic diet", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/diabetes" },
-              { title: "Heart Health", desc: "Cardiovascular wellness and risk prevention", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" />, href: "/category/heart-health" },
-              { title: "Women's Health", desc: "Dedicated resources for female health needs", icon: <Users className="h-5 w-5 text-[#C9A15A]" />, href: "/category/women-s-health" },
-              { title: "Children's Health", desc: "Pediatric wellness and developmental guides", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" />, href: "/category/children-s-health" },
-              { title: "Senior Healthcare", desc: "Senior health guides and wellness resources", icon: <Award className="h-5 w-5 text-[#C9A15A]" />, href: "/category/senior-healthcare" }
+              { title: "Health Guides", desc: "Comprehensive doctor-reviewed healthcare guides and clinical awareness", icon: <BookOpen className="h-5 w-5 text-[#C9A15A]" />, href: "/blog" },
+              { title: "Heart & Cardiometabolic", desc: "Cardiovascular medicine, hypertension, lipid management & diabetes", icon: <Stethoscope className="h-5 w-5 text-[#C9A15A]" />, href: "/category/heart-health" },
+              { title: "Preventive Care & Diagnostics", desc: "Evidence-based health screening checklists, lab panels & vaccines", icon: <Shield className="h-5 w-5 text-[#C9A15A]" />, href: "/category/preventive-care" },
+              { title: "Mental Health & Sleep Science", desc: "Neuroscience-backed guides on anxiety, mood, stress & sleep", icon: <Heart className="h-5 w-5 text-[#C9A15A]" />, href: "/category/mental-health" },
+              { title: "Digestive Health & Nutrition", desc: "Gastroenterology, microbiome science, GERD, IBS & metabolic diets", icon: <Activity className="h-5 w-5 text-[#C9A15A]" />, href: "/category/wellness" },
+              { title: "Senior Healthcare & Longevity", desc: "Geriatric mobility, sarcopenia prevention & cognitive health", icon: <Award className="h-5 w-5 text-[#C9A15A]" />, href: "/category/senior-healthcare" },
+              { title: "Women's & Hormonal Health", desc: "Physician-guided resources on perimenopause, HRT, PCOS & thyroid", icon: <Users className="h-5 w-5 text-[#C9A15A]" />, href: "/category/women-s-health" },
+              { title: "Interactive Health Tools", desc: "Clinical calculators, symptom checks and preventive scorecards", icon: <CheckCircle2 className="h-5 w-5 text-[#C9A15A]" />, href: "/tools" }
             ].map((card, i) => (
               <Link key={i} href={card.href} className="bg-[#FDFBF7] border border-stone-200 rounded-2xl p-6 hover:border-[#C9A15A] hover:bg-[#FDF6EC]/15 transition-all text-center space-y-2 block">
                 <div className="bg-[#C9A15A]/10 w-fit p-2 rounded-xl mx-auto">{card.icon}</div>

@@ -614,7 +614,7 @@ function AdminContent() {
   const [postBlocks, setPostBlocks] = useState<ContentBlock[]>([]);
   const [postFaqs, setPostFaqs] = useState<FAQItem[]>([]);
   const [postReferences, setPostReferences] = useState<ReferenceItem[]>([]);
-  const [postDisclaimerType, setPostDisclaimerType] = useState<"clinical" | "insurance" | "wellness">("clinical");
+  const [postDisclaimerType, setPostDisclaimerType] = useState<"clinical" | "insurance" | "wellness" | "full_medical">("clinical");
 
 
   // Search & Filters states for Articles list
@@ -1237,7 +1237,10 @@ function AdminContent() {
           html += `<ul>\n${block.items.map(item => `  <li>${item}</li>`).join("\n")}\n</ul>\n`;
         }
         if (block.type === "comparison_table" && block.columns && block.rows) {
-          html += `<table>\n  <thead>\n    <tr>\n${block.columns.map(col => `      <th>${col}</th>`).join("\n")}\n    </tr>\n  </thead>\n  <tbody>\n${block.rows.map(row => `    <tr>\n${row.map(cell => `      <td>${cell}</td>`).join("\n")}\n    </tr>`).join("\n")}\n  </tbody>\n</table>\n`;
+          html += `<table>\n  <thead>\n    <tr>\n${block.columns.map(col => `      <th>${col}</th>`).join("\n")}\n    </tr>\n  </thead>\n  <tbody>\n${block.rows.map((row: any) => {
+            const cells = Array.isArray(row) ? row : (row.cells || []);
+            return `    <tr>\n${cells.map((cell: any) => `      <td>${cell}</td>`).join("\n")}\n    </tr>`;
+          }).join("\n")}\n  </tbody>\n</table>\n`;
         }
         if (block.type === "when_to_see_doctor" && block.items) {
           html += `<div class="doctor-warning">\n  <ul>\n${block.items.map(item => `    <li>${item}</li>`).join("\n")}\n  </ul>\n</div>\n`;
@@ -2765,9 +2768,9 @@ function AdminContent() {
                                         {/* Rows */}
                                         <div className="space-y-1.5">
                                           <label className="text-[9px] font-bold text-stone-500 uppercase block">Rows</label>
-                                          {block.rows?.map((row, rIdx) => (
+                                          {block.rows?.map((row: any, rIdx: number) => (
                                             <div key={rIdx} className="flex gap-1.5 items-center">
-                                              {row.map((cell, cIdx) => (
+                                              {row.map((cell: any, cIdx: number) => (
                                                 <input
                                                   key={cIdx}
                                                   value={cell}

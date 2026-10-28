@@ -237,11 +237,12 @@ export function WhenToSeeDoctor({ id, heading, content, items }: { id?: string; 
 }
 
 // --- TRUST DISCLAIMERS COMPONENT ---
-export function MedicalDisclaimer({ disclaimerType }: { disclaimerType?: "clinical" | "insurance" | "wellness" }) {
-  const disclaimers = {
+export function MedicalDisclaimer({ disclaimerType }: { disclaimerType?: "clinical" | "insurance" | "wellness" | "full_medical" }) {
+  const disclaimers: Record<string, string> = {
     clinical: "This educational guide is not clinical medical advice. Health guidelines, recommendations, and dietary guidelines are subject to periodic updates. Speak to a qualified healthcare provider or primary care physician regarding specific medical questions.",
     insurance: "mediguide4u is an educational publisher and is not associated with Medicare, Medicaid, HHS, or any commercial insurance company. Always consult with a licensed broker or representative to obtain individual policy quotes and coverage confirmations.",
-    wellness: "All wellness instructions, exercises, and dietary guidelines are for informational purposes only. Do not begin any physical training program or dietary regime without first consulting your doctor or qualified healthcare professional."
+    wellness: "All wellness instructions, exercises, and dietary guidelines are for informational purposes only. Do not begin any physical training program or dietary regime without first consulting your doctor or qualified healthcare professional.",
+    full_medical: "This comprehensive clinical guide has been developed and medically reviewed by board-certified physicians for educational and informational purposes only. It is not intended as personal medical advice or a substitute for direct clinical consultation. Always consult a qualified physician for diagnosis, treatment decisions, and personalized medical care."
   };
 
   const text = disclaimers[disclaimerType || "clinical"];

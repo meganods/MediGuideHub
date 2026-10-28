@@ -90,12 +90,14 @@ export default function Navbar() {
                 <div className="flex items-center space-x-3">
                   <Link
                     href="/login"
+                    rel="nofollow"
                     className="flex items-center justify-center px-4 h-11 font-medium text-[#113F48] hover:text-[#C9A15A] transition-all"
                   >
                     Login
                   </Link>
                   <Link
                     href="/register"
+                    rel="nofollow"
                     className="flex items-center justify-center px-6 h-11 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10 hover:shadow-lg"
                   >
                     Register
@@ -188,6 +190,7 @@ export default function Navbar() {
               <div className="flex flex-col space-y-2">
                 <Link
                   href="/login"
+                  rel="nofollow"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center w-full h-12 font-medium text-[#113F48] bg-[#F9FAFB] border border-stone-200 rounded-xl transition-all"
                 >
@@ -195,6 +198,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
+                  rel="nofollow"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center w-full h-12 font-medium text-white bg-[#C9A15A] hover:bg-[#B58F4E] rounded-xl transition-all shadow-md shadow-[#C9A15A]/10"
                 >

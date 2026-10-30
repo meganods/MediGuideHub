@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 export const dynamicParams = true;
+export const revalidate = 60;
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;

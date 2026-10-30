@@ -821,6 +821,14 @@ function AdminContent() {
         lastUpdated: currentDate,
         versionHistory: updatedHistory,
       });
+
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: `/${selectedLegalSlug}` }),
+        });
+      } catch (revErr) {}
       
       setLegalLastUpdated(currentDate);
       setLegalHistory(updatedHistory);
@@ -1321,6 +1329,18 @@ function AdminContent() {
       }
 
       await savePost(pData);
+
+      // Trigger instant Next.js cache revalidation for the edited article
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug: pData.slug, path: `/blog/${pData.slug}` }),
+        });
+      } catch (revErr) {
+        console.warn("Revalidation ping failed:", revErr);
+      }
+
       setIsAddingPost(false);
       setEditingPost(null);
       await loadAllData();
@@ -1334,6 +1354,13 @@ function AdminContent() {
   const handleDeletePost = async (id: string) => {
     if (confirm("Are you sure you want to delete this guide?")) {
       await deletePost(id);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: "/blog" }),
+        });
+      } catch (e) {}
       await loadAllData();
     }
   };
@@ -1480,6 +1507,13 @@ function AdminContent() {
       }
 
       await saveFAQ(fData);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: "/faq" }),
+        });
+      } catch (e) {}
       setIsAddingFAQ(false);
       setEditingFAQ(null);
       await loadAllData();
@@ -1491,6 +1525,13 @@ function AdminContent() {
   const handleDeleteFAQ = async (id: string) => {
     if (confirm("Are you sure you want to delete this FAQ?")) {
       await deleteFAQ(id);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: "/faq" }),
+        });
+      } catch (e) {}
       await loadAllData();
     }
   };
@@ -1579,6 +1620,13 @@ function AdminContent() {
       }
 
       await saveCategory(cData);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: `/category/${cData.slug}` }),
+        });
+      } catch (e) {}
       setIsAddingCategory(false);
       setEditingCategory(null);
       await loadAllData();
@@ -1592,6 +1640,13 @@ function AdminContent() {
   const handleDeleteCategory = async (id: string) => {
     if (confirm("Are you sure you want to delete this category?")) {
       await deleteCategory(id);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: "/" }),
+        });
+      } catch (e) {}
       await loadAllData();
     }
   };
@@ -1634,7 +1689,15 @@ function AdminContent() {
     setSavingSettings(true);
     try {
       await saveSiteSettings(siteSettings);
+      try {
+        await fetch("/api/revalidate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ path: "/" }),
+        });
+      } catch (e) {}
       await loadAllData();
+      alert("Site settings saved successfully!");
     } finally {
       setSavingSettings(false);
     }

@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HomeClientView from "@/components/HomeClientView";
-import { getPublishedBlogPosts, getCategories, getPublishedFAQs } from "@/lib/db";
+import { getPublishedBlogPosts, getCategories, getPublishedFAQs, getSiteSettings } from "@/lib/db";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "mediguide4u - Medically-Reviewed Healthcare & Wellness Guides",
@@ -32,10 +34,11 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [posts, categories, faqs] = await Promise.all([
+  const [posts, categories, faqs, siteSettings] = await Promise.all([
     getPublishedBlogPosts().catch(() => []),
     getCategories().catch(() => []),
     getPublishedFAQs().catch(() => []),
+    getSiteSettings().catch(() => null),
   ]);
 
   const websiteSchema = {
@@ -119,6 +122,7 @@ export default async function HomePage() {
           initialPosts={posts}
           initialCategories={categories}
           initialFaqs={faqs}
+          initialSettings={siteSettings || undefined}
         />
       </main>
 

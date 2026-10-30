@@ -4,6 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Mail, Home } from "lucide-react";
+import { getLegalPage } from "@/lib/db";
+import { RichText } from "@/components/BlogComponents";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | mediguide4u",
@@ -22,7 +26,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TermsAndConditionsPage() {
+export default async function TermsAndConditionsPage() {
+  const legalData = await getLegalPage("terms-and-conditions").catch(() => null);
+  const hasCustomContent = legalData?.content && !legalData.content.startsWith("# Terms & Conditions\n\nThis page contains");
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -33,15 +40,19 @@ export default function TermsAndConditionsPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Terms &amp; Conditions</span>
+            <span className="text-[#113F48] font-semibold">{legalData?.title || "Terms & Conditions"}</span>
           </div>
         </div>
 
         {/* ── HERO ── */}
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none space-y-3">
-            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Terms &amp; Conditions</h1>
+            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">
+              Last Updated: {legalData?.lastUpdated || "August 2026"}
+            </p>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">
+              {legalData?.title || "Terms & Conditions"}
+            </h1>
             <p className="text-stone-600 leading-relaxed text-sm">
               Please read these Terms &amp; Conditions carefully before using mediguide4u. By accessing our platform, you agree to be bound by these terms.
             </p>
@@ -51,6 +62,11 @@ export default function TermsAndConditionsPage() {
         {/* ── CONTENT ── */}
         <section className="py-14 bg-white print:py-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none">
+            {hasCustomContent ? (
+              <div className="prose prose-stone max-w-none text-stone-600 space-y-6 text-sm leading-relaxed">
+                <RichText content={legalData!.content} className="text-stone-700 leading-relaxed text-sm" />
+              </div>
+            ) : (
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
@@ -103,6 +119,7 @@ export default function TermsAndConditionsPage() {
               </div>
 
             </div>
+            )}
           </div>
         </section>
 

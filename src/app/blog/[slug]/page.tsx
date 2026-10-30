@@ -44,10 +44,12 @@ import {
   ArticleViewTracker 
 } from "@/components/ArticleInteractions";
 import ArticleAudioPlayer from "@/components/ArticleAudioPlayer";
+import ArticleLiveSync from "@/components/ArticleLiveSync";
 import PostCommentsSection from "@/components/PostCommentsSection";
 import AdBanner from "@/components/AdBanner";
 
 export const dynamicParams = true; // Allow newly published slugs to be rendered on-demand
+export const revalidate = 60; // ISR: revalidate at most once every 60s, instantly updated via on-demand /api/revalidate
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -364,8 +366,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         />
       )}
 
-      {/* Client View / History Tracker */}
+      {/* Client View / History Tracker & Live Real-Time Synchronizer */}
       <ArticleViewTracker postId={post.id} slug={post.slug} />
+      <ArticleLiveSync slug={post.slug} initialUpdatedAt={post.updatedAt || post.publishedAt} initialTitle={post.title} />
 
       <main className="flex-grow py-8 w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 max-w-none">
         

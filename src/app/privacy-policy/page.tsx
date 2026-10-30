@@ -4,6 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Mail, Home } from "lucide-react";
+import { getLegalPage } from "@/lib/db";
+import { RichText } from "@/components/BlogComponents";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Privacy Policy | mediguide4u",
@@ -22,7 +26,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage() {
+  const legalData = await getLegalPage("privacy-policy").catch(() => null);
+  const hasCustomContent = legalData?.content && !legalData.content.startsWith("# Privacy Policy\n\nThis page contains");
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -33,15 +40,19 @@ export default function PrivacyPolicyPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Privacy Policy</span>
+            <span className="text-[#113F48] font-semibold">{legalData?.title || "Privacy Policy"}</span>
           </div>
         </div>
 
         {/* ── HERO ── */}
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none space-y-3">
-            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Privacy Policy</h1>
+            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">
+              Last Updated: {legalData?.lastUpdated || "August 2026"}
+            </p>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">
+              {legalData?.title || "Privacy Policy"}
+            </h1>
             <p className="text-stone-600 leading-relaxed text-sm">
               This Privacy Policy explains how mediguide4u collects, uses, protects, and handles your personal information in accordance with international privacy standards and third-party advertising guidelines.
             </p>
@@ -51,6 +62,11 @@ export default function PrivacyPolicyPage() {
         {/* ── POLICY CONTENT ── */}
         <section className="py-14 bg-white print:py-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none">
+            {hasCustomContent ? (
+              <div className="prose prose-stone max-w-none text-stone-600 space-y-6 text-sm leading-relaxed">
+                <RichText content={legalData!.content} className="text-stone-700 leading-relaxed text-sm" />
+              </div>
+            ) : (
             <div className="prose prose-stone max-w-none text-stone-600 space-y-8 text-sm leading-relaxed">
               
               <div className="space-y-3">
@@ -132,6 +148,7 @@ export default function PrivacyPolicyPage() {
               </div>
 
             </div>
+            )}
           </div>
         </section>
 

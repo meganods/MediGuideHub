@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
-import { updateUserSavedPosts, BlogPost, BlogCategory } from "@/lib/db";
+import { updateUserSavedPosts, BlogPost, BlogCategory, subscribeToPublishedBlogPosts } from "@/lib/db";
 import { getAuthorProfileUrl } from "@/components/BlogComponents";
 import { 
   Search, 
@@ -30,8 +30,27 @@ function BlogListingContent({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [savedSlugs, setSavedSlugs] = useState<string[]>([]);
-  const [posts] = useState<BlogPost[]>(initialPosts);
-  const [categories] = useState<BlogCategory[]>(initialCategories);
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
+  const [categories, setCategories] = useState<BlogCategory[]>(initialCategories);
+
+  // Sync state when props update
+  useEffect(() => {
+    setPosts(initialPosts);
+  }, [initialPosts]);
+
+  useEffect(() => {
+    setCategories(initialCategories);
+  }, [initialCategories]);
+
+  // Real-time synchronization with Firestore/LocalStorage
+  useEffect(() => {
+    const unsubscribe = subscribeToPublishedBlogPosts((livePosts) => {
+      if (livePosts && livePosts.length > 0) {
+        setPosts(livePosts);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   
   const queryParam = searchParams.get("q") || "";
   const categoryParam = searchParams.get("category") || "All";

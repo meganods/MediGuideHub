@@ -111,72 +111,57 @@ const KEYS = {
 export const sanitizePost = (post: BlogPost): BlogPost => {
   if (!post) return post;
   
-  // Look up authoritative initial post by slug or id
+  // Look up initial post strictly as fallback defaults
   const initial = INITIAL_BLOG_POSTS.find(
     (p) => (post.slug && p.slug === post.slug) || (post.id && p.id === post.id)
   );
 
-  if (initial) {
-    // If post has no contentBlocks or fewer blocks than initialPost, hydrate with initialPost's contentBlocks
-    const hasRichBlocks = Array.isArray(post.contentBlocks) && post.contentBlocks.length >= (initial.contentBlocks?.length || 1);
-    const contentBlocks = hasRichBlocks ? post.contentBlocks : (initial.contentBlocks || []);
+  const title = post.title?.trim() || initial?.title || "";
+  const summary = (post.summary !== undefined && post.summary !== null) ? post.summary : (initial?.summary || "");
+  const category = post.category || initial?.category || "Overview";
+  const subcategory = post.subcategory !== undefined ? post.subcategory : (initial?.subcategory || "");
+  const author = post.author?.trim() || initial?.author || "Mediguide4u Editorial Staff";
+  const medicalReviewer = post.medicalReviewer !== undefined ? post.medicalReviewer : (initial?.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD");
+  const medicalReviewedAt = post.medicalReviewedAt || post.lastReviewedDate || initial?.medicalReviewedAt || "August 2026";
+  const featuredImage = post.featuredImage !== undefined ? post.featuredImage : (initial?.featuredImage || "");
+  const quickAnswer = post.quickAnswer !== undefined ? post.quickAnswer : (initial?.quickAnswer || "");
+  const introduction = post.introduction !== undefined ? post.introduction : (initial?.introduction || "");
 
-    const intro = (post.introduction && post.introduction.trim().length >= 100) 
-      ? post.introduction 
-      : (initial.introduction || post.introduction || "");
+  // Retain contentBlocks if provided and is an array (preserves edits, deletions, additions)
+  const contentBlocks = (Array.isArray(post.contentBlocks) && post.contentBlocks.length > 0)
+    ? post.contentBlocks
+    : (initial?.contentBlocks || []);
 
-    const quickAnswer = post.quickAnswer || initial.quickAnswer || "";
-    const faqs = (Array.isArray(post.faqs) && post.faqs.length > 0) ? post.faqs : (initial.faqs || []);
-    const references = (Array.isArray(post.references) && post.references.length > 0) ? post.references : (initial.references || []);
-    const category = (post.category && post.category !== "Fitness" && post.category !== "General") 
-      ? post.category 
-      : (initial.category || post.category);
-    const subcategory = post.subcategory || initial.subcategory;
-    
-    // Ensure author is a valid doctor or specialist
-    let author = initial.author || post.author || "Dr. Randeep Guleria, MBBS, MD, DM";
-    if (author === "Mediguide4u Editorial Staff" && initial.author) {
-      author = initial.author;
-    }
-    
-    // Ensure medical reviewer is a verified physician
-    let medicalReviewer = initial.medicalReviewer || post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD";
+  const faqs = (Array.isArray(post.faqs) && post.faqs.length > 0)
+    ? post.faqs
+    : (initial?.faqs || []);
 
-    const medicalReviewedAt = post.medicalReviewedAt || post.lastReviewedDate || initial.medicalReviewedAt || "August 2026";
-    const title = (post.title && post.title.length >= initial.title.length) ? post.title : initial.title;
-    const summary = (post.summary && post.summary.length >= (initial.summary?.length || 0)) ? post.summary : (initial.summary || post.summary);
-    const featuredImage = post.featuredImage || initial.featuredImage;
-
-    return {
-      ...post,
-      title,
-      summary,
-      category,
-      subcategory,
-      author,
-      medicalReviewer,
-      medicalReviewedAt,
-      featuredImage,
-      quickAnswer,
-      introduction: intro,
-      contentBlocks,
-      faqs,
-      references,
-      readTime: post.readTime || initial.readTime || "8 min read",
-      status: post.status || "Published",
-      schemaType: post.schemaType || initial.schemaType || "MedicalWebPage",
-      metaTitle: post.metaTitle || initial.metaTitle,
-      metaDescription: post.metaDescription || initial.metaDescription,
-    };
-  }
+  const references = (Array.isArray(post.references) && post.references.length > 0)
+    ? post.references
+    : (initial?.references || []);
 
   return {
+    ...initial,
     ...post,
-    author: post.author || "Mediguide4u Editorial Staff",
-    medicalReviewer: post.medicalReviewer || "Dr. Rommel Tickoo, MBBS, MD",
-    medicalReviewedAt: post.medicalReviewedAt || "August 2026",
-    status: post.status || "Published",
-    readTime: post.readTime || "5 min read",
+    title,
+    summary,
+    category,
+    subcategory,
+    author,
+    medicalReviewer,
+    medicalReviewedAt,
+    featuredImage,
+    quickAnswer,
+    introduction,
+    contentBlocks,
+    faqs,
+    references,
+    readTime: post.readTime || initial?.readTime || "5 min read",
+    status: post.status || initial?.status || "Published",
+    schemaType: post.schemaType || initial?.schemaType || "MedicalWebPage",
+    metaTitle: post.metaTitle || initial?.metaTitle || title,
+    metaDescription: post.metaDescription || initial?.metaDescription || summary,
+    canonicalUrl: post.canonicalUrl || initial?.canonicalUrl || (post.slug ? `https://www.mediguide4u.com/blog/${post.slug}` : undefined),
   };
 };
 
@@ -202,14 +187,11 @@ const initLocalStorage = () => {
       localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_BLOG_POSTS));
     } else {
       let parsed: BlogPost[] = JSON.parse(raw);
-      // Keep only active posts that exist in INITIAL_BLOG_POSTS
-      parsed = parsed.filter(p => INITIAL_BLOG_POSTS.some(ip => ip.slug === p.slug));
+      // Ensure initial posts are seeded if missing, without overriding any edited posts
       for (const initPost of INITIAL_BLOG_POSTS) {
-        const existingIdx = parsed.findIndex(p => p.slug === initPost.slug);
+        const existingIdx = parsed.findIndex(p => p.slug === initPost.slug || p.id === initPost.id);
         if (existingIdx === -1) {
           parsed.push(initPost);
-        } else if (!parsed[existingIdx].contentBlocks || parsed[existingIdx].contentBlocks.length < (initPost.contentBlocks?.length || 1)) {
-          parsed[existingIdx] = initPost;
         }
       }
       localStorage.setItem(KEYS.POSTS, JSON.stringify(parsed));
@@ -221,8 +203,10 @@ const initLocalStorage = () => {
   if (!localStorage.getItem(KEYS.FAQS)) {
     localStorage.setItem(KEYS.FAQS, JSON.stringify(INITIAL_FAQS));
   }
-  // Always keep categories in sync with 6 authoritative pillars
-  localStorage.setItem(KEYS.CATEGORIES, JSON.stringify(INITIAL_CATEGORIES));
+  // Initialize categories with default pillars only if not already saved
+  if (!localStorage.getItem(KEYS.CATEGORIES)) {
+    localStorage.setItem(KEYS.CATEGORIES, JSON.stringify(INITIAL_CATEGORIES));
+  }
   if (!localStorage.getItem(KEYS.TESTIMONIALS)) {
     localStorage.setItem(KEYS.TESTIMONIALS, JSON.stringify(INITIAL_TESTIMONIALS));
   }
@@ -292,7 +276,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
       const fetchPromise = getDocs(q).then(snapshot => {
         if (!snapshot.empty) {
           return snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
@@ -307,12 +291,14 @@ export const getPosts = async (): Promise<BlogPost[]> => {
       console.warn("Firebase error getting posts, falling back:", e);
     }
   }
-  if (posts.length === 0) {
+  if (posts.length === 0 && typeof window !== "undefined") {
     const local = getLocal<BlogPost>(KEYS.POSTS);
-    posts = local.length > 0 ? local : [...INITIAL_BLOG_POSTS];
+    if (local.length > 0) {
+      posts = local.map(sanitizePost);
+    }
   }
   for (const initPost of INITIAL_BLOG_POSTS) {
-    if (!posts.some(p => p.slug === initPost.slug)) {
+    if (!posts.some(p => p.slug === initPost.slug || p.id === initPost.id)) {
       posts.push(sanitizePost(initPost));
     }
   }
@@ -358,25 +344,12 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   if (!slug) return null;
   const decodedSlug = decodeURIComponent(slug).trim().toLowerCase();
 
-  // 1. Instant check in authoritative in-memory INITIAL_BLOG_POSTS (0ms latency)
-  const initialMatch = INITIAL_BLOG_POSTS.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug));
-  if (initialMatch) {
-    return sanitizePost(initialMatch);
-  }
-
-  // 2. Check LocalStorage posts
-  const posts = getLocal<BlogPost>(KEYS.POSTS);
-  let found = posts.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)) || null;
-  if (found) {
-    return sanitizePost(found);
-  }
-
-  // 3. Check Firebase Firestore if dynamic post created via admin dashboard
+  // 1. Query Firebase Firestore FIRST so admin edits immediately reflect on the website
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1200));
-      const fetchPromise = getDocs(q).then(snapshot => {
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
+      const fetchPromise = getDocs(q).then((snapshot) => {
         if (!snapshot.empty) {
           return sanitizePost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as BlogPost);
         }
@@ -384,9 +357,38 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
       });
       const result = await Promise.race([fetchPromise, timeoutPromise]);
       if (result) return result;
+
+      // Check decoded slug if it differs
+      if (decodedSlug !== slug) {
+        const qDecoded = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", decodedSlug));
+        const snapDecoded = await Promise.race([
+          getDocs(qDecoded),
+          new Promise<null>((r) => setTimeout(() => r(null), 2000)),
+        ]);
+        if (snapDecoded && !snapDecoded.empty) {
+          return sanitizePost({ id: snapDecoded.docs[0].id, ...snapDecoded.docs[0].data() } as BlogPost);
+        }
+      }
     } catch (e) {
       console.warn("Firebase error getPostBySlug, falling back:", e);
     }
+  }
+
+  // 2. Check LocalStorage posts (browser client environment)
+  if (typeof window !== "undefined") {
+    const posts = getLocal<BlogPost>(KEYS.POSTS);
+    const found = posts.find((p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug));
+    if (found) {
+      return sanitizePost(found);
+    }
+  }
+
+  // 3. Fallback to authoritative in-memory INITIAL_BLOG_POSTS
+  const initialMatch = INITIAL_BLOG_POSTS.find(
+    (p) => p.slug === slug || (p.slug && p.slug.toLowerCase() === decodedSlug)
+  );
+  if (initialMatch) {
+    return sanitizePost(initialMatch);
   }
 
   return null;
@@ -440,14 +442,16 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
     readTime: post.readTime || "5 min read",
   };
 
+  let savedPost: BlogPost | null = null;
+
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       if (cleanPost.id) {
         await setDoc(doc(getAdminFirestore()!, "posts", cleanPost.id), cleanPost, { merge: true });
-        return { ...cleanPost, id: cleanPost.id } as BlogPost;
+        savedPost = { ...cleanPost, id: cleanPost.id } as BlogPost;
       } else {
         const docRef = await addDoc(collection(getAdminFirestore()!, "posts"), cleanPost);
-        return { ...cleanPost, id: docRef.id } as BlogPost;
+        savedPost = { ...cleanPost, id: docRef.id } as BlogPost;
       }
     } catch (e) {
       console.error("Firebase savePost error:", e);
@@ -455,33 +459,36 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
     }
   }
 
-  // LocalStorage Fallback
-  const posts = getLocal<BlogPost>(KEYS.POSTS);
-  if (cleanPost.id) {
-    const idx = posts.findIndex((p) => p.id === cleanPost.id);
+  // Always update LocalStorage on client so that client previews and caches update immediately
+  if (typeof window !== "undefined") {
+    const target = savedPost || ({ ...cleanPost, id: cleanPost.id || cleanPost.slug } as BlogPost);
+    const posts = getLocal<BlogPost>(KEYS.POSTS);
+    const idx = posts.findIndex(
+      (p) => (target.id && p.id === target.id) || (target.slug && p.slug === target.slug)
+    );
     if (idx !== -1) {
-      posts[idx] = { ...posts[idx], ...cleanPost } as BlogPost;
+      posts[idx] = { ...posts[idx], ...target };
+    } else {
+      posts.unshift(target);
     }
-  } else {
-    const newId = cleanPost.slug;
-    const newPost = { ...cleanPost, id: newId } as BlogPost;
-    posts.unshift(newPost);
+    setLocal(KEYS.POSTS, posts);
   }
-  setLocal(KEYS.POSTS, posts);
-  return cleanPost as BlogPost;
+
+  return (savedPost || cleanPost) as BlogPost;
 };
 
 export const deletePost = async (id: string): Promise<void> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       await deleteDoc(doc(getAdminFirestore()!, "posts", id));
-      return;
     } catch (e) {
       console.error("Firebase deletePost error:", e);
     }
   }
-  const posts = getLocal<BlogPost>(KEYS.POSTS);
-  setLocal(KEYS.POSTS, posts.filter((p) => p.id !== id));
+  if (typeof window !== "undefined") {
+    const posts = getLocal<BlogPost>(KEYS.POSTS);
+    setLocal(KEYS.POSTS, posts.filter((p) => p.id !== id && p.slug !== id));
+  }
 };
 
 
@@ -492,7 +499,7 @@ export const getFAQs = async (): Promise<FAQItem[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "faqs"));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
       const fetchPromise = getDocs(q).then(snapshot => {
         if (!snapshot.empty) {
           return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as FAQItem));
@@ -535,28 +542,32 @@ export const subscribeToPublishedFAQs = (callback: (faqs: FAQItem[]) => void): (
 };
 
 export const saveFAQ = async (faq: Omit<FAQItem, "id"> & { id?: string }): Promise<FAQItem> => {
+  let savedFaq: FAQItem | null = null;
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       if (faq.id) {
         await setDoc(doc(getAdminFirestore()!, "faqs", faq.id), faq, { merge: true });
-        return faq as FAQItem;
+        savedFaq = faq as FAQItem;
       } else {
         const docRef = await addDoc(collection(getAdminFirestore()!, "faqs"), faq);
-        return { ...faq, id: docRef.id } as FAQItem;
+        savedFaq = { ...faq, id: docRef.id } as FAQItem;
       }
     } catch (e) {
       console.error("Firebase saveFAQ error:", e);
     }
   }
-  const faqs = getLocal<FAQItem>(KEYS.FAQS);
-  const finalFaq = { ...faq, id: faq.id || `faq-${Date.now()}` } as FAQItem;
-  if (faq.id) {
-    const idx = faqs.findIndex((f) => f.id === faq.id);
-    if (idx !== -1) faqs[idx] = finalFaq;
-  } else {
-    faqs.push(finalFaq);
+  const finalFaq = savedFaq || ({ ...faq, id: faq.id || `faq-${Date.now()}` } as FAQItem);
+  if (typeof window !== "undefined") {
+    const faqs = getLocal<FAQItem>(KEYS.FAQS);
+    if (finalFaq.id) {
+      const idx = faqs.findIndex((f) => f.id === finalFaq.id);
+      if (idx !== -1) faqs[idx] = finalFaq;
+      else faqs.unshift(finalFaq);
+    } else {
+      faqs.unshift(finalFaq);
+    }
+    setLocal(KEYS.FAQS, faqs);
   }
-  setLocal(KEYS.FAQS, faqs);
   return finalFaq;
 };
 
@@ -564,13 +575,14 @@ export const deleteFAQ = async (id: string): Promise<void> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       await deleteDoc(doc(getAdminFirestore()!, "faqs", id));
-      return;
     } catch (e) {
       console.error("Firebase deleteFAQ error:", e);
     }
   }
-  const faqs = getLocal<FAQItem>(KEYS.FAQS);
-  setLocal(KEYS.FAQS, faqs.filter((f) => f.id !== id));
+  if (typeof window !== "undefined") {
+    const faqs = getLocal<FAQItem>(KEYS.FAQS);
+    setLocal(KEYS.FAQS, faqs.filter((f) => f.id !== id));
+  }
 };
 
 
@@ -1104,7 +1116,7 @@ export const getCategories = async (): Promise<BlogCategory[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "categories"), orderBy("displayOrder", "asc"));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
       const fetchPromise = getDocs(q).then(snapshot => {
         if (!snapshot.empty) {
           return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogCategory));
@@ -1181,39 +1193,39 @@ export const subscribeToCategories = (callback: (cats: BlogCategory[]) => void):
 };
 
 export const saveCategory = async (cat: BlogCategory): Promise<void> => {
+  const id = cat.id || `cat-${cat.slug || Date.now()}`;
+  const finalCat = { ...cat, id };
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const id = cat.id || doc(collection(getAdminFirestore()!, "categories")).id;
-      await setDoc(doc(getAdminFirestore()!, "categories", id), { ...cat, id }, { merge: true });
-      return;
+      await setDoc(doc(getAdminFirestore()!, "categories", id), finalCat, { merge: true });
     } catch (e) {
       console.warn("Firebase error saving category (Permission check failed or missing):", (e as any).message || e);
     }
   }
-  const cats = getLocal<BlogCategory>(KEYS.CATEGORIES);
-  if (cat.id) {
-    const idx = cats.findIndex((c) => c.id === cat.id);
+  if (typeof window !== "undefined") {
+    const cats = getLocal<BlogCategory>(KEYS.CATEGORIES);
+    const idx = cats.findIndex((c) => c.id === id || c.slug === cat.slug);
     if (idx !== -1) {
-      cats[idx] = cat;
+      cats[idx] = finalCat;
+    } else {
+      cats.push(finalCat);
     }
-  } else {
-    cat.id = `cat-${Date.now()}`;
-    cats.push(cat);
+    setLocal(KEYS.CATEGORIES, cats);
   }
-  setLocal(KEYS.CATEGORIES, cats);
 };
 
 export const deleteCategory = async (id: string): Promise<void> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       await deleteDoc(doc(getAdminFirestore()!, "categories", id));
-      return;
     } catch (e) {
       console.error("Firebase error deleting category:", e);
     }
   }
-  const cats = getLocal<BlogCategory>(KEYS.CATEGORIES);
-  setLocal(KEYS.CATEGORIES, cats.filter((c) => c.id !== id));
+  if (typeof window !== "undefined") {
+    const cats = getLocal<BlogCategory>(KEYS.CATEGORIES);
+    setLocal(KEYS.CATEGORIES, cats.filter((c) => c.id !== id && c.slug !== id));
+  }
 };
 
 /* ==========================================
@@ -1223,7 +1235,7 @@ export const deleteCategory = async (id: string): Promise<void> => {
 export const getComments = async (): Promise<BlogComment[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1000));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
       const fetchPromise = getDocs(collection(getAdminFirestore()!, "comments")).then(snapshot => {
         if (!snapshot.empty) {
           return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as BlogComment));

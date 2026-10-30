@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/authContext";
 import AdBanner from "@/components/AdBanner";
-import { updateUserSavedPosts, BlogPost, BlogCategory, FAQItem } from "@/lib/db";
+import { updateUserSavedPosts, BlogPost, BlogCategory, FAQItem, SiteSettings, subscribeToPublishedBlogPosts, subscribeToPublishedFAQs } from "@/lib/db";
 import { getAuthorProfileUrl } from "@/components/BlogComponents";
 import {
   ArrowRight,
@@ -35,18 +35,21 @@ interface HomeClientViewProps {
   initialPosts: BlogPost[];
   initialCategories: BlogCategory[];
   initialFaqs: FAQItem[];
+  initialSettings?: SiteSettings;
 }
 
 export default function HomeClientView({
   initialPosts,
   initialCategories,
   initialFaqs,
+  initialSettings,
 }: HomeClientViewProps) {
   const { user } = useAuth();
   const router = useRouter();
-  const [faqs] = useState<FAQItem[]>(initialFaqs);
-  const [posts] = useState<BlogPost[]>(initialPosts);
-  const [categories] = useState<BlogCategory[]>(initialCategories);
+  const [faqs, setFaqs] = useState<FAQItem[]>(initialFaqs);
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
+  const [categories, setCategories] = useState<BlogCategory[]>(initialCategories);
+  const [settings, setSettings] = useState<SiteSettings | undefined>(initialSettings);
   const [searchQuery, setSearchQuery] = useState("");
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
@@ -58,6 +61,40 @@ export default function HomeClientView({
   const showToast = (message: string) => {
     setToast({ message, visible: true });
   };
+
+  useEffect(() => {
+    setPosts(initialPosts);
+  }, [initialPosts]);
+
+  useEffect(() => {
+    setCategories(initialCategories);
+  }, [initialCategories]);
+
+  useEffect(() => {
+    setFaqs(initialFaqs);
+  }, [initialFaqs]);
+
+  useEffect(() => {
+    if (initialSettings) setSettings(initialSettings);
+  }, [initialSettings]);
+
+  // Real-time synchronization with database updates
+  useEffect(() => {
+    const unsubPosts = subscribeToPublishedBlogPosts((livePosts) => {
+      if (livePosts && livePosts.length > 0) {
+        setPosts(livePosts);
+      }
+    });
+    const unsubFaqs = subscribeToPublishedFAQs((liveFaqs) => {
+      if (liveFaqs && liveFaqs.length > 0) {
+        setFaqs(liveFaqs);
+      }
+    });
+    return () => {
+      unsubPosts();
+      unsubFaqs();
+    };
+  }, []);
 
   useEffect(() => {
     if (toast.visible) {
@@ -146,10 +183,16 @@ export default function HomeClientView({
                 Health Information Fact-Checked by Medical Experts
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#113F48] leading-tight">
-                Clear Healthcare &amp; <span className="text-[#C9A15A]">Wellness Guidelines</span>
+                {settings?.heroTitle ? (
+                  settings.heroTitle
+                ) : (
+                  <>
+                    Clear Healthcare &amp; <span className="text-[#C9A15A]">Wellness Guidelines</span>
+                  </>
+                )}
               </h1>
               <p className="text-sm md:text-base text-stone-500 font-normal leading-relaxed max-w-xl">
-                We make healthcare concepts accessible to everyone. Explore comprehensive guides covering symptoms, conditions, clinical nutrition, preventive care, and everyday wellness.
+                {settings?.heroSubtitle || "We make healthcare concepts accessible to everyone. Explore comprehensive guides covering symptoms, conditions, clinical nutrition, preventive care, and everyday wellness."}
               </p>
 
               {/* Direct Search Bar */}

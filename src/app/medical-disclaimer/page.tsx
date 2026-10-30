@@ -4,6 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Mail, Home, ShieldAlert } from "lucide-react";
+import { getLegalPage } from "@/lib/db";
+import { RichText } from "@/components/BlogComponents";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer | mediguide4u",
@@ -28,7 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MedicalDisclaimerPage() {
+export default async function MedicalDisclaimerPage() {
+  const legalData = await getLegalPage("medical-disclaimer").catch(() => null);
+  const hasCustomContent = legalData?.content && !legalData.content.startsWith("# Medical Disclaimer\n\nThis page contains");
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
@@ -39,15 +46,19 @@ export default function MedicalDisclaimerPage() {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none text-xs text-stone-500 flex gap-2">
             <Link href="/" className="hover:text-[#C9A15A] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-[#113F48] font-semibold">Medical Disclaimer</span>
+            <span className="text-[#113F48] font-semibold">{legalData?.title || "Medical Disclaimer"}</span>
           </div>
         </div>
 
         {/* ── HERO ── */}
         <section className="py-14 bg-[#F9FAFB] border-b border-stone-100 print:bg-white print:border-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none space-y-3">
-            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">Last Updated: August 2026</p>
-            <h1 className="text-4xl font-extrabold text-[#113F48]">Medical Disclaimer</h1>
+            <p className="text-xs text-[#C9A15A] font-bold uppercase tracking-wider">
+              Last Updated: {legalData?.lastUpdated || "August 2026"}
+            </p>
+            <h1 className="text-4xl font-extrabold text-[#113F48]">
+              {legalData?.title || "Medical Disclaimer"}
+            </h1>
             <p className="text-stone-600 leading-relaxed text-sm">
               Please read this Medical Disclaimer carefully. It details the informational limits of mediguide4u and your responsibilities regarding professional medical consultation.
             </p>
@@ -57,7 +68,12 @@ export default function MedicalDisclaimerPage() {
         {/* ── CONTENT ── */}
         <section className="py-14 bg-white print:py-0">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-none">
-            
+            {hasCustomContent ? (
+              <div className="prose prose-stone max-w-none text-stone-600 space-y-6 text-sm leading-relaxed">
+                <RichText content={legalData!.content} className="text-stone-700 leading-relaxed text-sm" />
+              </div>
+            ) : (
+            <>
             {/* Highlighted Warning Box */}
             <div className="bg-amber-50/50 border border-amber-200 rounded-2xl p-6 mb-8 flex items-start gap-4 shadow-sm">
               <ShieldAlert className="h-6 w-6 text-[#C9A15A] flex-shrink-0 mt-0.5" />
@@ -107,6 +123,8 @@ export default function MedicalDisclaimerPage() {
               </div>
 
             </div>
+            </>
+            )}
           </div>
         </section>
 

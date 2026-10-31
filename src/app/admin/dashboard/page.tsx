@@ -1103,7 +1103,22 @@ function AdminContent() {
     setPostSubcategory(post.subcategory || "");
     setPostQuickAnswer(post.quickAnswer || "");
     setPostIntro(post.introduction || "");
-    setPostBlocks(post.contentBlocks || []);
+    const normalizedBlocks = (post.contentBlocks || []).map((b: any, bIdx: number) => ({
+      ...b,
+      id: b.id || `block-${Date.now()}-${bIdx}`,
+      items: Array.isArray(b.items) ? b.items : [],
+      columns: Array.isArray(b.columns) ? b.columns : [],
+      rows: Array.isArray(b.rows)
+        ? b.rows.map((row: any) => {
+            if (Array.isArray(row)) return row;
+            if (row && typeof row === "object") {
+              return row.cells || row.row || [];
+            }
+            return [];
+          })
+        : [],
+    }));
+    setPostBlocks(normalizedBlocks);
     setPostFaqs(post.faqs || []);
     setPostReferences(post.references || []);
     setPostDisclaimerType(post.disclaimerType || "clinical");
@@ -1415,7 +1430,7 @@ function AdminContent() {
       if (b.id === blockId) {
         return {
           ...b,
-          items: [...(b.items || []), itemText]
+          items: [...(Array.isArray(b.items) ? b.items : []), itemText]
         };
       }
       return b;
@@ -1427,7 +1442,7 @@ function AdminContent() {
       if (b.id === blockId) {
         return {
           ...b,
-          items: (b.items || []).filter((_, idx) => idx !== itemIndex)
+          items: (Array.isArray(b.items) ? b.items : []).filter((_, idx) => idx !== itemIndex)
         };
       }
       return b;
@@ -2758,7 +2773,7 @@ function AdminContent() {
                                     )}
 
                                     {/* Checklist Items Repeaters */}
-                                    {(block.type === "symptoms_checklist" || block.type === "when_to_see_doctor") && (
+                                    {(block.type === "symptoms_checklist" || block.type === "when_to_see_doctor" || (Array.isArray(block.items) && block.items.length > 0)) && (
                                       <div className="border border-stone-250 p-3 rounded-xl bg-stone-50/50 space-y-2">
                                         <div className="flex justify-between items-center">
                                           <span className="text-[10px] font-bold text-[#113F48] uppercase">Structured List Items</span>
@@ -2777,12 +2792,12 @@ function AdminContent() {
 
                                         {/* list items */}
                                         <div className="space-y-1.5">
-                                          {block.items?.map((item, itemIdx) => (
+                                          {Array.isArray(block.items) && block.items.map((item, itemIdx) => (
                                             <div key={itemIdx} className="flex gap-2 items-center">
                                               <input
-                                                value={item}
+                                                value={typeof item === "string" ? item : String(item ?? "")}
                                                 onChange={(e) => {
-                                                  const newItems = [...(block.items || [])];
+                                                  const newItems = [...(Array.isArray(block.items) ? block.items : [])];
                                                   newItems[itemIdx] = e.target.value;
                                                   handleUpdateBlock(block.id, { items: newItems });
                                                 }}
@@ -2818,7 +2833,7 @@ function AdminContent() {
                                         <div className="space-y-1">
                                           <label className="text-[9px] font-bold text-stone-500 uppercase">Columns (comma separated)</label>
                                           <input
-                                            value={block.columns?.join(", ") || ""}
+                                            value={Array.isArray(block.columns) ? block.columns.join(", ") : (block.columns || "")}
                                             onChange={(e) => {
                                               const cols = e.target.value.split(",").map(c => c.trim()).filter(Boolean);
                                               handleUpdateBlock(block.id, { columns: cols });
@@ -2831,40 +2846,69 @@ function AdminContent() {
                                         {/* Rows */}
                                         <div className="space-y-1.5">
                                           <label className="text-[9px] font-bold text-stone-500 uppercase block">Rows</label>
-                                          {block.rows?.map((row: any, rIdx: number) => (
-                                            <div key={rIdx} className="flex gap-1.5 items-center">
-                                              {row.map((cell: any, cIdx: number) => (
-                                                <input
-                                                  key={cIdx}
-                                                  value={cell}
-                                                  onChange={(e) => {
-                                                    const newRows = [...(block.rows || [])];
-                                                    newRows[rIdx] = [...newRows[rIdx]];
-                                                    newRows[rIdx][cIdx] = e.target.value;
+                                          {Array.isArray(block.rows) && block.rows.map((row: any, rIdx: number) => {
+                                            const cells: any[] = Array.isArray(row)
+                                              ? row
+                                              : (row?.cells || row?.row || []);
+
+                                            return (
+                                              <div key={rIdx} className="flex gap-1.5 items-center">
+                                                {cells.map((cell: any, cIdx: number) => (
+                                                  <input
+                                                    key={cIdx}
+                                                    value={typeof cell === "string" ? cell : String(cell ?? "")}
+                                                    onChange={(e) => {
+                                                      const newRows = (block.rows || []).map((r: any, currIdx: number) => {
+                                                        if (currIdx !== rIdx) return r;
+                                                        if (Array.isArray(r)) {
+                                                          const updated = [...r];
+                                                          updated[cIdx] = e.target.value;
+                                                          return updated;
+                                                        }
+                                                        if (r && typeof r === "object") {
+                                                          const currentCells = Array.isArray(r.cells)
+                                                            ? [...r.cells]
+                                                            : Array.isArray(r.row)
+                                                            ? [...r.row]
+                                                            : [];
+                                                          currentCells[cIdx] = e.target.value;
+                                                          if ("cells" in r || !("row" in r)) {
+                                                            return { ...r, cells: currentCells };
+                                                          }
+                                                          return { ...r, row: currentCells };
+                                                        }
+                                                        return [e.target.value];
+                                                      });
+                                                      handleUpdateBlock(block.id, { rows: newRows });
+                                                    }}
+                                                    className="w-full bg-white border border-stone-200 rounded-lg px-2 py-1 text-xs"
+                                                  />
+                                                ))}
+                                                <button
+                                                  type="button"
+                                                  onClick={() => {
+                                                    const newRows = (block.rows || []).filter((_, idx) => idx !== rIdx);
                                                     handleUpdateBlock(block.id, { rows: newRows });
                                                   }}
-                                                  className="w-full bg-white border border-stone-200 rounded-lg px-2 py-1 text-xs"
-                                                />
-                                              ))}
-                                              <button
-                                                type="button"
-                                                onClick={() => {
-                                                  const newRows = block.rows?.filter((_, idx) => idx !== rIdx);
-                                                  handleUpdateBlock(block.id, { rows: newRows });
-                                                }}
-                                                className="text-red-500 hover:text-red-700 text-xs font-semibold px-2"
-                                              >
-                                                ✕
-                                              </button>
-                                            </div>
-                                          ))}
+                                                  className="text-red-500 hover:text-red-700 text-xs font-semibold px-2"
+                                                >
+                                                  ✕
+                                                </button>
+                                              </div>
+                                            );
+                                          })}
                                         </div>
 
                                         <div className="flex gap-2">
                                           <button
                                             type="button"
                                             onClick={() => {
-                                              const newRow = Array(block.columns?.length || 2).fill("");
+                                              const colCount = Array.isArray(block.columns) ? block.columns.length : 2;
+                                              const newRowCells = Array(colCount || 2).fill("");
+                                              const firstRow = block.rows?.[0];
+                                              const newRow = (firstRow && typeof firstRow === "object" && !Array.isArray(firstRow) && "cells" in firstRow)
+                                                ? { cells: newRowCells }
+                                                : newRowCells;
                                               handleUpdateBlock(block.id, { rows: [...(block.rows || []), newRow] });
                                             }}
                                             className="text-[10px] text-[#C9A15A] hover:text-[#B58F4E] font-bold"

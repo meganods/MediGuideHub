@@ -1360,9 +1360,9 @@ function AdminContent() {
       setEditingPost(null);
       await loadAllData();
       alert(`Article saved successfully as ${calculatedStatus}!`);
-    } catch (err) {
-      console.error(err);
-      alert("Failed to save article.");
+    } catch (err: any) {
+      console.error("Save article error:", err);
+      alert(`Failed to save article: ${err?.message || "An unexpected error occurred. Please check console for details."}`);
     }
   };
 

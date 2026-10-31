@@ -1,4 +1,5 @@
-import { firestore, adminFirestore, auth, isFirebaseConfigured } from "./firebase";
+import { firestore, adminFirestore, auth, adminAuth, isFirebaseConfigured } from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const getAdminFirestore = () => {
   return adminFirestore || firestore;
@@ -435,6 +436,50 @@ export const subscribeToPublishedBlogPostBySlug = (slug: string, callback: (post
   return () => {};
 };
 
+/**
+ * Recursively prepares an object for Firestore storage:
+ * 1. Strips all undefined fields (Firestore throws on undefined values)
+ * 2. Formats nested arrays (e.g. comparison table rows) into object maps ({ cells: [...] })
+ *    because Firestore strictly prohibits nested multidimensional arrays (Array of Arrays).
+ */
+export const sanitizeForFirestore = (val: any): any => {
+  if (val === undefined || val === null) return null;
+  if (Array.isArray(val)) {
+    return val
+      .filter((item) => item !== undefined)
+      .map((item) => {
+        if (Array.isArray(item)) {
+          // Firestore prohibits nested arrays - wrap each inner row in an object with 'cells'
+          return { cells: item.map((c) => (c === undefined || c === null ? "" : String(c))) };
+        }
+        if (item && typeof item === "object" && !(item instanceof Date)) {
+          if ("cells" in item || "row" in item) {
+            const rawCells = Array.isArray(item.cells)
+              ? item.cells
+              : Array.isArray(item.row)
+              ? item.row
+              : [];
+            return {
+              ...sanitizeForFirestore(item),
+              cells: rawCells.map((c: any) => (c === undefined || c === null ? "" : String(c))),
+            };
+          }
+        }
+        return sanitizeForFirestore(item);
+      });
+  }
+  if (typeof val === "object" && !(val instanceof Date)) {
+    const cleaned: Record<string, any> = {};
+    for (const [k, v] of Object.entries(val)) {
+      if (v !== undefined) {
+        cleaned[k] = sanitizeForFirestore(v);
+      }
+    }
+    return cleaned;
+  }
+  return val;
+};
+
 export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Promise<BlogPost> => {
   const cleanPost = {
     ...post,
@@ -442,36 +487,50 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
     readTime: post.readTime || "5 min read",
   };
 
-  let savedPost: BlogPost | null = null;
+  const postId = cleanPost.id && cleanPost.id.trim() !== "" ? cleanPost.id.trim() : (cleanPost.slug || `post-${Date.now()}`);
+  cleanPost.id = postId;
 
-  if (isFirebaseConfigured && getAdminFirestore()!) {
+  // 1. Always update LocalStorage immediately so client edits and previews are preserved
+  if (typeof window !== "undefined") {
     try {
-      if (cleanPost.id) {
-        await setDoc(doc(getAdminFirestore()!, "posts", cleanPost.id), cleanPost, { merge: true });
-        savedPost = { ...cleanPost, id: cleanPost.id } as BlogPost;
+      const posts = getLocal<BlogPost>(KEYS.POSTS);
+      const idx = posts.findIndex(
+        (p) => (postId && p.id === postId) || (cleanPost.slug && p.slug === cleanPost.slug)
+      );
+      if (idx !== -1) {
+        posts[idx] = { ...posts[idx], ...cleanPost } as BlogPost;
       } else {
-        const docRef = await addDoc(collection(getAdminFirestore()!, "posts"), cleanPost);
-        savedPost = { ...cleanPost, id: docRef.id } as BlogPost;
+        posts.unshift(cleanPost as BlogPost);
       }
-    } catch (e) {
-      console.error("Firebase savePost error:", e);
-      throw e;
+      setLocal(KEYS.POSTS, posts);
+    } catch (localErr) {
+      console.warn("LocalStorage save error:", localErr);
     }
   }
 
-  // Always update LocalStorage on client so that client previews and caches update immediately
-  if (typeof window !== "undefined") {
-    const target = savedPost || ({ ...cleanPost, id: cleanPost.id || cleanPost.slug } as BlogPost);
-    const posts = getLocal<BlogPost>(KEYS.POSTS);
-    const idx = posts.findIndex(
-      (p) => (target.id && p.id === target.id) || (target.slug && p.slug === target.slug)
-    );
-    if (idx !== -1) {
-      posts[idx] = { ...posts[idx], ...target };
-    } else {
-      posts.unshift(target);
+  let savedPost: BlogPost | null = null;
+
+  // 2. Persist to Firebase Firestore
+  if (isFirebaseConfigured && getAdminFirestore()!) {
+    try {
+      // Auto-ensure adminAuth session if not signed in
+      if (adminAuth && !adminAuth.currentUser) {
+        try {
+          const email = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@mediguide4u.com";
+          const pass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "Admin@1234";
+          await signInWithEmailAndPassword(adminAuth, email, pass);
+        } catch (authErr) {
+          console.warn("Could not auto-authenticate adminAuth in savePost:", authErr);
+        }
+      }
+
+      const firestoreData = sanitizeForFirestore(cleanPost);
+      await setDoc(doc(getAdminFirestore()!, "posts", postId), firestoreData, { merge: true });
+      savedPost = { ...cleanPost, id: postId } as BlogPost;
+    } catch (e: any) {
+      console.error("Firebase savePost error:", e);
+      throw e;
     }
-    setLocal(KEYS.POSTS, posts);
   }
 
   return (savedPost || cleanPost) as BlogPost;

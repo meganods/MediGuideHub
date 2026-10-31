@@ -277,7 +277,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
       const q = query(collection(getAdminFirestore()!, "posts"), orderBy("publishedAt", "desc"));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 6000));
       const fetchPromise = getDocs(q).then(snapshot => {
         if (!snapshot.empty) {
           return snapshot.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
@@ -287,9 +287,22 @@ export const getPosts = async (): Promise<BlogPost[]> => {
       const res = await Promise.race([fetchPromise, timeoutPromise]);
       if (res && res.length > 0) {
         posts = res;
+      } else {
+        const fallbackSnap = await getDocs(collection(getAdminFirestore()!, "posts"));
+        if (!fallbackSnap.empty) {
+          posts = fallbackSnap.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+        }
       }
     } catch (e) {
-      console.warn("Firebase error getting posts, falling back:", e);
+      console.warn("Firebase error getting posts, trying fallback query:", e);
+      try {
+        const fallbackSnap = await getDocs(collection(getAdminFirestore()!, "posts"));
+        if (!fallbackSnap.empty) {
+          posts = fallbackSnap.docs.map((doc) => sanitizePost({ id: doc.id, ...doc.data() } as BlogPost));
+        }
+      } catch (innerErr) {
+        console.warn("Firebase fallback error getting posts:", innerErr);
+      }
     }
   }
   if (posts.length === 0 && typeof window !== "undefined") {
@@ -348,8 +361,9 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   // 1. Query Firebase Firestore FIRST so admin edits immediately reflect on the website
   if (isFirebaseConfigured && getAdminFirestore()!) {
     try {
-      const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", slug));
-      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3500));
+      const slugVariants = Array.from(new Set([slug, decodedSlug, slug.toLowerCase(), decodedSlug.toLowerCase()].filter(Boolean)));
+      const q = query(collection(getAdminFirestore()!, "posts"), where("slug", "in", slugVariants));
+      const timeoutPromise = new Promise<null>((resolve) => setTimeout(() => resolve(null), 6000));
       const fetchPromise = getDocs(q).then((snapshot) => {
         if (!snapshot.empty) {
           return sanitizePost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() } as BlogPost);
@@ -359,17 +373,13 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
       const result = await Promise.race([fetchPromise, timeoutPromise]);
       if (result) return result;
 
-      // Check decoded slug if it differs
-      if (decodedSlug !== slug) {
-        const qDecoded = query(collection(getAdminFirestore()!, "posts"), where("slug", "==", decodedSlug));
-        const snapDecoded = await Promise.race([
-          getDocs(qDecoded),
-          new Promise<null>((r) => setTimeout(() => r(null), 2000)),
-        ]);
-        if (snapDecoded && !snapDecoded.empty) {
-          return sanitizePost({ id: snapDecoded.docs[0].id, ...snapDecoded.docs[0].data() } as BlogPost);
+      // Direct document ID fallback
+      try {
+        const directSnap = await getDoc(doc(getAdminFirestore()!, "posts", slug));
+        if (directSnap.exists()) {
+          return sanitizePost({ id: directSnap.id, ...directSnap.data() } as BlogPost);
         }
-      }
+      } catch (dErr) {}
     } catch (e) {
       console.warn("Firebase error getPostBySlug, falling back:", e);
     }
@@ -485,6 +495,7 @@ export const savePost = async (post: Omit<BlogPost, "id"> & { id?: string }): Pr
     ...post,
     publishedAt: post.publishedAt || new Date().toISOString().split("T")[0],
     readTime: post.readTime || "5 min read",
+    updatedAt: post.updatedAt || new Date().toISOString(),
   };
 
   const postId = cleanPost.id && cleanPost.id.trim() !== "" ? cleanPost.id.trim() : (cleanPost.slug || `post-${Date.now()}`);

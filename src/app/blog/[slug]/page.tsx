@@ -48,8 +48,10 @@ import ArticleLiveSync from "@/components/ArticleLiveSync";
 import PostCommentsSection from "@/components/PostCommentsSection";
 import AdBanner from "@/components/AdBanner";
 
-export const dynamicParams = true; // Allow newly published slugs to be rendered on-demand
-export const revalidate = 60; // ISR: revalidate at most once every 60s, instantly updated via on-demand /api/revalidate
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

@@ -1299,7 +1299,7 @@ function AdminContent() {
         // Advanced CMS additions
         status: calculatedStatus,
         seoScore: seoScore || 85,
-        updatedAt: new Date().toISOString().split("T")[0],
+        updatedAt: new Date().toISOString(),
         imageAlt: postImageAlt,
         imageCaption: postImageCaption,
         imageCredit: postImageCredit,

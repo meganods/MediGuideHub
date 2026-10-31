@@ -6,16 +6,27 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const { slug, path } = body;
 
+    // 1. Revalidate dynamic route segments
+    revalidatePath("/blog/[slug]", "page");
+    revalidatePath("/blog/[slug]", "layout");
+
+    // 2. Revalidate specific route if provided
     if (slug) {
+      revalidatePath(`/blog/${slug}`);
       revalidatePath(`/blog/${slug}`, "page");
     }
     if (path) {
+      revalidatePath(path);
       revalidatePath(path, "page");
     }
 
-    // Always revalidate the listing pages and homepage
+    // 3. Revalidate listings, homepage, and taxonomy hubs
     revalidatePath("/blog", "page");
+    revalidatePath("/blog");
     revalidatePath("/", "page");
+    revalidatePath("/");
+    revalidatePath("/category/[slug]", "page");
+    revalidatePath("/category/[slug]", "layout");
     revalidatePath("/sitemap", "page");
 
     return NextResponse.json({

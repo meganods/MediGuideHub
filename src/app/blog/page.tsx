@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import BlogListingClient from "@/components/BlogListingClient";
 import { getPublishedBlogPosts, getCategories } from "@/lib/db";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Doctor-Reviewed Health Guides & Articles | mediguide4u",

@@ -1320,7 +1320,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "Headache disorders rank among the top ten causes of disability worldwide, with migraine affecting over one billion individuals globally. Despite their prevalence, primary headache disorders are frequently misdiagnosed. Many patients who experience facial pressure and nasal congestion assume they have 'sinus headaches,' when clinical evaluation confirms over 80% are actually migraines.\n\nUnlike tension headaches—which stem primarily from pericranial myofascial tension and heightened central pain sensitivity—a migraine is a complex neurological disorder involving genetically predisposed brain hypersensitivity, cortical spreading depression, and activation of the trigeminovascular system with release of inflammatory neuropeptides.\n\nAccurately classifying headache pathology allows patients to bypass ineffective over-the-counter painkillers and utilize targeted neurochemical abortive and preventive medications.",
-    "updatedAt": "2026-10-28T08:36:49.952Z"
+    "updatedAt": "2026-10-28T08:36:49.952Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_bph_111",
@@ -1537,7 +1538,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "The prostate gland is a walnut-sized male reproductive organ located directly beneath the urinary bladder, encircling the proximal urethra. Beginning around the fourth decade of life, cellular hyperplasia in the central transition zone causes gradual gland enlargement under the chronic hormonal influence of dihydrotestosterone (DHT).\n\nBenign prostatic hyperplasia (BPH) is an exceptionally common age-related condition, present in over 50% of men in their 50s and up to 80% of men in their 70s. As the expanding prostate tissue compresses the urethral channel, the detrusor muscle of the bladder must generate progressively higher pressures to expel urine.\n\nLeft unmanaged, chronic bladder outlet obstruction can lead to detrusor muscle hypertrophy, recurrent urinary tract infections, acute urinary retention, bladder calculi, and secondary post-renal hydronephrosis. Understanding the distinction between benign enlargement and malignancy allows men to seek appropriate evaluation and modern therapies that restore quality of life and protect bladder function.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_osa_126",
@@ -1760,7 +1762,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "Sleep is a vital restorative biological state during which blood pressure naturally dips (nocturnal dipping), heart rate slows, and the brain undergoes glymphatic waste clearance. In patients with Obstructive Sleep Apnea (OSA), this restorative state is replaced by an ongoing nocturnal physiological battle.\n\nOSA affects an estimated 1 billion people worldwide, yet over 80% of moderate-to-severe cases remain undiagnosed. Each time the upper airway collapses during sleep, airflow ceases (apnea) or diminishes significantly (hypopnea). As blood oxygen saturation plummets and carbon dioxide accumulates, the brainstem triggers a micro-arousal, flooding the cardiovascular system with a surge of adrenaline and noradrenaline.\n\nRepeating this asphyxiation-arousal cycle 20 to 60 times per hour every night places immense chronic strain on the vascular system, serving as a primary driver of treatment-resistant hypertension, atrial fibrillation, type 2 diabetes, and stroke.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_hashimoto_107",
@@ -1978,7 +1981,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "The thyroid is a small, butterfly-shaped endocrine gland situated at the base of the anterior neck, regulating basal metabolic rate, cardiac chronotropy, thermogenesis, and cellular protein synthesis throughout the body. When thyroid hormone output declines, metabolic processes throughout every organ system slow down noticeably.\n\nIn women—who are affected five to eight times more frequently than men—the overwhelming majority of hypothyroid diagnoses stem from Hashimoto's thyroiditis (chronic lymphocytic thyroiditis). In this autoimmune disorder, autoreactive T-lymphocytes and autoantibodies target thyroid peroxidase (TPO) and thyroglobulin, causing progressive follicular atrophy and gradual loss of hormone-producing capacity.\n\nBecause early hypothyroid symptoms like mild fatigue, dry skin, and mood changes are frequently attributed to stress or aging, understanding complete thyroid blood panels and proper replacement protocols is critical for restoring energy and metabolic health.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_pad_102",
@@ -2198,7 +2202,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "Peripheral artery disease (PAD) affects over 200 million individuals globally and serves as a major clinical indicator of widespread systemic atherosclerosis. In PAD, cholesterol-rich plaques build up along the inner lining of the iliac, femoral, popliteal, and tibial arteries, progressively narrowing the arterial lumen and diminishing oxygen delivery to leg musculature.\n\nDespite its prevalence, PAD is frequently overlooked. Patients often dismiss exertional leg fatigue, aching, or tightness as natural signs of aging or joint arthritis. However, leaving arterial narrowing untreated increases the risk not only of critical limb ischemia and non-healing foot ulcers, but also of concurrent myocardial infarction and ischemic stroke.\n\nRecognizing the distinction between vascular claudication and musculoskeletal pain allows patients to undergo non-invasive vascular testing promptly and start lifestyle and pharmacological therapies that preserve both mobility and cardiovascular health.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-pcos-hormone-balance",
@@ -2396,7 +2401,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "disclaimerType": "full_medical",
     "introduction": "In women's health and reproductive endocrinology, Polycystic Ovary Syndrome (PCOS) is frequently misunderstood as strictly an ovarian disorder. In clinical reality, PCOS is a systemic neuro-endocrine and metabolic condition characterized by vicious hormonal feedback loops between the ovaries, adrenal glands, pituitary gland, and metabolic tissues.\n\nElevated basal Luteinizing Hormone (LH) pulses stimulate ovarian theca cells to overproduce androgens (testosterone and androstenedione). Concurrently, systemic insulin resistance drives compensatory hyperinsulinemia, which directly suppresses hepatic synthesis of Sex Hormone-Binding Globulin (SHBG)—dramatically increasing free circulating bioactive testosterone.\n\nNavigating PCOS requires moving beyond generic advice to 'just lose weight' and implementing targeted interventions that address the underlying drivers of insulin resistance, chronic inflammation, and ovulatory dysfunction.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-gerd-acid-reflux",
@@ -2588,7 +2594,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-23",
     "disclaimerType": "full_medical",
     "introduction": "In outpatient gastroenterology and internal medicine, GERD is one of the most frequent digestive complaints, affecting roughly 20% of the adult population. The stomach is lined with specialized columnar epithelium and a thick mucus-bicarbonate barrier designed to withstand gastric hydrochloric acid (pH 1.5 to 2.5) and proteolytic pepsin.\n\nThe esophagus, however, is lined with delicate non-keratinized stratified squamous epithelium. When the Lower Esophageal Sphincter (LES)—the high-pressure muscular ring separating the stomach from the esophagus—relaxes inappropriately (Transient LES Relaxations / TLESRs) or is compromised by a hiatal hernia, acidic chyme burns the esophageal mucosa.\n\nLeft unmanaged, chronic acid reflux can lead to erosive esophagitis, peptic strictures, and premalignant intestinal metaplasia known as **Barrett's Esophagus**.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_hscrp_116",
@@ -2773,7 +2780,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "For decades, cardiovascular risk assessment focused almost exclusively on circulating lipid levels: total cholesterol, LDL-C, and triglycerides. However, over 50% of heart attacks and strokes occur in individuals with normal or only moderately elevated LDL cholesterol levels. Atherosclerosis is now recognized not merely as a lipid accumulation disorder, but as a chronic inflammatory disease of the arterial wall.\n\nHigh-sensitivity C-Reactive Protein (hs-CRP) is an acute-phase protein synthesized by hepatocytes under the stimulus of interleukin-6 (IL-6) and other pro-inflammatory cytokines. While standard CRP tests detect gross inflammation from pneumonia or rheumatoid flares (levels >10–100 mg/L), high-sensitivity assays detect basal inflammatory activity within the critical 0.5 to 5.0 mg/L range.\n\nEvaluating hs-CRP alongside standard lipid panels provides crucial clinical insight into 'residual inflammatory risk'—identifying arterial wall stress and guiding targeted preventive interventions before clinical plaque rupture occurs.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-high-cholesterol",
@@ -2977,7 +2985,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-31",
     "disclaimerType": "full_medical",
     "introduction": "For decades, public health messaging focused heavily on 'total cholesterol' as the primary marker of heart disease risk. Modern clinical lipidology, however, has evolved significantly. We now understand that cardiovascular risk is determined not simply by the mass of cholesterol inside particles, but by the **total particle concentration of atherogenic lipoproteins**—each carrying a single Apolipoprotein B (ApoB) molecule.\n\nEvery LDL, VLDL, and IDL particle is capable of penetrating the arterial endothelial lining, becoming trapped in the subendothelial space, and initiating the inflammatory cascade of plaque formation.\n\nInterpreting advanced lipid panels, understanding individual 10-year cardiovascular risk scores, and addressing common statin myths allows patients and clinicians to implement highly personalized, cardioprotective therapies.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-adult-adhd",
@@ -3174,7 +3183,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-09",
     "disclaimerType": "full_medical",
     "introduction": "For decades, ADHD was erroneously believed to be a benign childhood behavioral phase that individuals simply 'outgrew' upon reaching adulthood. Longitudinal psychiatric studies have debunked this myth, proving that over 60% of children with ADHD continue to experience significant impairing symptoms throughout their adult lives.\n\nIn adults, overt physical hyperactivity (such as running around classrooms) shifts inward into **chronic mental restlessness, severe executive dysfunction, emotional impulsivity, and 'time blindness.'**\n\nThe fundamental neurobiology of ADHD involves dysregulated dopaminergic and noradrenergic transmission within the frontostriatal brain networks that govern selective attention, working memory, and reward anticipation.\n\nReceiving a proper clinical evaluation and implementing tailored compensatory strategies can transform personal self-worth, career trajectory, and interpersonal relationships.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "nVO3DHRhIlMtLOmJAHyM",
@@ -3627,7 +3637,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-09-04",
     "disclaimerType": "full_medical",
     "introduction": "In cardiovascular medicine, Coronary Artery Disease (CAD) remains the single greatest contributor to sudden cardiac death and heart failure. Atherosclerosis is not simply a plumbing issue of 'grease clogging pipes'—it is a chronic, low-grade inflammatory disease of the arterial intimal layer.\n\nApolipoprotein B (ApoB) containing lipoproteins penetrate endothelial micro-fissures, become oxidized, and trigger macrophage infiltration, forming foam cells, fatty streaks, and ultimately fibroatheromatous plaques with necrotic lipid cores.\n\nUnderstanding the distinction between stable angina (exertional flow-limiting stenosis) and acute coronary syndromes (plaque rupture with acute occlusive thrombosis) is critical for timely medical intervention and life-saving care.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-early-dementia-alzheimers",
@@ -3848,7 +3859,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-07-28",
     "disclaimerType": "full_medical",
     "introduction": "In behavioral neurology and geriatric medicine, one of the most agonizing questions families face is whether an aging loved one's memory lapses are part of 'normal aging' or represent the insidious onset of neurodegenerative dementia.\n\nWhile benign age-related cognitive slowing affects processing speed and rapid word retrieval, it does **not** impair functional autonomy or daily problem-solving.\n\nAlzheimer's Disease, which accounts for 60% to 80% of all dementia cases, begins biologically 15 to 20 years before the first overt clinical symptom emerges. The progressive accumulation of extracellular amyloid-beta (AB42) oligomers and toxic intracellular hyperphosphorylated tau neurofibrillary tangles destroys synapses in the entorhinal cortex and hippocampus, the brain's critical memory-indexing hub.\n\nDifferentiating early Mild Cognitive Impairment (MCI) from reversible metabolic mimics allows for timely interventions, legal planning, and modern disease-modifying therapies.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-colon-cancer-screening",
@@ -4047,7 +4059,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-07-24",
     "disclaimerType": "full_medical",
     "introduction": "In modern oncology and preventive gastroenterology, colorectal cancer screening represents one of public health's greatest success stories. Unlike screening tests that merely detect existing cancers early (like mammography), colorectal cancer screening with colonoscopy can **prevent cancer from ever developing in the first place**.\n\nOver 95% of colorectal carcinomas develop slowly over a period of 10 to 15 years through the **adenoma-to-carcinoma sequence**—beginning as benign glandular polyps (tubular, tubulovillous, or sessile serrated adenomas) within the colonic mucosa.\n\nWith the alarming rise of early-onset colorectal cancer in adults in their 30s and 40s, the US Preventive Services Task Force (USPSTF) officially lowered the recommended starting age for average-risk screening from 50 down to **age 45**.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_ckd_129",
@@ -4234,7 +4247,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "Chronic Kidney Disease (CKD) represents a major global health crisis, affecting over 850 million people worldwide (roughly 10% to 15% of the adult population). The primary drivers of renal injury are uncontrolled hypertension and diabetes mellitus, which together account for more than 75% of all chronic kidney failure diagnoses.\n\nThe kidneys maintain systemic homeostasis: they filter approximately 180 liters of blood daily, eliminate nitrogenous metabolic wastes (urea, creatinine), regulate electrolyte and acid-base balance, control fluid volume, synthesize erythropoietin (stimulating red blood cell production), and activate Vitamin D (calcitriol) for bone integrity.\n\nBecause nephrons possess extraordinary compensatory reserve, individuals can lose up to 50% to 70% of kidney function without experiencing noticeable pain, edema, or fatigue. Understanding the 5 stages of CKD and implementing multi-targeted renal protection early is crucial for preventing progression to end-stage renal disease (ESRD) and dialysis.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-gout-hyperuricemia",
@@ -4431,7 +4445,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-21",
     "disclaimerType": "full_medical",
     "introduction": "In rheumatology and internal medicine, gout is recognized as one of the most agonizing forms of inflammatory arthritis known to humankind. Historically mischaracterized as an eccentric disease of royal overindulgence, gout is in fact a complex metabolic disorder of **purine nucleotide catabolism and renal excretion**.\n\nHumans lack the functional enzyme uricase (lost through evolutionary pseudogenization of the *UOX* gene), making uric acid the end product of purine breakdown. When serum uric acid levels exceed the physiological saturation threshold of 6.8 mg/dL (404 umol/L) at normal body temperature, monosodium urate (MSU) supersaturates and crystallizes into sharp, needle-shaped microcrystals within peripheral joints with cooler temperatures—most famously the first metatarsophalangeal joint (Podagra).\n\nTreating gout effectively requires a clear clinical distinction between managing acute inflammatory flare-ups and achieving lifelong biochemical reduction of the total body urate crystal burden.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-diabetic-neuropathy",
@@ -4651,7 +4666,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-27",
     "disclaimerType": "full_medical",
     "introduction": "In chronic diabetes care, diabetic peripheral neuropathy (DPN) represents a major cause of disability and lower-extremity amputations. Peripheral sensory nerve fibers are particularly vulnerable to chronic hyperglycemia because nerve cells cannot down-regulate glucose transport in states of high blood sugar.\n\nExcess intracellular glucose is shunted into the polyol metabolic pathway, where aldose reductase converts glucose to sorbitol and fructose. Intracellular sorbitol accumulation depletes myo-inositol, impairs membrane Na+/K+-ATPase activity, and drives severe oxidative stress, causing progressive axonal degeneration and demyelination.\n\nBecause sensory loss develops insidiously, patients frequently lose protective sensation, leaving minor blisters or foreign objects in shoes undetected until infected diabetic foot ulcers develop.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-endometriosis-guide",
@@ -4876,7 +4892,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-15",
     "disclaimerType": "full_medical",
     "introduction": "In women's healthcare, endometriosis represents one of the most debilitating and chronically delayed diagnoses, with patients suffering an average diagnostic delay of 7 to 10 years from symptom onset. Endometriosis occurs when tissue morphologically resembling the endometrium implants and proliferates on peritoneal surfaces, ovaries, fallopian tubes, pouch of Douglas, bladder, and bowel.\n\nUnlike normal uterine endometrium that sheds externally during menstruation, ectopic endometriotic implants bleed internally into closed pelvic cavities. This triggers severe cyclical inflammation, recruitment of sensory nerve fibers (neurogenesis), fibrous scar tissue formation, and dense pelvic adhesions that freeze anatomical organ mobility.\n\nValidating patient pain, avoiding dismissal of severe period cramps as 'normal,' and offering timely multidisciplinary care is essential for preserving quality of life and reproductive potential.",
-    "updatedAt": "2026-10-28T08:36:49.953Z"
+    "updatedAt": "2026-10-28T08:36:49.953Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_hfpef_101",
@@ -5043,7 +5060,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "In cardiovascular medicine, heart failure with preserved ejection fraction (HFpEF)—often termed diastolic heart failure—accounts for roughly half of all clinical heart failure hospitalizations. Unlike reduced ejection fraction heart failure (HFrEF), where the myocardium cannot squeeze blood out effectively, patients with HFpEF maintain a normal or near-normal left ventricular ejection fraction (LVEF ≥ 50%).\n\nThe fundamental pathophysiology lies in diastolic dysfunction: the walls of the left ventricle become stiff, fibrotic, or hypertrophied. During the filling phase of each heartbeat, the ventricle cannot relax adequately, causing pressure to back up into the left atrium and pulmonary circulation. Patients experience progressive shortness of breath during modest physical exertion, chronic fatigue, and peripheral fluid retention.\n\nEarly identification is critical because chronic hypertension, obesity, type 2 diabetes, and atrial fibrillation directly accelerate ventricular stiffness. With recent clinical trials demonstrating significant mortality and hospitalization reductions using SGLT2 inhibitors, managing HFpEF has shifted from purely symptomatic fluid removal to proactive disease modification.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-type2-diabetes",
@@ -5277,7 +5295,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-09-14",
     "disclaimerType": "full_medical",
     "introduction": "Type 2 Diabetes Mellitus (T2DM) represents one of the most significant healthcare challenges of the 21st century, affecting over 500 million adults globally. The disease develops along an insidious continuum: decades of hyperinsulinemia and insulin resistance in skeletal muscle and liver tissue gradually exhaust pancreatic beta-cell capacity, leading to chronic glucotoxicity.\n\nHistorically viewed as an inevitably progressive, irreversible condition, contemporary endocrinology now recognizes that early-stage Type 2 Diabetes can achieve clinical remission (normal blood glucose without glucose-lowering medications) through substantial, sustained weight loss and aggressive metabolic restructuring.\n\nFurthermore, the emergence of modern pharmacological classes—specifically SGLT2 inhibitors and GLP-1 receptor agonists—has transformed diabetes care from simple glucose-lowering into comprehensive organ protection, drastically reducing cardiovascular and renal mortality.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-panic-vs-anxiety-attacks",
@@ -5497,7 +5516,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-07",
     "disclaimerType": "full_medical",
     "introduction": "In emergency departments and outpatient mental health clinics, patients experiencing an acute panic attack frequently believe they are having a fatal heart attack or losing their sanity. The physical sensations are terrifyingly real: a racing pulse, suffocating chest constriction, numbness in the extremities, and an overwhelming dread of impending catastrophe.\n\nWhile 'panic attack' is an official, standardized diagnostic entity recognized in the DSM-5, 'anxiety attack' is a colloquial term describing a prolonged crescendo of anticipatory worry and somatic tension in response to an identifiable life stressor.\n\nUnderstanding the biological divergence between a gradual sympathetic anxiety buildup and an explosive amygdala-driven panic storm is the critical first step toward mastering somatic self-regulation.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-perimenopause-menopause-guide",
@@ -5694,7 +5714,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-13",
     "disclaimerType": "full_medical",
     "introduction": "In women's midlife healthcare, the menopausal transition represents a major biological milestone affecting over 1 billion women globally. Far from being an abrupt overnight event, **perimenopause** is a dynamic neuroendocrine transition that typically spans 4 to 8 years prior to the final menstrual period.\n\nDuring this phase, diminishing ovarian primordial follicle numbers lead to erratic, chaotic surges and crashes in 17B-estradiol and progesterone, while pituitary Follicle-Stimulating Hormone (FSH) rises in an attempt to stimulate failing ovaries. Estradiol receptors are densely populated throughout the brain—specifically in the hypothalamic thermoregulatory center, the hippocampus, and the amygdala.\n\nFluctuating estrogen destabilizes hypothalamic neurokinin B/dynorphin (KNDy) neurons, triggering sudden vasomotor hot flashes and profound disruptions in sleep architecture, cognitive processing ('brain fog'), and emotional resilience.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-routine-blood-tests-explained",
@@ -5922,7 +5943,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-07-22",
     "disclaimerType": "full_medical",
     "introduction": "In outpatient primary care, routine diagnostic blood testing is one of the most frequently ordered clinical evaluations. Yet, when patients access their electronic health portals, they are often confronted with an overwhelming wall of acronyms, numerical values, and alarming red 'HIGH' or 'LOW' flags.\n\nLaboratory reference ranges are statistically derived from a gaussian bell curve representing the middle **95% of a healthy reference population** (mean ± 2 standard deviations). This means that 5% of completely healthy individuals will mathematically fall slightly outside the normal reference range on any given test.\n\nUnderstanding what key biomarker clusters mean—from renal filtration (eGFR and BUN/Creatinine) to hepatic transaminases (ALT, AST, ALP) and hematological cell lines (MCV, RDW, WBC diff)—demystifies your health records and empowers informed clinical conversations.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-atrial-fibrillation",
@@ -6174,7 +6196,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-09-02",
     "disclaimerType": "full_medical",
     "introduction": "In cardiac electrophysiology, Atrial Fibrillation (AFib) represents a rapidly escalating public health concern affecting millions of adults worldwide. Instead of the sinoatrial node generating orderly electrical waves that cause coordinated atrial contraction, ectopic electrical foci—most commonly originating in the sleeves of the pulmonary veins—fire chaotically.\n\nThis causes the upper heart chambers (atria) to quiver or fibrillate rather than contract effectively. Because the atria fail to squeeze blood completely into the ventricles, blood pools and stagnates in the left atrial appendage (LAA). Stagnant blood readily forms thrombi, increasing the lifetime risk of embolic stroke five-fold.\n\nEffective AFib management requires a dual approach: preventing thromboembolic strokes while alleviating debilitating symptoms of fatigue, palpitations, and heart failure.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-childhood-asthma",
@@ -6380,7 +6403,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-05",
     "disclaimerType": "full_medical",
     "introduction": "In pediatric healthcare, asthma is a leading cause of missed school days and emergency department visits. Pediatric asthma is not a disease of acute muscle spasms alone—it is driven by **underlying chronic airway inflammation**.\n\nWhen a child with asthma encounters triggers such as viral rhinovirus infections, cold air, or pet dander, their hypersensitive bronchial mucosa swells, goblet cells secrete thick tenacious mucus, and surrounding bronchial smooth muscle constricts (bronchospasm).\n\nBecause young children cannot verbally articulate 'bronchoconstriction,' symptoms frequently present as persistent nocturnal coughing, exercise-induced fatigue, or subtle rib retractions during breathing.\n\nMastering proper inhaler technique with valved holding chambers (spacers) and maintaining a written green-yellow-red Asthma Action Plan prevents acute exacerbations and enables children to participate fully in sports and childhood activities.",
-    "updatedAt": "2026-10-28T08:36:49.954Z"
+    "updatedAt": "2026-10-28T08:36:49.954Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-clinical-depression",
@@ -6601,7 +6625,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-11",
     "disclaimerType": "full_medical",
     "introduction": "In modern psychiatry and clinical neuroscience, Major Depressive Disorder (MDD) is recognized not as a personal failure or transient sadness, but as a complex, multi-system biological illness. For decades, depression was oversimplified as a mere 'chemical imbalance' of low serotonin.\n\nContemporary research reveals that depression involves widespread disruptions in **neuroplasticity, functional neural connectivity, and neuroinflammation**. Chronic allostatic stress leads to excessive glutamate excitotoxicity and elevated glucocorticoids, which suppress Brain-Derived Neurotrophic Factor (BDNF) and cause dendritic spine atrophy within the hippocampus and prefrontal cortex, while the amygdala becomes hyperactive.\n\nAchieving true clinical remission requires comprehensive multimodal care that combines neuroplasticity-enhancing pharmacotherapies, targeted psychotherapy, and anti-inflammatory lifestyle interventions.",
-    "updatedAt": "2026-10-28T08:36:49.955Z"
+    "updatedAt": "2026-10-28T08:36:49.955Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-metabolic-syndrome",
@@ -6813,7 +6838,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-19",
     "disclaimerType": "full_medical",
     "introduction": "In modern preventive cardiology and endocrinology, Metabolic Syndrome (also termed Syndrome X or Insulin Resistance Syndrome) affects more than one in three American adults. It is not a single isolated disease, but rather a dangerous constellation of cardiometabolic risk factors operating synergistically.\n\nHaving metabolic syndrome doubles the 10-year risk of atherosclerotic cardiovascular events (heart attacks and strokes) and increases the risk of developing Type 2 diabetes five-fold. At the epicenter of metabolic syndrome lies **visceral adiposity and systemic insulin resistance**.\n\nUnlike benign subcutaneous fat under the skin, deep visceral fat surrounding internal abdominal organs is an active, endocrine-disrupting tissue that continuously secretes pro-inflammatory cytokines, free fatty acids, and vasoconstrictive hormones directly into the portal circulation.",
-    "updatedAt": "2026-10-28T08:36:49.955Z"
+    "updatedAt": "2026-10-28T08:36:49.955Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-childhood-rashes",
@@ -7028,7 +7054,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-01",
     "disclaimerType": "full_medical",
     "introduction": "In pediatric dermatology and primary care, skin rashes cause significant parental concern. The infant and pediatric skin barrier is structurally thinner, more permeable, and immunologically dynamic compared to adult skin.\n\nPediatric cutaneous eruptions span a broad spectrum: from chronic atopic barrier defects (eczema) driven by filaggrin gene mutations to acute infectious viral exanthems triggered by common childhood viruses like Coxsackievirus, Human Herpesvirus-6 (HHV-6), and Parvovirus B19.\n\nAccurate diagnosis relies on careful morphological inspection (macules, papules, vesicles, plaques), distribution patterns, associated prodromal symptoms, and determining whether the rash **blanches under pressure**.",
-    "updatedAt": "2026-10-28T08:36:49.955Z"
+    "updatedAt": "2026-10-28T08:36:49.955Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "post-osteoporosis-bone-density",
@@ -7240,7 +7267,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-07-30",
     "disclaimerType": "full_medical",
     "introduction": "In geriatric medicine and bone health, osteoporosis is known as the 'silent thief' because bone loss occurs continuously without pain or symptoms until a sudden, devastating fragility fracture occurs. Worldwide, 1 in 3 women and 1 in 5 men over the age of 50 will experience an osteoporotic fracture in their remaining lifetime.\n\nBone is not an inert scaffold; it is a highly active, dynamic living tissue undergoing continuous **bone remodeling**. Specialized cells called osteoclasts resorb old, micro-damaged bone, while osteoblasts synthesize new collagen matrix and mineralize it with calcium hydroxyapatite crystals.\n\nFollowing menopause (with the loss of estrogen's protective suppression of osteoclasts) and during normal aging, osteoclastic bone resorption outpaces osteoblastic bone formation, converting dense trabecular bone into porous, fragile honeycomb structures.\n\nPreventing osteoporotic hip and vertebral compression fractures requires early DEXA screening, optimized bone nutrition, and evidence-based pharmacotherapies.",
-    "updatedAt": "2026-10-28T08:36:49.955Z"
+    "updatedAt": "2026-10-28T08:36:49.955Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "3CHKf7kSf3hr3TKWBdYj",
@@ -7864,7 +7892,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "publishedAt": "2026-08-03",
     "disclaimerType": "full_medical",
     "introduction": "In pediatric medicine, 'fever phobia' is widespread among parents who fear that high temperatures will cause permanent brain damage. In clinical reality, fever is an evolutionarily conserved, adaptive physiological response orchestrated by the anterior hypothalamus in response to endogenous pyrogens (IL-1, IL-6, TNF-alpha) released during viral and bacterial infections.\n\nElevated core temperature enhances leukocyte mobility, accelerates T-cell proliferation, and impairs viral replication. Simple fevers generated by the body's thermoregulatory center will not exceed 105°F (40.5°C) and do NOT cause brain damage.\n\nThe clinical goal of pediatric fever management is not to force the temperature to 98.6°F, but to alleviate the child's discomfort, prevent dehydration, and carefully assess for signs of severe underlying bacterial infection.",
-    "updatedAt": "2026-10-28T08:36:49.955Z"
+    "updatedAt": "2026-10-28T08:36:49.955Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "d9NZloB6wv0AVj1ZF6w3",
@@ -8384,7 +8413,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "status": "Published",
     "disclaimerType": "full_medical",
     "introduction": "For decades, patients presenting with chronic bloating, severe cramping, and unpredictable bowel habits were frequently told that their symptoms were 'all in their head' after routine colonoscopies and blood tests returned completely normal. Today, neurogastroenterology recognizes Irritable Bowel Syndrome (IBS) not as an imaginary complaint, but as a well-defined Disorder of Gut-Brain Interaction (DGBI).\n\nIn IBS, complex bidirectional dysregulation between the enteric nervous system (the 'second brain' in the gut) and the central nervous system produces visceral hypersensitivity—a lowered pain threshold where normal physiological intestinal gas and digestive contractions are perceived by the brain as sharp, distressing pain.\n\nBy classifying patients into precise clinical subtypes and applying the evidence-based 3-phase Low-FODMAP protocol developed by Monash University, clinicians and dietitians can resolve debilitating digestive symptoms in over 70% of IBS sufferers.",
-    "updatedAt": "2026-10-28T08:36:49.956Z"
+    "updatedAt": "2026-10-28T08:36:49.956Z",
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_b12_132",
@@ -8543,7 +8573,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "robotsMeta": "index, follow",
     "subcategory": "Nutritional Neurology",
     "status": "Published",
-    "views": 1681
+    "views": 1681,
+    "reviewCycle": "12 months"
   },
   {
     "id": "med_art_masld_131",
@@ -8737,7 +8768,8 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     "category": "Heart & Cardiometabolic Health",
     "robotsMeta": "index, follow",
     "subcategory": "Hepatic & Metabolic Health",
-    "status": "Published"
+    "status": "Published",
+    "reviewCycle": "12 months"
   }
 ];
 

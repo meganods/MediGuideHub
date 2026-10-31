@@ -97,7 +97,7 @@ export interface SiteSettings {
 
 // LocalStorage Helper Keys
 const KEYS = {
-  POSTS: "mediguide4u_posts_v5",
+  POSTS: "mediguide4u_posts_v6",
   CATEGORIES: "mediguide4u_categories_v5",
   FAQS: "mediguide4u_faqs_v5",
   TESTIMONIALS: "mediguide4u_testimonials_v5",
@@ -176,6 +176,7 @@ const initLocalStorage = () => {
     localStorage.removeItem("mediguide4u_posts_v2");
     localStorage.removeItem("mediguide4u_posts_v3");
     localStorage.removeItem("mediguide4u_posts_v4");
+    localStorage.removeItem("mediguide4u_posts_v5");
     localStorage.removeItem("mediguide4u_categories");
     localStorage.removeItem("mediguide4u_categories_v4");
     localStorage.removeItem("mediguide4u_faqs");
